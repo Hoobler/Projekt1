@@ -1,0 +1,6 @@
+Content\spaceship.xnb
+Content\black.xnb
+Content\green.xnb
+Content\red.xnb
+Content\water.xnb
+Content\debugFont.xnb
