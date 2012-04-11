@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<texturelist>
+  <tiletexture>
+    <symbol>W</symbol>
+    <texture>
+      <name>water</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>R</symbol>
+    <texture>
+      <name>red</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>G</symbol>
+    <texture>
+      <name>green</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>B</symbol>
+    <texture>
+      <name>black</name>
+    </texture>
+  </tiletexture>
+</texturelist>

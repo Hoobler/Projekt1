@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<level>
+  <name>Level 1</name>
+  <tileset>texturelist</tileset>
+  <layout>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+    <row>CCCCCCCCCCC</row>
+  </layout>
+</level>

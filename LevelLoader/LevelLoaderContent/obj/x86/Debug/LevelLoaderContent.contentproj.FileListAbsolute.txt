@@ -1,0 +1,2 @@
+c:\users\hoobler\documents\visual studio 2010\Projects\LevelLoader\LevelLoader\LevelLoaderContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\LevelLoader\LevelLoader\LevelLoaderContent\obj\x86\Debug\ResolveAssemblyReference.cache
