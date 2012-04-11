@@ -26,8 +26,6 @@ namespace LevelLoader
 
         List<TileTexture> textureList = new List<TileTexture>();
 
-        List<Texture2D> tileTextures = new List<Texture2D>();
-
         char[,] map2 = new char [11,20];
 
         public LevelLoader(string TheLevelFile, ContentManager content)
@@ -189,11 +187,6 @@ namespace LevelLoader
         public int Hight
         {
             get { return map2.GetLength(1); }
-        }
-
-        public void AddTileTexture(Texture2D texture)
-        {
-            tileTextures.Add(texture);
         }
 
         public void MoveCamera(float moved)
