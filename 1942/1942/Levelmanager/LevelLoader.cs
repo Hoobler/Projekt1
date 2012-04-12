@@ -13,16 +13,12 @@ namespace _1942
 {
     class LevelLoader
     {
-        private const int tileWidht = 50;
-        private const int tileHight = 50;
-
         private const int topMargin = 0;
-
-        private int tilesize = 60;
+        private static int tilesize = 60;
         private string levelName = string.Empty;
+        private string description = string.Empty;
 
-
-        Vector2 cameraPosition = new Vector2(0, 14 * tileHight);
+        Vector2 cameraPosition = new Vector2(0, 12 * tilesize);
 
         List<TileTexture> textureList = new List<TileTexture>();
 

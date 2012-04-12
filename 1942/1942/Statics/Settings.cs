@@ -8,7 +8,7 @@ namespace _1942
 {
     static class Settings
     {
-        static public float level_speed;
+        static public float level_speed = 0.5f;
         static public int nr_of_players;
         static public GameWindow window;
 

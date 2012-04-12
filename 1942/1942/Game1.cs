@@ -103,7 +103,7 @@ namespace _1942
             keyState = Keyboard.GetState();
 
             //Just to test Orvar take it easy!
-            levelLoader.MoveCamera(0.5F);
+            levelLoader.MoveCamera(Settings.level_speed);
 
             logic.Update(keyState, gameTime);
 

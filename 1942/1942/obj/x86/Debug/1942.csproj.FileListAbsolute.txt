@@ -60,3 +60,8 @@ C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942\obj\x8
 C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942\obj\x86\Debug\1942.exe
 C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942\obj\x86\Debug\1942.pdb
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\black.xnb
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\green.xnb
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\red.xnb
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\water.xnb
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb
