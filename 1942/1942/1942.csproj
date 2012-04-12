@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Levelmanager\Tile.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />

@@ -67,3 +67,17 @@ C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86
 C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb
 C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Levels\level1.xml
 C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Levels\texturelist.xml
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Levels\level1.xml
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Levels\texturelist.xml
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\spaceship.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\black.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\green.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\red.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\water.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\1942.exe
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\1942.pdb
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\obj\x86\Debug\1942.exe
+C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\obj\x86\Debug\1942.pdb

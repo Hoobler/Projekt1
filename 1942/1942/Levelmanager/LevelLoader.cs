@@ -13,20 +13,26 @@ namespace _1942
 {
     class LevelLoader
     {
+        private int nrOfRows = 0;
         private const int topMargin = 0;
-        private static int tilesize = 60;
+        private static int tilesize = 80;
         private string levelName = string.Empty;
         private string description = string.Empty;
+        private Vector2 cameraPosition = new Vector2(0, 0);
 
-        Vector2 cameraPosition = new Vector2(0, 12 * tilesize);
-
-        List<TileTexture> textureList = new List<TileTexture>();
-
-        char[,] map2 = new char [11,20];
+        //Spara in alla texturer där dom stämmer övernes symbolen man får från mapList så att rätt texture ritas ut.
+        Dictionary<char, TileTexture> textureDictionary = new Dictionary<char, TileTexture>();
+        //List för all tiles i "mapen" den håller x,y pos och vilken symbol som ska vara på den posen.
+        List<Tile> mapList = new List<Tile>();
 
         public LevelLoader(string TheLevelFile, ContentManager content)
         {
             LoadLevelFile(TheLevelFile, content);
+        }
+
+        public void UnLoadLevel()
+        {
+            textureDictionary.Clear();
         }
 
         public void LoadLevelFile(string LevelFile, ContentManager content)
@@ -105,7 +111,7 @@ namespace _1942
                     if (aCurrentElement == "name")
                     {
                         var assetName = reader.ReadElementContentAsString();
-                        textureList.Add(new TileTexture(content.Load<Texture2D>(assetName), tempChar));                       
+                        textureDictionary.Add(tempChar, new TileTexture(content.Load<Texture2D>(assetName), tempChar));
                     }
                 }
             }
@@ -161,60 +167,43 @@ namespace _1942
                     if (aCurrentElement == "row")
                     {
                         string aRow = reader.Value;
+                        nrOfRows += 1;
 
                         for (int counter = 0; counter < aRow.Length; counter++)
-                        {
-                            var tempNr = aRow[counter].ToString().ToCharArray()[0];
-                            map2[aPositionX, aPositionY] = tempNr;
+                        {                          
+                            var tempChar = aRow[counter].ToString().ToCharArray()[0];
 
+                            mapList.Add(new Tile(new Vector2(aPositionX, aPositionY), tempChar));
                             aPositionX += 1;
                         }
                     }
-                }
-                    
+                }                 
             }
+            StartingCameraPos();
         }
 
-        public int Width
+        public int StartingCameraPos()
         {
-            get { return map2.GetLength(0); }
-        }
-
-        public int Hight
-        {
-            get { return map2.GetLength(1); }
+            cameraPosition.Y = (float)nrOfRows * tilesize - 480;
+            var tempInt = nrOfRows * tilesize - 480;
+            return tempInt;
         }
 
         public void MoveCamera(float moved)
         {
             cameraPosition.Y -= moved;
-
             if (cameraPosition.Y < topMargin)
-                cameraPosition.Y = topMargin;
+                cameraPosition.Y = StartingCameraPos();
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
-            Texture2D texture = null; 
-            for(int x = 0; x < Width; x++)
-                for (int y = 0; y < Hight; y++)
-                {
-                    var left = x * tilesize;
-                    var top = y * tilesize - (int)cameraPosition.Y;
-
-                    var textureIndex = (char)map2[x,y];
-                    //if (textureIndex == -1) continue;
-
-                    foreach (TileTexture aTexture in textureList)
-                    {
-                        if (aTexture.Symbol == textureIndex)
-                        {
-                            texture = aTexture.Texture;
-                        }
-                    }
-
-                    spritebatch.Draw(texture, new Rectangle(left, top, tilesize, tilesize), Color.White);
-                }
+            foreach (Tile tile in mapList)
+            {
+                int left = (int)tile.Position.X * tilesize;
+                int top = (int)tile.Position.Y * tilesize - (int)cameraPosition.Y;
+                spritebatch.Draw(textureDictionary[tile.Symbol].Texture, new Rectangle(left, top, tilesize, tilesize), Color.White);
+            }
         }
     }
 }   
