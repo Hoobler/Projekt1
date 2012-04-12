@@ -107,20 +107,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enemy_Tower_Dead.cs" />
+    <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />
     <Compile Include="Objects\Projectiles\BaseProjectile.cs" />
     <Compile Include="Objects\Enemies\BaseEnemy.cs" />
     <Compile Include="Objects\Enemies\Aircraft\BaseFormation.cs" />
     <Compile Include="Objects\BaseObject.cs" />
-    <Compile Include="Enemy_Tower.cs" />
+    <Compile Include="Objects\Enemies\Stationary\Enemy_Tower.cs" />
     <Compile Include="Objects\Enemies\Aircraft\Enemy_Zero.cs" />
     <Compile Include="Objects\Enemies\Aircraft\FlyingObject.cs" />
     <Compile Include="Objects\Enemies\Aircraft\Formation1.cs" />
     <Compile Include="Objects\Enemies\Aircraft\Formation2.cs" />
     <Compile Include="Logic.cs" />
-    <Compile Include="Projectile_Enemy_Tower.cs" />
+    <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />
@@ -138,8 +138,12 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Content Include="Levels\level1.xml" />
-    <Content Include="Levels\texturelist.xml" />
+    <Content Include="Levels\level1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\texturelist.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\1942Content\1942Content.contentproj">
