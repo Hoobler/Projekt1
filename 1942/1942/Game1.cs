@@ -44,8 +44,9 @@ namespace _1942
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            IsMouseVisible = true;
 
+            IsMouseVisible = true;
+            Window.AllowUserResizing = true;
             base.Initialize();
         }
 

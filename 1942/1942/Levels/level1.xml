@@ -1,27 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <level>
   <name>Level 1</name>
+  <description>Peral Harbour 1942</description>
   <tileset>texturelist</tileset>
   <layout>
-    <row>WGGGGGGGGGW</row>
-    <row>WWWWWWWWWWW</row>
-    <row>WWWWGWWWWWW</row>
-    <row>WWWGGGGWWWW</row>
-    <row>WWWGBBGWWWW</row>
-    <row>WWWGGBGGGWW</row>
-    <row>WwWWGGGGWWW</row>
-    <row>WwWWWWWWWWW</row>
-    <row>WWWWWWWWWWW</row>
-    <row>WWGGGGGWWWW</row>
-    <row>WwGGGGWWWWW</row>
-    <row>WWWGGGGGWWW</row>
-    <row>WWGGBBBGWWW</row>
-    <row>WWGGBRBGWWW</row>
-    <row>WWWGBBBGWWW</row>
-    <row>WWWGGGGGWWW</row>
-    <row>WWWWGGGWWWW</row>
-    <row>WWWWWGWWWWW</row>
-    <row>WWWWWWWWWWW</row>
-    <row>WWWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWGWWWWW</row>
+    <row>WWWGGGGWWW</row>
+    <row>WWWGBBGWWW</row>
+    <row>WWWGGBGGGW</row>
+    <row>WWWWGGGGWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWGGGGGWWW</row>
+    <row>WWGGGGWWWW</row>
+    <row>WWWGGGGGWW</row>
+    <row>WWGGBBBGWW</row>
+    <row>WWGGBRBGWW</row>
+    <row>WWWGBBBGWW</row>
+    <row>WWWGGGGGWW</row>
+    <row>WWWWGGGWWW</row>
+    <row>WWWWWGWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWBRBRWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWBRBRWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWBRBRWWW</row>
+    <row>WWWWWWWWWW</row>
   </layout>
 </level>
