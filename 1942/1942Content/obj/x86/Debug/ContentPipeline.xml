@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\spaceship.xnb</Output>
-      <Time>2012-04-04T16:06:38+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\spaceship.xnb</Output>
+      <Time>2012-04-12T15:32:51.7091866+02:00</Time>
     </Item>
     <Item>
       <Source>black.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\black.xnb</Output>
-      <Time>2012-04-11T19:43:00.6454392+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\black.xnb</Output>
+      <Time>2012-04-12T15:32:51.6771848+02:00</Time>
     </Item>
     <Item>
       <Source>green.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\green.xnb</Output>
-      <Time>2012-04-11T19:43:00.6464393+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\green.xnb</Output>
+      <Time>2012-04-12T15:32:51.6861853+02:00</Time>
     </Item>
     <Item>
       <Source>red.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\red.xnb</Output>
-      <Time>2012-04-11T19:43:00.6464393+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\red.xnb</Output>
+      <Time>2012-04-12T15:32:51.7081866+02:00</Time>
     </Item>
     <Item>
       <Source>water.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\water.xnb</Output>
-      <Time>2012-04-11T19:43:00.6474393+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\water.xnb</Output>
+      <Time>2012-04-12T15:32:51.7101867+02:00</Time>
     </Item>
     <Item>
       <Source>debugFont.spritefont</Source>
@@ -52,8 +52,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
-      <Time>2012-04-10T13:58:40+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
+      <Time>2012-04-12T15:32:51.6851852+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,10 +61,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -93,7 +93,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-02-07T19:42:08.1488483+01:00</Value>
+        <Value>2012-01-25T09:53:58.3496637+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

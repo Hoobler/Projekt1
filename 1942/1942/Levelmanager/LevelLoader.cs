@@ -182,10 +182,16 @@ namespace _1942
             StartingCameraPos();
         }
 
+        public int TileSize()
+        {
+            var tempSize = Settings.window.ClientBounds.Width;
+            return tilesize = tempSize / 10; 
+        }
+
         public int StartingCameraPos()
         {
-            cameraPosition.Y = (float)nrOfRows * tilesize - 480;
-            var tempInt = nrOfRows * tilesize - 480;
+            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
+            var tempInt = nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
             return tempInt;
         }
 
@@ -200,9 +206,9 @@ namespace _1942
         {
             foreach (Tile tile in mapList)
             {
-                int left = (int)tile.Position.X * tilesize;
-                int top = (int)tile.Position.Y * tilesize - (int)cameraPosition.Y;
-                spritebatch.Draw(textureDictionary[tile.Symbol].Texture, new Rectangle(left, top, tilesize, tilesize), Color.White);
+                int left = (int)tile.Position.X * TileSize();
+                int top = (int)tile.Position.Y * TileSize() - (int)cameraPosition.Y;
+                spritebatch.Draw(textureDictionary[tile.Symbol].Texture, new Rectangle(left, top, TileSize(), TileSize()), Color.White);
             }
         }
     }
