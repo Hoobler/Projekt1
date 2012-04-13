@@ -18,7 +18,7 @@ namespace _1942
             angle = 0;
             color = Color.White;
             layerDepth = 0.5f;
-            size = new Point(4, 20);
+            size = new Point(8, 20);
             position = startingPos;
             texture = Texture2DLibrary.enemy_tower;
             
@@ -49,7 +49,7 @@ namespace _1942
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture2DLibrary.enemy_tower_base, new Rectangle((int)position.X - Size.Y / 2, (int)position.Y - Size.Y/2, Size.Y, Size.Y), new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), Color.Red, 0, new Vector2(0, 0), spriteEffect, 0.4f);
+            spriteBatch.Draw(Texture2DLibrary.enemy_tower_base, new Rectangle((int)position.X, (int)position.Y, Size.Y, Size.Y), new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), Color.Red, 0, new Vector2(size.X/2, size.Y/2), spriteEffect, 0.4f);
             base.Draw(spriteBatch);
         }
     }

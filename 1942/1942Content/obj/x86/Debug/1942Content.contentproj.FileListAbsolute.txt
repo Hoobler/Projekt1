@@ -5,3 +5,4 @@ F:\1942v03\1942\1942Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Spellabbet\Desktop\1942v03\1942\1942Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942\1942Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Hoobler\Documents\Visual Studio 2010\Projects\Projekt1\1942\1942Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942Content\obj\x86\Debug\ResolveAssemblyReference.cache

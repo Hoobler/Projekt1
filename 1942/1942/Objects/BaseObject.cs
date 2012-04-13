@@ -61,7 +61,8 @@ namespace _1942
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Rectangle, new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), color, angle, new Vector2(Size.X, Size.Y), spriteEffect, layerDepth);
+            spriteBatch.Draw(texture, Rectangle, new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), color, angle, new Vector2(size.X/2, size.Y/2), spriteEffect, layerDepth);
+            
         }
 
         public bool IsDead()

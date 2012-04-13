@@ -17,7 +17,7 @@ namespace _1942
             layerDepth = 1.0f;
             color = Color.White;
             texture = Texture2DLibrary.projectile_enemy_tower;
-
+            damage = 2;
             speed = new Vector2((float)Math.Cos(angle) * Settings.tower_projectile_speed, (float)Math.Sin(angle) * Settings.tower_projectile_speed);
         }
 

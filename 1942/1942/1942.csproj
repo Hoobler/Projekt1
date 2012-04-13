@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExitButton.cs" />
+    <Compile Include="MenuManager.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />
@@ -121,6 +123,8 @@
     <Compile Include="Objects\Enemies\Aircraft\Formation2.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
+    <Compile Include="OptionButton.cs" />
+    <Compile Include="StartGameButton.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />

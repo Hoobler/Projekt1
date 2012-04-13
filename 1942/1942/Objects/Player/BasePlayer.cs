@@ -13,14 +13,15 @@ namespace _1942
         protected float speedHor;
         protected float speedUp;
         protected float speedDown;
+        protected int health = 100;
 
         public BasePlayer(): base()
         {
             angle = 0;
             color = Color.White;
             layerDepth = 0f;
-            size.X = 16;
-            size.Y = 16;
+            size.X = Settings.window.ClientBounds.Width/40;
+            size.Y = Settings.window.ClientBounds.Width / 40;
             speedHor = 4f;
             speedUp = 4f;
             speedDown = 4f;
@@ -31,7 +32,13 @@ namespace _1942
 
         public virtual void Update(KeyboardState keyState, GameTime gameTime)
         { }
-        
+
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+
         
 
     }

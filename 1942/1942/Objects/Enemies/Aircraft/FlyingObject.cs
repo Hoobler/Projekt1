@@ -10,9 +10,12 @@ namespace _1942
     class FlyingObject: BaseEnemy
     {
 
+
         public FlyingObject()
             : base()
-        { }
+        {
+            flying = true;
+        }
 
         public override void Update(GameTime gameTime)
         {

@@ -19,10 +19,14 @@ namespace _1942
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        
+        enum GameStates { MainMenu, OptionScreen, AudioScreen, VideoScreen, ControlScreen, Playing, GameOver };
+        GameStates gameState = GameStates.MainMenu;
+
         KeyboardState keyState;
         Logic logic;
         LevelLoader levelLoader;
+        MenuManager menu;
+        
 
 
         public Game1()
@@ -40,6 +44,7 @@ namespace _1942
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -67,15 +72,28 @@ namespace _1942
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"spaceship");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"spaceship");
 
+
+            //menu
+            Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
+            Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");
+            Texture2DLibrary.texture_StartGameButton = Content.Load<Texture2D>(@"Menu/StartGame");
+            Texture2DLibrary.texture_ExitGameButton = Content.Load<Texture2D>(@"Menu/ExitGame");
+            Texture2DLibrary.texture_ExitGameButtonShadow = Content.Load<Texture2D>(@"Menu/ExitGame_Shadow");
+            Texture2DLibrary.texture_OptionsButtonShadow = Content.Load<Texture2D>(@"Menu/Options_Shadow");
+            Texture2DLibrary.texture_StartGameButtonShadow = Content.Load<Texture2D>(@"Menu/StartGame_Shadow");
+
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
 
-            Settings.nr_of_players = 2;
-            Settings.level_speed = 1f;
+            
             Settings.window = Window;
             
 
             logic = new Logic();
+            menu = new MenuManager();
             levelLoader = new LevelLoader("./Levels/level1.xml", this.Content);
+
+            
+
         }
 
         /// <summary>
@@ -103,9 +121,41 @@ namespace _1942
             keyState = Keyboard.GetState();
 
             //Just to test Orvar take it easy!
-            levelLoader.MoveCamera(Settings.level_speed);
+            if (menu.GetStartGame())
+            {
+                gameState = GameStates.Playing;
+            }
+            switch (gameState)
+            {
+                case GameStates.MainMenu:
+                    {
+                        menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                        break;
+                    }
+                case GameStates.OptionScreen:
+                    {
+                        break;
+                    }
+                case GameStates.AudioScreen:
+                    {
+                        break;
+                    }
+                case GameStates.ControlScreen:
+                    {
+                        break;
+                    }
+                case GameStates.VideoScreen:
+                    {
+                        break;
+                    }
+                case GameStates.Playing:
+                    {
+                        levelLoader.MoveCamera(Settings.level_speed);
 
-            logic.Update(keyState, gameTime);
+                        logic.Update(keyState, gameTime);
+                        break;
+                    }
+            }
 
             // TODO: Add your update logic here
 
@@ -121,13 +171,47 @@ namespace _1942
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
-            levelLoader.Draw(spriteBatch);
-            logic.Draw(spriteBatch);
+            
+            switch (gameState)
+            {
+                case GameStates.MainMenu:
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.texture_MainMenu, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
+                        menu.Draw(spriteBatch);
+                        break;
+                    }
+                case GameStates.OptionScreen:
+                    {
+                        break;
+                    }
+                case GameStates.AudioScreen:
+                    {
+                        break;
+                    }
+                case GameStates.ControlScreen:
+                    {
+                        break;
+                    }
+                case GameStates.VideoScreen:
+                    {
+                        break;
+                    }
+                case GameStates.Playing:
+                    {
+                        levelLoader.Draw(spriteBatch);
+                        logic.Draw(spriteBatch);
+                        spriteBatch.DrawString(FontLibrary.debug, "Number of enemies on screen: " + Objects.enemyList.Count, new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+            
+                        break;
+                    }
+            }
+            
 
-            spriteBatch.DrawString(FontLibrary.debug, "Number of enemies on screen: " + Objects.enemyList.Count, new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
             
 
             spriteBatch.End();

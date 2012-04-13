@@ -19,6 +19,7 @@ namespace _1942
             speed = new Vector2(0, -10);
             color = Color.White;
             texture = Texture2DLibrary.projectile_player;
+            damage = 10;
         }
 
         public override void Update(GameTime gameTime)

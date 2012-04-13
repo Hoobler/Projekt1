@@ -126,30 +126,33 @@ namespace _1942
         public void CollisionRemoval()
         {
             //if a player's projectile hits an enemy, they die
-            foreach (Projectile_Player p_player in Objects.playerProjectileList)
+            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
             {
                 for (int i = 0; i < Objects.enemyList.Count; i++)
                 {
-                    if (p_player.Rectangle.Intersects(Objects.enemyList[i].Rectangle))
+                    if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
-                        Objects.enemyList[i].SetDead();
-                        p_player.SetDead();
+                        Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
+                        Objects.playerProjectileList[j].SetDead();
                     }
                 }
             }
 
             //if a player collides with a flying enemy, both die
-            /*foreach (FlyingObject f_object in Objects.enemyList)
+            for(int j= 0; j < Objects.enemyList.Count; j++)
             {
                 for(int i = 0; i < Objects.playerList.Count; i++)
                 {
-                    if (f_object.Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                    if (Objects.enemyList[j].Flying == true)
                     {
-                        Objects.playerList[i].SetDead();
-                        f_object.SetDead();
+                        if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                        {
+                            Objects.playerList[i].Health -= Settings.damage_collision;
+                            Objects.enemyList[j].SetDead();
+                        }
                     }
                 }
-            }*/
+            }
 
             //if an enemy's projectile hits a player, the player dies
             for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
@@ -158,7 +161,7 @@ namespace _1942
                 {
                     if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
                     {
-                        Objects.playerList[j].SetDead();
+                        Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
                         Objects.enemyProjectileList[i].SetDead();
                     }
                 }

@@ -10,6 +10,8 @@ namespace _1942
     class BaseProjectile: BaseObject
     {
 
+        protected int damage;
+
         public BaseProjectile(): base() { }
 
         public override void Update(GameTime gameTime)
@@ -22,6 +24,11 @@ namespace _1942
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+        }
+
+        public int Damage
+        {
+            get { return damage; }
         }
     }
 }

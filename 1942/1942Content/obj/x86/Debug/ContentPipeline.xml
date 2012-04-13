@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\spaceship.xnb</Output>
-      <Time>2012-04-12T15:32:51.7091866+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\spaceship.xnb</Output>
+      <Time>2012-04-13T13:28:33.0129006+02:00</Time>
     </Item>
     <Item>
       <Source>black.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\black.xnb</Output>
-      <Time>2012-04-12T15:32:51.6771848+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\black.xnb</Output>
+      <Time>2012-04-13T13:28:32.9641498+02:00</Time>
     </Item>
     <Item>
       <Source>green.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\green.xnb</Output>
-      <Time>2012-04-12T15:32:51.6861853+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\green.xnb</Output>
+      <Time>2012-04-13T13:28:32.9728999+02:00</Time>
     </Item>
     <Item>
       <Source>red.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\red.xnb</Output>
-      <Time>2012-04-12T15:32:51.7081866+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\red.xnb</Output>
+      <Time>2012-04-13T13:28:33.0129006+02:00</Time>
     </Item>
     <Item>
       <Source>water.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\water.xnb</Output>
-      <Time>2012-04-12T15:32:51.7101867+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\water.xnb</Output>
+      <Time>2012-04-13T13:28:33.0154006+02:00</Time>
     </Item>
     <Item>
       <Source>debugFont.spritefont</Source>
@@ -52,8 +52,71 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
-      <Time>2012-04-12T15:32:51.6851852+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
+      <Time>2012-04-13T13:28:32.9716499+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\ExitGame.png</Source>
+      <Name>Menu\ExitGame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ExitGame.xnb</Output>
+      <Time>2012-04-13T14:42:30.220447+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\ExitGame_Shadow.png</Source>
+      <Name>Menu\ExitGame_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ExitGame_Shadow.xnb</Output>
+      <Time>2012-04-13T14:42:30.2229471+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\MainMenu.png</Source>
+      <Name>Menu\MainMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\MainMenu.xnb</Output>
+      <Time>2012-04-13T14:42:30.2241971+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\Options.png</Source>
+      <Name>Menu\Options</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Options.xnb</Output>
+      <Time>2012-04-13T14:42:30.2266971+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\Options_Shadow.png</Source>
+      <Name>Menu\Options_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Options_Shadow.xnb</Output>
+      <Time>2012-04-13T14:42:30.2291972+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\StartGame.png</Source>
+      <Name>Menu\StartGame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\StartGame.xnb</Output>
+      <Time>2012-04-13T14:42:30.2329472+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\StartGame_Shadow.png</Source>
+      <Name>Menu\StartGame_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\StartGame_Shadow.xnb</Output>
+      <Time>2012-04-13T14:42:30.2366973+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,10 +124,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -93,7 +156,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-01-25T09:53:58.3496637+01:00</Value>
+        <Value>2011-01-14T15:53:13.2901248+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

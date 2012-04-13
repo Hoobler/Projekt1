@@ -22,6 +22,16 @@ namespace _1942
         public static Texture2D enemy_tower_base;
         public static Texture2D enemy_tower_dead;
 
+
+        //menu
+        public static Texture2D texture_MainMenu;
+        public static Texture2D texture_ExitGameButton;
+        public static Texture2D texture_OptionsButton;
+        public static Texture2D texture_StartGameButton;
+        public static Texture2D texture_ExitGameButtonShadow;
+        public static Texture2D texture_OptionsButtonShadow;
+        public static Texture2D texture_StartGameButtonShadow;
+
         
 
     }
