@@ -47,15 +47,6 @@
       <Time>2012-04-13T13:28:33.0154006+02:00</Time>
     </Item>
     <Item>
-      <Source>debugFont.spritefont</Source>
-      <Name>debugFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
-      <Time>2012-04-13T13:28:32.9716499+02:00</Time>
-    </Item>
-    <Item>
       <Source>Menu\ExitGame.png</Source>
       <Name>Menu\ExitGame</Name>
       <Importer>TextureImporter</Importer>
@@ -117,6 +108,15 @@
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\StartGame_Shadow.xnb</Output>
       <Time>2012-04-13T14:42:30.2366973+02:00</Time>
+    </Item>
+    <Item>
+      <Source>debugFont.spritefont</Source>
+      <Name>debugFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
+      <Time>2012-04-13T13:28:32.9716499+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

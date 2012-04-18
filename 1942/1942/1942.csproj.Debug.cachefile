@@ -3,7 +3,6 @@ Content\black.xnb
 Content\green.xnb
 Content\red.xnb
 Content\water.xnb
-Content\debugFont.xnb
 Content\Menu\ExitGame.xnb
 Content\Menu\ExitGame_Shadow.xnb
 Content\Menu\MainMenu.xnb
@@ -11,5 +10,6 @@ Content\Menu\Options.xnb
 Content\Menu\Options_Shadow.xnb
 Content\Menu\StartGame.xnb
 Content\Menu\StartGame_Shadow.xnb
+Content\debugFont.xnb
 Levels\level1.xml
 Levels\texturelist.xml

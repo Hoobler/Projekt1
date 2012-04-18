@@ -119,6 +119,7 @@ namespace _1942
             if (keyState.IsKeyDown(Keys.Escape))
                 this.Exit();
 
+
             keyState = Keyboard.GetState();
 
             //Just to test Orvar take it easy!
