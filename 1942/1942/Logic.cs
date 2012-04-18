@@ -19,10 +19,10 @@ namespace _1942
 
         Random random = new Random();
         float timeUntilNextZero;
-        float timeBetweenZero = 200;
+        float timeBetweenZero = 2;
 
         float timeUntilNextTower;
-        float timeBetweenTower = 0.01f;
+        float timeBetweenTower = 3f;
 
         private int timer;
 
