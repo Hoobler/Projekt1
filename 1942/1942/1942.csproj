@@ -157,6 +157,7 @@
     <Content Include="GameThumbnail.png" />
     <Content Include="Levels\level1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Levels\texturelist.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

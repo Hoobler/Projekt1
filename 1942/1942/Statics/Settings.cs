@@ -19,7 +19,6 @@ namespace _1942
         static public float tower_projectile_frequency = 1f;
 
         static public Point tower_projectile_size = new Point(2, 6);
-        static public float tower_projectile_frequency = 1f;
         static public Point size_tower = new Point(41, 41);
         static public int damage_tower = 2;
 
