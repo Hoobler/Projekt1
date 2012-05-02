@@ -22,6 +22,7 @@ namespace _1942
         int button_Size_Width = 200;
         bool exitProgram = false;
         bool startGame = false;
+        bool options = false;
 
         Texture2D original_texture_StartButton;
         Texture2D original_texture_ExitButton;
@@ -71,6 +72,10 @@ namespace _1942
             {
                 this.startGame = true;
             }
+            if (mOptionButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
+            {
+                this.options = true;
+            }
 
             mStartGameButton.Update(new Vector2(button_position.X - (button_Size_Width /2), button_position.Y), button_Size_Height, button_Size_Width);
             mOptionButton.Update(new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
@@ -91,6 +96,10 @@ namespace _1942
         public bool GetStartGame()
         {
             return this.startGame;
+        }
+        public bool Options()
+        {
+            return options;
         }
     }
 }

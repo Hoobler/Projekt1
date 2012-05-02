@@ -13,11 +13,11 @@ namespace _1942
             : base()
         {
             position = new Vector2(startingPos.X, startingPos.Y);
-            size = new Point(4, 4);
+            size = Settings.player_projectile_size;
             layerDepth = 1.0f;
-            angle = (float)Math.PI / 4;
-            speed = new Vector2(0, -10);
-            color = Color.White;
+            angle = 0;
+            speed = Settings.player_projectile_speed;
+            color = Color.PeachPuff;
             texture = Texture2DLibrary.projectile_player;
             damage = 10;
         }

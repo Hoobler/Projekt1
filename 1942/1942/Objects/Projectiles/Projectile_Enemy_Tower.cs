@@ -13,12 +13,13 @@ namespace _1942
         {
             position = startingPos;
             this.angle = angle;
-            this.size = new Point(4, 4);
+            this.size = new Point(Settings.tower_projectile_size.Y, Settings.tower_projectile_size.X);
             layerDepth = 1.0f;
-            color = Color.White;
+            color = Color.Salmon;
             texture = Texture2DLibrary.projectile_enemy_tower;
-            damage = 2;
-            speed = new Vector2((float)Math.Cos(angle) * Settings.tower_projectile_speed, (float)Math.Sin(angle) * Settings.tower_projectile_speed);
+            damage = Settings.damage_tower;
+            speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Settings.tower_projectile_speed;
+            
         }
 
         public override void Update(GameTime gameTime)

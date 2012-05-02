@@ -31,7 +31,21 @@ namespace _1942
         public static Texture2D texture_ExitGameButtonShadow;
         public static Texture2D texture_OptionsButtonShadow;
         public static Texture2D texture_StartGameButtonShadow;
+        public static Texture2D texture_AdjustVideo;
+        public static Texture2D texture_AdjustVolume;
+        public static Texture2D texture_AudioOptions;
+        public static Texture2D texture_AudioOptions_Shadow;
+        public static Texture2D texture_Back;
+        public static Texture2D texture_Back_Shadow;
+        public static Texture2D texture_Control_Options;
+        public static Texture2D texture_Control_Options_Shadow;
+        public static Texture2D texture_Controls;
+        public static Texture2D texture_VideoOptions;
+        public static Texture2D texture_VideoOptions_Shadow;
 
+
+        //particles
+        public static Texture2D particle_smoke;
         
 
     }

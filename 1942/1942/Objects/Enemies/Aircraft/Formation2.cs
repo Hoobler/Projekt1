@@ -10,10 +10,7 @@ namespace _1942
     class Formation2 : BaseFormation
     {
 
-        
-        Vector2 speed = new Vector2(3, 0);
-
-        public Formation2(Vector2 startingPos, Texture2D texture, bool mirrored)
+        public Formation2(Vector2 startingPos, bool mirrored)
         {
             this.mirrored = mirrored;
             list_Zero = new List<Enemy_Zero>();
@@ -25,43 +22,24 @@ namespace _1942
             }
 
             
-                list_Zero.Add(new Enemy_Zero(startingPos, speed));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X - 60, startingPos.Y), speed));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X - 120, startingPos.Y), speed));
+                list_Zero.Add(new Enemy_Zero(startingPos));
+                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X - 25, startingPos.Y - 40)));
+                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X + 25, startingPos.Y - 40)));
             
 
-                for (int i = 0; i < list_Zero.Count; i++)
-                {
-                    if (!mirrored)
-                        list_Zero[i].Angle = (float)Math.PI / 2;
-                    else
-                        list_Zero[i].Angle = (float)Math.PI * 3 / 2;
-                }
+                
         }
 
         public override void Update(GameTime gameTime)
         {
-            
-
-            for (int i = 0; i < list_Zero.Count; i++)
-            {
-                
-                list_Zero[i].Update(gameTime);
-            }
+            base.Update(gameTime);
 
             if (timer >= 300)
                 completed = true;
 
-            timer++;
+            
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            for (int i = 0; i < list_Zero.Count; i++)
-            {
-                list_Zero[i].Draw(spriteBatch);
-            }
-        }
 
     }
 }

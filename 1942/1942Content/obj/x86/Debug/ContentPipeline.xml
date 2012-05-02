@@ -2,12 +2,12 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>spaceship.png</Source>
-      <Name>spaceship</Name>
+      <Source>Enemies\spaceship.png</Source>
+      <Name>Enemies\spaceship</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\spaceship.xnb</Output>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\spaceship.xnb</Output>
       <Time>2012-04-13T13:28:33.0129006+02:00</Time>
     </Item>
     <Item>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ExitGame.xnb</Output>
-      <Time>2012-04-13T14:42:30.220447+02:00</Time>
+      <Time>2012-04-18T14:25:57.1935903+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\ExitGame_Shadow.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ExitGame_Shadow.xnb</Output>
-      <Time>2012-04-13T14:42:30.2229471+02:00</Time>
+      <Time>2012-04-18T14:25:57.2073405+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\MainMenu.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\MainMenu.xnb</Output>
-      <Time>2012-04-13T14:42:30.2241971+02:00</Time>
+      <Time>2012-05-02T10:30:55.8694425+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\Options.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Options.xnb</Output>
-      <Time>2012-04-13T14:42:30.2266971+02:00</Time>
+      <Time>2012-04-18T14:25:57.2235908+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\Options_Shadow.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Options_Shadow.xnb</Output>
-      <Time>2012-04-13T14:42:30.2291972+02:00</Time>
+      <Time>2012-04-18T14:25:57.233591+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\StartGame.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\StartGame.xnb</Output>
-      <Time>2012-04-13T14:42:30.2329472+02:00</Time>
+      <Time>2012-04-18T14:25:57.239841+02:00</Time>
     </Item>
     <Item>
       <Source>Menu\StartGame_Shadow.png</Source>
@@ -107,7 +107,178 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\StartGame_Shadow.xnb</Output>
-      <Time>2012-04-13T14:42:30.2366973+02:00</Time>
+      <Time>2012-04-18T14:25:57.2510912+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\PAnim.png</Source>
+      <Name>Enemies\PAnim</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\PAnim.xnb</Output>
+      <Time>2012-04-18T14:03:33.7177961+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\AdjustVideo.png</Source>
+      <Name>Menu\AdjustVideo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\AdjustVideo.xnb</Output>
+      <Time>2012-04-18T14:25:54.5710501+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\AdjustVolume.png</Source>
+      <Name>Menu\AdjustVolume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\AdjustVolume.xnb</Output>
+      <Time>2012-04-18T14:25:54.5998005+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\AudioOptions.png</Source>
+      <Name>Menu\AudioOptions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\AudioOptions.xnb</Output>
+      <Time>2012-04-18T14:25:54.6110507+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\AudioOptions_Shadow.png</Source>
+      <Name>Menu\AudioOptions_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\AudioOptions_Shadow.xnb</Output>
+      <Time>2012-04-18T14:25:54.6235509+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\Back.png</Source>
+      <Name>Menu\Back</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Back.xnb</Output>
+      <Time>2012-04-18T14:25:54.631051+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\Back_Shadow.png</Source>
+      <Name>Menu\Back_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Back_Shadow.xnb</Output>
+      <Time>2012-04-18T14:25:54.6398011+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\ControlOptions.png</Source>
+      <Name>Menu\ControlOptions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ControlOptions.xnb</Output>
+      <Time>2012-04-18T14:25:54.6448012+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\ControlOptions_Shadow.png</Source>
+      <Name>Menu\ControlOptions_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\ControlOptions_Shadow.xnb</Output>
+      <Time>2012-04-18T14:25:54.6560514+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\Controls.png</Source>
+      <Name>Menu\Controls</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\Controls.xnb</Output>
+      <Time>2012-04-18T14:25:54.6685516+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\VideoOptions.png</Source>
+      <Name>Menu\VideoOptions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\VideoOptions.xnb</Output>
+      <Time>2012-04-18T14:25:57.2598414+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu\VideoOptions_Shadow.png</Source>
+      <Name>Menu\VideoOptions_Shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Menu\VideoOptions_Shadow.xnb</Output>
+      <Time>2012-04-18T14:25:57.2748416+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\Player.png</Source>
+      <Name>Enemies\Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\Player.xnb</Output>
+      <Time>2012-04-18T15:06:51.7965884+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\Zero.png</Source>
+      <Name>Enemies\Zero</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\Zero.xnb</Output>
+      <Time>2012-04-18T16:06:44.4364555+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\Projectile_Generic.png</Source>
+      <Name>Enemies\Projectile_Generic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\Projectile_Generic.xnb</Output>
+      <Time>2012-04-18T16:25:45.7954461+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\square1.bmp</Source>
+      <Name>Enemies\square1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\square1.xnb</Output>
+      <Time>2012-04-18T16:31:15.5131797+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\AATower.png</Source>
+      <Name>Enemies\AATower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\AATower.xnb</Output>
+      <Time>2012-04-27T17:49:28.6582002+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\AABaseDead.png</Source>
+      <Name>Enemies\AABaseDead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\AABaseDead.xnb</Output>
+      <Time>2012-04-27T18:24:12.4908603+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemies\AABase.png</Source>
+      <Name>Enemies\AABase</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Enemies\AABase.xnb</Output>
+      <Time>2012-04-27T18:01:15.6950195+02:00</Time>
     </Item>
     <Item>
       <Source>debugFont.spritefont</Source>
