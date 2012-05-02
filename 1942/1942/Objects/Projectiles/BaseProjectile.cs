@@ -18,6 +18,7 @@ namespace _1942
         {
             base.Update(gameTime);
 
+            
             position += speed;
         }
 

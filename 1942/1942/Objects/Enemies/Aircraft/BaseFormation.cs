@@ -13,10 +13,24 @@ namespace _1942
         protected bool mirrored; //true = mirrored, false = not mirrored
         protected int timer;
         protected bool completed;
-        protected List<Enemy_Zero> list_Zero;
+        public List<Enemy_Zero> list_Zero;
+        protected Vector2 speed;
 
-        public virtual void Update(GameTime gameTime) { }
-        public virtual void Draw(SpriteBatch spriteBatch) { }
+        public virtual void Update(GameTime gameTime)
+        {
+            timer++;
+            for (int i = 0; i < list_Zero.Count; i++)
+            {
+                list_Zero[i].Update(gameTime);
+            }
+        }
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            for (int i = 0; i < list_Zero.Count; i++)
+            {
+                list_Zero[i].Draw(spriteBatch);
+            }
+        }
 
         public bool IsCompleted()
         {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -107,9 +107,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExitButton.cs" />
-    <Compile Include="MenuManager.cs" />
+    <Compile Include="Menu\AudioOptionButton.cs" />
+    <Compile Include="Menu\BackButton.cs" />
+    <Compile Include="Menu\BaseButton.cs" />
+    <Compile Include="Menu\ControlsOptionButton.cs" />
+    <Compile Include="Menu\ExitButton.cs" />
+    <Compile Include="Menu\MenuManager.cs" />
     <Compile Include="Levelmanager\Tile.cs" />
+    <Compile Include="Menu\OptionManager.cs" />
+    <Compile Include="Menu\OptionScreen.cs" />
+    <Compile Include="Menu\VideoOptionButton.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />
@@ -124,8 +131,13 @@
     <Compile Include="Objects\Enemies\Aircraft\Formation2.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
-    <Compile Include="OptionButton.cs" />
-    <Compile Include="StartGameButton.cs" />
+    <Compile Include="Menu\OptionButton.cs" />
+    <Compile Include="Menu\StartGameButton.cs" />
+    <Compile Include="Objects\Particles\ParticleManager.cs" />
+    <Compile Include="Objects\Particles\ParticlePiece_Base.cs" />
+    <Compile Include="Objects\Particles\Particle_Base.cs" />
+    <Compile Include="Objects\Particles\ParticlePiece_Smoke.cs" />
+    <Compile Include="Objects\Particles\Particle_Smoke.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />

@@ -12,16 +12,17 @@ namespace _1942
 
         private float timeUntilNextShot;
 
-        public Enemy_Zero(Vector2 position, Vector2 speed)
+        public Enemy_Zero(Vector2 position)
         {
 
             this.position = position;
-            this.speed = speed;
-            
+            this.speed = Settings.zero_speed;
+
+            angle = (float)Math.PI;
             layerDepth = 1f;
             color = Color.White;
-            size = new Point(20,20);
-            spriteEffect = SpriteEffects.FlipVertically;
+            size = Settings.size_zero;
+            spriteEffect = SpriteEffects.None;
             texture = Texture2DLibrary.enemy_zero;
         }
 
@@ -29,11 +30,12 @@ namespace _1942
         {
             base.Update(gameTime);
 
+            position += speed;
             timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timeUntilNextShot >= Settings.zero_projectile_frequency)
             {
-                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y + size.Y), speed));
-                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X+size.X, position.Y + size.Y), speed));
+                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y)));
+                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X+size.X, position.Y)));
                 timeUntilNextShot -= Settings.zero_projectile_frequency;
             }
 
@@ -43,6 +45,20 @@ namespace _1942
 
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture,
+                new Rectangle((int)Position.X + (Size.X / 2),(int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
+                new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,
+                    (animationFrame.Y * (texture.Bounds.Height - 1) / 3) + 1,
+                    ((texture.Bounds.Width - 1) / 3)-1,
+                    ((texture.Bounds.Height - 1) / 3) - 1),
+                color,
+                angle,
+                new Vector2(Settings.size_zero.X/2, Settings.size_zero.Y/2),
+                spriteEffect,
+                0.0f);
+        }
         
 
     }

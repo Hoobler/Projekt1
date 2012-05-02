@@ -13,28 +13,30 @@ namespace _1942
 
         public Player2(): base()
         {
-            color = Color.Blue;
+            color = Color.Pink;
             position = new Vector2(Settings.window.ClientBounds.Width / 2 + size.X * 3, Settings.window.ClientBounds.Height - size.Y);
         }
 
         public override void Update(KeyboardState keyState, GameTime gameTime)
         {
+            base.Update(keyState, gameTime);
             if (keyState.IsKeyDown(Keys.A) && position.X > 0)
-                position.X -= speedHor;
+                GoLeft();
             else if (keyState.IsKeyDown(Keys.D) && position.X < Settings.window.ClientBounds.Width - size.X)
-                position.X += speedHor;
+                GoRight();
 
             if (keyState.IsKeyDown(Keys.W) && position.Y > 0)
-                position.Y -= speedUp;
+                GoUp();
             else if (keyState.IsKeyDown(Keys.S) && position.Y < Settings.window.ClientBounds.Height - size.Y)
-                position.Y += speedDown;
-
-            if (keyState.IsKeyDown(Keys.LeftControl))
-            {
-                Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X, position.Y)));
-                Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X, position.Y)));
-            }
-
+                GoDown();
+           
+                if (keyState.IsKeyDown(Keys.LeftControl))
+                {
+                    Fire();
+                }
+            
+            
+            
         }
 
     }

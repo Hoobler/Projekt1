@@ -43,34 +43,22 @@ namespace _1942
             timer++;
             CollisionRemoval();
 
-            for (int i = 0; i < Objects.playerList.Count; i++)
-                Objects.playerList[i].Update(keyState, gameTime);
-
-            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
-                Objects.playerProjectileList[i].Update(gameTime);
-
-            for (int i = 0; i < Objects.deadList.Count; i++)
-                Objects.deadList[i].Update(gameTime);
-
-            for (int i = 0; i < Objects.enemyList.Count; i++)
-                Objects.enemyList[i].Update(gameTime);
-
-            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
-                Objects.enemyProjectileList[i].Update(gameTime);
+            Objects.Update(keyState, gameTime);
 
             timeUntilNextZero += (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeUntilNextTower += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (timeUntilNextZero >= timeBetweenZero)
             {
-                Objects.enemyList.Add(new Enemy_Zero(new Vector2(random.Next(0, Settings.window.ClientBounds.Width-20),-200), new Vector2(0,0)));
+                Objects.formationList.Add(new Formation2(new Vector2(random.Next(0, Settings.window.ClientBounds.Width-Settings.size_zero.X), -Settings.size_zero.X), false));
+                
 
                 timeUntilNextZero -= timeBetweenZero;
             }
 
             if (timeUntilNextTower >= timeBetweenTower)
             {
-                Objects.enemyList.Add(new Enemy_Tower(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - 20), -30)));
+                Objects.enemyList.Add(new Enemy_Tower(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - Settings.size_tower.X), -Settings.size_tower.Y)));
 
                 timeUntilNextTower -= timeBetweenTower;
             }
@@ -81,47 +69,16 @@ namespace _1942
                 timer -= 600;
 
             
-            DeadRemoval();
+            Objects.DeadRemoval();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < Objects.deadList.Count; i++)
-                Objects.deadList[i].Draw(spriteBatch);
-
-            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
-                Objects.playerProjectileList[i].Draw(spriteBatch);
-
-            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
-                Objects.enemyProjectileList[i].Draw(spriteBatch);
-
-            for (int i = 0; i < Objects.enemyList.Count; i++)
-                Objects.enemyList[i].Draw(spriteBatch);
-
-            for (int i = 0; i < Objects.playerList.Count; i++)
-                Objects.playerList[i].Draw(spriteBatch);
+            Objects.Draw(spriteBatch);
 
         }
 
-        public void DeadRemoval()
-        {
-            for (int i = Objects.enemyList.Count-1; i >= 0; i--)
-                if(Objects.enemyList[i].IsDead())
-                    Objects.enemyList.RemoveAt(i);
-
-            for (int i = Objects.deadList.Count - 1; i >= 0; i--)
-                if (Objects.deadList[i].IsDead())
-                    Objects.deadList.RemoveAt(i);
-
-            for (int i = Objects.playerProjectileList.Count - 1; i >= 0; i--)
-                if (Objects.playerProjectileList[i].IsDead())
-                    Objects.playerProjectileList.RemoveAt(i);
-
-            for (int i = Objects.enemyProjectileList.Count - 1; i >= 0; i--)
-                if (Objects.enemyProjectileList[i].IsDead())
-                    Objects.enemyProjectileList.RemoveAt(i);
-            
-        }
+        
 
         public void CollisionRemoval()
         {
@@ -150,6 +107,42 @@ namespace _1942
                             Objects.playerList[i].Health -= Settings.damage_collision;
                             Objects.enemyList[j].SetDead();
                         }
+                    }
+                }
+            }
+
+            for (int j = 0; j < Objects.formationList.Count; j++)
+            {
+                for (int k = 0; k < Objects.formationList[j].list_Zero.Count; k++)
+                {
+                    for (int i = 0; i < Objects.playerList.Count; i++)
+                    {
+                        if (Objects.formationList[j].list_Zero[k].Flying == true)
+                        {
+                            if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                            {
+                                Objects.playerList[i].Health -= Settings.damage_collision;
+                                Objects.formationList[j].list_Zero[k].SetDead();
+                            }
+                        }
+                    }
+                }
+            }
+
+            //allows players to shoot the shit out of formations
+            for (int j = 0; j < Objects.formationList.Count; j++)
+            {
+                for (int k = 0; k < Objects.formationList[j].list_Zero.Count; k++)
+                {
+                    for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                    {
+                        
+                            if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            {
+                                Objects.formationList[j].list_Zero[k].Health -= Objects.playerProjectileList[i].Damage;
+                                Objects.playerProjectileList[i].SetDead();
+                            }
+                        
                     }
                 }
             }

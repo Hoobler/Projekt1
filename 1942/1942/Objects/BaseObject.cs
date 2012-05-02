@@ -17,7 +17,8 @@ namespace _1942
         protected float angle;
         protected bool dead;
         protected Texture2D texture;
-        protected SpriteEffects spriteEffect;
+        public SpriteEffects spriteEffect;
+        public Point animationFrame;
 
         public BaseObject()
         {
@@ -28,6 +29,7 @@ namespace _1942
             layerDepth = 1f;
             angle = 0f;
             dead = false;
+            animationFrame = new Point(0, 0);
         }
 
         public Rectangle Rectangle
@@ -61,7 +63,7 @@ namespace _1942
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Rectangle, new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), color, angle, new Vector2(size.X/2, size.Y/2), spriteEffect, layerDepth);
+            spriteBatch.Draw(texture, Rectangle, new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), color, angle, new Vector2(0, 0), spriteEffect, layerDepth);
             
         }
 
