@@ -15,6 +15,7 @@ namespace _1942
         protected float speedDown;
         protected int health = 100;
         protected float timeUntilNextShot;
+        protected int playerID;
 
         public BasePlayer(): base()
         {
@@ -28,6 +29,7 @@ namespace _1942
             position.X = Settings.window.ClientBounds.Width / 2 - size.X /2;
             position.Y = Settings.window.ClientBounds.Height - size.Y;
             texture = Texture2DLibrary.player;
+            
         }
 
         public virtual void Update(KeyboardState keyState, GameTime gameTime)
@@ -98,13 +100,13 @@ namespace _1942
             {
                 if (animationFrame.Y == 1)
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3)));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3)));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID));
                 }
                 else
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3)));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3)));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID));
                 }
                 timeUntilNextShot = Settings.player_projectile_frequency;
             }
