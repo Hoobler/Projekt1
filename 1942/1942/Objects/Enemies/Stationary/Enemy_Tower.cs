@@ -102,7 +102,7 @@ namespace _1942
                 if (dead)
                 {
                     Objects.deadList.Add(new Enemy_Tower_Dead(position, size));
-                    
+                    Objects.particleList.Add(new Particle_Explosion(position));
                 }
             
         }

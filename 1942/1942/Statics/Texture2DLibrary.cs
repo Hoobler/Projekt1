@@ -46,7 +46,7 @@ namespace _1942
 
         //particles
         public static Texture2D particle_smoke;
-        
+        public static Texture2D particle_zero_explosion;
 
     }
 }

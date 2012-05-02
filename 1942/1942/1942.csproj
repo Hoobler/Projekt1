@@ -133,11 +133,8 @@
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
     <Compile Include="Menu\OptionButton.cs" />
     <Compile Include="Menu\StartGameButton.cs" />
-    <Compile Include="Objects\Particles\ParticleManager.cs" />
-    <Compile Include="Objects\Particles\ParticlePiece_Base.cs" />
     <Compile Include="Objects\Particles\Particle_Base.cs" />
-    <Compile Include="Objects\Particles\ParticlePiece_Smoke.cs" />
-    <Compile Include="Objects\Particles\Particle_Smoke.cs" />
+    <Compile Include="Objects\Particles\Particle_Explosion.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />

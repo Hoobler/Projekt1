@@ -97,8 +97,9 @@ namespace _1942
 
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
 
-            Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Enemies/Square1");
+            Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"explosion1");
             
+
             Settings.window = Window;
             
 

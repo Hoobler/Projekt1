@@ -42,6 +42,9 @@ namespace _1942
             if (position.Y > Settings.window.ClientBounds.Height)
                 dead = true;
 
+            if (dead)
+                Objects.particleList.Add(new Particle_Explosion(position));
+
 
         }
 

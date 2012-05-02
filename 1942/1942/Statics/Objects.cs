@@ -97,6 +97,10 @@ namespace _1942
                         Objects.formationList[i].list_Zero.RemoveAt(j);
                 }
             }
+
+            for (int i = Objects.particleList.Count - 1; i >= 0; i--)
+                if(Objects.particleList[i].IsDead())
+                Objects.particleList.RemoveAt(i);
         }
 
     }
