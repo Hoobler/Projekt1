@@ -225,22 +225,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Particles\explosion.png">
       <Name>explosion</Name>
-=======
-    <Compile Include="SandTile1.png">
-      <Name>SandTile1</Name>
->>>>>>> levelstuff
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Particles\explosion1.png">
-      <Name>explosion1</Name>
-=======
     <Compile Include="grass.png">
       <Name>grass</Name>
       <Importer>TextureImporter</Importer>
@@ -267,7 +258,13 @@
   <ItemGroup>
     <Compile Include="dockLeft.png">
       <Name>dockLeft</Name>
->>>>>>> levelstuff
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SandTile1.png">
+      <Name>SandTile1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

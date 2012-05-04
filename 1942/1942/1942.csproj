@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -107,14 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Boss1_Projectile1.cs" />
     <Compile Include="Boss1_Projectile2.cs" />
     <Compile Include="Boss_Level1.cs" />
     <Compile Include="Boss_Base.cs" />
-=======
     <Compile Include="Levelmanager\LevelSpawnObj.cs" />
->>>>>>> levelstuff
     <Compile Include="Menu\AudioOptionButton.cs" />
     <Compile Include="Menu\BackButton.cs" />
     <Compile Include="Menu\BaseButton.cs" />
