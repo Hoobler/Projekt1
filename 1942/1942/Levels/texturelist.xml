@@ -73,6 +73,46 @@
     </texture>
   </tiletexture>
   <tiletexture>
+    <symbol>d</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockLeft</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>C</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottomcorner</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>c</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottomcorner</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>V</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottom</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>v</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>true</vFlip>
+    <texture>
+      <name>dockbottom</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
     <symbol>B</symbol>
     <texture>
       <name>black</name>
