@@ -11,15 +11,32 @@ namespace _1942
     {
         private char symbol;
         private Texture2D texture;
+        private SpriteEffects spriteEffect;
 
         public TileTexture()
         {
         }
 
-        public TileTexture(Texture2D texture, char symbol)
+        public TileTexture(Texture2D texture, char symbol, bool hFlip, bool vFlip)
         {
             this.texture = texture;
             this.symbol = symbol;
+
+            if (hFlip)
+            {
+                spriteEffect = SpriteEffects.FlipHorizontally;
+            }
+
+            else if (vFlip)
+            {
+                spriteEffect = SpriteEffects.FlipVertically;
+            }
+
+            else
+            {
+                spriteEffect = SpriteEffects.None;
+            }
+
         }
 
         public Texture2D Texture
@@ -32,6 +49,11 @@ namespace _1942
         {
             get { return symbol; }
             set { symbol = value; }
-        } 
+        }
+
+        public SpriteEffects SpriteEffect
+        {
+            get { return spriteEffect; }
+        }
     }
 }

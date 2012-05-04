@@ -20,13 +20,11 @@ namespace _1942
         public char Symbol
         {
             get { return symbol; }
-            set { symbol = value; }
         }
 
         public Vector2 Position
         {
             get { return position; }
-            set { position = value; }
-        } 
+        }
     }
 }
