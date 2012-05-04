@@ -13,6 +13,7 @@ namespace _1942
         static public List<BasePlayer> playerList = new List<BasePlayer>();
         static public List<BaseEnemy> enemyList = new List<BaseEnemy>();
         static public List<BaseFormation> formationList = new List<BaseFormation>();
+        static public List<Boss_Base> bossList = new List<Boss_Base>();
 
         static public List<BaseEnemy> deadList = new List<BaseEnemy>();
 
@@ -46,6 +47,9 @@ namespace _1942
             for (int i = 0; i < Objects.particleList.Count; i++)
                 Objects.particleList[i].Update(gameTime);
 
+            for (int i = 0; i < Objects.bossList.Count; i++)
+                Objects.bossList[i].Update(gameTime);
+
         }
         static public void Draw(SpriteBatch spriteBatch)
         {
@@ -69,6 +73,9 @@ namespace _1942
 
             for (int i = 0; i < Objects.particleList.Count; i++)
                 Objects.particleList[i].Draw(spriteBatch);
+
+            for (int i = 0; i < Objects.bossList.Count; i++)
+                Objects.bossList[i].Draw(spriteBatch);
         }
 
         static public void DeadRemoval()
@@ -101,6 +108,10 @@ namespace _1942
             for (int i = Objects.particleList.Count - 1; i >= 0; i--)
                 if(Objects.particleList[i].IsDead())
                 Objects.particleList.RemoveAt(i);
+
+            for (int i = Objects.bossList.Count - 1; i >= 0; i--)
+                if (Objects.bossList[i].IsDead())
+                    Objects.bossList.RemoveAt(i);
         }
 
     }

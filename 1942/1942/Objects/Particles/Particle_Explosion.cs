@@ -23,7 +23,8 @@ namespace _1942
         {
             base.Update(gameTime);
             
-            if(animationFrame.X < 12 && delay)
+            //12
+            if(animationFrame.X < 4 && delay)
             animationFrame.X++;
 
             if (delay)
@@ -31,7 +32,7 @@ namespace _1942
             else
                 delay = true;
 
-            if (animationFrame.X >= 12)
+            if (animationFrame.X >= 4)
                 dead = true;
 
         }
@@ -40,10 +41,10 @@ namespace _1942
         {
             spriteBatch.Draw(texture,
                 Rectangle,
-                new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 12) + 1,
+                new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 4) + 1,
                     1,
-                    30,
-                    30),
+                    38,
+                    38),
                 color,
                 0,
                 new Vector2(0, 0),

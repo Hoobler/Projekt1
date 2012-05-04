@@ -15,17 +15,32 @@ namespace _1942
         protected bool completed;
         public List<Enemy_Zero> list_Zero;
         protected Vector2 speed;
+        protected bool activated;
 
         public virtual void Update(GameTime gameTime)
         {
-            timer++;
+
+            for (int i = 0; i < list_Zero.Count; i++)
+            {
+                if (list_Zero[i].IsActivated)
+                {
+                    activated = true;
+                }
+            }
+
+            if(activated)
+                timer++;
+
             for (int i = 0; i < list_Zero.Count; i++)
             {
                 list_Zero[i].Update(gameTime);
             }
+            
+            
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+            
             for (int i = 0; i < list_Zero.Count; i++)
             {
                 list_Zero[i].Draw(spriteBatch);
@@ -37,6 +52,9 @@ namespace _1942
             return completed;
         }
 
-        
+        public bool IsActivated()
+        {
+            return activated;
+        }
     }
 }

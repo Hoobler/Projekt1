@@ -107,6 +107,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boss1_Projectile1.cs" />
+    <Compile Include="Boss1_Projectile2.cs" />
+    <Compile Include="Boss_Level1.cs" />
+    <Compile Include="Boss_Base.cs" />
     <Compile Include="Menu\AudioOptionButton.cs" />
     <Compile Include="Menu\BackButton.cs" />
     <Compile Include="Menu\BaseButton.cs" />

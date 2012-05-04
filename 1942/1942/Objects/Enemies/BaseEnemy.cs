@@ -10,7 +10,9 @@ namespace _1942
     class BaseEnemy: BaseObject
     {
         protected int health;
+        protected int maxHealth;
         protected bool flying;
+        protected bool activated;
 
         public BaseEnemy() : base()
         { }
@@ -18,13 +20,26 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (health < 0)
-                dead = true;
+            
+            if (activated)
+            {
+                if (health <= 0)
+                {
+                    health = 0;
+                    dead = true;
+                }
+                color.B = (byte)((float)255 * ((float)health / (float)maxHealth));
+                color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
+            }
+
+            if (position.Y > -size.Y*2)
+                activated = true;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            if(activated)
+                base.Draw(spriteBatch);
         }
 
         public int Health
@@ -33,7 +48,15 @@ namespace _1942
             set { health = value; }
         }
 
-        public bool Flying
+        public int HealthMax
+        {
+            get { return maxHealth; }
+        }
+
+        public bool IsFlying
         { get { return flying; } }
+
+        public bool IsActivated
+        { get { return activated; } }
     }
 }

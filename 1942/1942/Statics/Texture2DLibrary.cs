@@ -8,6 +8,8 @@ namespace _1942
 {
     static class Texture2DLibrary
     {
+        public static Texture2D spaceship;
+
         public static Texture2D player;
         public static Texture2D projectile_player;
 
@@ -21,6 +23,10 @@ namespace _1942
         public static Texture2D projectile_enemy_tower;
         public static Texture2D enemy_tower_base;
         public static Texture2D enemy_tower_dead;
+
+        public static Texture2D boss1;
+        public static Texture2D boss1_projectile1;
+        public static Texture2D boss1_projectile2;
 
 
         //menu

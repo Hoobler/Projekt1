@@ -22,7 +22,7 @@ namespace _1942
             texture = Texture2DLibrary.projectile_enemy_zero;
             
             spriteEffect = SpriteEffects.FlipVertically;
-            damage = Settings.damage_zero;
+            damage = Settings.zero_projectile_damage;
         }
 
         public override void Update(GameTime gameTime)

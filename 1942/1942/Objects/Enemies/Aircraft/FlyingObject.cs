@@ -23,7 +23,6 @@ namespace _1942
             position.Y += Settings.level_speed;
 
             position += speed;
-            position += speed;
         }
 
         public float speedX

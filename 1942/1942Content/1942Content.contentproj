@@ -230,14 +230,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="explosion.png">
+    <Compile Include="Particles\explosion.png">
       <Name>explosion</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="explosion1.png">
+    <Compile Include="Particles\explosion1.png">
       <Name>explosion1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
