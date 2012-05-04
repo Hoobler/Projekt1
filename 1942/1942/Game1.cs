@@ -61,6 +61,8 @@ namespace _1942
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Texture2DLibrary.spaceship = Content.Load<Texture2D>(@"Enemies/spaceship");
+
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
             Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Enemies/square1");
             Texture2DLibrary.enemy_zero = Content.Load<Texture2D>(@"Enemies/Zero");
@@ -97,8 +99,9 @@ namespace _1942
 
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
 
-            Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Enemies/Square1");
+            Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"particles/explosion");
             
+
             Settings.window = Window;
             
 

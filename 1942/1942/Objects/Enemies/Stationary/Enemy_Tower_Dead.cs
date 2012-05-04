@@ -24,25 +24,27 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
-            animationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (animationTimer >= animationTimerReset)
+            if (activated)
             {
-                animationFrame.X++;
-                animationTimer -= animationTimerReset;
-            }
+                animationTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            
-            
-            if (animationFrame.X > 6)
-                animationFrame.X -= 7;
+                if (animationTimer >= animationTimerReset)
+                {
+                    animationFrame.X++;
+                    animationTimer -= animationTimerReset;
+                }
+
+
+
+                if (animationFrame.X > 6)
+                    animationFrame.X -= 7;
+            }
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Rectangle, color);
-
+            
+            if(activated)
             spriteBatch.Draw(texture,
                 Rectangle,
                 new Rectangle(1+(41*animationFrame.X),

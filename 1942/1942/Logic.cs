@@ -34,6 +34,7 @@ namespace _1942
             if (Settings.nr_of_players >= 2)
                 Objects.playerList.Add(new Player2());
 
+            Objects.bossList.Add(new Boss_Level1(new Vector2(Settings.window.ClientBounds.Width+100, 100)));
             
         }
 
@@ -45,23 +46,23 @@ namespace _1942
 
             Objects.Update(keyState, gameTime);
 
-            timeUntilNextZero += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            timeUntilNextTower += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //timeUntilNextZero += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //timeUntilNextTower += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timeUntilNextZero >= timeBetweenZero)
-            {
-                Objects.formationList.Add(new Formation2(new Vector2(random.Next(0, Settings.window.ClientBounds.Width-Settings.size_zero.X), -Settings.size_zero.X), false));
-                
+            //if (timeUntilNextZero >= timeBetweenZero)
+            //{
+            //    Objects.formationList.Add(new Formation1(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - Settings.size_zero.X), -Settings.size_zero.X), true));
 
-                timeUntilNextZero -= timeBetweenZero;
-            }
 
-            if (timeUntilNextTower >= timeBetweenTower)
-            {
-                Objects.enemyList.Add(new Enemy_Tower(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - Settings.size_tower.X), -Settings.size_tower.Y)));
+            //    timeUntilNextZero -= timeBetweenZero;
+            //}
 
-                timeUntilNextTower -= timeBetweenTower;
-            }
+            //if (timeUntilNextTower >= timeBetweenTower)
+            //{
+            //    Objects.enemyList.Add(new Enemy_Tower(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - Settings.size_tower.X), -Settings.size_tower.Y)));
+
+            //    timeUntilNextTower -= timeBetweenTower;
+            //}
             
 
             //looping purposes
@@ -100,7 +101,7 @@ namespace _1942
             {
                 for(int i = 0; i < Objects.playerList.Count; i++)
                 {
-                    if (Objects.enemyList[j].Flying == true)
+                    if (Objects.enemyList[j].IsFlying == true)
                     {
                         if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
@@ -117,7 +118,7 @@ namespace _1942
                 {
                     for (int i = 0; i < Objects.playerList.Count; i++)
                     {
-                        if (Objects.formationList[j].list_Zero[k].Flying == true)
+                        if (Objects.formationList[j].list_Zero[k].IsFlying == true)
                         {
                             if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
@@ -156,6 +157,19 @@ namespace _1942
                     {
                         Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
                         Objects.enemyProjectileList[i].SetDead();
+                    }
+                }
+            }
+
+            //bosses
+            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+            {
+                for (int i = 0; i < Objects.bossList.Count; i++)
+                {
+                    if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                    {
+                        Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                        Objects.playerProjectileList[j].SetDead();
                     }
                 }
             }

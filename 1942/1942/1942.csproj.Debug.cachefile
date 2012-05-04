@@ -30,5 +30,7 @@ Content\Enemies\AABaseDead.xnb
 Content\Enemies\AABase.xnb
 Content\Menu\MainMenu.xnb
 Content\debugFont.xnb
+Content\Particles\explosion.xnb
+Content\Particles\explosion1.xnb
 Levels\level1.xml
 Levels\texturelist.xml

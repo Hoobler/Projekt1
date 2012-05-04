@@ -289,6 +289,24 @@
       <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\1942\1942\1942\bin\x86\Debug\Content\debugFont.xnb</Output>
       <Time>2012-04-12T15:32:51.6851852+02:00</Time>
     </Item>
+    <Item>
+      <Source>Particles\explosion.png</Source>
+      <Name>Particles\explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Particles\explosion.xnb</Output>
+      <Time>2012-05-02T15:41:45.5621367+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Particles\explosion1.png</Source>
+      <Name>Particles\explosion1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\Visual Studio 2010\Projects\Projekt\Projekt1\1942\1942\bin\x86\Debug\Content\Particles\explosion1.xnb</Output>
+      <Time>2012-05-02T16:21:32.4523649+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

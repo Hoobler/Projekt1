@@ -16,7 +16,7 @@ namespace _1942
         {
             this.mirrored = mirrored;
             list_Zero = new List<Enemy_Zero>();
-            speed = new Vector2(2, 0f);
+            speed = new Vector2(1.5f, 0f);
 
             if (mirrored)
             {
@@ -40,7 +40,6 @@ namespace _1942
 
             for (int i = 0; i < list_Zero.Count; i++)
             {
-                
                 if (timer >= (i * 30 + 45))
                 {
                     list_Zero[i].PosX = list_Zero[i].Position.X + speed.X;
@@ -51,6 +50,7 @@ namespace _1942
                         list_Zero[i].spriteEffect = SpriteEffects.None;
 
                 }
+            
             }
 
 

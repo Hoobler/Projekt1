@@ -9,7 +9,9 @@ namespace _1942
 {
     class Projectile_Player : BaseProjectile
     {
-        public Projectile_Player(Vector2 startingPos)
+
+        int playerID;
+        public Projectile_Player(Vector2 startingPos, int playerID)
             : base()
         {
             position = new Vector2(startingPos.X, startingPos.Y);
@@ -19,7 +21,8 @@ namespace _1942
             speed = Settings.player_projectile_speed;
             color = Color.PeachPuff;
             texture = Texture2DLibrary.projectile_player;
-            damage = 10;
+            damage = Settings.player_projectile_damage;
+            this.playerID = playerID;
         }
 
         public override void Update(GameTime gameTime)
@@ -29,7 +32,10 @@ namespace _1942
                 dead = true;
         }
 
-        
+        public int PlayerID
+        {
+            get { return playerID; }
+        }
 
 
     }
