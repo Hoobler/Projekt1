@@ -107,10 +107,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Boss1_Projectile1.cs" />
     <Compile Include="Boss1_Projectile2.cs" />
     <Compile Include="Boss_Level1.cs" />
     <Compile Include="Boss_Base.cs" />
+=======
+    <Compile Include="Levelmanager\LevelSpawnObj.cs" />
+>>>>>>> levelstuff
     <Compile Include="Menu\AudioOptionButton.cs" />
     <Compile Include="Menu\BackButton.cs" />
     <Compile Include="Menu\BaseButton.cs" />
@@ -162,6 +166,7 @@
     </Content>
     <Content Include="Levels\texturelist.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
