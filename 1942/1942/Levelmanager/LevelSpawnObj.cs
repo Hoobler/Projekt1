@@ -10,13 +10,14 @@ namespace _1942
     {
         private Vector2 position;
         private string formation;
-        private int spawnTime;
+        private bool mirrored;
+        
 
-        public LevelSpawnObj(Vector2 pos, string formation, int spawntime)
+        public LevelSpawnObj(Vector2 pos, string formation, bool mirrored)
         {
             position = pos;
             this.formation = formation;
-            this.spawnTime = spawntime;
+            this.mirrored = mirrored;
         }
 
         public string Formation
@@ -29,6 +30,13 @@ namespace _1942
         {
             get { return position; }
             set { position = value; }
-        } 
+        }
+
+        
+
+        public bool IsMirrored()
+        {
+            return mirrored;
+        }
     }
 }

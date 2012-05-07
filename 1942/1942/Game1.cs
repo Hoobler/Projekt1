@@ -105,9 +105,9 @@ namespace _1942
             Settings.window = Window;
             
 
-            logic = new Logic();
+            logic = new Logic(this.Content);
             menu = new MenuManager();
-            levelLoader = new LevelLoader("./Levels/level1.xml", this.Content);
+            
             optionManager = new OptionManager(Window);
             
 
@@ -175,7 +175,7 @@ namespace _1942
                     }
                 case GameStates.Playing:
                     {
-                        levelLoader.MoveCamera(Settings.level_speed);
+                        
 
                         logic.Update(keyState, gameTime);
                         break;
@@ -224,7 +224,7 @@ namespace _1942
                     }
                 case GameStates.Playing:
                     {
-                        levelLoader.Draw(spriteBatch);
+                        
                         logic.Draw(spriteBatch);
                         spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
@@ -232,8 +232,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Active tiles on screen: " + levelLoader.TilesOnScreen + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
-            
+                        
                         break;
                     }
             }
