@@ -309,28 +309,58 @@
   </layout>
   <spawnlist>
     <spawn>
-      <positionX>2</positionX>
-      <positionY>2</positionY>
+      <positionX>3</positionX>
+      <positionY>-4</positionY>
       <formation>formation1</formation>
-      <spawntime>50</spawntime>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>3</positionX>
+      <positionY>-4</positionY>
+      <formation>formation1</formation>
+      <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>1</positionX>
-      <positionY>1</positionY>
+      <positionY>-8</positionY>
+      <formation>formation1</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>-12</positionY>
+      <formation>formation1</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>8</positionX>
+      <positionY>-16</positionY>
+      <formation>formation1</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>12</positionX>
+      <positionY>-20</positionY>
+      <formation>formation1</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>-22</positionY>
       <formation>formation2</formation>
-      <spawntime>10</spawntime>
+      <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>1</positionX>
-      <positionY>1</positionY>
-      <formation>formation3</formation>
-      <spawntime>10</spawntime>
+      <positionX>6</positionX>
+      <positionY>-23</positionY>
+      <formation>formation2</formation>
+      <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>1</positionX>
-      <positionY>1</positionY>
-      <formation>formation4</formation>
-      <spawntime>10</spawntime>
+      <positionX>4</positionX>
+      <positionY>-23</positionY>
+      <formation>formation2</formation>
+      <mirrored>false</mirrored>
     </spawn>
   </spawnlist>
 </level>

@@ -155,7 +155,7 @@ namespace _1942
             int aSpawnPosX = 0;
             int aSpawnPosY = 0;
             string formation = string.Empty;
-            int spawntime = 0;
+            bool mirrored = false;
              
             while (reader.Read())
             {
@@ -223,20 +223,24 @@ namespace _1942
                     else if (aCurrentElement == "positionX")
                     {
                         aSpawnPosX = reader.ReadContentAsInt();
+                        aSpawnPosX *= TileSize();
                     }
                     else if (aCurrentElement == "positionY")
                     {
                         aSpawnPosY = reader.ReadContentAsInt();
+                        aSpawnPosY *= TileSize();
                     }
                     else if (aCurrentElement == "formation")
                     {
                         formation = reader.Value;
                     }
-                    else if (aCurrentElement == "spawntime")
+                    else if (aCurrentElement == "mirrored")
                     {
-                        spawntime = reader.ReadContentAsInt();
-                        mapSpawnList.Add(new LevelSpawnObj(new Vector2(aSpawnPosX,aSpawnPosY), formation, spawntime));
+                        mirrored = reader.ReadContentAsBoolean();
+                        mapSpawnList.Add(new LevelSpawnObj(new Vector2(aSpawnPosX, aSpawnPosY), formation, mirrored));
                     }
+                    
+                    
                 }
             }
             StartingCameraPos();
