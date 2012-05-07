@@ -29,6 +29,6 @@ namespace _1942
         {
             get { return position; }
             set { position = value; }
-        } 
+        }
     }
 }
