@@ -18,14 +18,29 @@ namespace _1942
         ControlsOptionButton mControlsOptionButton;
         BackButton mBackButton;
         OptionScreen mOptionScreen;
+        AddVolumeButton mAddVolumeButton;
+        MinusVolumeButton mMinusVolumeButton;
 
+
+        MouseState previousmouse = Mouse.GetState();
         //buttons
-        int buttonWidth = 100;
-        int buttonHeight = 50;
+        int buttonWidth = Settings.window.ClientBounds.Width / 4;
+        int buttonHeight = Settings.window.ClientBounds.Height / 8;
+
+        // Button Distance Between eachother
+        int mButtonDistance = Settings.window.ClientBounds.Width/20;
+
 
         //OptionScreen
-        int screenWidth = 300;
-        int screenHeight = 200;
+        int screenWidth = Settings.window.ClientBounds.Width /2;
+        int screenHeight = Settings.window.ClientBounds.Height/3;
+
+        // Bool to get back to the Menu Screen
+        bool back = false;
+
+        // Volume button sizes
+        int volumeButtonHeight = Settings.window.ClientBounds.Height / 10;
+        int volumebuttonWidth = Settings.window.ClientBounds.Width / 10;
 
         public OptionManager(GameWindow window)
         {
@@ -34,10 +49,26 @@ namespace _1942
             mControlsOptionButton = new ControlsOptionButton();
             mOptionScreen = new OptionScreen();
             mBackButton = new BackButton();
-            mAudioOptionButton.Position = new Rectangle(50, 50, buttonWidth, buttonHeight);
-            mVideoOptionButton.Position = new Rectangle(200, 50, buttonWidth, buttonHeight);
-            mControlsOptionButton.Position = new Rectangle(350, 50, buttonWidth, buttonHeight);
-            mBackButton.Position = new Rectangle(window.ClientBounds.Width - buttonWidth, window.ClientBounds.Height - buttonHeight, buttonWidth, buttonHeight);
+            mAddVolumeButton = new AddVolumeButton();
+            mMinusVolumeButton = new MinusVolumeButton();
+            mAddVolumeButton.IsVisible = false;
+            mMinusVolumeButton.IsVisible = false;
+            //Positions
+            mAudioOptionButton.Position = new Rectangle(Settings.window.ClientBounds.Width / 20, Settings.window.ClientBounds.Height / 20, buttonWidth, buttonHeight);
+            mVideoOptionButton.Position = new Rectangle(mAudioOptionButton.Position.Right + mButtonDistance, mAudioOptionButton.Position.Y, buttonWidth, buttonHeight);
+            mControlsOptionButton.Position = new Rectangle(mVideoOptionButton.Position.Right + mButtonDistance, mVideoOptionButton.Position.Y, buttonWidth, buttonHeight);
+            mOptionScreen.Position = new Rectangle(mAudioOptionButton.Position.Right - (mButtonDistance/2), mAudioOptionButton.Position.Bottom + mButtonDistance, screenWidth, screenHeight);
+            mBackButton.Position = new Rectangle(Settings.window.ClientBounds.Width - buttonWidth, Settings.window.ClientBounds.Height - buttonHeight, buttonWidth, buttonHeight);
+            mMinusVolumeButton.Position = new Rectangle(mOptionScreen.Position.Center.X, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);
+            mAddVolumeButton.Position = new Rectangle(mMinusVolumeButton.Position.Right + mButtonDistance, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);
+            //Textures
+            mAudioOptionButton.Texture = Texture2DLibrary.texture_AudioOptions;
+            mVideoOptionButton.Texture = Texture2DLibrary.texture_VideoOptions;
+            mControlsOptionButton.Texture = Texture2DLibrary.texture_Control_Options;
+            mBackButton.Texture = Texture2DLibrary.texture_Back;
+            mOptionScreen.Texture = Texture2DLibrary.texture_OptionScreen_Default;
+            mAddVolumeButton.Texture = Texture2DLibrary.texture_AddVolume;
+            mMinusVolumeButton.Texture = Texture2DLibrary.texture_MinusVolume;
         }
 
         public void Update(Point mouseLocation)
@@ -72,24 +103,43 @@ namespace _1942
 
             if (mBackButton.Position.Contains(mouseLocation))
             {
-                mAudioOptionButton.Texture = Texture2DLibrary.texture_Back_Shadow;
+                mBackButton.Texture = Texture2DLibrary.texture_Back_Shadow;
             }
             else
             {
-                mAudioOptionButton.Texture = Texture2DLibrary.texture_Back;
+                mBackButton.Texture = Texture2DLibrary.texture_Back;
             }
 
             if (mAudioOptionButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
             {
                 mOptionScreen.Texture = Texture2DLibrary.texture_AdjustVolume;
+                mAddVolumeButton.IsVisible = true;
+                mMinusVolumeButton.IsVisible = true;
             }
             if (mVideoOptionButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
             {
                 mOptionScreen.Texture = Texture2DLibrary.texture_AdjustVideo;
+                mAddVolumeButton.IsVisible = false;
+                mMinusVolumeButton.IsVisible = false;
             }
             if (mControlsOptionButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
             {
                 mOptionScreen.Texture = Texture2DLibrary.texture_Controls;
+                mAddVolumeButton.IsVisible = false;
+                mMinusVolumeButton.IsVisible = false;
+            }
+            if (mBackButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
+            {
+                back = false;
+            }
+
+            if (mMinusVolumeButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && previousmouse.LeftButton == ButtonState.Released)
+            {
+                MediaPlayer.Volume -= 0.01f;
+            }
+            if (mAddVolumeButton.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && previousmouse.LeftButton == ButtonState.Released)
+            {
+                MediaPlayer.Volume += 0.01f;
             }
         }
 
@@ -98,7 +148,23 @@ namespace _1942
             mAudioOptionButton.Draw(spriteBatch);
             mControlsOptionButton.Draw(spriteBatch);
             mVideoOptionButton.Draw(spriteBatch);
+            mOptionScreen.Draw(spriteBatch);
+            mBackButton.Draw(spriteBatch);
+            if (mAddVolumeButton.IsVisible == true)
+            {
+                mAddVolumeButton.Draw(spriteBatch);
+                spriteBatch.DrawString(FontLibrary.Hud_Font, ((int)(MediaPlayer.Volume*100f)).ToString() + "%", new Vector2(mOptionScreen.Position.X, mOptionScreen.Position.Bottom), Color.White);
+            }
+            if (mMinusVolumeButton.IsVisible == true)
+            {
+                mMinusVolumeButton.Draw(spriteBatch);
+            }
         }
 
+        public bool Back
+        {
+            get { return back; }
+            set { back = value; }
+        }
     }
 }

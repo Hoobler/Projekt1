@@ -15,6 +15,9 @@ namespace _1942
     {
         Texture2D texture;
         Rectangle position;
+        bool isvisible;
+        bool isunlocked;
+        Color color = Color.White;
 
         public Texture2D Texture
         {
@@ -26,6 +29,23 @@ namespace _1942
         {
             get { return position; }
             set { position = value; }
+        }
+
+        public bool IsVisible
+        {
+            get { return isvisible; }
+            set { isvisible = value; }
+        }
+
+        public bool IsUnlocked
+        {
+            get { return isunlocked; }
+            set { isunlocked = value; }
+        }
+        public Color mColor
+        {
+            get { return color; }
+            set { color = value; }
         }
 
     }

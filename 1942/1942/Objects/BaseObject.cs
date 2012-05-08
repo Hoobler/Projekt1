@@ -39,13 +39,16 @@ namespace _1942
         public Vector2 Position
         {
             get { return position; }
+            set { position = value; }
         }
         public float PosX
         {
+            get { return position.X; }
             set { position.X = value; }
         }
         public float PosY
         {
+            get { return position.Y; }
             set { position.Y = value; }
         }
         public float Angle

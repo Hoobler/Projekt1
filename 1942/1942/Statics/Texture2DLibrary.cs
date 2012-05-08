@@ -42,7 +42,20 @@ namespace _1942
         public static Texture2D texture_Controls;
         public static Texture2D texture_VideoOptions;
         public static Texture2D texture_VideoOptions_Shadow;
+        public static Texture2D texture_OptionScreen_Default;
+        public static Texture2D texture_AddVolume;
+        public static Texture2D texture_MinusVolume;
 
+        // Level Select
+        public static Texture2D texture_Level1;
+        public static Texture2D texture_Level2;
+        public static Texture2D texture_Level3;
+        public static Texture2D texture_Level4;
+        public static Texture2D texture_Level5;
+
+        //PowerUps
+        public static Texture2D texture_PowerUp_Health;
+        public static Texture2D texture_PowerUp_Damage;
 
         //particles
         public static Texture2D particle_smoke;

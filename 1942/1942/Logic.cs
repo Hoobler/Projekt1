@@ -16,6 +16,7 @@ namespace _1942
 
         private List<BaseProjectile> projectileList = new List<BaseProjectile>();*/
 
+        PowerUpManager mPowerUpManager;
 
         Random random = new Random();
         float timeUntilNextZero;
@@ -34,7 +35,7 @@ namespace _1942
             if (Settings.nr_of_players >= 2)
                 Objects.playerList.Add(new Player2());
 
-            
+            mPowerUpManager = new PowerUpManager();
         }
 
 
@@ -68,14 +69,14 @@ namespace _1942
             if (timer >= 600)
                 timer -= 600;
 
-            
+            mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Objects.Draw(spriteBatch);
-
+            mPowerUpManager.Draw(spriteBatch);
         }
 
         

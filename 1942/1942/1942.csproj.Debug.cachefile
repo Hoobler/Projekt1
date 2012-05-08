@@ -5,7 +5,6 @@ Content\red.xnb
 Content\water.xnb
 Content\Menu\ExitGame.xnb
 Content\Menu\ExitGame_Shadow.xnb
-Content\Menu\MainMenu.xnb
 Content\Menu\Options.xnb
 Content\Menu\Options_Shadow.xnb
 Content\Menu\StartGame.xnb
@@ -29,6 +28,19 @@ Content\Enemies\square1.xnb
 Content\Enemies\AATower.xnb
 Content\Enemies\AABaseDead.xnb
 Content\Enemies\AABase.xnb
+Content\Menu\MainMenu.xnb
+Content\Menu\OptionScreenDefault.xnb
+Content\PowerUps\PowerUp.xnb
 Content\debugFont.xnb
+Content\Hud_Font.xnb
+Content\Menu\MinusVolume.xnb
+Content\Menu\AddVolume.xnb
+Content\Sounds\MenuSong.xnb
+Content\Menu\Level1.xnb
+Content\Menu\Level2.xnb
+Content\Menu\Level3.xnb
+Content\Menu\Level4.xnb
+Content\Menu\Level5.xnb
+Content\Sounds\MenuSong.wma
 Levels\level1.xml
 Levels\texturelist.xml
