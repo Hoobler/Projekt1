@@ -24,7 +24,6 @@ namespace _1942
 
         KeyboardState keyState;
         Logic logic;
-        LevelLoader levelLoader;
         MenuManager menu;
         OptionManager optionManager;
         
@@ -76,6 +75,7 @@ namespace _1942
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"Enemies/AABase");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
+            Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"boss1");
 
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");

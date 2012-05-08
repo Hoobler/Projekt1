@@ -229,6 +229,7 @@ namespace _1942
                     {
                         aSpawnPosY = reader.ReadContentAsInt();
                         aSpawnPosY *= TileSize();
+                        aSpawnPosY = -aSpawnPosY;
                     }
                     else if (aCurrentElement == "formation")
                     {
