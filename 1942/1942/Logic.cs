@@ -42,7 +42,8 @@ namespace _1942
                     Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss1")
                     Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
-
+                else if (levelLoader.MapSpawnList[i].Formation == "tower")
+                    Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
             }
 
             if (Settings.nr_of_players >= 1)
@@ -87,6 +88,7 @@ namespace _1942
             {
                 for (int i = 0; i < Objects.enemyList.Count; i++)
                 {
+                    
                     if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
                         Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
@@ -179,15 +181,18 @@ namespace _1942
             {
                 for (int k = 0; k < Objects.bossList[j].gunList.Count; k++)
                 {
-                    for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                    if (Objects.bossList[j].gunList[k].Activated)
                     {
-
-                        if (Objects.bossList[j].gunList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                         {
-                            Objects.bossList[j].gunList[k].Health -= Objects.playerProjectileList[i].Damage;
-                            Objects.playerProjectileList[i].SetDead();
-                        }
 
+                            if (Objects.bossList[j].gunList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            {
+                                Objects.bossList[j].gunList[k].Health -= Objects.playerProjectileList[i].Damage;
+                                Objects.playerProjectileList[i].SetDead();
+                            }
+
+                        }
                     }
                 }
             }

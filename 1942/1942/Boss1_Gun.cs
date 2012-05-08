@@ -11,6 +11,7 @@ namespace _1942
     {
         float timeUntilNextShot;
         float timeBetweenShots = 0.3f;
+        bool reallyActivated;
 
         public Boss1_Gun(Vector2 position, float timeUntilNextShot)
         {
@@ -22,7 +23,6 @@ namespace _1942
             size = new Point(41, 41);
             maxHealth = 400;
             health = maxHealth;
-            activated = false;
             texture = Texture2DLibrary.enemy_tower;
         }
 
@@ -45,6 +45,8 @@ namespace _1942
             else
             {
                 position += speed;
+                if(reallyActivated)
+                {
                 int nearestPlayer = 0;
                 for (int i = 1; i < Objects.playerList.Count; i++)
                 {
@@ -82,14 +84,16 @@ namespace _1942
                 shotOrigin.X = (float)Math.Cos(angle) * size.Y / 2 + towerCenter.X;
                 shotOrigin.Y = (float)Math.Sin(angle) * size.Y / 2 + towerCenter.Y;
 
-                timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                
+                    timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (timeUntilNextShot >= timeBetweenShots)
-                {
-                    timeUntilNextShot -= timeBetweenShots;
-                    Objects.enemyProjectileList.Add(new Boss1_Projectile2(
-                        shotOrigin, angle)
-                        );
+                    if (timeUntilNextShot >= timeBetweenShots)
+                    {
+                        timeUntilNextShot -= timeBetweenShots;
+                        Objects.enemyProjectileList.Add(new Boss1_Projectile2(
+                            shotOrigin, angle)
+                            );
+                    }
                 }
                 if (dead)
                     Objects.particleList.Add(new Particle_Explosion(new Vector2(position.X + size.X / 2, position.Y + size.Y / 2)));
@@ -106,6 +110,10 @@ namespace _1942
                     spriteEffect, layerDepth);
         }
 
-        
+        public bool ReallyActivate
+        {
+            get { return reallyActivated; }
+            set { reallyActivated = value; }
+        }
     }
 }

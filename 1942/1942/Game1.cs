@@ -128,8 +128,6 @@ namespace _1942
             menu = new MenuManager();
 
             hud = new Hud();
-            
-            optionManager = new OptionManager(Window);
 
         }
 

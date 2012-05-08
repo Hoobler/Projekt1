@@ -293,16 +293,16 @@ namespace _1942
         public void MoveCamera(float moved)
         {
             cameraPosition.Y -= moved;
-            //for (int i = 0; i < Objects.bossList.Count; i++)
-            //{
-            //    while (Objects.bossList[i].IsActivated)
-            //    {
-            //        if (cameraPosition.Y < 6 * TileSize())
-            //        {
-            //            cameraPosition.Y = 12 * TileSize();
-            //        }
-            //    }
-            //}
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                while (Objects.bossList[i].IsActivated())
+                {
+                    if (cameraPosition.Y < 6 * TileSize())
+                    {
+                        cameraPosition.Y = 12 * TileSize();
+                    }
+                }
+            }
             if (cameraPosition.Y < topMargin)
                 cameraPosition.Y = StartingCameraPos();
         }
