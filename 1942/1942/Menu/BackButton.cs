@@ -20,7 +20,7 @@ namespace _1942
 
         public void Update()
         {
-
+           
         }
 
         public void Draw(SpriteBatch spriteBatch)

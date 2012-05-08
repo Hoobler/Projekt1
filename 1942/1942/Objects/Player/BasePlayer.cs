@@ -70,6 +70,11 @@ namespace _1942
             set { health = value; }
         }
 
+        public Color Color
+        {
+            get { return color; }
+        }
+
         public void GoLeft()
         {
             position.X -= speedHor;

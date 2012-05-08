@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
-    class StartGameButton
+    class StartGameButton : BaseButton
     {
         Texture2D texture;
         Rectangle rectangle;

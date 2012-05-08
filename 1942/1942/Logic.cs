@@ -17,6 +17,8 @@ namespace _1942
 
         private List<BaseProjectile> projectileList = new List<BaseProjectile>();*/
 
+        PowerUpManager mPowerUpManager;
+
         LevelLoader levelLoader;
         ContentManager Content;
 
@@ -49,7 +51,7 @@ namespace _1942
             if (Settings.nr_of_players >= 2)
                 Objects.playerList.Add(new Player2());
 
-            
+            mPowerUpManager = new PowerUpManager();
         }
 
 
@@ -65,7 +67,7 @@ namespace _1942
 
             
 
-            
+            mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
         }
 
@@ -73,7 +75,7 @@ namespace _1942
         {
             levelLoader.Draw(spriteBatch);
             Objects.Draw(spriteBatch);
-            
+            mPowerUpManager.Draw(spriteBatch);
         }
 
         

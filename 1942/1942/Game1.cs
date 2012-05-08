@@ -19,14 +19,14 @@ namespace _1942
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        enum GameStates { MainMenu, OptionScreen, AudioScreen, VideoScreen, ControlScreen, Playing, GameOver };
+        enum GameStates { MainMenu, AudioScreen, VideoScreen, ControlScreen, Playing, GameOver };
         GameStates gameState = GameStates.MainMenu;
 
         KeyboardState keyState;
         Logic logic;
         MenuManager menu;
-        OptionManager optionManager;
-        
+
+        Hud hud;
 
 
         public Game1()
@@ -85,19 +85,38 @@ namespace _1942
             Texture2DLibrary.texture_ExitGameButtonShadow = Content.Load<Texture2D>(@"Menu/ExitGame_Shadow");
             Texture2DLibrary.texture_OptionsButtonShadow = Content.Load<Texture2D>(@"Menu/Options_Shadow");
             Texture2DLibrary.texture_StartGameButtonShadow = Content.Load<Texture2D>(@"Menu/StartGame_Shadow");
-            Texture2DLibrary.texture_AdjustVideo = Content.Load<Texture2D>(@"Menu/AdjustVideo"); ;
-            Texture2DLibrary.texture_AdjustVolume = Content.Load<Texture2D>(@"Menu/AdjustVolume"); ;
-            Texture2DLibrary.texture_AudioOptions = Content.Load<Texture2D>(@"Menu/AudioOptions"); ;
-            Texture2DLibrary.texture_AudioOptions_Shadow = Content.Load<Texture2D>(@"Menu/AudioOptions_Shadow"); ;
-            Texture2DLibrary.texture_Back = Content.Load<Texture2D>(@"Menu/Back"); ;
-            Texture2DLibrary.texture_Back_Shadow = Content.Load<Texture2D>(@"Menu/Back_Shadow"); ;
-            Texture2DLibrary.texture_Control_Options = Content.Load<Texture2D>(@"Menu/ControlOptions"); ;
-            Texture2DLibrary.texture_Control_Options_Shadow = Content.Load<Texture2D>(@"Menu/ControlOptions_Shadow"); ;
-            Texture2DLibrary.texture_Controls = Content.Load<Texture2D>(@"Menu/Controls"); ;
-            Texture2DLibrary.texture_VideoOptions = Content.Load<Texture2D>(@"Menu/VideoOptions"); ;
-            Texture2DLibrary.texture_VideoOptions_Shadow = Content.Load<Texture2D>(@"Menu/VideoOptions_Shadow"); ;
+            Texture2DLibrary.texture_AdjustVideo = Content.Load<Texture2D>(@"Menu/AdjustVideo"); 
+            Texture2DLibrary.texture_AdjustVolume = Content.Load<Texture2D>(@"Menu/AdjustVolume"); 
+            Texture2DLibrary.texture_AudioOptions = Content.Load<Texture2D>(@"Menu/AudioOptions"); 
+            Texture2DLibrary.texture_AudioOptions_Shadow = Content.Load<Texture2D>(@"Menu/AudioOptions_Shadow"); 
+            Texture2DLibrary.texture_Back = Content.Load<Texture2D>(@"Menu/Back"); 
+            Texture2DLibrary.texture_Back_Shadow = Content.Load<Texture2D>(@"Menu/Back_Shadow"); 
+            Texture2DLibrary.texture_Control_Options = Content.Load<Texture2D>(@"Menu/ControlOptions"); 
+            Texture2DLibrary.texture_Control_Options_Shadow = Content.Load<Texture2D>(@"Menu/ControlOptions_Shadow"); 
+            Texture2DLibrary.texture_Controls = Content.Load<Texture2D>(@"Menu/Controls");
+            Texture2DLibrary.texture_VideoOptions = Content.Load<Texture2D>(@"Menu/VideoOptions"); 
+            Texture2DLibrary.texture_VideoOptions_Shadow = Content.Load<Texture2D>(@"Menu/VideoOptions_Shadow");
+            Texture2DLibrary.texture_OptionScreen_Default = Content.Load<Texture2D>(@"Menu/OptionScreenDefault");
+            Texture2DLibrary.texture_AddVolume = Content.Load<Texture2D>(@"Menu/AddVolume");
+            Texture2DLibrary.texture_MinusVolume = Content.Load<Texture2D>(@"Menu/MinusVolume");
 
+            //PowerUps
+            Texture2DLibrary.texture_PowerUp_Damage = Content.Load<Texture2D>(@"PowerUps/PowerUp");
+            Texture2DLibrary.texture_PowerUp_Health = Content.Load<Texture2D>(@"PowerUps/PowerUp");
+
+            //Level Select
+            Texture2DLibrary.texture_Level1 = Content.Load<Texture2D>(@"Menu/Level1");
+            Texture2DLibrary.texture_Level2 = Content.Load<Texture2D>(@"Menu/Level2");
+            Texture2DLibrary.texture_Level3 = Content.Load<Texture2D>(@"Menu/Level3");
+            Texture2DLibrary.texture_Level4 = Content.Load<Texture2D>(@"Menu/Level4");
+            Texture2DLibrary.texture_Level5 = Content.Load<Texture2D>(@"Menu/Level5");
+
+            //fonts
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
+            FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
+
+            //Sounds
+            SoundLibrary.Menu_Song = Content.Load<Song>(@"Sounds/MenuSong");
 
             Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             
@@ -107,9 +126,10 @@ namespace _1942
 
             logic = new Logic(this.Content);
             menu = new MenuManager();
+
+            hud = new Hud();
             
             optionManager = new OptionManager(Window);
-            
 
         }
 
@@ -144,21 +164,13 @@ namespace _1942
             {
                 gameState = GameStates.Playing;
             }
-            if (menu.Options())
-            {
-                gameState = GameStates.OptionScreen;
-            }
-
+            
             switch (gameState)
             {
                 case GameStates.MainMenu:
                     {
                         menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
-                        break;
-                    }
-                case GameStates.OptionScreen:
-                    {
-                        optionManager.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y));
+                        menu.PlayMusic();
                         break;
                     }
                 case GameStates.AudioScreen:
@@ -175,8 +187,7 @@ namespace _1942
                     }
                 case GameStates.Playing:
                     {
-                        
-
+                        menu.StopMusic();
                         logic.Update(keyState, gameTime);
                         break;
                     }
@@ -201,13 +212,7 @@ namespace _1942
             {
                 case GameStates.MainMenu:
                     {
-                        spriteBatch.Draw(Texture2DLibrary.texture_MainMenu, new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height), Color.White);
                         menu.Draw(spriteBatch);
-                        break;
-                    }
-                case GameStates.OptionScreen:
-                    {
-                        optionManager.Draw(spriteBatch);
                         break;
                     }
                 case GameStates.AudioScreen:
@@ -230,9 +235,14 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+                        if (Settings.nr_of_players >= 2)
+                        {
+                            spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+                        }
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
-                        
+
+                        hud.Draw(spriteBatch);
+   
                         break;
                     }
             }

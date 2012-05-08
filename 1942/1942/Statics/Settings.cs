@@ -40,7 +40,7 @@ namespace _1942
         static public Point size_player = new Point(32 , 30);
         
 
-        
-        
+        public enum CurrentLevel { Level1, Level2, Level3, Level4, Level5 };
+        static public CurrentLevel currentLevel = CurrentLevel.Level1;
     }
 }

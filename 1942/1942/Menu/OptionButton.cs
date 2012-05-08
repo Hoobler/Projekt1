@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
-    class OptionButton
+    class OptionButton : BaseButton
     {
         Texture2D texture;
         Rectangle rectangle;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -109,6 +109,8 @@
   <ItemGroup>
     <Compile Include="Boss1.cs" />
     <Compile Include="Boss1_Gun.cs" />
+    <Compile Include="Hud\Hud.cs" />
+    <Compile Include="Menu\AddVolumeButton.cs" />
     <Compile Include="Boss1_Projectile1.cs" />
     <Compile Include="Boss1_Projectile2.cs" />
     <Compile Include="Boss_Base.cs" />
@@ -118,14 +120,24 @@
     <Compile Include="Menu\BaseButton.cs" />
     <Compile Include="Menu\ControlsOptionButton.cs" />
     <Compile Include="Menu\ExitButton.cs" />
+    <Compile Include="Menu\Level1_Button.cs" />
+    <Compile Include="Menu\Level2_Button.cs" />
+    <Compile Include="Menu\Level3_Button.cs" />
+    <Compile Include="Menu\Level4_Button.cs" />
+    <Compile Include="Menu\Level5_Button.cs" />
     <Compile Include="Menu\MenuManager.cs" />
     <Compile Include="Levelmanager\Tile.cs" />
+    <Compile Include="Menu\MinusVolumeButton.cs" />
     <Compile Include="Menu\OptionManager.cs" />
     <Compile Include="Menu\OptionScreen.cs" />
     <Compile Include="Menu\VideoOptionButton.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />
+    <Compile Include="Objects\PowerUps\BasePowerUp.cs" />
+    <Compile Include="Objects\PowerUps\PowerUpDamage.cs" />
+    <Compile Include="Objects\PowerUps\PowerUpHealth.cs" />
+    <Compile Include="Objects\PowerUps\PowerUpManager.cs" />
     <Compile Include="Objects\Projectiles\BaseProjectile.cs" />
     <Compile Include="Objects\Enemies\BaseEnemy.cs" />
     <Compile Include="Objects\Enemies\Aircraft\BaseFormation.cs" />
@@ -153,6 +165,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Objects\Enemies\Stationary\StationaryObject.cs" />
     <Compile Include="Statics\Settings.cs" />
+    <Compile Include="Statics\SoundLibrary.cs" />
     <Compile Include="Statics\Texture2DLibrary.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,80 +13,296 @@ namespace _1942
 {
     class MenuManager
     {
+        //Main Buttons
         StartGameButton mStartGameButton;
         OptionButton mOptionButton;
         ExitButton mExitButton;
 
+        //Level Select Buttons
+        Level1_Button mLevel1_Button;
+        Level2_Button mLevel2_Button;
+        Level3_Button mLevel3_Button;
+        Level4_Button mLevel4_Button;
+        Level5_Button mLevel5_Button;
+
+        OptionManager mOptionsManager;
+
         int distance;
+        //Main buttons
         int button_Size_Height = 50;
         int button_Size_Width = 200;
+
+        // Level Buttons
+        int lvl_button_Size_Height = 25;
+        int lvl_button_Size_Width = 100;
+        // minidistance
+        int miniDistance;
+
         bool exitProgram = false;
         bool startGame = false;
         bool options = false;
 
-        Texture2D original_texture_StartButton;
-        Texture2D original_texture_ExitButton;
-        Texture2D original_texture_OptionButton;
+        MouseState prevMouse = Mouse.GetState();
+
+        
         Vector2 button_position;
 
         public MenuManager()
         {
-
+            mOptionsManager = new OptionManager(Settings.window);
             button_position = new Vector2(Settings.window.ClientBounds.Width / 2, Settings.window.ClientBounds.Height / 2);
             distance = Settings.window.ClientBounds.Height / 5;
+            miniDistance = Settings.window.ClientBounds.Height / 10;
             mStartGameButton = new StartGameButton(Texture2DLibrary.texture_StartGameButton, new Vector2(button_position.X - (button_Size_Width / 2), button_position.Y), this.button_Size_Height, this.button_Size_Width);
             mOptionButton = new OptionButton(Texture2DLibrary.texture_OptionsButton, new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Bottom + distance), this.button_Size_Height, this.button_Size_Width);
             mExitButton = new ExitButton(Texture2DLibrary.texture_ExitGameButton, new Vector2(mOptionButton.GetRectangle().X, mOptionButton.GetRectangle().Bottom + distance), this.button_Size_Height, this.button_Size_Width);
-            this.original_texture_StartButton = Texture2DLibrary.texture_StartGameButton;
-            this.original_texture_OptionButton = Texture2DLibrary.texture_OptionsButton;
-            this.original_texture_ExitButton = Texture2DLibrary.texture_ExitGameButton;
+            mStartGameButton.IsVisible = true;
+            mOptionButton.IsVisible = true;
+            mLevel1_Button = new Level1_Button();
+            mLevel2_Button = new Level2_Button();
+            mLevel3_Button = new Level3_Button();
+            mLevel4_Button = new Level4_Button();
+            mLevel5_Button = new Level5_Button();
+            mLevel1_Button.IsVisible = false;
+            mLevel2_Button.IsVisible = false;
+            mLevel3_Button.IsVisible = false;
+            mLevel4_Button.IsVisible = false;
+            mLevel5_Button.IsVisible = false;
+            mLevel1_Button.Position = new Rectangle(Settings.window.ClientBounds.Width/2 - lvl_button_Size_Width /2, Settings.window.ClientBounds.Height / 3, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel2_Button.Position = new Rectangle(mLevel1_Button.Position.X, mLevel1_Button.Position.Y+ miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel3_Button.Position = new Rectangle(mLevel2_Button.Position.X, mLevel2_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel4_Button.Position = new Rectangle(mLevel3_Button.Position.X, mLevel3_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel5_Button.Position = new Rectangle(mLevel4_Button.Position.X, mLevel4_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
         }
 
         public void Update(Point mouseLocation, Vector2 button_position)
         { 
             MouseState mouse = Mouse.GetState();
-            if (mOptionButton.GetRectangle().Contains(mouseLocation))
+            switch (mOptionsManager.Back)
             {
-                mOptionButton.SetTexture(Texture2DLibrary.texture_OptionsButtonShadow);
-            }
-            else if (mExitButton.GetRectangle().Contains(mouseLocation))
-            {
-                mExitButton.SetTexture(Texture2DLibrary.texture_ExitGameButtonShadow);
-            }
-            else if (mStartGameButton.GetRectangle().Contains(mouseLocation))
-            {
-                mStartGameButton.SetTexture(Texture2DLibrary.texture_StartGameButtonShadow);
-            }
-            else
-            {
-                mStartGameButton.SetTexture(original_texture_StartButton);
-                mOptionButton.SetTexture(original_texture_OptionButton);
-                mExitButton.SetTexture(original_texture_ExitButton);
+                case true:
+                    {
+                        options = true;
+                        break;
+                    }
+                case false:
+                    {
+                        options = false;
+                        break;
+                    }
             }
 
-            if (mExitButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
+            switch (options)
             {
-                this.exitProgram = true;
-            }
-            if (mStartGameButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
-            {
-                this.startGame = true;
-            }
-            if (mOptionButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed)
-            {
-                this.options = true;
-            }
+                case false:
+                    {
+                        if (mOptionButton.GetRectangle().Contains(mouseLocation))
+                        {
+                            mOptionButton.SetTexture(Texture2DLibrary.texture_OptionsButtonShadow);
+                        }
+                        else if (mExitButton.GetRectangle().Contains(mouseLocation))
+                        {
+                            mExitButton.SetTexture(Texture2DLibrary.texture_ExitGameButtonShadow);
+                        }
+                        else if (mStartGameButton.GetRectangle().Contains(mouseLocation))
+                        {
+                            mStartGameButton.SetTexture(Texture2DLibrary.texture_StartGameButtonShadow);
+                        }
+                        else
+                        {
+                            mStartGameButton.SetTexture(Texture2DLibrary.texture_StartGameButton);
+                            mOptionButton.SetTexture(Texture2DLibrary.texture_OptionsButton);
+                            mExitButton.SetTexture(Texture2DLibrary.texture_ExitGameButton);
+                        }
 
-            mStartGameButton.Update(new Vector2(button_position.X - (button_Size_Width /2), button_position.Y), button_Size_Height, button_Size_Width);
-            mOptionButton.Update(new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
-            mExitButton.Update(new Vector2(mOptionButton.GetRectangle().X, mOptionButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
+                        if (mExitButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            this.exitProgram = true;
+                        }
+                        if (mStartGameButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            mStartGameButton.IsVisible = false;
+                            mOptionButton.IsVisible = false;
+                            mLevel1_Button.IsVisible = true;
+                            mLevel2_Button.IsVisible = true;
+                            mLevel3_Button.IsVisible = true;
+                            mLevel4_Button.IsVisible = true;
+                            mLevel5_Button.IsVisible = true;
+                        }
+                        if (mOptionButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mOptionButton.IsVisible)
+                            mOptionsManager.Back = true;
+
+                        }
+
+                        // Level Select
+                        if (mLevel1_Button.IsUnlocked)
+                        {
+                            if (mLevel1_Button.Position.Contains(mouseLocation))
+                            {
+                                mLevel1_Button.mColor = Color.Blue;
+                            }
+                            else
+                            {
+                                mLevel1_Button.mColor = Color.White;
+                            }
+                        }
+                        else
+                        {
+                            mLevel1_Button.mColor = Color.MediumVioletRed;
+                        }
+
+                        if (mLevel2_Button.IsUnlocked)
+                        {
+                           if (mLevel2_Button.Position.Contains(mouseLocation))
+                           {
+                               mLevel2_Button.mColor = Color.Blue;
+                           }
+                               else
+                               {
+                                   mLevel2_Button.mColor = Color.White;
+                               }
+                        }
+                        else
+                        {
+                            mLevel2_Button.mColor = Color.MediumVioletRed;
+                        }
+
+                        if (mLevel3_Button.IsUnlocked)
+                        {
+                            if (mLevel3_Button.Position.Contains(mouseLocation))
+                            {
+                                mLevel3_Button.mColor = Color.Blue;
+                            }
+                            else
+                            {
+                                mLevel3_Button.mColor = Color.White;
+                            }
+                        }
+                        else
+                        {
+                            mLevel3_Button.mColor = Color.MediumVioletRed;
+                        }
+
+                        if (mLevel4_Button.IsUnlocked)
+                        {
+                            if (mLevel4_Button.Position.Contains(mouseLocation))
+                            {
+                                mLevel4_Button.mColor = Color.Blue;
+                            }
+                            else
+                            {
+                                mLevel4_Button.mColor = Color.White;
+                            }
+                        }
+                        else
+                        {
+                            mLevel4_Button.mColor = Color.MediumVioletRed;
+                        }
+
+                        if (mLevel5_Button.IsUnlocked)
+                        {
+                            if (mLevel5_Button.Position.Contains(mouseLocation))
+                            {
+                                mLevel5_Button.mColor = Color.Blue;
+                            }
+                            else
+                            {
+                                mLevel5_Button.mColor = Color.White;
+                            }
+                        }
+                        else
+                        {
+                            mLevel5_Button.mColor = Color.MediumVioletRed;
+                        }
+                        
+
+                        if (mLevel1_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mLevel1_Button.IsUnlocked)
+                            {
+                                Settings.currentLevel = Settings.CurrentLevel.Level1;
+                                startGame = true;
+                            }
+                        }
+                        if (mLevel2_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mLevel2_Button.IsUnlocked)
+                            {
+                                Settings.currentLevel = Settings.CurrentLevel.Level2;
+                                startGame = true;
+                            }
+                        }
+                        if (mLevel3_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mLevel3_Button.IsUnlocked)
+                            {
+                                Settings.currentLevel = Settings.CurrentLevel.Level3;
+                                startGame = true;
+                            }
+                        }
+                        if (mLevel4_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mLevel4_Button.IsUnlocked)
+                            {
+                                Settings.currentLevel = Settings.CurrentLevel.Level4;
+                                startGame = true;
+                            }
+                        }
+                        if (mLevel5_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            if (mLevel5_Button.IsUnlocked)
+                            {
+                                Settings.currentLevel = Settings.CurrentLevel.Level5;
+                                startGame = true;
+                            }
+                        }
+
+                        mStartGameButton.Update(new Vector2(button_position.X - (button_Size_Width / 2), button_position.Y), button_Size_Height, button_Size_Width);
+                        mOptionButton.Update(new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
+                        mExitButton.Update(new Vector2(mOptionButton.GetRectangle().X, mOptionButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
+                        break;
+                    }
+                case true:
+                    {
+                        mOptionsManager.Update(mouseLocation);
+                        break;
+                    }     
+            }
+            prevMouse = mouse;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            mStartGameButton.Draw(spriteBatch);
-            mOptionButton.Draw(spriteBatch);
-            mExitButton.Draw(spriteBatch);
+            switch (options)
+            {
+                case false:
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.texture_MainMenu, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
+                         mExitButton.Draw(spriteBatch);
+                         if (mLevel1_Button.IsVisible == true)
+                         {
+                             mLevel1_Button.Draw(spriteBatch);
+                             mLevel2_Button.Draw(spriteBatch);
+                             mLevel3_Button.Draw(spriteBatch);
+                             mLevel4_Button.Draw(spriteBatch);
+                             mLevel5_Button.Draw(spriteBatch);
+                         }
+                         else
+                         {
+                             mStartGameButton.Draw(spriteBatch);
+                             mOptionButton.Draw(spriteBatch);
+                         }
+                         break;
+                    }
+                case true:
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.texture_OptionScreen_Default, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.Black);
+                        mOptionsManager.Draw(spriteBatch);
+                        break;
+                    }
+            }
         }
 
         public bool GetExitProgram()
@@ -100,6 +316,19 @@ namespace _1942
         public bool Options()
         {
             return options;
+        }
+
+        public void PlayMusic()
+        {
+            if (MediaPlayer.State != MediaState.Playing)
+            {
+                MediaPlayer.Play(SoundLibrary.Menu_Song);
+            }
+        }
+
+        public void StopMusic()
+        {
+            MediaPlayer.Stop();
         }
     }
 }

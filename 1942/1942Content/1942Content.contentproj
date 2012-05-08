@@ -225,6 +225,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\OptionScreenDefault.png">
+      <Name>OptionScreenDefault</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Particles\explosion.png">
       <Name>explosion</Name>
       <Importer>TextureImporter</Importer>
@@ -232,6 +237,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hud_Font.spritefont">
+      <Name>Hud_Font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PowerUps\PowerUp.png">
+      <Name>PowerUp</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="grass.png">
       <Name>grass</Name>
       <Importer>TextureImporter</Importer>
@@ -239,6 +256,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\MinusVolume.png">
+      <Name>MinusVolume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\AddVolume.png">
+      <Name>AddVolume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\The Glitch Mob - Animus Vox.mp3">
+      <Name>MenuSong</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\Level1.png">
+      <Name>Level1</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="runway.png">
       <Name>runway</Name>
       <Importer>TextureImporter</Importer>
@@ -256,6 +299,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Level2.png">
+      <Name>Level2</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="dockLeft.png">
       <Name>dockLeft</Name>
       <Importer>TextureImporter</Importer>
@@ -263,6 +311,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Level3.png">
+      <Name>Level3</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="SandTile1.png">
       <Name>SandTile1</Name>
       <Importer>TextureImporter</Importer>
@@ -270,6 +323,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Level4.png">
+      <Name>Level4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\Level5.png">
+      <Name>Level5</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="dockbottom.png">
       <Name>dockbottom</Name>
       <Importer>TextureImporter</Importer>
