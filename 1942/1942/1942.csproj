@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -109,6 +109,11 @@
   <ItemGroup>
     <Compile Include="Hud\Hud.cs" />
     <Compile Include="Menu\AddVolumeButton.cs" />
+    <Compile Include="Boss1_Projectile1.cs" />
+    <Compile Include="Boss1_Projectile2.cs" />
+    <Compile Include="Boss_Level1.cs" />
+    <Compile Include="Boss_Base.cs" />
+    <Compile Include="Levelmanager\LevelSpawnObj.cs" />
     <Compile Include="Menu\AudioOptionButton.cs" />
     <Compile Include="Menu\BackButton.cs" />
     <Compile Include="Menu\BaseButton.cs" />
@@ -145,11 +150,8 @@
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
     <Compile Include="Menu\OptionButton.cs" />
     <Compile Include="Menu\StartGameButton.cs" />
-    <Compile Include="Objects\Particles\ParticleManager.cs" />
-    <Compile Include="Objects\Particles\ParticlePiece_Base.cs" />
     <Compile Include="Objects\Particles\Particle_Base.cs" />
-    <Compile Include="Objects\Particles\ParticlePiece_Smoke.cs" />
-    <Compile Include="Objects\Particles\Particle_Smoke.cs" />
+    <Compile Include="Objects\Particles\Particle_Explosion.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />
@@ -170,9 +172,11 @@
     <Content Include="GameThumbnail.png" />
     <Content Include="Levels\level1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Levels\texturelist.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

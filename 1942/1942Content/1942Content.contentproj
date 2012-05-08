@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0565CD97-7C09-4D65-9BD4-47CBFFD4D91D}</ProjectGuid>
@@ -58,11 +58,6 @@
   <ItemGroup>
     <Compile Include="black.png">
       <Name>black</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="green.png">
-      <Name>green</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -232,6 +227,11 @@
   <ItemGroup>
     <Compile Include="Menu\OptionScreenDefault.png">
       <Name>OptionScreenDefault</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\explosion.png">
+      <Name>explosion</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -246,6 +246,11 @@
   <ItemGroup>
     <Compile Include="PowerUps\PowerUp.png">
       <Name>PowerUp</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="grass.png">
+      <Name>grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -274,6 +279,21 @@
   <ItemGroup>
     <Compile Include="Menu\Level1.png">
       <Name>Level1</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="runway.png">
+      <Name>runway</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="runwayend.png">
+      <Name>runwayend</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="runwaystart.png">
+      <Name>runwaystart</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -281,6 +301,11 @@
   <ItemGroup>
     <Compile Include="Menu\Level2.png">
       <Name>Level2</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="dockLeft.png">
+      <Name>dockLeft</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -288,6 +313,11 @@
   <ItemGroup>
     <Compile Include="Menu\Level3.png">
       <Name>Level3</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="SandTile1.png">
+      <Name>SandTile1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -302,6 +332,21 @@
   <ItemGroup>
     <Compile Include="Menu\Level5.png">
       <Name>Level5</Name>
+<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="dockbottom.png">
+      <Name>dockbottom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="dockbottomcorner.png">
+      <Name>dockbottomcorner</Name>
+	 <Importer>TextureImporter</Importer>
+	 <Processor>TextureProcessor</Processor>
+	</Compile>
+    <Compile Include="boss1.png">
+      <Name>boss1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

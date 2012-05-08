@@ -24,7 +24,6 @@ namespace _1942
 
         KeyboardState keyState;
         Logic logic;
-        LevelLoader levelLoader;
         MenuManager menu;
 
         Hud hud;
@@ -61,6 +60,8 @@ namespace _1942
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Texture2DLibrary.spaceship = Content.Load<Texture2D>(@"Enemies/spaceship");
+
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
             Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Enemies/square1");
             Texture2DLibrary.enemy_zero = Content.Load<Texture2D>(@"Enemies/Zero");
@@ -74,6 +75,7 @@ namespace _1942
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"Enemies/AABase");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
+            Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"boss1");
 
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
@@ -116,15 +118,19 @@ namespace _1942
             //Sounds
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Sounds/MenuSong");
 
-            Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Enemies/Square1");
+            Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             
+
             Settings.window = Window;
             
 
-            logic = new Logic();
+            logic = new Logic(this.Content);
             menu = new MenuManager();
-            levelLoader = new LevelLoader("./Levels/level1.xml", this.Content);
+
             hud = new Hud();
+            
+            optionManager = new OptionManager(Window);
+
         }
 
         /// <summary>
@@ -182,7 +188,6 @@ namespace _1942
                 case GameStates.Playing:
                     {
                         menu.StopMusic();
-                        levelLoader.MoveCamera(Settings.level_speed);
                         logic.Update(keyState, gameTime);
                         break;
                     }
@@ -224,7 +229,7 @@ namespace _1942
                     }
                 case GameStates.Playing:
                     {
-                        levelLoader.Draw(spriteBatch);
+                        
                         logic.Draw(spriteBatch);
                         spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
@@ -235,7 +240,9 @@ namespace _1942
                             spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
                         }
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
+
                         hud.Draw(spriteBatch);
+   
                         break;
                     }
             }

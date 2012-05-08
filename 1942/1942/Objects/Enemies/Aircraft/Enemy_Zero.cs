@@ -24,29 +24,41 @@ namespace _1942
             size = Settings.size_zero;
             spriteEffect = SpriteEffects.None;
             texture = Texture2DLibrary.enemy_zero;
+            health = Settings.zero_health;
+            maxHealth = Settings.zero_health;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            position += speed;
-            timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeUntilNextShot >= Settings.zero_projectile_frequency)
+            if (activated)
             {
-                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y)));
-                Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X+size.X, position.Y)));
-                timeUntilNextShot -= Settings.zero_projectile_frequency;
+                position += speed;
+                timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (timeUntilNextShot >= Settings.zero_projectile_frequency)
+                {
+                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y+size.Y)));
+                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X + size.X, position.Y+size.Y)));
+                    timeUntilNextShot -= Settings.zero_projectile_frequency;
+                }
+
+                if (position.Y > Settings.window.ClientBounds.Height)
+                    dead = true;
+
+                if (dead)
+                    Objects.particleList.Add(new Particle_Explosion(position));
+
+
+
+
             }
-
-            if (position.Y > Settings.window.ClientBounds.Height)
-                dead = true;
-
 
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if(activated)
             spriteBatch.Draw(texture,
                 new Rectangle((int)Position.X + (Size.X / 2),(int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
                 new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,

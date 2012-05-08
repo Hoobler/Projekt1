@@ -2,26 +2,128 @@
 <texturelist>
   <tiletexture>
     <symbol>W</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
     <texture>
       <name>water</name>
     </texture>
   </tiletexture>
   <tiletexture>
     <symbol>R</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
     <texture>
-      <name>red</name>
+      <name>runway</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>r</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>runway</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>E</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>runwayend</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>e</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>runwayend</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>T</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>runwaystart</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>t</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>runwaystart</name>
     </texture>
   </tiletexture>
   <tiletexture>
     <symbol>G</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
     <texture>
-      <name>green</name>
+      <name>grass</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>D</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockLeft</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>d</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockLeft</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>C</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottomcorner</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>c</symbol>
+    <hFlip>true</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottomcorner</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>V</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>dockbottom</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>v</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>true</vFlip>
+    <texture>
+      <name>dockbottom</name>
     </texture>
   </tiletexture>
   <tiletexture>
     <symbol>B</symbol>
     <texture>
       <name>black</name>
+    </texture>
+  </tiletexture>
+  <tiletexture>
+    <symbol>S</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <texture>
+      <name>SandTile1</name>
     </texture>
   </tiletexture>
 </texturelist>

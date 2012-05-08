@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace _1942
 {
-    class BaseEnemy: BaseObject
+    class Boss_Base : BaseObject
     {
-        protected int health;
         protected int maxHealth;
-        protected bool flying;
+        protected int health;
         protected bool activated;
-
-        public BaseEnemy() : base()
-        { }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
+            if (!activated)
+            {
+                position.Y += Settings.level_speed;
+            }
+
             if (activated)
             {
                 if (health <= 0)
@@ -32,31 +31,18 @@ namespace _1942
                 color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
             }
 
-            if (position.Y > -size.Y*2)
-                activated = true;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if(activated)
-                base.Draw(spriteBatch);
+            
         }
 
         public int Health
-        {
+        { 
             get { return health; }
             set { health = value; }
         }
 
-        public int HealthMax
+        public bool IsActivated()
         {
-            get { return maxHealth; }
+            return activated;
         }
-
-        public bool IsFlying
-        { get { return flying; } }
-
-        public bool IsActivated
-        { get { return activated; } }
     }
 }

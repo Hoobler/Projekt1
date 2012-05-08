@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace _1942
 {
@@ -18,17 +19,32 @@ namespace _1942
 
         PowerUpManager mPowerUpManager;
 
+        LevelLoader levelLoader;
+        ContentManager Content;
+
         Random random = new Random();
-        float timeUntilNextZero;
-        float timeBetweenZero = 2;
 
-        float timeUntilNextTower;
-        float timeBetweenTower = 3f;
+        
 
-        private int timer;
+        
 
-        public Logic()
+        public Logic(ContentManager Content)
         {
+            this.Content = Content;
+
+            levelLoader = new LevelLoader("./Levels/level1.xml", this.Content);
+
+            for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
+            {
+                if (levelLoader.MapSpawnList[i].Formation == "formation1")
+                    Objects.formationList.Add(new Formation1(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2")
+                    Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "boss1")
+                    Objects.bossList.Add(new Boss_Level1(levelLoader.MapSpawnList[i].Position));
+
+            }
+
             if (Settings.nr_of_players >= 1)
                 Objects.playerList.Add(new Player1());
             
@@ -41,33 +57,15 @@ namespace _1942
 
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
-            timer++;
+            
             CollisionRemoval();
-
+            levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
 
-            timeUntilNextZero += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            timeUntilNextTower += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (timeUntilNextZero >= timeBetweenZero)
-            {
-                Objects.formationList.Add(new Formation2(new Vector2(random.Next(0, Settings.window.ClientBounds.Width-Settings.size_zero.X), -Settings.size_zero.X), false));
-                
-
-                timeUntilNextZero -= timeBetweenZero;
-            }
-
-            if (timeUntilNextTower >= timeBetweenTower)
-            {
-                Objects.enemyList.Add(new Enemy_Tower(new Vector2(random.Next(0, Settings.window.ClientBounds.Width - Settings.size_tower.X), -Settings.size_tower.Y)));
-
-                timeUntilNextTower -= timeBetweenTower;
-            }
+            
             
 
-            //looping purposes
-            if (timer >= 600)
-                timer -= 600;
+            
 
             mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
@@ -75,6 +73,7 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            levelLoader.Draw(spriteBatch);
             Objects.Draw(spriteBatch);
             mPowerUpManager.Draw(spriteBatch);
         }
@@ -101,7 +100,7 @@ namespace _1942
             {
                 for(int i = 0; i < Objects.playerList.Count; i++)
                 {
-                    if (Objects.enemyList[j].Flying == true)
+                    if (Objects.enemyList[j].IsFlying == true)
                     {
                         if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
@@ -118,7 +117,7 @@ namespace _1942
                 {
                     for (int i = 0; i < Objects.playerList.Count; i++)
                     {
-                        if (Objects.formationList[j].list_Zero[k].Flying == true)
+                        if (Objects.formationList[j].list_Zero[k].IsFlying == true)
                         {
                             if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
@@ -157,6 +156,19 @@ namespace _1942
                     {
                         Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
                         Objects.enemyProjectileList[i].SetDead();
+                    }
+                }
+            }
+
+            //bosses
+            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+            {
+                for (int i = 0; i < Objects.bossList.Count; i++)
+                {
+                    if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                    {
+                        Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                        Objects.playerProjectileList[j].SetDead();
                     }
                 }
             }
