@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace _1942
 {
@@ -11,10 +12,17 @@ namespace _1942
         protected int maxHealth;
         protected int health;
         protected bool activated;
+        protected bool killable;
+        public List<Boss1_Gun> gunList = new List<Boss1_Gun>();
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            for (int i = 0; i < gunList.Count; i++)
+            {
+                gunList[i].Update(gameTime, speed);
+            }
+
             if (!activated)
             {
                 position.Y += Settings.level_speed;
@@ -34,6 +42,16 @@ namespace _1942
             
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            for (int i = 0; i < gunList.Count; i++)
+            {
+                gunList[i].Draw(spriteBatch);
+            }
+            
+        }
+
         public int Health
         { 
             get { return health; }
@@ -43,6 +61,11 @@ namespace _1942
         public bool IsActivated()
         {
             return activated;
+        }
+
+        public bool IsKillable()
+        {
+            return killable;
         }
     }
 }

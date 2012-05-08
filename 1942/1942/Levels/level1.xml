@@ -225,8 +225,8 @@
       <mirrored>true</mirrored>
     </spawn>
     <spawn>
-      <positionX>0</positionX>
-      <positionY>140</positionY>
+      <positionX>3</positionX>
+      <positionY>5</positionY>
       <formation>boss1</formation>
       <mirrored>false</mirrored>
     </spawn>

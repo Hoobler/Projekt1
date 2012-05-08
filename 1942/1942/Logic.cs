@@ -39,7 +39,7 @@ namespace _1942
                 else if (levelLoader.MapSpawnList[i].Formation == "formation2")
                     Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss1")
-                    Objects.bossList.Add(new Boss_Level1(levelLoader.MapSpawnList[i].Position));
+                    Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
 
             }
 
@@ -163,10 +163,29 @@ namespace _1942
             {
                 for (int i = 0; i < Objects.bossList.Count; i++)
                 {
-                    if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                    if (Objects.bossList[i].IsKillable())
                     {
-                        Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
-                        Objects.playerProjectileList[j].SetDead();
+                        if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                        {
+                            Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                            Objects.playerProjectileList[j].SetDead();
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < Objects.bossList.Count; j++)
+            {
+                for (int k = 0; k < Objects.bossList[j].gunList.Count; k++)
+                {
+                    for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                    {
+
+                        if (Objects.bossList[j].gunList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        {
+                            Objects.bossList[j].gunList[k].Health -= Objects.playerProjectileList[i].Damage;
+                            Objects.playerProjectileList[i].SetDead();
+                        }
+
                     }
                 }
             }

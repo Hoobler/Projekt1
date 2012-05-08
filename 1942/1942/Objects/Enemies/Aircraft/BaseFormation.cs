@@ -22,7 +22,7 @@ namespace _1942
 
             for (int i = 0; i < list_Zero.Count; i++)
             {
-                if (list_Zero[i].IsActivated)
+                if (list_Zero[i].Activated)
                 {
                     activated = true;
                 }
@@ -35,8 +35,8 @@ namespace _1942
             {
                 list_Zero[i].Update(gameTime);
             }
-            
-            
+
+            DeadRemoval();
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
@@ -45,6 +45,17 @@ namespace _1942
             {
                 list_Zero[i].Draw(spriteBatch);
             }
+        }
+
+        public void DeadRemoval()
+        {
+
+            for (int j = list_Zero.Count - 1; j >= 0; j--)
+            {
+                if (list_Zero[j].IsDead())
+                    list_Zero.RemoveAt(j);
+            }
+
         }
 
         public bool IsCompleted()

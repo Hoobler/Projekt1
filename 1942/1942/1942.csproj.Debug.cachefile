@@ -35,9 +35,9 @@ Content\runwayend.xnb
 Content\runwaystart.xnb
 Content\dockLeft.xnb
 Content\SandTile1.xnb
-Content\dockbottom.xnb
-Content\dockbottomcorner.xnb
 Content\debugFont.xnb
 Content\boss1.xnb
+Content\dockbottom.xnb
+Content\dockbottomcorner.xnb
 Levels\level1.xml
 Levels\texturelist.xml

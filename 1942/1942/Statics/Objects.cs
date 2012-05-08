@@ -56,11 +56,9 @@ namespace _1942
             for (int i = 0; i < Objects.deadList.Count; i++)
                 Objects.deadList[i].Draw(spriteBatch);
 
-            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
-                Objects.playerProjectileList[i].Draw(spriteBatch);
+            
 
-            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
-                Objects.enemyProjectileList[i].Draw(spriteBatch);
+            
 
             for (int i = 0; i < Objects.enemyList.Count; i++)
                 Objects.enemyList[i].Draw(spriteBatch);
@@ -76,6 +74,10 @@ namespace _1942
 
             for (int i = 0; i < Objects.bossList.Count; i++)
                 Objects.bossList[i].Draw(spriteBatch);
+            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
+                Objects.enemyProjectileList[i].Draw(spriteBatch);
+            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                Objects.playerProjectileList[i].Draw(spriteBatch);
         }
 
         static public void DeadRemoval()
@@ -96,15 +98,6 @@ namespace _1942
                 if (Objects.enemyProjectileList[i].IsDead())
                     Objects.enemyProjectileList.RemoveAt(i);
 
-            for (int i = Objects.formationList.Count - 1; i >= 0; i--)
-            {
-                for (int j = Objects.formationList[i].list_Zero.Count - 1; j >= 0; j--)
-                {
-                    if (Objects.formationList[i].list_Zero[j].IsDead())
-                        Objects.formationList[i].list_Zero.RemoveAt(j);
-                }
-            }
-
             for (int i = Objects.particleList.Count - 1; i >= 0; i--)
                 if(Objects.particleList[i].IsDead())
                 Objects.particleList.RemoveAt(i);
@@ -112,6 +105,8 @@ namespace _1942
             for (int i = Objects.bossList.Count - 1; i >= 0; i--)
                 if (Objects.bossList[i].IsDead())
                     Objects.bossList.RemoveAt(i);
+
+            
         }
 
     }

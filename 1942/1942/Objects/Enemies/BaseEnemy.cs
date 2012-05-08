@@ -56,7 +56,10 @@ namespace _1942
         public bool IsFlying
         { get { return flying; } }
 
-        public bool IsActivated
-        { get { return activated; } }
+        public bool Activated
+        { 
+            get { return activated; }
+            set { activated = value; }
+        }
     }
 }
