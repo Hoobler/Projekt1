@@ -24,7 +24,7 @@ namespace _1942
 
         
 
-        private int timer;
+        
 
         public Logic(ContentManager Content)
         {
@@ -38,6 +38,9 @@ namespace _1942
                     Objects.formationList.Add(new Formation1(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "formation2")
                     Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "boss1")
+                    Objects.bossList.Add(new Boss_Level1(levelLoader.MapSpawnList[i].Position));
+
             }
 
             if (Settings.nr_of_players >= 1)
