@@ -34,19 +34,24 @@ namespace _1942
             LoadLevelFile(TheLevelFile, content);
         }
 
-        public void UnLoadLevel()
+        private void UnLoadLevel()
         {
             mapList.Clear();
             textureDictionary.Clear();
             mapSpawnList.Clear();
         }
 
+        /// <summary>
+        /// The method used for loading a level, this method also calls the UnLoadLevel metod that clears all the lists prior to loading in the new level
+        /// </summary>
+        /// <param name="levelName">The name of the level to be loaded</param>
+        /// <param name="content"></param>
         public void LoadMap(string levelName, ContentManager content)
         {
             LoadLevelFile(levelName, content);
         }
 
-        public void LoadLevelFile(string LevelFile, ContentManager content)
+        private void LoadLevelFile(string LevelFile, ContentManager content)
         {
             XmlReader reader = XmlReader.Create(LevelFile);
 
@@ -72,7 +77,7 @@ namespace _1942
             }
         }
 
-        public void LoadTile(string texturefile, ContentManager content)
+        private void LoadTile(string texturefile, ContentManager content)
         {
             XmlReader texReader = XmlReader.Create("./Levels/" + texturefile + ".xml");
 
@@ -118,7 +123,7 @@ namespace _1942
             }
         }
 
-        public void LoadTexture(XmlReader reader, ContentManager content, char tempChar, bool hFlip, bool vFlip)
+        private void LoadTexture(XmlReader reader, ContentManager content, char tempChar, bool hFlip, bool vFlip)
         {
             string aCurrentElement = string.Empty;
 
@@ -144,7 +149,7 @@ namespace _1942
             }
         }
 
-        public void LoadLevel(XmlReader reader, ContentManager content)
+        private void LoadLevel(XmlReader reader, ContentManager content)
         {
             string aCurrentElement = string.Empty;
 
@@ -277,7 +282,7 @@ namespace _1942
             return tilesize = tempSize / 10; 
         }
 
-        public int StartingCameraPos()
+        private int StartingCameraPos()
         {
             cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
             var tempInt = nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
@@ -287,6 +292,16 @@ namespace _1942
         public void MoveCamera(float moved)
         {
             cameraPosition.Y -= moved;
+            //for (int i = 0; i < Objects.bossList.Count; i++)
+            //{
+            //    while (Objects.bossList[i].IsActivated)
+            //    {
+            //        if (cameraPosition.Y < 6 * TileSize())
+            //        {
+            //            cameraPosition.Y = 12 * TileSize();
+            //        }
+            //    }
+            //}
             if (cameraPosition.Y < topMargin)
                 cameraPosition.Y = StartingCameraPos();
         }
