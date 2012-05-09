@@ -16,6 +16,15 @@ namespace _1942
         protected int health = 100;
         protected float timeUntilNextShot;
         protected int playerID;
+        protected int myScore = 0;
+        protected int damage;
+
+        //PowerUp stuff
+        protected bool powerupDamage = false;
+        protected bool powerupHealth = false;
+        protected bool powerupShield = false;
+        float mActiveTime = 10f;
+        float resetActiveTime = 10f;
 
         public BasePlayer(): base()
         {
@@ -42,6 +51,26 @@ namespace _1942
 
             if (health > 100)
                 health = 100;
+
+            if (powerupDamage)
+            {
+                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            if (powerupHealth)
+            {
+                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            if (powerupShield)
+            {
+                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            if (mActiveTime < 0)
+            {
+                powerupDamage = false;
+                powerupHealth = false;
+                powerupShield = false;
+                mActiveTime = resetActiveTime;
+            }
             
             animationFrame.Y = 0;
             spriteEffect = SpriteEffects.None;
@@ -109,20 +138,47 @@ namespace _1942
             {
                 if (animationFrame.Y == 1)
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID, damage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID, damage));
                 }
                 else
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID, damage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID, damage));
                 }
                 timeUntilNextShot = Settings.player_projectile_frequency;
             }
 
             
         }
-        
+
+        public int Damage
+        {
+            get { return damage; }
+            set { damage = value; }
+        }
+
+        public int MyScore
+        {
+            get { return myScore; }
+            set { myScore = value; }
+        }
+
+        public bool PowerUpDamage
+        {
+            get { return powerupDamage; }
+            set { powerupDamage = value; }
+        }
+        public bool PowerUpHealth
+        {
+            get { return powerupHealth; }
+            set { powerupHealth = value; }
+        }
+        public bool PowerUpShield
+        {
+            get { return powerupShield; }
+            set { powerupShield = value; }
+        }
 
     }
 }

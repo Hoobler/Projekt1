@@ -25,7 +25,7 @@ namespace _1942
             textureBase = Texture2DLibrary.enemy_tower_base;
             health = Settings.tower_health;
             maxHealth = Settings.tower_health;
-            
+            score = 10;
             
         }
 

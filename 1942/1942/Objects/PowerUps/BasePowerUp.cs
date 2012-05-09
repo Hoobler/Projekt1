@@ -51,5 +51,10 @@ namespace _1942
                 isalive = value;
             }
         }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture2DLibrary.texture_PowerUp_Health, new Rectangle((int)Position.X, (int)Position.Y, size, size), Color.White);
+        }
     }
 }

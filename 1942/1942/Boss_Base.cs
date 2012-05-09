@@ -14,6 +14,8 @@ namespace _1942
         protected bool activated;
         protected bool killable;
         public List<Boss1_Gun> gunList = new List<Boss1_Gun>();
+        protected int score;
+
 
         public override void Update(GameTime gameTime)
         {
@@ -66,6 +68,11 @@ namespace _1942
         public bool IsKillable()
         {
             return killable;
+
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
         }
     }
 }

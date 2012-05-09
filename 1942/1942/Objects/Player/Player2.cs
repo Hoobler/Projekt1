@@ -15,7 +15,8 @@ namespace _1942
         {
             color = Color.Pink;
             position = new Vector2(Settings.window.ClientBounds.Width / 2 + size.X * 3, Settings.window.ClientBounds.Height - size.Y);
-            playerID = 2;
+            playerID = 1;
+            damage = 10;
         }
 
         public override void Update(KeyboardState keyState, GameTime gameTime)

@@ -241,7 +241,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
 
-                        hud.Draw(spriteBatch);
+                        hud.Draw(spriteBatch, gameTime);
    
                         break;
                     }

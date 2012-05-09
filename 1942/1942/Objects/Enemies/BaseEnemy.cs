@@ -13,6 +13,7 @@ namespace _1942
         protected int maxHealth;
         protected bool flying;
         protected bool activated;
+        protected int score;
 
         public BaseEnemy() : base()
         { }
@@ -60,6 +61,15 @@ namespace _1942
         { 
             get { return activated; }
             set { activated = value; }
+        }
+
+        public bool IsActivated
+        { get { return activated; } }
+
+        public int MyScore
+        {
+            get { return score; }
+            set { score = value; }
         }
     }
 }

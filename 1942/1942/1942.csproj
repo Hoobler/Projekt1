@@ -138,6 +138,7 @@
     <Compile Include="Objects\PowerUps\PowerUpDamage.cs" />
     <Compile Include="Objects\PowerUps\PowerUpHealth.cs" />
     <Compile Include="Objects\PowerUps\PowerUpManager.cs" />
+    <Compile Include="Objects\PowerUps\PowerUpShield.cs" />
     <Compile Include="Objects\Projectiles\BaseProjectile.cs" />
     <Compile Include="Objects\Enemies\BaseEnemy.cs" />
     <Compile Include="Objects\Enemies\Aircraft\BaseFormation.cs" />
