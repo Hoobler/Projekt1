@@ -111,8 +111,7 @@
     <Compile Include="Boss1_Gun.cs" />
     <Compile Include="Hud\Hud.cs" />
     <Compile Include="Menu\AddVolumeButton.cs" />
-    <Compile Include="Boss1_Projectile1.cs" />
-    <Compile Include="Boss1_Projectile2.cs" />
+    <Compile Include="Boss1_Projectile.cs" />
     <Compile Include="Boss_Base.cs" />
     <Compile Include="Levelmanager\LevelSpawnObj.cs" />
     <Compile Include="Menu\AudioOptionButton.cs" />

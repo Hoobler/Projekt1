@@ -90,7 +90,7 @@ namespace _1942
                     if (timeUntilNextShot >= timeBetweenShots)
                     {
                         timeUntilNextShot -= timeBetweenShots;
-                        Objects.enemyProjectileList.Add(new Boss1_Projectile2(
+                        Objects.enemyProjectileList.Add(new Boss1_Projectile(
                             shotOrigin, angle)
                             );
                     }
