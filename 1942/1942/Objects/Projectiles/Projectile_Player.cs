@@ -11,7 +11,7 @@ namespace _1942
     {
 
         int playerID;
-        public Projectile_Player(Vector2 startingPos, int playerID)
+        public Projectile_Player(Vector2 startingPos, int playerID, int damage)
             : base()
         {
             position = new Vector2(startingPos.X, startingPos.Y);
@@ -21,7 +21,7 @@ namespace _1942
             speed = Settings.player_projectile_speed;
             color = Color.PeachPuff;
             texture = Texture2DLibrary.projectile_player;
-            damage = Settings.player_projectile_damage;
+            this.damage = damage;
             this.playerID = playerID;
         }
 

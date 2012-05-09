@@ -30,6 +30,7 @@ namespace _1942
         public int Damage
         {
             get { return damage; }
+            set { damage = value; }
         }
     }
 }

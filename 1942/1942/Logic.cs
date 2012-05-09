@@ -24,18 +24,18 @@ namespace _1942
 
         Random random = new Random();
 
-        
+
         public Logic(ContentManager Content)
         {
             this.Content = Content;
             NewGame();
         }
-        
+
 
         public void NewGame()
         {
-            
-            
+
+
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
 
@@ -59,6 +59,7 @@ namespace _1942
             if (Settings.nr_of_players >= 2 && Objects.playerList.Count <= 1)
                 Objects.playerList.Add(new Player2());
 
+
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
             
@@ -75,15 +76,15 @@ namespace _1942
                 NewGame();
 
             }
-            
+
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
 
-            
-            
 
-            
+
+
+
 
             mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
@@ -96,7 +97,7 @@ namespace _1942
             mPowerUpManager.Draw(spriteBatch);
         }
 
-        
+
 
         public void CollisionRemoval()
         {
@@ -105,7 +106,7 @@ namespace _1942
             {
                 for (int i = 0; i < Objects.enemyList.Count; i++)
                 {
-                    
+
                     if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
                         Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
@@ -115,16 +116,22 @@ namespace _1942
             }
 
             //if a player collides with a flying enemy, both die
-            for(int j= 0; j < Objects.enemyList.Count; j++)
+            for (int j = 0; j < Objects.enemyList.Count; j++)
             {
-                for(int i = 0; i < Objects.playerList.Count; i++)
+                for (int i = 0; i < Objects.playerList.Count; i++)
                 {
                     if (Objects.enemyList[j].IsFlying == true)
                     {
                         if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
-                            Objects.playerList[i].Health -= Settings.damage_collision;
+                            if (Objects.playerList[i].PowerUpShield == true)
+                            { }
+                            else
+                            {
+                                Objects.playerList[i].Health -= Settings.damage_collision;
+                            }
                             Objects.enemyList[j].SetDead();
+                            Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                         }
                     }
                 }
@@ -140,8 +147,16 @@ namespace _1942
                         {
                             if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
-                                Objects.playerList[i].Health -= Settings.damage_collision;
                                 Objects.formationList[j].enemyInFormationList[k].SetDead();
+
+                                if (Objects.playerList[i].PowerUpShield == true)
+                                { }
+                                else
+                                {
+                                    Objects.playerList[i].Health -= Settings.damage_collision;
+                                }
+                                Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                Objects.playerList[i].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
                             }
                         }
                     }
@@ -153,68 +168,84 @@ namespace _1942
             {
                 for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
                 {
+                    bool check = false;
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
-                        
+                        if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        {
+                            Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
+
                             if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                             {
                                 Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
+                                if (Objects.formationList[j].enemyInFormationList[k].Health <= 0 && !check)
+                                {
+                                    check = true;
+                                    Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                }
+
                                 Objects.playerProjectileList[i].SetDead();
                             }
-                        
-                    }
-                }
-            }
-
-            //if an enemy's projectile hits a player, the player dies
-            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
-            {
-                for (int j = 0; j < Objects.playerList.Count; j++)
-                {
-                    if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
-                    {
-                        Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
-                        Objects.enemyProjectileList[i].SetDead();
-                    }
-                }
-            }
-
-            //bosses
-            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
-            {
-                for (int i = 0; i < Objects.bossList.Count; i++)
-                {
-                    if (Objects.bossList[i].IsKillable())
-                    {
-                        if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
-                        {
-                            Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
-                            Objects.playerProjectileList[j].SetDead();
                         }
                     }
                 }
             }
-            for (int j = 0; j < Objects.bossList.Count; j++)
-            {
-                for (int k = 0; k < Objects.bossList[j].gunList.Count; k++)
-                {
-                    if (Objects.bossList[j].gunList[k].Activated)
-                    {
-                        for (int i = 0; i < Objects.playerProjectileList.Count; i++)
-                        {
 
-                            if (Objects.bossList[j].gunList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                //if an enemy's projectile hits a player, the player dies
+                for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
+                {
+                    for (int j = 0; j < Objects.playerList.Count; j++)
+                    {
+                        if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
+                        {
+                            if (Objects.playerList[j].PowerUpShield == true)
+                            { }
+                            else
                             {
-                                Objects.bossList[j].gunList[k].Health -= Objects.playerProjectileList[i].Damage;
-                                Objects.playerProjectileList[i].SetDead();
+                                Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
                             }
+                            Objects.enemyProjectileList[i].SetDead();
+                        }
+                    }
+                }
 
+                //bosses
+                for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+                {
+                    for (int i = 0; i < Objects.bossList.Count; i++)
+                    {
+                        if (Objects.bossList[i].IsKillable())
+                        {
+                            if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                            {
+                                Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                                Objects.playerProjectileList[j].SetDead();
+                            }
+                        }
+                    }
+                }
+                for (int j = 0; j < Objects.bossList.Count; j++)
+                {
+                    for (int k = 0; k < Objects.bossList[j].gunList.Count; k++)
+                    {
+                        if (Objects.bossList[j].gunList[k].Activated)
+                        {
+                            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                            {
+
+                                if (Objects.bossList[j].gunList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                                {
+                                    Objects.bossList[j].gunList[k].Health -= Objects.playerProjectileList[i].Damage;
+                                    Objects.playerProjectileList[i].SetDead();
+                                }
+
+                            }
                         }
                     }
                 }
             }
-        }
 
-        
+
+        }
     }
-}
+
