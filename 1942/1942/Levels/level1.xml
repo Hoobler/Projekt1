@@ -590,5 +590,11 @@
       <formation>boss1</formation>
       <mirrored>false</mirrored>
     </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>10</positionY>
+      <formation>PowerUp_Damage</formation>
+      <mirrored>false</mirrored>
+    </spawn>
   </spawnlist>
 </level>

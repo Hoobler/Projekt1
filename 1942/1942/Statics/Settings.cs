@@ -34,10 +34,12 @@ namespace _1942
         static public Vector2 zero_speed = new Vector2(0, 1f);
 
         static public Vector2 player_projectile_speed = new Vector2 (0,-7);
-        static public Point player_projectile_size = new Point(1, 4);
+        static public Point player_projectile_size = new Point(2, 4);
         static public float player_projectile_frequency = 0.1f;
         static public int player_projectile_damage = 10;
         static public Point size_player = new Point(32 , 30);
+
+    
         
 
         public enum CurrentLevel { Level1, Level2, Level3, Level4, Level5 };

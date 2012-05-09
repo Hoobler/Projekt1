@@ -79,5 +79,11 @@ namespace _1942
             dead = true;
         }
 
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
     }
 }

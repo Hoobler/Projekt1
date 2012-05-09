@@ -18,13 +18,16 @@ namespace _1942
         protected int playerID;
         protected int myScore = 0;
         protected int damage;
+        protected Color projectileColor = Color.Yellow;
 
         //PowerUp stuff
         protected bool powerupDamage = false;
         protected bool powerupHealth = false;
         protected bool powerupShield = false;
-        float mActiveTime = 10f;
-        float resetActiveTime = 10f;
+        protected float mActiveDamageTime = 10f;
+        protected float resetActiveDamageTime = 10f;
+        protected float mActiveArmorTime = 10f;
+        protected float resetActiveArmorTime = 10f;
 
         public BasePlayer(): base()
         {
@@ -54,22 +57,25 @@ namespace _1942
 
             if (powerupDamage)
             {
-                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                mActiveDamageTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             if (powerupHealth)
             {
-                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                powerupHealth = false;
             }
             if (powerupShield)
             {
-                mActiveTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                mActiveArmorTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            if (mActiveTime < 0)
+            if (mActiveDamageTime <= 0)
             {
                 powerupDamage = false;
-                powerupHealth = false;
+                mActiveDamageTime = resetActiveDamageTime;
+            }
+            if (mActiveArmorTime <= 0)
+            {
                 powerupShield = false;
-                mActiveTime = resetActiveTime;
+                mActiveArmorTime = resetActiveArmorTime;
             }
             
             animationFrame.Y = 0;
@@ -138,13 +144,13 @@ namespace _1942
             {
                 if (animationFrame.Y == 1)
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID, damage));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID, damage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor));
                 }
                 else
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID, damage));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID, damage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor));
                 }
                 timeUntilNextShot = Settings.player_projectile_frequency;
             }
@@ -178,6 +184,23 @@ namespace _1942
         {
             get { return powerupShield; }
             set { powerupShield = value; }
+        }
+
+        public Color ProjectileColor
+        {
+            get { return projectileColor; }
+            set { projectileColor = value; }
+        }
+
+        public float TimeLeftOnDamagePowerUp
+        {
+            get { return mActiveDamageTime; }
+            set { mActiveDamageTime = value; }
+        }
+        public float TimeLeftOnArmorPowerUp
+        {
+            get { return mActiveArmorTime; }
+            set { mActiveArmorTime = value; }
         }
 
     }

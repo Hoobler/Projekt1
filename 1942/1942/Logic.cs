@@ -35,7 +35,7 @@ namespace _1942
         public void NewGame()
         {
 
-
+            mPowerUpManager = new PowerUpManager();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
 
@@ -51,6 +51,12 @@ namespace _1942
                     Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "tower")
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
+                else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Health")
+                    mPowerUpManager.PowerUps.Add(new PowerUpHealth(levelLoader.MapSpawnList[i].Position));
+                else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Armor")
+                    mPowerUpManager.PowerUps.Add(new PowerUpShield(levelLoader.MapSpawnList[i].Position));
+                else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Damage")
+                    mPowerUpManager.PowerUps.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position)); 
             }
 
             if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
@@ -60,7 +66,7 @@ namespace _1942
                 Objects.playerList.Add(new Player2());
 
 
-            mPowerUpManager = new PowerUpManager();
+            
         }
 
 
