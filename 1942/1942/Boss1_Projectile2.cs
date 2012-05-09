@@ -15,9 +15,9 @@ namespace _1942
             this.angle = angle;
             this.size = new Point(4, 4);
             layerDepth = 0.1f;
-            color = Color.Red;
+            color = Color.White;
             texture = Texture2DLibrary.projectile_enemy_tower;
-            damage = 10;
+            damage = 2;
             speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 2;
             
         }

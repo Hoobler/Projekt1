@@ -22,7 +22,7 @@ namespace _1942
             base.Update(gameTime);
             position.Y += Settings.level_speed;
 
-            position += speed;
+            
         }
 
         public float speedX

@@ -2,7 +2,7 @@
 <level>
   <name>Level 1</name>
   <nextlevel>level2</nextlevel>
-  <description>Peral Harbour 1942</description>
+  <description>Pearl Harbor 1942</description>
   <tileset>texturelist</tileset>
   <layout>
     <row>WWWWWWWWWW</row>
@@ -143,7 +143,7 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGvvvGG</row>
     <row>GGGTtDWdGG</row>
-    <row>GGGRrDWdGGG</row>
+    <row>GGGRrDWdGG</row>
     <row>GGGRrDWdGG</row>
     <row>GGGRrDWdGG</row>
     <row>GGGRrDWdGG</row>
@@ -550,7 +550,43 @@
     </spawn>
     <spawn>
       <positionX>3</positionX>
-      <positionY>104</positionY>
+      <positionY>103</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>3</positionX>
+      <positionY>107</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>111</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>122</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>6</positionX>
+      <positionY>133</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>138</positionY>
+      <formation>formation2</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>0</positionX>
+      <positionY>144</positionY>
       <formation>boss1</formation>
       <mirrored>false</mirrored>
     </spawn>

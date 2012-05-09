@@ -18,7 +18,7 @@ namespace _1942
             angle = 0;
             speed = new Vector2(Settings.zero_projectile_speed.X + Settings.zero_speed.X, Settings.zero_projectile_speed.Y + Settings.zero_speed.Y + Settings.level_speed);
             
-            color = Color.PaleVioletRed;
+            color = Color.Yellow;
             texture = Texture2DLibrary.projectile_enemy_zero;
             
             spriteEffect = SpriteEffects.FlipVertically;

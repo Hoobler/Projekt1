@@ -27,11 +27,11 @@ namespace _1942
         static public Vector2 zero_projectile_speed = new Vector2(0,3);
         static public Point zero_projectile_size = new Point(2, 6);
 
-        static public float zero_projectile_frequency = 1f;
+        static public float zero_projectile_frequency = 2f;
         static public Point size_zero = new Point(32, 30);
-        static public int zero_projectile_damage = 3;
+        static public int zero_projectile_damage = 1;
         static public int zero_health = 30;
-        static public Vector2 zero_speed = new Vector2(0, 0.5f);
+        static public Vector2 zero_speed = new Vector2(0, 1f);
 
         static public Vector2 player_projectile_speed = new Vector2 (0,-7);
         static public Point player_projectile_size = new Point(1, 4);

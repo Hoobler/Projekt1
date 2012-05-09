@@ -21,6 +21,7 @@ namespace _1942
         private string nextLevel = string.Empty;
         private string description = string.Empty;
         private Vector2 cameraPosition = new Vector2(0, 0);
+        private Vector2 bossCameraPosition = new Vector2(0, 0);
 
         //Spara in alla texturer där dom stämmer övernes symbolen man får från mapList så att rätt texture ritas ut.
         Dictionary<char, TileTexture> textureDictionary = new Dictionary<char, TileTexture>();
@@ -293,13 +294,16 @@ namespace _1942
         public void MoveCamera(float moved)
         {
             cameraPosition.Y -= moved;
+            
             for (int i = 0; i < Objects.bossList.Count; i++)
             {
-                while (Objects.bossList[i].IsActivated())
+                if (!Objects.bossList[i].IsActivated())
+                    bossCameraPosition = cameraPosition;
+                if (Objects.bossList[i].IsActivated())
                 {
-                    if (cameraPosition.Y < 6 * TileSize())
+                    if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = 12 * TileSize();
+                        cameraPosition.Y = cameraPosition.Y + 6 * TileSize();
                     }
                 }
             }

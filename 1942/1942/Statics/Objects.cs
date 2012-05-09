@@ -114,5 +114,23 @@ namespace _1942
             
         }
 
+        static public int ActiveObjects()
+        {
+            int actives = 0;
+            
+
+            for (int i = 0; i < Objects.enemyList.Count; i++)
+                if(Objects.enemyList[i].Activated)
+                actives++;
+
+            
+
+            for (int i = 0; i < Objects.formationList.Count; i++)
+                for(int j = 0; j < Objects.formationList[i].list_Zero.Count; j++)
+                if(Objects.formationList[i].list_Zero[j].Activated)
+                actives++;
+
+            return actives;
+        }
     }
 }

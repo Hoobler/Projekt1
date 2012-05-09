@@ -42,7 +42,6 @@ namespace _1942
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            
 
 
             if (phase == 0)
