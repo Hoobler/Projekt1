@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <level>
-  <name>Level 1</name>
-  <nextlevel>level2</nextlevel>
-  <description>Pearl Harbor 1942</description>
+  <name>Level 2</name>
+  <nextlevel>level3</nextlevel>
+  <description>Blaha 1942</description>
   <tileset>texturelist</tileset>
   <layout>
     <row>WWWWWWWWWW</row>
@@ -19,143 +19,143 @@
     <row>WWWWWWWWWW</row>
     <row>WWWWWWWWWW</row>
     <row>WWWWWWWWWW</row>
-    <row>WWGGGGGWWW</row>
-    <row>WWGGGGWWWW</row>
-    <row>WWWGGGGGWW</row>
-    <row>WWGGBBBGWW</row>
-    <row>WWGGBRBGWW</row>
+    <row>WWWWWWGWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWGWW</row>
+    <row>WWWWBBBGWW</row>
+    <row>WWWWBRBGWW</row>
     <row>WWWGBBBGWW</row>
-    <row>WWWGGGGGWW</row>
-    <row>WWWWGGGWWW</row>
+    <row>WWWWWWWGWW</row>
+    <row>WWWWWWGWWW</row>
     <row>WWWWWGWWWW</row>
     <row>WWWWWWWWWW</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBBG</row>
-    <row>GGGBBBBGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGBBBBGG</row>
-    <row>GGGBBBGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGvvvGG</row>
-    <row>GGGTtDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGRrDWdGG</row>
-    <row>GGGEeDWdGG</row>
-    <row>GGGGGCVcGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>   
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBBG</row>
+    <row>WWGBBBBWWG</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWBBBBWW</row>
+    <row>WWGBBBWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWGvvvWW</row>
+    <row>WWGTtDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGRrDWdWW</row>
+    <row>WWGEeDWdWW</row>
+    <row>WWWWGCVcWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>   
   </layout>
   <spawnlist>
     <spawn>
@@ -227,13 +227,13 @@
     <spawn>
       <positionX>3</positionX>
       <positionY>28</positionY>
-      <formation>formation2</formation>
+      <formation>tower</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>7</positionX>
       <positionY>28</positionY>
-      <formation>formation2</formation>
+      <formation>tower</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>

@@ -15,7 +15,7 @@ namespace _1942
         public Formation1(Vector2 startingPos, bool mirrored)
         {
             this.mirrored = mirrored;
-            list_Zero = new List<Enemy_Zero>();
+            enemyInFormationList = new List<BaseEnemy>();
             speed = new Vector2(1.5f, 0f);
 
             if (mirrored)
@@ -23,9 +23,9 @@ namespace _1942
                 startingPos.X = Settings.window.ClientBounds.Width - startingPos.X;
                 speed.X = -speed.X;
             }
-                list_Zero.Add(new Enemy_Zero(startingPos));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X, startingPos.Y - 45)));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X, startingPos.Y - 90)));
+                enemyInFormationList.Add(new Enemy_Zero(startingPos));
+                enemyInFormationList.Add(new Enemy_Zero(new Vector2(startingPos.X, startingPos.Y - 45)));
+                enemyInFormationList.Add(new Enemy_Zero(new Vector2(startingPos.X, startingPos.Y - 90)));
 
                 //for (int i = 0; i < list_Zero.Count; i++)
                 //{
@@ -38,16 +38,16 @@ namespace _1942
             base.Update(gameTime);
 
 
-            for (int i = 0; i < list_Zero.Count; i++)
+            for (int i = 0; i < enemyInFormationList.Count; i++)
             {
                 if (timer >= (i * 30 + 45))
                 {
-                    list_Zero[i].PosX = list_Zero[i].Position.X + speed.X;
-                    list_Zero[i].animationFrame.Y = 1;
+                    enemyInFormationList[i].PosX = enemyInFormationList[i].Position.X + speed.X;
+                    enemyInFormationList[i].animationFrame.Y = 1;
                     if (mirrored)
-                        list_Zero[i].spriteEffect = SpriteEffects.FlipHorizontally;
+                        enemyInFormationList[i].spriteEffect = SpriteEffects.FlipHorizontally;
                     else
-                        list_Zero[i].spriteEffect = SpriteEffects.None;
+                        enemyInFormationList[i].spriteEffect = SpriteEffects.None;
 
                 }
             

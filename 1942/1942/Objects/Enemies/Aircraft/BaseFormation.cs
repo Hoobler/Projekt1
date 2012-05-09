@@ -13,16 +13,16 @@ namespace _1942
         protected bool mirrored; //true = mirrored, false = not mirrored
         protected int timer;
         protected bool completed;
-        public List<Enemy_Zero> list_Zero;
+        public List<BaseEnemy> enemyInFormationList;
         protected Vector2 speed;
         protected bool activated;
 
         public virtual void Update(GameTime gameTime)
         {
 
-            for (int i = 0; i < list_Zero.Count; i++)
+            for (int i = 0; i < enemyInFormationList.Count; i++)
             {
-                if (list_Zero[i].Activated)
+                if (enemyInFormationList[i].Activated)
                 {
                     activated = true;
                 }
@@ -31,9 +31,9 @@ namespace _1942
             if(activated)
                 timer++;
 
-            for (int i = 0; i < list_Zero.Count; i++)
+            for (int i = 0; i < enemyInFormationList.Count; i++)
             {
-                list_Zero[i].Update(gameTime);
+                enemyInFormationList[i].Update(gameTime);
             }
 
             DeadRemoval();
@@ -41,19 +41,19 @@ namespace _1942
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             
-            for (int i = 0; i < list_Zero.Count; i++)
+            for (int i = 0; i < enemyInFormationList.Count; i++)
             {
-                list_Zero[i].Draw(spriteBatch);
+                enemyInFormationList[i].Draw(spriteBatch);
             }
         }
 
         public void DeadRemoval()
         {
 
-            for (int j = list_Zero.Count - 1; j >= 0; j--)
+            for (int j = enemyInFormationList.Count - 1; j >= 0; j--)
             {
-                if (list_Zero[j].IsDead())
-                    list_Zero.RemoveAt(j);
+                if (enemyInFormationList[j].IsDead())
+                    enemyInFormationList.RemoveAt(j);
             }
 
         }

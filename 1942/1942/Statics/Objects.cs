@@ -126,8 +126,8 @@ namespace _1942
             
 
             for (int i = 0; i < Objects.formationList.Count; i++)
-                for(int j = 0; j < Objects.formationList[i].list_Zero.Count; j++)
-                if(Objects.formationList[i].list_Zero[j].Activated)
+                for(int j = 0; j < Objects.formationList[i].enemyInFormationList.Count; j++)
+                if(Objects.formationList[i].enemyInFormationList[j].Activated)
                 actives++;
 
             return actives;

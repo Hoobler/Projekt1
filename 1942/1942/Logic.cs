@@ -25,14 +25,21 @@ namespace _1942
         Random random = new Random();
 
         
-
-        
-
         public Logic(ContentManager Content)
         {
             this.Content = Content;
+            NewGame();
+        }
+        
 
-            levelLoader = new LevelLoader("./Levels/level1.xml", this.Content);
+        public void NewGame()
+        {
+            
+            
+
+            levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
+
+
 
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
@@ -46,18 +53,26 @@ namespace _1942
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
             }
 
-            if (Settings.nr_of_players >= 1)
+            if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
                 Objects.playerList.Add(new Player1());
-            
-            if (Settings.nr_of_players >= 2)
+
+            if (Settings.nr_of_players >= 2 && Objects.playerList.Count <= 1)
                 Objects.playerList.Add(new Player2());
 
+            
             mPowerUpManager = new PowerUpManager();
         }
 
 
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
+
+            if (levelLoader.LevelHasEnded())
+            {
+                Settings.currentLevel++;
+                NewGame();
+
+            }
             
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
@@ -115,16 +130,16 @@ namespace _1942
 
             for (int j = 0; j < Objects.formationList.Count; j++)
             {
-                for (int k = 0; k < Objects.formationList[j].list_Zero.Count; k++)
+                for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
                 {
                     for (int i = 0; i < Objects.playerList.Count; i++)
                     {
-                        if (Objects.formationList[j].list_Zero[k].IsFlying == true)
+                        if (Objects.formationList[j].enemyInFormationList[k].IsFlying == true)
                         {
-                            if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
                                 Objects.playerList[i].Health -= Settings.damage_collision;
-                                Objects.formationList[j].list_Zero[k].SetDead();
+                                Objects.formationList[j].enemyInFormationList[k].SetDead();
                             }
                         }
                     }
@@ -134,14 +149,14 @@ namespace _1942
             //allows players to shoot the shit out of formations
             for (int j = 0; j < Objects.formationList.Count; j++)
             {
-                for (int k = 0; k < Objects.formationList[j].list_Zero.Count; k++)
+                for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
                 {
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
                         
-                            if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                             {
-                                Objects.formationList[j].list_Zero[k].Health -= Objects.playerProjectileList[i].Damage;
+                                Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
                                 Objects.playerProjectileList[i].SetDead();
                             }
                         

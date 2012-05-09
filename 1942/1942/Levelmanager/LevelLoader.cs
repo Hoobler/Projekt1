@@ -54,7 +54,7 @@ namespace _1942
 
         private void LoadLevelFile(string LevelFile, ContentManager content)
         {
-            XmlReader reader = XmlReader.Create(LevelFile);
+            XmlReader reader = XmlReader.Create("./Levels/" + LevelFile + ".xml");
 
             while (reader.Read())
             {
@@ -252,6 +252,7 @@ namespace _1942
             }
             StartingCameraPos();
         }
+        
 
         public List<LevelSpawnObj> MapSpawnList
         {
@@ -307,8 +308,15 @@ namespace _1942
                     }
                 }
             }
+            
+        }
+
+        public bool LevelHasEnded()
+        {
             if (cameraPosition.Y < topMargin)
-                cameraPosition.Y = StartingCameraPos();
+                return true;
+            else
+                return false;
         }
 
         public void Draw(SpriteBatch spritebatch)

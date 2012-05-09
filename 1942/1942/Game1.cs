@@ -116,7 +116,7 @@ namespace _1942
             FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
 
             //Sounds
-            SoundLibrary.Menu_Song = Content.Load<Song>(@"Sounds/MenuSong");
+            SoundLibrary.Menu_Song = Content.Load<Song>(@"Ride_of_the_Valkyries");
 
             Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             

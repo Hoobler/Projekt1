@@ -13,7 +13,7 @@ namespace _1942
         public Formation2(Vector2 startingPos, bool mirrored)
         {
             this.mirrored = mirrored;
-            list_Zero = new List<Enemy_Zero>();
+            enemyInFormationList = new List<BaseEnemy>();
 
             if (mirrored)
             {
@@ -22,9 +22,9 @@ namespace _1942
             }
 
             
-                list_Zero.Add(new Enemy_Zero(startingPos));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X - 25, startingPos.Y - 40)));
-                list_Zero.Add(new Enemy_Zero(new Vector2(startingPos.X + 25, startingPos.Y - 40)));
+                enemyInFormationList.Add(new Enemy_Zero(startingPos));
+                enemyInFormationList.Add(new Enemy_Zero(new Vector2(startingPos.X - 25, startingPos.Y - 40)));
+                enemyInFormationList.Add(new Enemy_Zero(new Vector2(startingPos.X + 25, startingPos.Y - 40)));
             
 
                 
