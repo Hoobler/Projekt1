@@ -25,6 +25,7 @@ namespace _1942
         KeyboardState keyState;
         Logic logic;
         MenuManager menu;
+        HighScore highscore;
 
         Hud hud;
 
@@ -128,9 +129,9 @@ namespace _1942
             menu = new MenuManager();
 
             hud = new Hud();
-            
-            optionManager = new OptionManager(Window);
 
+            highscore = new HighScore();
+            //highscore.AddHighScore("derb", 10000);
         }
 
         /// <summary>
@@ -242,6 +243,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
 
                         hud.Draw(spriteBatch);
+                        highscore.Draw(spriteBatch);
    
                         break;
                     }
