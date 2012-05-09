@@ -68,6 +68,7 @@ namespace _1942
         public bool IsKillable()
         {
             return killable;
+        }
 
         public int Score
         {

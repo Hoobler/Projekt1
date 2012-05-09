@@ -26,18 +26,6 @@ namespace _1942
 
         public void Draw(SpriteBatch spritebatch, GameTime gametime)
         {
-            if (Objects.playerList[0].PowerUpDamage)
-            {
-                spritebatch.DrawString(FontLibrary.Hud_Font, "Damage", new Vector2(200, 200), Color.White);
-            }
-            else if (Objects.playerList[0].PowerUpHealth)
-            {
-                spritebatch.DrawString(FontLibrary.Hud_Font, "Health", new Vector2(200, 200), Color.White);
-            }
-            else if (Objects.playerList[0].PowerUpShield)
-            {
-                spritebatch.DrawString(FontLibrary.Hud_Font, "Shield", new Vector2(200, 200), Color.White);
-            }
             spritebatch.DrawString(FontLibrary.Hud_Font, gametime.TotalGameTime.Minutes.ToString() + ":" + gametime.TotalGameTime.Seconds.ToString(), new Vector2(Settings.window.ClientBounds.Width / 2 - (FontLibrary.Hud_Font.MeasureString(gametime.TotalGameTime.Minutes.ToString() + ":" + gametime.ElapsedGameTime.TotalSeconds.ToString()).X / 2), 0), Color.BlanchedAlmond);
             for (int i = 0; i < Objects.playerList.Count; i++)
             {
