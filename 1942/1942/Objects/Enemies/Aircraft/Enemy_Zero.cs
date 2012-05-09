@@ -26,6 +26,7 @@ namespace _1942
             texture = Texture2DLibrary.enemy_zero;
             health = Settings.zero_health;
             maxHealth = Settings.zero_health;
+            score = 10;
         }
 
         public override void Update(GameTime gameTime)

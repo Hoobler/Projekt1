@@ -15,23 +15,32 @@ namespace _1942
     {
         PowerUpDamage mPowerUpDamage;
         PowerUpHealth mPowerUpHealth;
+        PowerUpShield mPowerUpShield;
         Random random = new Random();
 
- 
-
+        public List<BasePowerUp> PowerUps;
+        List<BasePowerUp> ReferencePowerUp;
         // PowerUpSpeed
         float mPowerUpSpeed = 3f;
 
         // PowerUpTimer
-        float mTimeToSpawn = 2f;
-        float resetTimer = 2f;
+        float mTimeToSpawn = 5f;
+        float resetSpawnTimer = 5f;
+        
+
 
         public PowerUpManager()
         {
-            mPowerUpDamage = new PowerUpDamage(random);
-            mPowerUpHealth = new PowerUpHealth(random);
-            mPowerUpHealth.IsAlive = false;
-            mPowerUpDamage.IsAlive = false;
+            PowerUps = new List<BasePowerUp>();
+            ReferencePowerUp = new List<BasePowerUp>();
+            ReferencePowerUp.Add(new PowerUpDamage(random));
+            ReferencePowerUp.Add(new PowerUpHealth(random));
+            ReferencePowerUp.Add(new PowerUpShield(random));
+            for (int i = 0; i < ReferencePowerUp.Count; i++)
+            {
+                ReferencePowerUp[i].IsAlive = false;
+            }
+
         }
 
         public void Update(GameTime gameTime)
@@ -39,68 +48,67 @@ namespace _1942
             mTimeToSpawn -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (mTimeToSpawn < 0)
             {
-                if (mPowerUpDamage.IsAlive == false)
-                {
-                    mPowerUpDamage = new PowerUpDamage(random);
-                    mPowerUpDamage.IsAlive = true;
-                }
-                if (mPowerUpHealth.IsAlive == false)
-                {
-                    mPowerUpHealth = new PowerUpHealth(random);
-                    mPowerUpHealth.IsAlive = true;
-                }
-                mTimeToSpawn = resetTimer;
+                int temp;
+                temp = random.Next(0, 3);
+                PowerUps.Add(ReferencePowerUp[temp]);
+                PowerUps[0].IsAlive = true;
+                PowerUps[0].Position = new Vector2(random.Next(0, Settings.window.ClientBounds.Width), 0);
+                mTimeToSpawn = resetSpawnTimer;
             }
 
-            if (mPowerUpDamage.IsAlive == true)
+
+
+            for (int i = 0; i < PowerUps.Count; i++)
             {
-                for (int i = 0; i < Objects.playerList.Count; i++)
+                PowerUps[i].PosY += mPowerUpSpeed;
+                
+                for (int j = 0; j < Objects.playerList.Count; j++)
                 {
-                    if (Objects.playerList[i].Rectangle.Intersects(mPowerUpDamage.GetRectangle))
+                    if (PowerUps.Count > 0 && PowerUps[i] != null)
                     {
-                        mPowerUpDamage.IsAlive = false;
+                        if (PowerUps[i].GetRectangle.Intersects(Objects.playerList[j].Rectangle) && PowerUps[i].IsAlive == true)
+                        {
+                            if (PowerUps[i] is PowerUpDamage)
+                            {
+                                Objects.playerList[j].PowerUpDamage = true;
+                                
+                            }
+                            if (PowerUps[i] is PowerUpHealth)
+                            {
+                                Objects.playerList[j].PowerUpHealth = true;
+                                Objects.playerList[j].Health += 20;
+                            }
+                            if (PowerUps[i] is PowerUpShield)
+                            {
+                                Objects.playerList[j].PowerUpShield = true;
+                            }
+                            PowerUps.Remove(PowerUps[i]);
+                        }
+                    }
+                    if (Objects.playerList[j].PowerUpDamage == true)
+                    {
+                        Objects.playerList[j].Damage += 10;
+                    }
+                    else
+                    {
+                        Objects.playerList[j].Damage = 10;
                     }
                 }
             }
-
-            if (mPowerUpHealth.IsAlive == true)
+            for (int i = 0; i < PowerUps.Count; i++)
             {
-                for (int i = 0; i < Objects.playerList.Count; i++)
+                if (PowerUps[i].PosY > Settings.window.ClientBounds.Height)
                 {
-                    if (Objects.playerList[i].Rectangle.Intersects(mPowerUpHealth.GetRectangle))
-                    {
-                        mPowerUpHealth.IsAlive = false;
-                    }
+                    PowerUps.Remove(PowerUps[i]);
                 }
-            }
-            if (mPowerUpDamage.IsAlive == true)
-            {
-                mPowerUpDamage.PosY += mPowerUpSpeed;
-            }
-            if (mPowerUpHealth.IsAlive == true)
-            {
-                mPowerUpHealth.PosY += mPowerUpSpeed;
-            }
-
-            if (mPowerUpDamage.PosY == Settings.window.ClientBounds.Height)
-            {
-                mPowerUpDamage.IsAlive = false;
-            }
-            if (mPowerUpHealth.PosY == Settings.window.ClientBounds.Height)
-            {
-                mPowerUpHealth.IsAlive = false;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (mPowerUpHealth.IsAlive == true)
+            for (int i = 0; i < PowerUps.Count; i++)
             {
-                mPowerUpHealth.Draw(spriteBatch);
-            }
-            if (mPowerUpDamage.IsAlive == true)
-            {
-                mPowerUpDamage.Draw(spriteBatch);
+                PowerUps[i].Draw(spriteBatch);
             }
         }
     }

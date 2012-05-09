@@ -11,6 +11,7 @@ namespace _1942
         protected int maxHealth;
         protected int health;
         protected bool activated;
+        protected int score;
 
         public override void Update(GameTime gameTime)
         {
@@ -43,6 +44,12 @@ namespace _1942
         public bool IsActivated()
         {
             return activated;
+        }
+
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
         }
     }
 }

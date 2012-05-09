@@ -128,8 +128,6 @@ namespace _1942
             menu = new MenuManager();
 
             hud = new Hud();
-            
-            optionManager = new OptionManager(Window);
 
         }
 
@@ -241,7 +239,7 @@ namespace _1942
                         }
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
 
-                        hud.Draw(spriteBatch);
+                        hud.Draw(spriteBatch, gameTime);
    
                         break;
                     }

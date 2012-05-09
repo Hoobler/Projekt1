@@ -104,8 +104,14 @@ namespace _1942
                     {
                         if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
-                            Objects.playerList[i].Health -= Settings.damage_collision;
+                            if (Objects.playerList[i].PowerUpShield == true)
+                            { }
+                            else
+                            {
+                                Objects.playerList[i].Health -= Settings.damage_collision;
+                            }
                             Objects.enemyList[j].SetDead();
+                            Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                         }
                     }
                 }
@@ -121,8 +127,14 @@ namespace _1942
                         {
                             if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
-                                Objects.playerList[i].Health -= Settings.damage_collision;
+                                if (Objects.playerList[i].PowerUpShield == true)
+                                { }
+                                else
+                                {
+                                    Objects.playerList[i].Health -= Settings.damage_collision;
+                                }
                                 Objects.formationList[j].list_Zero[k].SetDead();
+                                Objects.playerList[i].MyScore += Objects.formationList[j].list_Zero[k].MyScore;
                             }
                         }
                     }
@@ -134,15 +146,19 @@ namespace _1942
             {
                 for (int k = 0; k < Objects.formationList[j].list_Zero.Count; k++)
                 {
+                    bool check = false;
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
-                        
                             if (Objects.formationList[j].list_Zero[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                             {
                                 Objects.formationList[j].list_Zero[k].Health -= Objects.playerProjectileList[i].Damage;
+                                if (Objects.formationList[j].list_Zero[k].Health <= 0 && !check)
+                                {
+                                    check = true;
+                                    Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.formationList[j].list_Zero[k].MyScore;
+                                }
                                 Objects.playerProjectileList[i].SetDead();
                             }
-                        
                     }
                 }
             }
@@ -154,7 +170,12 @@ namespace _1942
                 {
                     if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
                     {
-                        Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
+                        if (Objects.playerList[j].PowerUpShield == true)
+                        { }
+                        else
+                        {
+                            Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
+                        }
                         Objects.enemyProjectileList[i].SetDead();
                     }
                 }
