@@ -65,8 +65,9 @@ namespace _1942
             if (Settings.nr_of_players >= 2 && Objects.playerList.Count <= 1)
                 Objects.playerList.Add(new Player2());
 
-
-            
+            for (int i = 0; i < Objects.playerList.Count; i++)
+                Objects.playerList[i].Health = 100;
+          
         }
 
 
@@ -84,11 +85,6 @@ namespace _1942
             levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
 
-
-
-
-
-
             mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
         }
@@ -99,8 +95,6 @@ namespace _1942
             Objects.Draw(spriteBatch);
             mPowerUpManager.Draw(spriteBatch);
         }
-
-
 
         public void CollisionRemoval()
         {

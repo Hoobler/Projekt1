@@ -76,6 +76,7 @@ namespace _1942
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
             Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"boss1");
+            Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Enemies/square1");
 
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");

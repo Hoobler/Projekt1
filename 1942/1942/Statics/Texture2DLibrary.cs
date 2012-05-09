@@ -25,8 +25,7 @@ namespace _1942
         public static Texture2D enemy_tower_dead;
 
         public static Texture2D boss1;
-        public static Texture2D boss1_projectile1;
-        public static Texture2D boss1_projectile2;
+        public static Texture2D boss1_projectile;
 
 
         //menu
@@ -64,7 +63,6 @@ namespace _1942
         public static Texture2D texture_PowerUp_Damage;
 
         //particles
-        public static Texture2D particle_smoke;
         public static Texture2D particle_zero_explosion;
 
     }
