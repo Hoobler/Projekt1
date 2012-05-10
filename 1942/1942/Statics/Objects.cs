@@ -109,7 +109,11 @@ namespace _1942
 
             for (int i = Objects.bossList.Count - 1; i >= 0; i--)
                 if (Objects.bossList[i].IsDead())
+                {
+                    for (int j = 0; j < playerList.Count; j++)
+                        playerList[j].MyScore += Objects.bossList[i].Score;
                     Objects.bossList.RemoveAt(i);
+                }
 
             for (int i = Objects.formationList.Count - 1; i >= 0; i--)
                 if (Objects.formationList[i].IsDead())

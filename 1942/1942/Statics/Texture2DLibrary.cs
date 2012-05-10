@@ -27,6 +27,8 @@ namespace _1942
         public static Texture2D boss1;
         public static Texture2D boss1_projectile;
 
+        public static Texture2D boss2;
+
 
         //menu
         public static Texture2D texture_MainMenu;

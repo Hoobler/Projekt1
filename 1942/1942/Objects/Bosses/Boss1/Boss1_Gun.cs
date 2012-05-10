@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace _1942
 {
-    class Boss1_Gun : BaseEnemy
+    class Boss1_Gun : Boss_Accessory
     {
         float timeUntilNextShot;
         float timeBetweenShots = 0.3f;
-        bool reallyActivated;
+        
 
         public Boss1_Gun(Vector2 position, float timeUntilNextShot)
         {
@@ -26,25 +26,13 @@ namespace _1942
             texture = Texture2DLibrary.enemy_tower;
         }
 
-        public void Update(GameTime gameTime, Vector2 speed)
+        public override void Update(GameTime gameTime, Vector2 speed)
         {
-            if (activated)
-            {
-                if (health <= 0)
-                {
-                    health = 0;
-                    dead = true;
-                }
-                color.B = (byte)((float)255 * ((float)health / (float)maxHealth));
-                color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
-            }
-            if (!activated)
-            {
-                position.Y += Settings.level_speed;
-            }
-            else
-            {
-                position += speed;
+            base.Update(gameTime, speed);
+
+            
+            
+            
                 if(reallyActivated)
                 {
                 int nearestPlayer = 0;
@@ -97,7 +85,7 @@ namespace _1942
                 }
                 if (dead)
                     Objects.particleList.Add(new Particle_Explosion(new Vector2(position.X + size.X / 2, position.Y + size.Y / 2)));
-            }
+            
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -110,10 +98,6 @@ namespace _1942
                     spriteEffect, layerDepth);
         }
 
-        public bool ReallyActivate
-        {
-            get { return reallyActivated; }
-            set { reallyActivated = value; }
-        }
+        
     }
 }

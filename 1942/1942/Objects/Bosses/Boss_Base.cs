@@ -13,7 +13,8 @@ namespace _1942
         protected int health;
         protected bool activated;
         protected bool killable;
-        public List<Boss1_Gun> gunList = new List<Boss1_Gun>();
+        public List<Boss_Accessory> accessoryList = new List<Boss_Accessory>();
+        
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
         protected int score;
 
@@ -21,9 +22,9 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            for (int i = 0; i < gunList.Count; i++)
+            for (int i = 0; i < accessoryList.Count; i++)
             {
-                gunList[i].Update(gameTime, speed);
+                accessoryList[i].Update(gameTime, speed);
             }
 
             if (!activated)
@@ -42,15 +43,15 @@ namespace _1942
                 color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
             }
 
-            
+            DeadRemoval();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            for (int i = 0; i < gunList.Count; i++)
+            for (int i = 0; i < accessoryList.Count; i++)
             {
-                gunList[i].Draw(spriteBatch);
+                accessoryList[i].Draw(spriteBatch);
             }
             
         }
@@ -80,6 +81,17 @@ namespace _1942
         public List<Rectangle> TargetRectangles
         {
             get { return targetableRectangles; }
+        }
+
+        public void DeadRemoval()
+        {
+
+            for (int j = accessoryList.Count - 1; j >= 0; j--)
+            {
+                if (accessoryList[j].IsDead())
+                    accessoryList.RemoveAt(j);
+            }
+
         }
     }
 }

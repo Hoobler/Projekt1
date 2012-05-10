@@ -22,7 +22,7 @@ namespace _1942
         public Boss1(Vector2 startingPos)
         {
             position = startingPos;
-            position.X = Settings.window.ClientBounds.Width;
+            
             color = Color.White;
             size = new Point(400, 200);
             speed = new Vector2(-5, 0);
@@ -31,9 +31,9 @@ namespace _1942
             maxHealth = 1000;
             health = maxHealth;
 
-            gunList.Add(new Boss1_Gun(new Vector2(position.X + 75, position.Y + 115), 0.0f));
-            gunList.Add(new Boss1_Gun(new Vector2(position.X + 180, position.Y + 55), 0.1f));
-            gunList.Add(new Boss1_Gun(new Vector2(position.X + size.X - 116, position.Y + 115), 0.2f));
+            accessoryList.Add(new Boss1_Gun(new Vector2(position.X + 75, position.Y + 115), 0.0f));
+            accessoryList.Add(new Boss1_Gun(new Vector2(position.X + 180, position.Y + 55), 0.1f));
+            accessoryList.Add(new Boss1_Gun(new Vector2(position.X + size.X - 116, position.Y + 115), 0.2f));
 
             
         }
@@ -55,10 +55,10 @@ namespace _1942
                     if (position.Y >= 20)
                     {
                         position.Y = 20;
-                        for (int i = 0; i < gunList.Count; i++)
+                        for (int i = 0; i < accessoryList.Count; i++)
                         {
-                            if (!gunList[i].Activated)
-                                gunList[i].Activated = true;
+                            if (!accessoryList[i].Activated)
+                                accessoryList[i].Activated = true;
                         }
                         activated = true;
                     }
@@ -69,10 +69,10 @@ namespace _1942
                     if (position.X <= Settings.window.ClientBounds.Width / 2 - size.X / 2)
                     {
                         phase = 1;
-                        for (int i = 0; i < gunList.Count; i++)
+                        for (int i = 0; i < accessoryList.Count; i++)
                         {
-                            if (!gunList[i].ReallyActivate)
-                                gunList[i].ReallyActivate = true;
+                            if (!accessoryList[i].ReallyActivated)
+                                accessoryList[i].ReallyActivated = true;
                         }
                     }
                 }
@@ -105,9 +105,9 @@ namespace _1942
             }
                 
                 
-            DeadRemoval();
+            
 
-            if (gunList.Count == 0)
+            if (accessoryList.Count == 0)
                 killable = true;
                 
             if (dead)
@@ -123,15 +123,6 @@ namespace _1942
 
         }
 
-        public void DeadRemoval()
-        {
-
-            for (int j = gunList.Count - 1; j >= 0; j--)
-            {
-                if (gunList[j].IsDead())
-                    gunList.RemoveAt(j);
-            }
-
-        }
+        
     }
 }
