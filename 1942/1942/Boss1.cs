@@ -34,6 +34,8 @@ namespace _1942
             gunList.Add(new Boss1_Gun(new Vector2(position.X + 75, position.Y + 115), 0.0f));
             gunList.Add(new Boss1_Gun(new Vector2(position.X + 180, position.Y + 55), 0.1f));
             gunList.Add(new Boss1_Gun(new Vector2(position.X + size.X - 116, position.Y + 115), 0.2f));
+
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -41,7 +43,9 @@ namespace _1942
             base.Update(gameTime);
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+
+            targetableRectangles.Clear();
+            targetableRectangles.Add(new Rectangle((int)position.X, (int)position.Y + 65, 149, 120));
 
 
             if (phase == 0)

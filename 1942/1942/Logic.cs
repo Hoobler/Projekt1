@@ -216,10 +216,14 @@ namespace _1942
                     {
                         if (Objects.bossList[i].IsKillable())
                         {
-                            if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].Rectangle))
+                            for (int k = 0; k < Objects.bossList[i].TargetRectangles.Count; k++)
                             {
-                                Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
-                                Objects.playerProjectileList[j].SetDead();
+                                if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].TargetRectangles[k]))
+                                {
+                                    Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                                    Objects.playerProjectileList[j].SetDead();
+                                    break;
+                                }
                             }
                         }
                     }

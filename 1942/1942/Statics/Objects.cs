@@ -111,6 +111,10 @@ namespace _1942
                 if (Objects.bossList[i].IsDead())
                     Objects.bossList.RemoveAt(i);
 
+            for (int i = Objects.formationList.Count - 1; i >= 0; i--)
+                if (Objects.formationList[i].IsDead())
+                    Objects.formationList.RemoveAt(i);
+
             
         }
 

@@ -14,6 +14,7 @@ namespace _1942
         protected bool activated;
         protected bool killable;
         public List<Boss1_Gun> gunList = new List<Boss1_Gun>();
+        protected List<Rectangle> targetableRectangles = new List<Rectangle>();
         protected int score;
 
 
@@ -74,6 +75,11 @@ namespace _1942
         {
             get { return score; }
             set { score = value; }
+        }
+
+        public List<Rectangle> TargetRectangles
+        {
+            get { return targetableRectangles; }
         }
     }
 }
