@@ -14,9 +14,9 @@ namespace _1942
     class PowerUpHealth : BasePowerUp
     {
 
-        public PowerUpHealth(Random random)
+        public PowerUpHealth(Vector2 mySpawnPosition)
         {
-            Position = new Vector2(random.Next(0, Settings.window.ClientBounds.Width), 0);
+            Position = mySpawnPosition;
         }
 
         public void Update()
