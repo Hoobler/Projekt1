@@ -34,7 +34,10 @@ namespace _1942
             }
         }
 
-
+        public virtual void AngleUpdate(float angle)
+        {
+            this.angle = angle;
+        }
         public bool ReallyActivated
         {
             get { return reallyActivated; }

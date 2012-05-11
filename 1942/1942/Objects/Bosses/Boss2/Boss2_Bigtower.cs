@@ -37,7 +37,7 @@ namespace _1942
                     Vector2 shotOrigin = new Vector2(0, 0);
                     shotOrigin.X = (float)Math.Cos(angle) * size.Y / 2 + towerCenter.X;
                     shotOrigin.Y = (float)Math.Sin(angle) * size.Y / 2 + towerCenter.Y;
-                    Objects.enemyProjectileList.Add(new Boss1_Projectile(shotOrigin, angle));
+                    Objects.enemyProjectileList.Add(new Boss2_BigShot(shotOrigin, angle));
                     timeUntilNextShot -= timeBetweenShots;
                 }
 

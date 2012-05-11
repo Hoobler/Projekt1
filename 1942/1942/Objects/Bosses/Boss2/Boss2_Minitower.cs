@@ -32,10 +32,34 @@ namespace _1942
 
         public override void Update(GameTime gameTime, Vector2 speed)
         {
-            base.Update(gameTime, speed);
+            layerDepth = 0.0f;
+            if (activated)
+            {
+                if (health <= 0)
+                {
+                    health = 0;
+                    dead = true;
+                }
+            }
+
+            if (!activated)
+                position.Y += Settings.level_speed;
+            
+            else if (activated)
+                position += speed;
+            
+
+
             if (reallyActivated)
             {
                 timeUntilNextBarrage += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (timeUntilNextBarrage + 1.5f >= timeBetweenBarrages)
+                {
+                    color.B -= 5;
+                }
+                else
+                    color = Color.White;
 
                 if (timeUntilNextBarrage >= timeBetweenBarrages)
                 {
@@ -51,7 +75,7 @@ namespace _1942
 
                     if (timeUntilNextShot >= timeBetweenShots)
                     {
-                        Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X + size.X / 2, position.Y + size.Y)));
+                        Objects.enemyProjectileList.Add(new Boss2_SmallShot(new Vector2(position.X + size.X / 2, position.Y + size.Y)));
                         timeUntilNextShot -= timeBetweenShots;
                     }
                     

@@ -51,6 +51,11 @@ namespace _1942
                     Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss2")
                     Objects.bossList.Add(new Boss2(levelLoader.MapSpawnList[i].Position));
+                else if (levelLoader.MapSpawnList[i].Formation == "boss3")
+                {
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 0f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 6f));
+                }
                 else if (levelLoader.MapSpawnList[i].Formation == "tower")
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Health")

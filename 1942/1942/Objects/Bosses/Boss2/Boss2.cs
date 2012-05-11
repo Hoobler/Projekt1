@@ -37,6 +37,13 @@ namespace _1942
 
             if (accessoryList.Count <= 0)
                 dead = true;
+            if(!dead && activated)
+                for (int i = 0; i < Objects.playerList.Count; i++)
+                {
+                    if (Objects.playerList[i].PosY <= Settings.window.ClientBounds.Height / 2)
+                        Objects.playerList[i].PosY += 5f;
+                }
+
 
             if (dead)
             {
@@ -55,16 +62,16 @@ namespace _1942
                 
             }
 
-            if (activated && position.Y < -size.Y/2f)
+            if (activated && position.Y < -size.Y/2f-50)
             {
                 position += speed;
                 
             }
 
-            if (position.Y >= -size.Y / 2f)
+            if (position.Y >= -size.Y / 2f-50)
             {
                 speed = new Vector2(0, 0);
-                position.Y = -size.Y / 2f;
+                position.Y = -size.Y / 2f-50;
                 for (int i = 0; i < accessoryList.Count; i++)
                     if (!accessoryList[i].ReallyActivated)
                         accessoryList[i].ReallyActivated = true;
