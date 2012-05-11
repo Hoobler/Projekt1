@@ -16,6 +16,7 @@ namespace _1942
         public List<BaseEnemy> enemyInFormationList;
         protected Vector2 speed;
         protected bool activated;
+        protected bool dead;
 
         public virtual void Update(GameTime gameTime)
         {
@@ -35,6 +36,9 @@ namespace _1942
             {
                 enemyInFormationList[i].Update(gameTime);
             }
+
+            if (enemyInFormationList.Count <= 0)
+                dead = true;
 
             DeadRemoval();
         }
@@ -66,6 +70,11 @@ namespace _1942
         public bool IsActivated()
         {
             return activated;
+        }
+
+        public bool IsDead()
+        {
+            return dead;
         }
     }
 }

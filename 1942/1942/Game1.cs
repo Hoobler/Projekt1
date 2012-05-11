@@ -25,6 +25,7 @@ namespace _1942
         KeyboardState keyState;
         Logic logic;
         MenuManager menu;
+        HighScore highscore;
 
         Hud hud;
 
@@ -77,6 +78,7 @@ namespace _1942
 
             Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"boss1");
             Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.boss2 = Content.Load<Texture2D>(@"boat");
 
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
@@ -130,6 +132,8 @@ namespace _1942
 
             hud = new Hud();
 
+            highscore = new HighScore();
+            //highscore.AddHighScore("derb", 10000);
         }
 
         /// <summary>
@@ -241,8 +245,8 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
-
                         hud.Draw(spriteBatch, gameTime);
+                        highscore.Draw(spriteBatch);
    
                         break;
                     }

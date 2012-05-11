@@ -585,14 +585,14 @@
       <mirrored>true</mirrored>
     </spawn>
     <spawn>
-      <positionX>0</positionX>
+      <positionX>2</positionX>
       <positionY>144</positionY>
       <formation>boss1</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>2</positionX>
-      <positionY>10</positionY>
+      <positionY>20</positionY>
       <formation>PowerUp_Damage</formation>
       <mirrored>false</mirrored>
     </spawn>
