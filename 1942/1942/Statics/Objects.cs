@@ -20,6 +20,7 @@ namespace _1942
 
         static public List<Projectile_Player> playerProjectileList = new List<Projectile_Player>();
         static public List<BaseProjectile> enemyProjectileList = new List<BaseProjectile>();
+        static public List<BasePowerUp> powerUpList = new List<BasePowerUp>();
 
         static public List<Particle_Base> particleList = new List<Particle_Base>();
 

@@ -58,6 +58,8 @@ namespace _1942
                 color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
             }
 
+            if (dead)
+                Objects.enemyProjectileList.Clear();
             DeadRemoval();
         }
 
