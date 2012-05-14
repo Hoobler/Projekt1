@@ -22,6 +22,7 @@ namespace _1942
         public Boss3(Vector2 position, float timer)
         {
             size = new Point(100, 100);
+            speed = new Vector2(0, 1);
             radius = Settings.window.ClientBounds.Height/2 - size.X/2;
             rotationPoint = new Vector2(Settings.window.ClientBounds.Width / 2, Settings.window.ClientBounds.Height / 2);
             this.position = position;
@@ -36,9 +37,7 @@ namespace _1942
             
 
             
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y + size.Y / 2), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y - size.Y / 2), angleSpeed, rotationPoint));
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -47,10 +46,9 @@ namespace _1942
 
             if (accessoryList.Count <= 0)
                 dead = true;
-
-            for (int i = 0; i < accessoryList.Count; i++)
-                accessoryList[i].AngleUpdate(angleGun + (float)Math.PI / 2f);
-
+            if(activated)
+                timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
             if (angle >= 0 && angle < (float)Math.PI / 2f)
                 angleGun = 0;
             else if (angle >= (float)Math.PI / 2f && angle < (float)Math.PI)
@@ -65,22 +63,24 @@ namespace _1942
             else if (angle < 0)
                 angle += (float)Math.PI * 2f;
 
-            if (position.Y >= -size.Y && !activated)
-            {
-                position.Y = -size.Y;
-                activated = true;
-                for (int i = 0; i < accessoryList.Count; i++)
-                    if (!accessoryList[i].Activated)
-                        accessoryList[i].Activated = true;
+            
 
+            if (timer <= 0)
+            {
                 phase = 1;
+            }
+
+            if (phase == 1 && position.Y >= Settings.window.ClientBounds.Height / 2 - size.Y / 2)
+            {
+                position.Y = Settings.window.ClientBounds.Height / 2 - size.Y / 2;
+                phase = 2;
                 speed = new Vector2(0, 0);
             }
 
-            if (activated)
+            if (phase >= 2)
             {
                 timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+                
                 if (timeUntilNextShot >= timeBetweenShots)
                 {
                     timeUntilNextShot -= timeBetweenShots;
@@ -98,22 +98,7 @@ namespace _1942
                     Objects.enemyProjectileList.Add(new Boss3_Projectile_Front(shot2Origin, angle - (float)Math.PI / 2f));
                 }
 
-                if (phase == 1)
-                {
-                    timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (timer <= 0)
-                    {
-                        speed = new Vector2(0, 1);
-                        position += speed;
-                        if (position.Y >= Settings.window.ClientBounds.Height / 2 - size.Y / 2)
-                        {
-                            position.Y = Settings.window.ClientBounds.Height / 2 - size.Y / 2;
-                            phase = 2;
-                            speed = new Vector2(0, 0);
-                        }
-                    }
-                }
-                else if (phase == 2)
+                if (phase == 2)
                 {
                     angle += angleSpeed;
                     for (int i = 0; i < accessoryList.Count; i++)
@@ -125,6 +110,8 @@ namespace _1942
 
                     position.X = xPrim - size.X/2;
                     position.Y = yPrim - size.Y/2;
+                    for (int i = 0; i < accessoryList.Count; i++)
+                        accessoryList[i].AngleUpdate(angleGun + (float)Math.PI / 2f);
                 }
             }
 
@@ -150,5 +137,12 @@ namespace _1942
             get { return new Vector2(position.X + size.X / 2, position.Y + size.Y / 2); }
         }
 
+        public override void Accessorize()
+        {
+            base.Accessorize();
+            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y + size.Y / 2), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y + size.Y), angleSpeed, rotationPoint));
+        }
     }
 }

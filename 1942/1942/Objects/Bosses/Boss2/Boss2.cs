@@ -23,12 +23,7 @@ namespace _1942
             health = maxHealth;
             score = 20000;
 
-            accessoryList.Add(new Boss2_Wall(new Vector2(this.position.X, this.position.Y + 581)));
-            accessoryList.Add(new Boss2_Wall(new Vector2(this.position.X, this.position.Y + 509)));
-
-            for(int i= 0; i <13 ; i++)
-                accessoryList.Add(new Boss2_Minitower(new Vector2(this.position.X+20*(i+1), this.position.Y + 560)));
-            accessoryList.Add(new Boss2_Bigtower(new Vector2(this.position.X + size.X/2 - 50, this.position.Y + 410)));
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -43,33 +38,22 @@ namespace _1942
                     if (Objects.playerList[i].PosY <= Settings.window.ClientBounds.Height / 2)
                         Objects.playerList[i].PosY += 5f;
                 }
-
+            
 
             if (dead)
             {
                 Objects.particleList.Add(new Particle_Explosion(new Vector2(position.X + size.X, position.Y + size.Y / 2)));
             }
 
-            if (!activated && position.Y >= -size.Y)
+            if (activated)
             {
-                activated = true;
-                position.Y = -size.Y;
                 speed = new Vector2(0, 0.5f);
-
-                for (int i = 0; i < accessoryList.Count; i++)
-                    if(!accessoryList[i].Activated)
-                        accessoryList[i].Activated = true;
-                
-            }
-
-            if (activated && position.Y < -size.Y/2f-50)
-            {
-                position += speed;
                 
             }
 
             if (position.Y >= -size.Y / 2f-50)
             {
+                
                 speed = new Vector2(0, 0);
                 position.Y = -size.Y / 2f-50;
                 for (int i = 0; i < accessoryList.Count; i++)
@@ -79,6 +63,15 @@ namespace _1942
 
         }
 
+        public override void Accessorize()
+        {
+            base.Accessorize();
+            accessoryList.Add(new Boss2_Wall(new Vector2(this.position.X, this.position.Y + 581)));
+            accessoryList.Add(new Boss2_Wall(new Vector2(this.position.X, this.position.Y + 509)));
 
+            for (int i = 0; i < 13; i++)
+                accessoryList.Add(new Boss2_Minitower(new Vector2(this.position.X + 20 * (i + 1), this.position.Y + 560)));
+            accessoryList.Add(new Boss2_Bigtower(new Vector2(this.position.X + size.X / 2 - 50, this.position.Y + 410)));
+        }
     }
 }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <level>
-  <name>Level 1</name>
-  <nextlevel>level2</nextlevel>
-  <description>Pearl Harbor 1942</description>
+  <name>Level 3</name>
+  <nextlevel>level4</nextlevel>
+  <description>Water</description>
   <tileset>texturelist</tileset>
   <layout>
     <row>WWWWWWWWWW</row>
@@ -587,13 +587,13 @@
     <spawn>
       <positionX>2</positionX>
       <positionY>20</positionY>
-      <formation>PowerUp_Health</formation>
+      <formation>PowerUp_Damage</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
       <positionY>50</positionY>
-      <formation>PowerUp_Health</formation>
+      <formation>PowerUp_Armor</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
@@ -611,7 +611,7 @@
     <spawn>
       <positionX>0</positionX>
       <positionY>144</positionY>
-      <formation>boss1</formation>
+      <formation>boss3</formation>
       <mirrored>false</mirrored>
     </spawn>
   </spawnlist>

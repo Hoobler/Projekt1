@@ -43,12 +43,14 @@ namespace _1942
                                 if (Objects.playerList[j].TimeLeftOnDamagePowerUp < 10)
                                 {
                                     Objects.playerList[j].TimeLeftOnDamagePowerUp = 10;
+                                   
                                 }
                             }
                             if (PowerUps[i] is PowerUpHealth)
                             {
                                 Objects.playerList[j].PowerUpHealth = true;
                                 Objects.playerList[j].Health += 20;
+                                
                             }
                             if (PowerUps[i] is PowerUpShield)
                             {
@@ -56,6 +58,7 @@ namespace _1942
                                 if (Objects.playerList[j].TimeLeftOnArmorPowerUp < 10)
                                 {
                                     Objects.playerList[j].TimeLeftOnArmorPowerUp = 10;
+                                    
                                 }
                             }
                             PowerUps.Remove(PowerUps[i]);

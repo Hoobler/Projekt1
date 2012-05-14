@@ -13,6 +13,7 @@ namespace _1942
         protected int health;
         protected bool activated;
         protected bool killable;
+        protected bool accessorised;
         public List<Boss_Accessory> accessoryList = new List<Boss_Accessory>();
         
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
@@ -32,8 +33,22 @@ namespace _1942
                 position.Y += Settings.level_speed;
             }
 
+            if (!activated && position.Y >= -1000)
+            {
+                position.Y = -size.Y;
+                if(!accessorised)
+                Accessorize();
+                activated = true;
+                for (int i = 0; i < accessoryList.Count; i++)
+                {
+                    if (!accessoryList[i].Activated)
+                        accessoryList[i].Activated = true;
+                }
+            }
+
             if (activated)
             {
+                position += speed;
                 if (health <= 0)
                 {
                     health = 0;
@@ -54,6 +69,11 @@ namespace _1942
                 accessoryList[i].Draw(spriteBatch);
             }
             
+        }
+
+        public virtual void Accessorize()
+        {
+            accessorised = true;
         }
 
         public int Health
