@@ -84,7 +84,7 @@ namespace _1942
             animationFrame.X++;
             if (animationFrame.X > 2)
                 animationFrame.X = 0;
-            
+              
             
         }
 

@@ -9,7 +9,7 @@ namespace _1942
     static class Settings
     {
         
-        static public float level_speed = 10f;
+        static public float level_speed = 2f;
         static public int nr_of_players = 2;
         static public GameWindow window;
 
@@ -39,6 +39,7 @@ namespace _1942
         static public int player_projectile_damage = 10;
         static public Point size_player = new Point(32 , 30);
 
+        static public int textInputLength = 5;
     
         
 

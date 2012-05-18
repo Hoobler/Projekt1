@@ -136,11 +136,11 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
     <row>GGGGGvvvGG</row>
     <row>GGGTtDWdGG</row>
     <row>GGGRrDWdGG</row>
@@ -153,9 +153,9 @@
     <row>GGGRrDWdGG</row>
     <row>GGGEeDWdGG</row>
     <row>GGGGGCVcGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>   
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>   
   </layout>
   <spawnlist>
     <spawn>
@@ -586,7 +586,7 @@
     </spawn>
     <spawn>
       <positionX>0</positionX>
-      <positionY>144</positionY>
+      <positionY>138</positionY>
       <formation>boss1</formation>
       <mirrored>false</mirrored>
     </spawn>

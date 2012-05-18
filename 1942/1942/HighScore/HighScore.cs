@@ -5,13 +5,22 @@ using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace _1942
 {
     class HighScore
     {
-        //private string test = "1";
-        private string _path = @"./HighScore/HighScoreList.xml";
+
+        #region Variables
+
+        private string playerName;
+        private string currentPlayer;
+
+        private KeyboardState keyState;
+        private KeyboardState oldKeyState;
+
+        private string _path = String.Empty;
         XmlDocument doc;
 
         //Implementing of Icomparer sorting it in ascending order
@@ -20,11 +29,16 @@ namespace _1942
         //The list that holds the scores from the xml, before we add the new score.
         List<ScoreObj> list = new List<ScoreObj>();
 
-        public HighScore()
+        #endregion
+
+        public HighScore(string ListFile)
         {
-            DataAccess();      
+            _path = @"./HighScore/HighScore" + ListFile + ".xml";
+            DataAccess();
+            RetreiveHighScore();
         }
 
+        #region HighScoreMethods
         private void DataAccess()
         {
             doc = new XmlDocument();
@@ -37,6 +51,7 @@ namespace _1942
         }
 
         public void AddHighScore(string name, int score)
+        
         {
             RetreiveHighScore();
             list.Add(new ScoreObj(name, score, 0));
@@ -48,7 +63,7 @@ namespace _1942
                 list.RemoveRange(10, remove);
             }
 
-            DeleteHighScore("1");
+            DeleteHighScore();
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -83,8 +98,9 @@ namespace _1942
         /// Retreives the Highscore list from the .xml file that contains the top 10 high scores
         /// </summary>
         /// <returns></returns>
-        private void RetreiveHighScore()
+        public void RetreiveHighScore()
         {
+            list.Clear();
             XmlNode root = doc.SelectSingleNode("//highscorelist");
             XmlNodeList nodeList = root.SelectNodes("highscore");
 
@@ -103,7 +119,7 @@ namespace _1942
         /// Used to delete a highscore based on it's placement in the highscore list
         /// </summary>
         /// <param name="placement"></param>
-        private void DeleteHighScore(string placement)
+        private void DeleteHighScore()
         {
             XmlNode root = doc.SelectSingleNode("//highscorelist");
             XmlNodeList nodes = root.SelectNodes("highscore");
@@ -112,11 +128,48 @@ namespace _1942
             doc.Save(_path);
         }
 
+        #endregion
+
+        #region HighScoreProperties
+
+        public string SetPlayerName
+        {
+            set { playerName = value; }
+        }
+
+        public string SetCurrentPlayer
+        {
+            set { currentPlayer = value; }
+        }
+
+        #endregion
+
+        public void Update(GameTime gameTime)
+        {
+            oldKeyState = keyState;
+            keyState = Keyboard.GetState();
+
+            playerName = KeyBoardInput.TextInput(5, false);
+
+            if (oldKeyState.IsKeyUp(Keys.Enter))
+            {
+                if (keyState.IsKeyDown(Keys.Enter))
+                {
+                    AddHighScore(playerName, 5);
+                }
+            }
+            RetreiveHighScore();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.DrawString(FontLibrary.debug, "" + currentPlayer, new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
+            spriteBatch.DrawString(FontLibrary.debug, "" + playerName , new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+            spriteBatch.DrawString(FontLibrary.highscore_font, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
             for (int i = 0; i < list.Count ; i++)
             {
-            spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(1f, Settings.window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 10 + i)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(300f, (FontLibrary.debug.LineSpacing * 1 * i)), Color.White);
+                //spriteBatch.DrawString(FontLibrary.highscore_font, "" + string.Format("{0: 10}" , list[i].PlayerPlacement) + "" + list[i].PlayerName + "" + list[i].PlayerScore, new Vector2(300f, (FontLibrary.highscore_font.LineSpacing * 1 * i)), Color.White, 0f, new Vector2(0,0), 0.5f, SpriteEffects.None, 0);
             }
         }  
     }

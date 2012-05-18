@@ -17,13 +17,21 @@ namespace _1942
 
         private List<BaseProjectile> projectileList = new List<BaseProjectile>();*/
 
-        PowerUpManager mPowerUpManager;
+        bool playerOneAdd = false;
+        bool playerTwoAdd = false;
+        string playerName = String.Empty;
+        KeyboardState oldKeyState;
+        KeyboardState myKeyState;
 
+        PowerUpManager mPowerUpManager;
         LevelLoader levelLoader;
         ContentManager Content;
+        HighScore highscore;
+        Hud hud;
+
+        GameTime gameTime;
 
         Random random = new Random();
-
 
         public Logic(ContentManager Content)
         {
@@ -37,7 +45,11 @@ namespace _1942
 
             mPowerUpManager = new PowerUpManager();
 
+            hud = new Hud();
+
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
+
+            highscore = new HighScore(Settings.currentLevel.ToString());
 
 
 
@@ -73,13 +85,74 @@ namespace _1942
 
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
+            this.gameTime = gameTime;
+            oldKeyState = myKeyState;
+            myKeyState = Keyboard.GetState();
+            levelLoader.Update(gameTime);
 
             if (levelLoader.LevelHasEnded())
             {
                 Settings.currentLevel++;
                 NewGame();
-
             }
+
+            #region HighScoreUpdate
+
+            if (levelLoader.HighScoreScreen())
+            {
+                levelLoader.ScoreLoop = true;
+            }
+
+            if (levelLoader.ScoreLoop)
+            {
+                playerName = KeyBoardInput.TextInput(5, false);
+                highscore.SetPlayerName = playerName;
+
+                if (Objects.playerList.Count == 2)
+                {
+                    if (!playerOneAdd)
+                    {
+                        highscore.SetCurrentPlayer = "Player 1";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                            {
+                                highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                playerOneAdd = true;
+                                KeyBoardInput.EmptyWord = "";
+                                highscore.RetreiveHighScore();
+                            }
+                        }
+                    }
+                    else if (!playerTwoAdd)
+                    {
+                        highscore.SetCurrentPlayer = "Player 2";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                            {
+                                highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
+                                playerTwoAdd = true;
+                                KeyBoardInput.EmptyWord = "";
+                                highscore.RetreiveHighScore();
+                            }
+                        }
+                    }
+                    else if (playerOneAdd && playerTwoAdd)
+                    {
+                        //Temp stuff
+                        highscore.SetCurrentPlayer = "Press space to continue the next level";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                            {
+                                levelLoader.EndLevel = true; 
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
 
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
@@ -92,8 +165,16 @@ namespace _1942
         public void Draw(SpriteBatch spriteBatch)
         {
             levelLoader.Draw(spriteBatch);
-            Objects.Draw(spriteBatch);
-            mPowerUpManager.Draw(spriteBatch);
+            if (!levelLoader.ScoreLoop)
+            {
+                Objects.Draw(spriteBatch);
+                mPowerUpManager.Draw(spriteBatch);
+                hud.Draw(spriteBatch, gameTime);
+            }
+            if (levelLoader.ScoreLoop)
+            {
+                highscore.Draw(spriteBatch);
+            }
         }
 
         public void CollisionRemoval()

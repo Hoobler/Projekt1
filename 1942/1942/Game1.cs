@@ -25,10 +25,6 @@ namespace _1942
         KeyboardState keyState;
         Logic logic;
         MenuManager menu;
-        HighScore highscore;
-
-        Hud hud;
-
 
         public Game1()
         {
@@ -116,6 +112,7 @@ namespace _1942
             //fonts
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
             FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
+            FontLibrary.highscore_font = Content.Load<SpriteFont>(@"1942font3");
 
             //Sounds
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Ride_of_the_Valkyries");
@@ -128,11 +125,6 @@ namespace _1942
 
             logic = new Logic(this.Content);
             menu = new MenuManager();
-
-            hud = new Hud();
-
-            highscore = new HighScore();
-            //highscore.AddHighScore("derb", 10000);
         }
 
         /// <summary>
@@ -160,6 +152,7 @@ namespace _1942
                 this.Exit();
 
             keyState = Keyboard.GetState();
+            
 
             //Just to test Orvar take it easy!
             if (menu.GetStartGame())
@@ -243,10 +236,7 @@ namespace _1942
                         }
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
-
-                        hud.Draw(spriteBatch, gameTime);
-                        highscore.Draw(spriteBatch);
-   
+                        
                         break;
                     }
             }
