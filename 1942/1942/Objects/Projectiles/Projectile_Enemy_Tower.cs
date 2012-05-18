@@ -27,8 +27,7 @@ namespace _1942
             base.Update(gameTime);
 
             //position.Y += Settings.level_speed;
-            if (position.X < 0 || position.X > Settings.window.ClientBounds.Width || position.Y < 0 || position.Y > Settings.window.ClientBounds.Height)
-                dead = true;
+            
         }
     }
 }

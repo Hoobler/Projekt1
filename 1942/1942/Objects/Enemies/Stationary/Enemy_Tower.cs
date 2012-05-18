@@ -109,7 +109,7 @@ namespace _1942
                 if (dead)
                 {
                     Objects.deadList.Add(new Enemy_Tower_Dead(position, size));
-                    Objects.particleList.Add(new Particle_Explosion(position));
+                    Objects.particleList.Add(new Particle_Explosion(Center, size));
                 }
                 
             }
@@ -133,7 +133,7 @@ namespace _1942
                     new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
                     color,
                     angle + (float)Math.PI / 2,
-                    new Vector2(texture.Bounds.Width / 2, 32),
+                    new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height/2),
                     spriteEffect, layerDepth);
             }
         }

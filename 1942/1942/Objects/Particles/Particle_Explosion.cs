@@ -10,10 +10,10 @@ namespace _1942
     class Particle_Explosion : Particle_Base
     {
         bool delay;
-        public Particle_Explosion(Vector2 startingPos)
+        public Particle_Explosion(Vector2 startingPos, Point size)
         {
             position = startingPos;
-            size = new Point(39, 39);
+            this.size = size;
             layerDepth = 0.0f;
             texture = Texture2DLibrary.particle_zero_explosion;
             
@@ -22,7 +22,6 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
             //12
             if(animationFrame.X < 4 && delay)
             animationFrame.X++;
@@ -40,7 +39,7 @@ namespace _1942
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture,
-                Rectangle,
+                new Rectangle((int)position.X - size.X/2, (int)position.Y - size.Y/2, size.X, size.Y),
                 new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 4) + 1,
                     1,
                     38,

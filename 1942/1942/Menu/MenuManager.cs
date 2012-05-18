@@ -319,17 +319,5 @@ namespace _1942
             return options;
         }
 
-        public void PlayMusic()
-        {
-            if (MediaPlayer.State != MediaState.Playing)
-            {
-                MediaPlayer.Play(SoundLibrary.Menu_Song);
-            }
-        }
-
-        public void StopMusic()
-        {
-            MediaPlayer.Stop();
-        }
     }
 }

@@ -20,6 +20,7 @@ namespace _1942
 
         static public List<Projectile_Player> playerProjectileList = new List<Projectile_Player>();
         static public List<BaseProjectile> enemyProjectileList = new List<BaseProjectile>();
+        static public List<BasePowerUp> powerUpList = new List<BasePowerUp>();
 
         static public List<Particle_Base> particleList = new List<Particle_Base>();
 
@@ -109,7 +110,15 @@ namespace _1942
 
             for (int i = Objects.bossList.Count - 1; i >= 0; i--)
                 if (Objects.bossList[i].IsDead())
+                {
+                    for (int j = 0; j < playerList.Count; j++)
+                        playerList[j].MyScore += Objects.bossList[i].Score;
                     Objects.bossList.RemoveAt(i);
+                }
+
+            for (int i = Objects.formationList.Count - 1; i >= 0; i--)
+                if (Objects.formationList[i].IsDead())
+                    Objects.formationList.RemoveAt(i);
 
             
         }

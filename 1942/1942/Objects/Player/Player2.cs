@@ -14,7 +14,7 @@ namespace _1942
         public Player2(): base()
         {
             color = Color.Pink;
-            position = new Vector2(Settings.window.ClientBounds.Width / 2 + size.X * 3, Settings.window.ClientBounds.Height - size.Y);
+            position = new Vector2(Settings.window.ClientBounds.Width / 2 + size.X * 0.8f, Settings.window.ClientBounds.Height - size.Y);
             playerID = 1;
             damage = 10;
         }

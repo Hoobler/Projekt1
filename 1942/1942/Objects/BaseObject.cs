@@ -32,7 +32,7 @@ namespace _1942
             animationFrame = new Point(0, 0);
         }
 
-        public Rectangle Rectangle
+        public virtual Rectangle Rectangle
         {
             get { return new Rectangle((int)position.X, (int)position.Y, size.X, size.Y); }
         }
@@ -66,8 +66,19 @@ namespace _1942
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Rectangle, new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height), color, angle, new Vector2(0, 0), spriteEffect, layerDepth);
+            spriteBatch.Draw(texture,
+                new Rectangle((int)Position.X+size.X/2,(int)Position.Y+size.Y/2, size.X, size.Y),
+                new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
+                color,
+                angle,
+                new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
+                spriteEffect, layerDepth);
             
+        }
+
+        public Vector2 Center
+        {
+            get { return new Vector2(position.X + size.X / 2, position.Y + size.Y / 2); }
         }
 
         public bool IsDead()

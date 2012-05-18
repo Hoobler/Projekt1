@@ -16,7 +16,7 @@ namespace _1942
        
         Random random = new Random();
 
-        public List<BasePowerUp> PowerUps = new List<BasePowerUp>(); 
+        
         // PowerUpSpeed
         float mPowerUpSpeed = Settings.level_speed;
 
@@ -26,67 +26,73 @@ namespace _1942
 
         public void Update(GameTime gameTime)
         {
-            for (int i = 0; i < PowerUps.Count; i++)
+            for (int i = 0; i < Objects.powerUpList.Count; i++)
             {
-                PowerUps[i].PosY += mPowerUpSpeed;
-                PowerUps[i].IsAlive = true;
+                Objects.powerUpList[i].PosY += mPowerUpSpeed;
+                Objects.powerUpList[i].IsAlive = true;
                 
                 for (int j = 0; j < Objects.playerList.Count; j++)
                 {
-                    if (PowerUps.Count > 0 && PowerUps[i] != null)
+                    if (Objects.powerUpList[i] != null)
                     {
-                        if (PowerUps[i].GetRectangle.Intersects(Objects.playerList[j].Rectangle) && PowerUps[i].IsAlive == true)
+                        if (Objects.powerUpList[i].GetRectangle.Intersects(Objects.playerList[j].Rectangle) && Objects.powerUpList[i].IsAlive == true)
                         {
-                            if (PowerUps[i] is PowerUpDamage)
+                            if (Objects.powerUpList[i] is PowerUpDamage)
                             {
                                 Objects.playerList[j].PowerUpDamage = true;
                                 if (Objects.playerList[j].TimeLeftOnDamagePowerUp < 10)
                                 {
                                     Objects.playerList[j].TimeLeftOnDamagePowerUp = 10;
+                                   
                                 }
                             }
-                            if (PowerUps[i] is PowerUpHealth)
+                            if (Objects.powerUpList[i] is PowerUpHealth)
                             {
                                 Objects.playerList[j].PowerUpHealth = true;
                                 Objects.playerList[j].Health += 20;
+                                
                             }
-                            if (PowerUps[i] is PowerUpShield)
+                            if (Objects.powerUpList[i] is PowerUpShield)
                             {
                                 Objects.playerList[j].PowerUpShield = true;
                                 if (Objects.playerList[j].TimeLeftOnArmorPowerUp < 10)
                                 {
                                     Objects.playerList[j].TimeLeftOnArmorPowerUp = 10;
+                                    
                                 }
                             }
-                            PowerUps.Remove(PowerUps[i]);
+                            Objects.powerUpList.RemoveAt(i);
+                            break;
                         }
+                        
                     }
                     if (Objects.playerList[j].PowerUpDamage == true)
                     {
-                        Objects.playerList[j].Damage += 10;
+                        Objects.playerList[j].Damage = 20;
                         Objects.playerList[j].ProjectileColor = Color.Orange;
                     }
-                    else
+                    else if (Objects.playerList[j].PowerUpDamage == false)
                     {
                         Objects.playerList[j].Damage = 10;
                         Objects.playerList[j].ProjectileColor = Color.Yellow;
                     }
                 }
             }
-            for (int i = 0; i < PowerUps.Count; i++)
+            for (int i = 0; i < Objects.powerUpList.Count; i++)
             {
-                if (PowerUps[i].PosY > Settings.window.ClientBounds.Height)
+                if (Objects.powerUpList[i].PosY > Settings.window.ClientBounds.Height)
                 {
-                    PowerUps.Remove(PowerUps[i]);
+                    Objects.powerUpList.RemoveAt(i);
+                    break;
                 }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < PowerUps.Count; i++)
+            for (int i = 0; i < Objects.powerUpList.Count; i++)
             {
-                PowerUps[i].Draw(spriteBatch);
+                Objects.powerUpList[i].Draw(spriteBatch);
             }
         }
     }

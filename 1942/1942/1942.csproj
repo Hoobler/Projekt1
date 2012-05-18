@@ -107,15 +107,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boss1.cs" />
-    <Compile Include="Boss1_Gun.cs" />
+    <Compile Include="Enemy_Boat.cs" />
+    <Compile Include="Enemy_Boat_Tower.cs" />
+    <Compile Include="Enemy_Boat_Tower_Projectile.cs" />
+    <Compile Include="MusicManager.cs" />
+    <Compile Include="Objects\Bosses\Boss1\Boss1_Engine.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Projectile_Front.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Kamikaze.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Todjo.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Zeke.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1c.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2c.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3a.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3c.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Gun.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Projectile.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_BigShot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_SmallShot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Splittershot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Bigtower.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Minitower.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Wall.cs" />
+    <Compile Include="Objects\Bosses\Boss_Accessory.cs" />
+    <Compile Include="Objects\Bosses\Boss1\Boss1.cs" />
+    <Compile Include="Objects\Bosses\Boss1\Boss1_Gun.cs" />
     <Compile Include="HighScore\HighScore.cs" />
     <Compile Include="HighScore\SortHighScore_Ascending.cs" />
     <Compile Include="Hud\Hud.cs" />
     <Compile Include="KeyBoardInput.cs" />
     <Compile Include="Menu\AddVolumeButton.cs" />
-    <Compile Include="Boss1_Projectile.cs" />
-    <Compile Include="Boss_Base.cs" />
+    <Compile Include="Objects\Bosses\Boss1\Boss1_Projectile.cs" />
+    <Compile Include="Objects\Bosses\Boss_Base.cs" />
     <Compile Include="Levelmanager\LevelSpawnObj.cs" />
     <Compile Include="Menu\AudioOptionButton.cs" />
     <Compile Include="Menu\BackButton.cs" />
@@ -148,8 +175,8 @@
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower.cs" />
     <Compile Include="Objects\Enemies\Aircraft\Enemy_Zero.cs" />
     <Compile Include="Objects\Enemies\Aircraft\FlyingObject.cs" />
-    <Compile Include="Objects\Enemies\Aircraft\Formation1.cs" />
-    <Compile Include="Objects\Enemies\Aircraft\Formation2.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1a.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2a.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
     <Compile Include="Menu\OptionButton.cs" />
@@ -157,6 +184,8 @@
     <Compile Include="Objects\Particles\Particle_Base.cs" />
     <Compile Include="Objects\Particles\Particle_Explosion.cs" />
     <Compile Include="HighScore\ScoreObj.cs" />
+    <Compile Include="Objects\Particles\Particle_FireStream.cs" />
+    <Compile Include="Objects\Particles\Particle_SmokeStream.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />
@@ -175,15 +204,25 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+<<<<<<< HEAD
     <Content Include="HighScore\HighScoreLevel2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+=======
+    <Content Include="Levels\level3.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+>>>>>>> 35ee24bbda9ea48635ce877fbb9421d0a0c02eef
     </Content>
     <Content Include="Levels\level2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
     <Content Include="HighScore\HighScoreLevel1.xml">
+=======
+    <Content Include="HighScore\HighScoreList.xml">
+>>>>>>> 35ee24bbda9ea48635ce877fbb9421d0a0c02eef
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
