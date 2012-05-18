@@ -24,12 +24,10 @@ namespace _1942
         KeyboardState oldKeyState;
         KeyboardState myKeyState;
 
-<<<<<<< HEAD
+
         PowerUpManager mPowerUpManager;
-        LevelLoader levelLoader;
-=======
         public LevelLoader levelLoader;
->>>>>>> 35ee24bbda9ea48635ce877fbb9421d0a0c02eef
+
         ContentManager Content;
         HighScore highscore;
         Hud hud;

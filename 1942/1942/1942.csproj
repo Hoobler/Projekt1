@@ -204,25 +204,19 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-<<<<<<< HEAD
     <Content Include="HighScore\HighScoreLevel2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
+    </Content>
     <Content Include="Levels\level3.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
->>>>>>> 35ee24bbda9ea48635ce877fbb9421d0a0c02eef
     </Content>
     <Content Include="Levels\level2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-<<<<<<< HEAD
     <Content Include="HighScore\HighScoreLevel1.xml">
-=======
-    <Content Include="HighScore\HighScoreList.xml">
->>>>>>> 35ee24bbda9ea48635ce877fbb9421d0a0c02eef
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
