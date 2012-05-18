@@ -22,7 +22,7 @@ namespace _1942
         public Boss3(Vector2 position, float timer)
         {
             size = new Point(100, 100);
-            speed = new Vector2(0, 1);
+            speed = new Vector2(0, 0);
             radius = Settings.window.ClientBounds.Height/2 - size.X/2;
             rotationPoint = new Vector2(Settings.window.ClientBounds.Width / 2, Settings.window.ClientBounds.Height / 2);
             this.position = position;
@@ -34,6 +34,7 @@ namespace _1942
             this.timer = timer+1f;
             maxHealth = 1000;
             health = maxHealth;
+            score = 500;
             
 
             
@@ -44,8 +45,8 @@ namespace _1942
         {
             base.Update(gameTime);
 
-            if (accessoryList.Count <= 0)
-                dead = true;
+            if (activated && accessoryList.Count <= 0)
+                killed = true;
             if(activated)
                 timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             
@@ -63,11 +64,22 @@ namespace _1942
             else if (angle < 0)
                 angle += (float)Math.PI * 2f;
 
-            
-
-            if (timer <= 0)
+            if (phase >= 2 && !killed)
             {
+                timer++;
+                if (timer == 600)
+                    Objects.powerUpList.Add(new PowerUpShield(new Vector2(100, -50)));
+                if (timer == 1200)
+                    Objects.powerUpList.Add(new PowerUpDamage(new Vector2(400, -50)));
+                if (timer >= 1200)
+                    timer = 0;
+            }
+
+            if (phase == 0 && timer <= 0)
+            {
+                MusicManager.SetMusic(SoundLibrary.Boss1);
                 phase = 1;
+                speed = new Vector2(0, 1);
             }
 
             if (phase == 1 && position.Y >= Settings.window.ClientBounds.Height / 2 - size.Y / 2)
@@ -119,30 +131,36 @@ namespace _1942
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture,
-                    new Rectangle((int)Position.X + (Size.X / 2), (int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
-                    new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
-                    color,
-                    angle,
-                    new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
-                    spriteEffect, layerDepth);
-            for (int i = 0; i < accessoryList.Count; i++)
+            if (activated)
             {
-                accessoryList[i].Draw(spriteBatch);
+                spriteBatch.Draw(texture,
+                        new Rectangle((int)Position.X + (Size.X / 2), (int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
+                        new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
+                        color,
+                        angle,
+                        new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
+                        spriteEffect, layerDepth);
+                for (int i = 0; i < accessoryList.Count; i++)
+                {
+                    accessoryList[i].Draw(spriteBatch);
+                }
+
+                if (phase == 1)
+                    spriteBatch.DrawString(FontLibrary.Hud_Font, "DODGE EVERYTHING HOLY FISHSTICKS\nAlso shoot the cannons", new Vector2(200, 200), Color.Red);
             }
+
+            
+
         }
 
-        public Vector2 Center
-        {
-            get { return new Vector2(position.X + size.X / 2, position.Y + size.Y / 2); }
-        }
+        
 
         public override void Accessorize()
         {
             base.Accessorize();
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y + size.Y / 2), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(this.position.X + size.X / 2, this.position.Y + size.Y), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y-size.Y/2), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y-10), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y+size.Y/2-20), angleSpeed, rotationPoint));
         }
     }
 }

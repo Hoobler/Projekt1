@@ -22,8 +22,8 @@ namespace _1942
         public Boss2_Minitower(Vector2 position)
         {
             this.position = position;
-            texture = Texture2DLibrary.spaceship;
-            size = new Point(20, 20);
+            texture = Texture2DLibrary.boss2_smallgun;
+            size = new Point(Texture2DLibrary.boss2_smallgun.Bounds.Width, Texture2DLibrary.boss2_smallgun.Bounds.Height);
             color = Color.White;
             maxHealth = 50;
             health = maxHealth;

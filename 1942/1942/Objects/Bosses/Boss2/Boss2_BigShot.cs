@@ -19,8 +19,8 @@ namespace _1942
         public Boss2_BigShot(Vector2 origin, float angle)
         {
             Position = origin;
-            size = new Point(20, 20);
-            texture = Texture2DLibrary.boss1_projectile;
+            size = new Point(15, 15);
+            texture = Texture2DLibrary.boss2_bigshot;
             color = Color.White;
             speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 2;
             damage = 20;

@@ -62,11 +62,20 @@ namespace _1942
 
             // TODO: use this.Content to load your game content here
             Texture2DLibrary.spaceship = Content.Load<Texture2D>(@"Enemies/spaceship");
+            Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
+            Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
 
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
             Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Enemies/square1");
             Texture2DLibrary.enemy_zero = Content.Load<Texture2D>(@"Enemies/Zero");
             Texture2DLibrary.projectile_enemy_zero = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.enemy_zeke = Content.Load<Texture2D>(@"Enemies/Zeke");
+            Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.enemy_todjo = Content.Load<Texture2D>(@"Enemies/Todjo");
+            Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Boat");
+            Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/AATower");
+            Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Enemies/square1");
 
             Texture2DLibrary.enemy_heavy = Content.Load<Texture2D>(@"Enemies/spaceship");
             Texture2DLibrary.projectile_enemy_heavy = Content.Load<Texture2D>(@"Enemies/Spaceship");
@@ -76,9 +85,18 @@ namespace _1942
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"Enemies/AABase");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
-            Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"boss1");
+            Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1");
+            Texture2DLibrary.boss1_gun = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1_Gun");
             Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Enemies/square1");
-            Texture2DLibrary.boss2 = Content.Load<Texture2D>(@"boat");
+
+            Texture2DLibrary.boss2 = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2");
+            Texture2DLibrary.boss2_bigshot = Content.Load<Texture2D>(@"Bosses/Boss2/BigBomb");
+            Texture2DLibrary.boss2_splitterbomb = Content.Load<Texture2D>(@"Bosses/Boss2/SplitterBombs");
+            Texture2DLibrary.boss2_biggun = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_BigGun");
+            Texture2DLibrary.boss2_smallgun = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_SmallGun");
+            Texture2DLibrary.boss2_wall = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_Wall");
+
+            Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Enemies/Spaceship");
 
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
@@ -104,8 +122,9 @@ namespace _1942
             Texture2DLibrary.texture_MinusVolume = Content.Load<Texture2D>(@"Menu/MinusVolume");
 
             //PowerUps
-            Texture2DLibrary.texture_PowerUp_Damage = Content.Load<Texture2D>(@"PowerUps/PowerUp");
-            Texture2DLibrary.texture_PowerUp_Health = Content.Load<Texture2D>(@"PowerUps/PowerUp");
+            Texture2DLibrary.texture_PowerUp_Damage = Content.Load<Texture2D>(@"PowerUps/2xDamage");
+            Texture2DLibrary.texture_PowerUp_Health = Content.Load<Texture2D>(@"PowerUps/Health");
+            Texture2DLibrary.texture_PowerUp_Armor = Content.Load<Texture2D>(@"PowerUps/Shield");
 
             //Level Select
             Texture2DLibrary.texture_Level1 = Content.Load<Texture2D>(@"Menu/Level1");
@@ -118,8 +137,20 @@ namespace _1942
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
             FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
 
+            //Music
+            SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
+            SoundLibrary.Twilight = Content.Load<Song>(@"Music/Twilight");
+            SoundLibrary.Boss1 = Content.Load<Song>(@"Music/Boss1");
+            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
+            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
+            SoundLibrary.Level3 = Content.Load<Song>(@"Music/Level3");
+
             //Sounds
-            SoundLibrary.Menu_Song = Content.Load<Song>(@"Ride_of_the_Valkyries");
+            SoundLibrary.Explosion = Content.Load<SoundEffect>(@"Sounds/Explosion");
+            SoundLibrary.Explosion_Big = Content.Load<SoundEffect>(@"Sounds/Explosion_Big");
+            SoundLibrary.Kamikaze = Content.Load<SoundEffect>(@"Sounds/Kamikaze");
+            SoundLibrary.Player_Shot = Content.Load<SoundEffect>(@"Sounds/Player_Shot");
+            //SoundLibrary.Tower_Shot = Content.Load<SoundEffect>(@"Sounds/Tower_Shot");
 
             Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             
@@ -173,7 +204,7 @@ namespace _1942
                 case GameStates.MainMenu:
                     {
                         menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
-                        menu.PlayMusic();
+                        MusicManager.SetMusic(SoundLibrary.Menu_Song);
                         break;
                     }
                 case GameStates.AudioScreen:
@@ -190,7 +221,6 @@ namespace _1942
                     }
                 case GameStates.Playing:
                     {
-                        menu.StopMusic();
                         logic.Update(keyState, gameTime);
                         break;
                     }
@@ -244,6 +274,7 @@ namespace _1942
                         }
                         spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
+                        spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y/logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
 
                         hud.Draw(spriteBatch, gameTime);
                         highscore.Draw(spriteBatch);
@@ -260,5 +291,8 @@ namespace _1942
 
             base.Draw(gameTime);
         }
+
+        
+
     }
 }

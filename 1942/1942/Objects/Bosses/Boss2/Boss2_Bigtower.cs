@@ -16,12 +16,14 @@ namespace _1942
         public Boss2_Bigtower(Vector2 position)
         {
             this.position = position;
+            
             color = Color.White;
-            texture = Texture2DLibrary.spaceship;
-            size = new Point(100, 50);
+            texture = Texture2DLibrary.boss2_biggun;
+            size = new Point(texture.Bounds.Width, texture.Bounds.Height);
             angle = (float)Math.PI * (1f / 2f);
             maxHealth = 2000;
             health = maxHealth;
+            this.position.X -= size.X / 2;
         }
 
         public override void Update(GameTime gameTime, Vector2 speed)
@@ -67,11 +69,11 @@ namespace _1942
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture,
-                    new Rectangle((int)Position.X + (Size.X / 2), (int)Position.Y + (Size.Y / 2), (int)(Size.X * (2f / 3f)), Size.Y),
+                    new Rectangle((int)Center.X, (int)Center.Y, Size.X, Size.Y),
                     new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
                     color,
                     angle + (float)Math.PI / 2,
-                    new Vector2(texture.Bounds.Width / 2, 32),
+                    new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height*(2f/3f)),
                     spriteEffect, layerDepth);
         }
     }

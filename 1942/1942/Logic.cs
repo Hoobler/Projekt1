@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
@@ -19,7 +20,7 @@ namespace _1942
 
         PowerUpManager mPowerUpManager;
 
-        LevelLoader levelLoader;
+        public LevelLoader levelLoader;
         ContentManager Content;
 
         Random random = new Random();
@@ -34,19 +35,39 @@ namespace _1942
 
         public void NewGame()
         {
-
+            
             mPowerUpManager = new PowerUpManager();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
-
+            
 
 
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
-                if (levelLoader.MapSpawnList[i].Formation == "formation1")
-                    Objects.formationList.Add(new Formation1(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
-                else if (levelLoader.MapSpawnList[i].Formation == "formation2")
-                    Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                if (levelLoader.MapSpawnList[i].Formation == "formation1a")
+                    Objects.formationList.Add(new Formation1a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2a")
+                    Objects.formationList.Add(new Formation2a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3a")
+                    Objects.formationList.Add(new Formation3a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+
+                else if (levelLoader.MapSpawnList[i].Formation == "formation1b")
+                    Objects.formationList.Add(new Formation1b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2b")
+                    Objects.formationList.Add(new Formation2b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3b")
+                    Objects.formationList.Add(new Formation3b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+
+                else if (levelLoader.MapSpawnList[i].Formation == "formation1c")
+                    Objects.formationList.Add(new Formation1c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2c")
+                    Objects.formationList.Add(new Formation2c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3c")
+                    Objects.formationList.Add(new Formation3c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "boat")
+                    Objects.enemyList.Add(new Enemy_Boat(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "kamikaze")
+                    Objects.enemyList.Add(new Enemy_Kamikaze(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss1")
                     Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss2")
@@ -54,7 +75,9 @@ namespace _1942
                 else if (levelLoader.MapSpawnList[i].Formation == "boss3")
                 {
                     Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 0f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 3f));
                     Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 6f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 9f));
                 }
                 else if (levelLoader.MapSpawnList[i].Formation == "tower")
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
@@ -80,14 +103,24 @@ namespace _1942
 
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
-
+            if (Settings.currentLevel == Settings.CurrentLevel.Level1)
+            {
+                for(int i = 0; i < Objects.bossList.Count; i++)
+                    if(!Objects.bossList[i].IsActivated())
+                        MusicManager.SetMusic(SoundLibrary.Level1);
+            }
             if (levelLoader.LevelHasEnded())
             {
                 Settings.currentLevel++;
                 NewGame();
-
+                if (Settings.currentLevel == Settings.CurrentLevel.Level2)
+                    MusicManager.SetMusic(SoundLibrary.Level2);
+                if (Settings.currentLevel == Settings.CurrentLevel.Level3)
+                    MusicManager.SetMusic(SoundLibrary.Level3);
             }
-
+            if (Objects.bossList.Count == 0)
+                MusicManager.SetMusic(SoundLibrary.Level3);
+            
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
@@ -106,14 +139,24 @@ namespace _1942
         public void CollisionRemoval()
         {
             //if a player's projectile hits an enemy, they die
-            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
-            {
+            
+                
                 for (int i = 0; i < Objects.enemyList.Count; i++)
                 {
-
+                    bool check = false;
+                    for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+                    {
+                    
                     if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
                         Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
+
+                        if (Objects.enemyList[i].Health <= 0 && !check)
+                        {
+                            check = true;
+                            Objects.playerList[Objects.playerProjectileList[j].PlayerID].MyScore += Objects.enemyList[i].MyScore;
+                        }
+
                         Objects.playerProjectileList[j].SetDead();
                     }
                 }
@@ -126,7 +169,7 @@ namespace _1942
                 {
                     if (Objects.enemyList[j].IsFlying == true)
                     {
-                        if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                        if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
                             if (Objects.playerList[i].PowerUpShield == true)
                             { }
@@ -149,10 +192,8 @@ namespace _1942
                     {
                         if (Objects.formationList[j].enemyInFormationList[k].IsFlying == true)
                         {
-                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
-                                Objects.formationList[j].enemyInFormationList[k].SetDead();
-
                                 if (Objects.playerList[i].PowerUpShield == true)
                                 { }
                                 else
@@ -175,11 +216,11 @@ namespace _1942
                     bool check = false;
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
-                        if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                         {
                             Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
 
-                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                             {
                                 Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
                                 if (Objects.formationList[j].enemyInFormationList[k].Health <= 0 && !check)
@@ -253,7 +294,6 @@ namespace _1942
                     }
                 }
             }
-
 
         }
     }

@@ -33,8 +33,10 @@ namespace _1942
                 color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
             }
 
-            if (position.Y > -size.Y*2)
+            if (position.Y > -size.Y)
                 activated = true;
+            if (dead)
+                SoundLibrary.Explosion.Play();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -70,6 +72,10 @@ namespace _1942
         {
             get { return score; }
             set { score = value; }
+        }
+        public Rectangle TargetingRectangle
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, size.X, size.Y); }
         }
     }
 }

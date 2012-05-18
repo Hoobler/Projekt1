@@ -20,7 +20,7 @@ namespace _1942
         private string levelName = string.Empty;
         private string nextLevel = string.Empty;
         private string description = string.Empty;
-        private Vector2 cameraPosition = new Vector2(0, 0);
+        public Vector2 cameraPosition = new Vector2(0, 0);
         private Vector2 bossCameraPosition = new Vector2(0, 0);
 
         //Spara in alla texturer där dom stämmer övernes symbolen man får från mapList så att rätt texture ritas ut.
@@ -158,8 +158,8 @@ namespace _1942
             int aPositionY = 0;
 
             //vars for the spawning of objects
-            int aSpawnPosX = 0;
-            int aSpawnPosY = 0;
+            float aSpawnPosX = 0;
+            float aSpawnPosY = 0;
             string formation = string.Empty;
             bool mirrored = false;
              
@@ -228,12 +228,12 @@ namespace _1942
                     }
                     else if (aCurrentElement == "positionX")
                     {
-                        aSpawnPosX = reader.ReadContentAsInt();
+                        aSpawnPosX = reader.ReadContentAsFloat();
                         aSpawnPosX *= TileSize();
                     }
                     else if (aCurrentElement == "positionY")
                     {
-                        aSpawnPosY = reader.ReadContentAsInt();
+                        aSpawnPosY = reader.ReadContentAsFloat();
                         aSpawnPosY *= TileSize();
                         aSpawnPosY = -aSpawnPosY;
                     }

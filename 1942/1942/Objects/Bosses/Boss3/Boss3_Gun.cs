@@ -15,7 +15,7 @@ namespace _1942
 
         public Boss3_Gun(Vector2 position, float angleSpeed, Vector2 rotationPoint)
         {
-            this.position = position;
+            
             angle = (float)Math.PI / 2f;
             size = new Point(20, 20);
             texture = Texture2DLibrary.spaceship;
@@ -24,6 +24,7 @@ namespace _1942
             maxHealth = 200;
             health = maxHealth;
             this.rotationPoint = rotationPoint;
+            this.position = position;
         }
         public override void Update(GameTime gameTime, Vector2 speed)
         {
@@ -71,10 +72,7 @@ namespace _1942
                     new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
                     spriteEffect, layerDepth);
         }
-        public Vector2 Center
-        {
-            get { return new Vector2(position.X + size.X / 2, position.Y + size.Y / 2); }
-        }
+        
 
     }
 }

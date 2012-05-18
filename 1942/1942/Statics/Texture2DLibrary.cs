@@ -9,12 +9,20 @@ namespace _1942
     static class Texture2DLibrary
     {
         public static Texture2D spaceship;
+        public static Texture2D arrow;
 
         public static Texture2D player;
         public static Texture2D projectile_player;
 
         public static Texture2D enemy_zero;
         public static Texture2D projectile_enemy_zero;
+        public static Texture2D kamikaze;
+
+        public static Texture2D enemy_zeke;
+        public static Texture2D projectile_enemy_zeke;
+
+        public static Texture2D enemy_todjo;
+        public static Texture2D projectile_enemy_todjo;
 
         public static Texture2D enemy_heavy;
         public static Texture2D projectile_enemy_heavy;
@@ -24,11 +32,22 @@ namespace _1942
         public static Texture2D enemy_tower_base;
         public static Texture2D enemy_tower_dead;
 
+        public static Texture2D enemy_boat;
+        public static Texture2D enemy_boat_tower;
+        public static Texture2D enemy_boat_tower_projectile;
+
         public static Texture2D boss1;
+        public static Texture2D boss1_gun;
         public static Texture2D boss1_projectile;
 
         public static Texture2D boss2;
+        public static Texture2D boss2_bigshot;
+        public static Texture2D boss2_splitterbomb;
+        public static Texture2D boss2_smallgun;
+        public static Texture2D boss2_biggun;
+        public static Texture2D boss2_wall;
 
+        public static Texture2D boss3;
 
         //menu
         public static Texture2D texture_MainMenu;
@@ -63,6 +82,7 @@ namespace _1942
         //PowerUps
         public static Texture2D texture_PowerUp_Health;
         public static Texture2D texture_PowerUp_Damage;
+        public static Texture2D texture_PowerUp_Armor;
 
         //particles
         public static Texture2D particle_zero_explosion;

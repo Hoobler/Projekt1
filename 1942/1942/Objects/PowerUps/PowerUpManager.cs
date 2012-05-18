@@ -68,10 +68,10 @@ namespace _1942
                     }
                     if (Objects.playerList[j].PowerUpDamage == true)
                     {
-                        Objects.playerList[j].Damage += 10;
+                        Objects.playerList[j].Damage = 20;
                         Objects.playerList[j].ProjectileColor = Color.Orange;
                     }
-                    else
+                    else if (Objects.playerList[j].PowerUpDamage == false)
                     {
                         Objects.playerList[j].Damage = 10;
                         Objects.playerList[j].ProjectileColor = Color.Yellow;
@@ -83,6 +83,7 @@ namespace _1942
                 if (Objects.powerUpList[i].PosY > Settings.window.ClientBounds.Height)
                 {
                     Objects.powerUpList.RemoveAt(i);
+                    break;
                 }
             }
         }

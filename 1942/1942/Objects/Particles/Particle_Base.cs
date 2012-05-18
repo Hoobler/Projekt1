@@ -12,7 +12,8 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            position.Y += Settings.level_speed;
+            if (position.Y >= Settings.window.ClientBounds.Height+500)
+                dead = true;
         }
 
         

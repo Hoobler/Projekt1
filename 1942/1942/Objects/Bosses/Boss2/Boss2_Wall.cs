@@ -12,11 +12,12 @@ namespace _1942
         public Boss2_Wall(Vector2 position)
         {
             this.position = position;
-            texture = Texture2DLibrary.spaceship;
-            size = new Point(300, 50);
+            texture = Texture2DLibrary.boss2_wall;
+            size = new Point(Texture2DLibrary.boss2_wall.Bounds.Width, Texture2DLibrary.boss2_wall.Bounds.Height);
             color = Color.White;
-            maxHealth = 2000;
+            maxHealth = 1000;
             health = maxHealth;
+            this.position.X -= size.X / 2;
 
         }
     }

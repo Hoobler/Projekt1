@@ -9,6 +9,7 @@ namespace _1942
     class Boss_Accessory : BaseEnemy
     {
         protected bool reallyActivated;
+        protected bool killed;
 
         public virtual void Update(GameTime gameTime, Vector2 speed)
         {
@@ -32,6 +33,8 @@ namespace _1942
             {
                 position += speed;
             }
+
+            
         }
 
         public virtual void AngleUpdate(float angle)
@@ -42,6 +45,10 @@ namespace _1942
         {
             get { return reallyActivated; }
             set { reallyActivated = value; }
+        }
+        public bool Killed
+        {
+            get { return killed; }
         }
     }
 

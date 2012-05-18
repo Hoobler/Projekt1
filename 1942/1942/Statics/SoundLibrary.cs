@@ -14,6 +14,16 @@ namespace _1942
     class SoundLibrary
     {
         static public Song Menu_Song;
+        static public Song Twilight;
+        static public Song Boss1;
+        static public Song Level1;
+        static public Song Level2;
+        static public Song Level3;
 
+        static public SoundEffect Tower_Shot;
+        static public SoundEffect Explosion;
+        static public SoundEffect Explosion_Big;
+        static public SoundEffect Player_Shot;
+        static public SoundEffect Kamikaze;
     }
 }

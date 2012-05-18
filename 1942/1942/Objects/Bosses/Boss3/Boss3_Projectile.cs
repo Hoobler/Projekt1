@@ -19,7 +19,7 @@ namespace _1942
 
             texture = Texture2DLibrary.spaceship;
             color = Color.Black;
-            damage = 5;
+            damage = 1;
             speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 2;
 
         }

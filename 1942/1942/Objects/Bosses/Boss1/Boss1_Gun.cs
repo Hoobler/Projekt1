@@ -12,27 +12,28 @@ namespace _1942
         float timeUntilNextShot;
         float timeBetweenShots = 0.3f;
         
+        
 
         public Boss1_Gun(Vector2 position, float timeUntilNextShot)
         {
+            texture = Texture2DLibrary.boss1_gun;
             angle = (float)Math.PI*0.5f;
             color = Color.White;
             layerDepth = 0.0f;
             this.position = position;
             this.timeUntilNextShot = timeUntilNextShot;
-            size = new Point(41, 41);
+            size = new Point(texture.Bounds.Width, texture.Bounds.Height);
             maxHealth = 400;
             health = maxHealth;
-            texture = Texture2DLibrary.enemy_tower;
+            this.position.X -= size.X / 2;
+            this.position.Y -= size.Y / 2;
+            
         }
 
         public override void Update(GameTime gameTime, Vector2 speed)
         {
             base.Update(gameTime, speed);
 
-            
-            
-            
                 if(reallyActivated)
                 {
                 int nearestPlayer = 0;
@@ -60,17 +61,16 @@ namespace _1942
                     (float)Objects.playerList[nearestPlayer].Position.Y +
                     (float)Objects.playerList[nearestPlayer].Size.Y / (float)2);
 
-                Vector2 towerCenter = new Vector2((float)Position.X + (float)Size.X / (float)2, (float)Position.Y + (float)Size.Y / (float)2);
 
 
-                angle = (float)Math.Atan((playerCenter.Y - towerCenter.Y) / (playerCenter.X - towerCenter.X));
+                angle = (float)Math.Atan((Objects.playerList[nearestPlayer].Center.Y - Center.Y) / (Objects.playerList[nearestPlayer].Center.X - Center.X));
 
-                if (playerCenter.X < towerCenter.X)
+                if (playerCenter.X < Center.X)
                     angle += (float)Math.PI;
 
                 Vector2 shotOrigin = new Vector2(0, 0);
-                shotOrigin.X = (float)Math.Cos(angle) * size.Y / 2 + towerCenter.X;
-                shotOrigin.Y = (float)Math.Sin(angle) * size.Y / 2 + towerCenter.Y;
+                shotOrigin.X = (float)Math.Cos(angle) * size.Y / 2 + Center.X;
+                shotOrigin.Y = (float)Math.Sin(angle) * size.Y / 2 + Center.Y;
 
                 
                     timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -84,20 +84,24 @@ namespace _1942
                     }
                 }
                 if (dead)
-                    Objects.particleList.Add(new Particle_Explosion(new Vector2(position.X + size.X / 2, position.Y + size.Y / 2)));
+                    Objects.particleList.Add(new Particle_Explosion(Center, size));
             
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture2DLibrary.enemy_tower,
-                    new Rectangle((int)Position.X + (Size.X / 2), (int)Position.Y + (Size.Y / 2), (int)(Size.X * (2f / 3f)), Size.Y),
+            spriteBatch.Draw(texture,
+                    new Rectangle((int)Center.X, (int)Center.Y, Size.X, Size.Y),
                     new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
                     color,
                     angle + (float)Math.PI / 2,
-                    new Vector2(texture.Bounds.Width / 2, 32),
+                    new Vector2(texture.Bounds.Width / 2, 52),
                     spriteEffect, layerDepth);
+            
         }
 
-        
+        public override Rectangle Rectangle
+        {
+            get { return new Rectangle(-30, -30, 0, 0); }
+        }
     }
 }
