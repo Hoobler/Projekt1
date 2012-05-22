@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -107,16 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BossShots%28exploding%29\BaseShot.cs" />
-    <Compile Include="BossShots%28exploding%29\MainShot.cs" />
-    <Compile Include="BossShots%28exploding%29\ShotManager.cs" />
-    <Compile Include="BossShots%28exploding%29\Splittershot.cs" />
-    <Compile Include="BossShots%28exploding%29\Timer.cs" />
-    <Compile Include="Boss2.cs" />
-    <Compile Include="Boss2_Bigtower.cs" />
-    <Compile Include="Boss2_Minitower.cs" />
-    <Compile Include="Boss2_Wall.cs" />
-    <Compile Include="Boss_Accessory.cs" />
     <Compile Include="Enemy_Boat.cs" />
     <Compile Include="Enemy_Boat_Tower.cs" />
     <Compile Include="Enemy_Boat_Tower_Projectile.cs" />
