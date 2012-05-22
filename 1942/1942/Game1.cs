@@ -269,6 +269,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
                         spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y/logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                       
                         break;
                     }
             }

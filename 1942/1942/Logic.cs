@@ -105,7 +105,7 @@ namespace _1942
                 Objects.playerList.Add(new Player1());
 
             if (Settings.nr_of_players >= 2 && Objects.playerList.Count <= 1)
-                Objects.playerList.Add(new Player2());
+                Objects.playerList.Add(new MenuPlayer());
 
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
