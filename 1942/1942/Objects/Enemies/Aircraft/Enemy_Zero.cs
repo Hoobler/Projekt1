@@ -10,7 +10,7 @@ namespace _1942
     class Enemy_Zero : FlyingObject
     {
 
-        private float timeUntilNextShot;
+        private float timeUntilNextShot = Settings.zero_projectile_frequency - 0.2f;
 
         public Enemy_Zero(Vector2 position)
         {
@@ -48,7 +48,7 @@ namespace _1942
                     dead = true;
 
                 if (dead)
-                    Objects.particleList.Add(new Particle_Explosion(position));
+                    Objects.particleList.Add(new Particle_Explosion(Center, size));
 
 
 
@@ -60,16 +60,18 @@ namespace _1942
         {
             if(activated)
             spriteBatch.Draw(texture,
-                new Rectangle((int)Position.X + (Size.X / 2),(int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
+                new Rectangle((int)Position.X -size.X/2,(int)Position.Y-size.Y/2, Size.X, Size.Y),
                 new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,
                     (animationFrame.Y * (texture.Bounds.Height - 1) / 3) + 1,
                     ((texture.Bounds.Width - 1) / 3)-1,
                     ((texture.Bounds.Height - 1) / 3) - 1),
                 color,
                 angle,
-                new Vector2(Settings.size_zero.X/2, Settings.size_zero.Y/2),
+                new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
                 spriteEffect,
                 0.0f);
+            
+            
         }
         
 

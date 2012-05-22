@@ -21,20 +21,11 @@ namespace _1942
         {
             base.Update(gameTime);
             position.Y += Settings.level_speed;
-
-            
         }
 
-        public float speedX
-        {
-            set { speed.X = value; }
-            get { return speed.X; }
-        }
-        public float speedY
-        {
-            set { speed.Y = value; }
-            get { return speed.Y; }
-        }
+        
+
+        
         public Vector2 Speed
         {
             set { speed = value; }

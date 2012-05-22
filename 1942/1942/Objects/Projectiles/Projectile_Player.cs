@@ -27,6 +27,7 @@ namespace _1942
 
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
             if (position.Y < -size.Y)
                 dead = true;

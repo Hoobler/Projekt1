@@ -4,14 +4,18 @@
     <symbol>W</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>true</animated>
+    <frames>13</frames>
     <texture>
-      <name>water</name>
+      <name>WaterAni</name>
     </texture>
   </tiletexture>
   <tiletexture>
     <symbol>R</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runway</name>
     </texture>
@@ -20,6 +24,8 @@
     <symbol>r</symbol>
     <hFlip>true</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runway</name>
     </texture>
@@ -28,6 +34,8 @@
     <symbol>E</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runwayend</name>
     </texture>
@@ -36,6 +44,8 @@
     <symbol>e</symbol>
     <hFlip>true</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runwayend</name>
     </texture>
@@ -44,6 +54,8 @@
     <symbol>T</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runwaystart</name>
     </texture>
@@ -52,6 +64,8 @@
     <symbol>t</symbol>
     <hFlip>true</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>runwaystart</name>
     </texture>
@@ -60,6 +74,8 @@
     <symbol>G</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>grass</name>
     </texture>
@@ -68,6 +84,8 @@
     <symbol>D</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockLeft</name>
     </texture>
@@ -76,6 +94,8 @@
     <symbol>d</symbol>
     <hFlip>true</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockLeft</name>
     </texture>
@@ -84,6 +104,8 @@
     <symbol>C</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockbottomcorner</name>
     </texture>
@@ -92,6 +114,8 @@
     <symbol>c</symbol>
     <hFlip>true</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockbottomcorner</name>
     </texture>
@@ -100,6 +124,8 @@
     <symbol>V</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockbottom</name>
     </texture>
@@ -108,12 +134,18 @@
     <symbol>v</symbol>
     <hFlip>false</hFlip>
     <vFlip>true</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>dockbottom</name>
     </texture>
   </tiletexture>
   <tiletexture>
     <symbol>B</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>black</name>
     </texture>
@@ -122,6 +154,8 @@
     <symbol>S</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
     <texture>
       <name>SandTile1</name>
     </texture>

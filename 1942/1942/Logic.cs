@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
@@ -17,13 +18,23 @@ namespace _1942
 
         private List<BaseProjectile> projectileList = new List<BaseProjectile>();*/
 
-        PowerUpManager mPowerUpManager;
+        bool playerOneAdd = false;
+        bool playerTwoAdd = false;
+        string playerName = String.Empty;
+        KeyboardState oldKeyState;
+        KeyboardState myKeyState;
 
-        LevelLoader levelLoader;
+
+        PowerUpManager mPowerUpManager;
+        public LevelLoader levelLoader;
+
         ContentManager Content;
+        HighScore highscore;
+        Hud hud;
+
+        GameTime gameTime;
 
         Random random = new Random();
-
 
         public Logic(ContentManager Content)
         {
@@ -34,31 +45,60 @@ namespace _1942
 
         public void NewGame()
         {
-
+            
             mPowerUpManager = new PowerUpManager();
+
+            hud = new Hud();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
 
-
+            highscore = new HighScore(Settings.currentLevel.ToString());
 
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
-                if (levelLoader.MapSpawnList[i].Formation == "formation1")
-                    Objects.formationList.Add(new Formation1(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
-                else if (levelLoader.MapSpawnList[i].Formation == "formation2")
-                    Objects.formationList.Add(new Formation2(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                if (levelLoader.MapSpawnList[i].Formation == "formation1a")
+                    Objects.formationList.Add(new Formation1a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2a")
+                    Objects.formationList.Add(new Formation2a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3a")
+                    Objects.formationList.Add(new Formation3a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+
+                else if (levelLoader.MapSpawnList[i].Formation == "formation1b")
+                    Objects.formationList.Add(new Formation1b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2b")
+                    Objects.formationList.Add(new Formation2b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3b")
+                    Objects.formationList.Add(new Formation3b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+
+                else if (levelLoader.MapSpawnList[i].Formation == "formation1c")
+                    Objects.formationList.Add(new Formation1c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation2c")
+                    Objects.formationList.Add(new Formation2c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "formation3c")
+                    Objects.formationList.Add(new Formation3c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "boat")
+                    Objects.enemyList.Add(new Enemy_Boat(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
+                else if (levelLoader.MapSpawnList[i].Formation == "kamikaze")
+                    Objects.enemyList.Add(new Enemy_Kamikaze(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss1")
                     Objects.bossList.Add(new Boss1(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "boss2")
                     Objects.bossList.Add(new Boss2(levelLoader.MapSpawnList[i].Position));
+                else if (levelLoader.MapSpawnList[i].Formation == "boss3")
+                {
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 0f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 3f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 6f));
+                    Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 9f));
+                }
                 else if (levelLoader.MapSpawnList[i].Formation == "tower")
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Health")
-                    mPowerUpManager.PowerUps.Add(new PowerUpHealth(levelLoader.MapSpawnList[i].Position));
+                    Objects.powerUpList.Add(new PowerUpHealth(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Armor")
-                    mPowerUpManager.PowerUps.Add(new PowerUpShield(levelLoader.MapSpawnList[i].Position));
+                    Objects.powerUpList.Add(new PowerUpShield(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Damage")
-                    mPowerUpManager.PowerUps.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position)); 
+                    Objects.powerUpList.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position)); 
             }
 
             if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
@@ -75,40 +115,133 @@ namespace _1942
 
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
+            this.gameTime = gameTime;
+            oldKeyState = myKeyState;
+            myKeyState = Keyboard.GetState();
+            levelLoader.Update(gameTime);
+
+            if (Settings.currentLevel == Settings.CurrentLevel.Level1)
+            {
+                for(int i = 0; i < Objects.bossList.Count; i++)
+                    if(!Objects.bossList[i].IsActivated())
+                        MusicManager.SetMusic(SoundLibrary.Level1);
+            }
 
             if (levelLoader.LevelHasEnded())
             {
                 Settings.currentLevel++;
                 NewGame();
-
+                if (Settings.currentLevel == Settings.CurrentLevel.Level2)
+                    MusicManager.SetMusic(SoundLibrary.Level2);
+                if (Settings.currentLevel == Settings.CurrentLevel.Level3)
+                    MusicManager.SetMusic(SoundLibrary.Level3);
             }
 
+            if (Objects.bossList.Count == 0)
+                MusicManager.SetMusic(SoundLibrary.Level3);
+            
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
 
             mPowerUpManager.Update(gameTime);
             Objects.DeadRemoval();
+
+            #region HighScoreUpdate
+
+            if (levelLoader.HighScoreScreen())
+            {
+                levelLoader.ScoreLoop = true;
+            }
+
+            if (levelLoader.ScoreLoop)
+            {
+                playerName = KeyBoardInput.TextInput(5, false);
+                highscore.SetPlayerName = playerName;
+
+                if (Objects.playerList.Count == 2)
+                {
+                    if (!playerOneAdd)
+                    {
+                        highscore.SetCurrentPlayer = "Player 1";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                            {
+                                highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                playerOneAdd = true;
+                                KeyBoardInput.EmptyWord = "";
+                                highscore.RetreiveHighScore();
+                            }
+                        }
+                    }
+                    else if (!playerTwoAdd)
+                    {
+                        highscore.SetCurrentPlayer = "Player 2";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                            {
+                                highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
+                                playerTwoAdd = true;
+                                KeyBoardInput.EmptyWord = "";
+                                highscore.RetreiveHighScore();
+                            }
+                        }
+                    }
+                    else if (playerOneAdd && playerTwoAdd)
+                    {
+                        //Temp stuff
+                        highscore.SetCurrentPlayer = "Press space to continue the next level";
+                        if (oldKeyState.IsKeyUp(Keys.Enter))
+                        {
+                            if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                            {
+                                levelLoader.EndLevel = true; 
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             levelLoader.Draw(spriteBatch);
-            Objects.Draw(spriteBatch);
-            mPowerUpManager.Draw(spriteBatch);
+            if (!levelLoader.ScoreLoop)
+            {
+                Objects.Draw(spriteBatch);
+                mPowerUpManager.Draw(spriteBatch);
+                hud.Draw(spriteBatch, gameTime);
+            }
+            if (levelLoader.ScoreLoop)
+            {
+                highscore.Draw(spriteBatch);
+            }
         }
 
         public void CollisionRemoval()
         {
             //if a player's projectile hits an enemy, they die
-            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
-            {
+            
+                
                 for (int i = 0; i < Objects.enemyList.Count; i++)
                 {
-
+                    bool check = false;
+                    for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+                    {
+                    
                     if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
                         Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
+
+                        if (Objects.enemyList[i].Health <= 0 && !check)
+                        {
+                            check = true;
+                            Objects.playerList[Objects.playerProjectileList[j].PlayerID].MyScore += Objects.enemyList[i].MyScore;
+                        }
+
                         Objects.playerProjectileList[j].SetDead();
                     }
                 }
@@ -121,7 +254,7 @@ namespace _1942
                 {
                     if (Objects.enemyList[j].IsFlying == true)
                     {
-                        if (Objects.enemyList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                        if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
                             if (Objects.playerList[i].PowerUpShield == true)
                             { }
@@ -144,10 +277,8 @@ namespace _1942
                     {
                         if (Objects.formationList[j].enemyInFormationList[k].IsFlying == true)
                         {
-                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
-                                Objects.formationList[j].enemyInFormationList[k].SetDead();
-
                                 if (Objects.playerList[i].PowerUpShield == true)
                                 { }
                                 else
@@ -170,11 +301,11 @@ namespace _1942
                     bool check = false;
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
-                        if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                         {
                             Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
 
-                            if (Objects.formationList[j].enemyInFormationList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                             {
                                 Objects.formationList[j].enemyInFormationList[k].Health -= Objects.playerProjectileList[i].Damage;
                                 if (Objects.formationList[j].enemyInFormationList[k].Health <= 0 && !check)
@@ -248,7 +379,6 @@ namespace _1942
                     }
                 }
             }
-
 
         }
     }

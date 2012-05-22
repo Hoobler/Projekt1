@@ -13,6 +13,8 @@ namespace _1942
 {
     class LevelLoader
     {
+        #region Variables
+
         private int nrOfTilesShown = 0;
         private int nrOfRows = 0;
         private const int topMargin = 0;
@@ -20,25 +22,31 @@ namespace _1942
         private string levelName = string.Empty;
         private string nextLevel = string.Empty;
         private string description = string.Empty;
-        private Vector2 cameraPosition = new Vector2(0, 0);
+        public Vector2 cameraPosition = new Vector2(0, 0);
         private Vector2 bossCameraPosition = new Vector2(0, 0);
+        private bool scoreLoop;
+        private bool endLevel;
 
         //Spara in alla texturer där dom stämmer övernes symbolen man får från mapList så att rätt texture ritas ut.
-        Dictionary<char, TileTexture> textureDictionary = new Dictionary<char, TileTexture>();
+        Dictionary<char, TileTexture> texDictionary = new Dictionary<char, TileTexture>();
         //List för all tiles i "mapen" den håller x,y pos och vilken symbol som ska vara på den posen.
         List<Tile> mapList = new List<Tile>();
         //List for all the spawns that should happen in the map position X/Y, formation, spawn time
         List<LevelSpawnObj> mapSpawnList = new List<LevelSpawnObj>();
+
+        #endregion
 
         public LevelLoader(string TheLevelFile, ContentManager content)
         {
             LoadLevelFile(TheLevelFile, content);
         }
 
+        #region LoadingMethods
+
         private void UnLoadLevel()
         {
             mapList.Clear();
-            textureDictionary.Clear();
+            texDictionary.Clear();
             mapSpawnList.Clear();
         }
 
@@ -88,6 +96,10 @@ namespace _1942
             //SpriteEffect vars used for fliping the tiles
             bool hFlip = false;
             bool vFlip = false;
+            //How many frames of animation there is in the sprite
+            int frames = 0;
+            //Is the sprite animated
+            bool animated = false;
 
             while (texReader.Read())
             {
@@ -116,15 +128,23 @@ namespace _1942
                         vFlip = texReader.ReadElementContentAsBoolean();
                     }
 
+                    else if (aCurrentElement == "animated")
+                    {
+                        animated = texReader.ReadElementContentAsBoolean();
+                    }
+                    else if (aCurrentElement == "frames")
+                    {
+                        frames = texReader.ReadElementContentAsInt();
+                    }
                     else if (aCurrentElement == "texture")
                     {
-                        LoadTexture(texReader, content, tempSymbol, hFlip, vFlip);
+                        LoadTexture(texReader, content, tempSymbol, hFlip, vFlip, animated, frames);
                     }                    
                 }
             }
         }
 
-        private void LoadTexture(XmlReader reader, ContentManager content, char tempChar, bool hFlip, bool vFlip)
+        private void LoadTexture(XmlReader reader, ContentManager content, char tempChar, bool hFlip, bool vFlip , bool animated, int frames)
         {
             string aCurrentElement = string.Empty;
 
@@ -144,7 +164,7 @@ namespace _1942
                     if (aCurrentElement == "name")
                     {
                         var assetName = reader.ReadElementContentAsString();
-                        textureDictionary.Add(tempChar, new TileTexture(content.Load<Texture2D>(assetName), tempChar, hFlip, vFlip));
+                        texDictionary.Add(tempChar, new TileTexture(content.Load<Texture2D>(assetName), tempChar, hFlip, vFlip , animated , frames));
                     }
                 }
             }
@@ -158,8 +178,8 @@ namespace _1942
             int aPositionY = 0;
 
             //vars for the spawning of objects
-            int aSpawnPosX = 0;
-            int aSpawnPosY = 0;
+            float aSpawnPosX = 0;
+            float aSpawnPosY = 0;
             string formation = string.Empty;
             bool mirrored = false;
              
@@ -228,12 +248,12 @@ namespace _1942
                     }
                     else if (aCurrentElement == "positionX")
                     {
-                        aSpawnPosX = reader.ReadContentAsInt();
+                        aSpawnPosX = reader.ReadContentAsFloat();
                         aSpawnPosX *= TileSize();
                     }
                     else if (aCurrentElement == "positionY")
                     {
-                        aSpawnPosY = reader.ReadContentAsInt();
+                        aSpawnPosY = reader.ReadContentAsFloat();
                         aSpawnPosY *= TileSize();
                         aSpawnPosY = -aSpawnPosY;
                     }
@@ -252,32 +272,10 @@ namespace _1942
             }
             StartingCameraPos();
         }
-        
 
-        public List<LevelSpawnObj> MapSpawnList
-        {
-            get { return mapSpawnList; }
-        }
+        #endregion
 
-        public String LevelName
-        {
-            get { return levelName; }
-        }
-
-        public String NextLevel
-        {
-            get { return NextLevel; }
-        }
-
-        public String Description
-        {
-            get { return Description; }
-        }
-
-        public int TilesOnScreen
-        {
-            get { return nrOfTilesShown; }
-        }
+        #region HelperMethods
 
         public int TileSize()
         {
@@ -304,11 +302,22 @@ namespace _1942
                 {
                     if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = cameraPosition.Y + 6 * TileSize();
+                        cameraPosition.Y = cameraPosition.Y + 20 * TileSize();
                     }
                 }
             }
-            
+            if (cameraPosition.Y < 2 * TileSize() && scoreLoop && !endLevel)
+            {
+                cameraPosition.Y = cameraPosition.Y + 7 * TileSize();
+            }
+        }
+
+        public bool HighScoreScreen()
+        {
+            if (cameraPosition.Y < 1 * TileSize())
+                return true;
+            else
+                return false;
         }
 
         public bool LevelHasEnded()
@@ -317,6 +326,57 @@ namespace _1942
                 return true;
             else
                 return false;
+        }
+
+        #endregion 
+
+        #region Properties
+
+        public List<LevelSpawnObj> MapSpawnList
+        {
+            get { return mapSpawnList; }
+        }
+
+        public String LevelName
+        {
+            get { return levelName; }
+        }
+
+        public String NextLevel
+        {
+            get { return NextLevel; }
+        }
+
+        public String Description
+        {
+            get { return Description; }
+        }
+
+        public int TilesOnScreen
+        {
+            get { return nrOfTilesShown; }
+        }
+
+        public bool ScoreLoop
+        {
+            get { return scoreLoop; }
+            set { scoreLoop = value; }
+        }
+
+        public bool EndLevel
+        {
+            get { return endLevel; }
+            set { endLevel = value; }
+        }
+
+        #endregion
+
+        public void Update(GameTime gameTime)
+        {
+            foreach (var Tile in texDictionary)
+            {
+                Tile.Value.AnimationFrame();
+            }
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -329,14 +389,32 @@ namespace _1942
 
                 if (top >= -TileSize() && top < TileSize()*7)
                 {
-                    spritebatch.Draw(textureDictionary[mapList[i].Symbol].Texture,
-                        new Rectangle(left, top, TileSize(), TileSize()),
-                        new Rectangle(0, 0, textureDictionary[mapList[i].Symbol].Texture.Bounds.Width, textureDictionary[mapList[i].Symbol].Texture.Bounds.Height),
-                        Color.White,
+                    if (texDictionary[mapList[i].Symbol].Animated)
+                    {
+                        spritebatch.Draw(
+                        texDictionary[mapList[i].Symbol].Tex, //Texture
+                        new Rectangle(left, top, TileSize(), TileSize()), //Size of the tile rectangle
+                        new Rectangle((texDictionary[mapList[i].Symbol].CFrame * (texDictionary[mapList[i].Symbol].Tex.Bounds.Width -1 ) / texDictionary[mapList[i].Symbol].TFrame) +1,
+                            (0 *(texDictionary[mapList[i].Symbol].Tex.Bounds.Width -1)) + 1 ,
+                            ((texDictionary[mapList[i].Symbol].Tex.Bounds.Width - 1) / texDictionary[mapList[i].Symbol].TFrame) - 1,
+                            ((texDictionary[mapList[i].Symbol].Tex.Bounds.Height - 1)) - 1),
+                        Color.White, //Color of the tile
                         0,
                         new Vector2(0, 0),
-                        textureDictionary[mapList[i].Symbol].SpriteEffect,
+                        texDictionary[mapList[i].Symbol].SpriteEffect,
                         1f);
+                    }
+                    else
+                    {
+                        spritebatch.Draw(texDictionary[mapList[i].Symbol].Tex,
+                            new Rectangle(left, top, TileSize(), TileSize()),
+                            new Rectangle(0, 0, texDictionary[mapList[i].Symbol].Tex.Bounds.Width, texDictionary[mapList[i].Symbol].Tex.Bounds.Height),
+                            Color.White,
+                            0,
+                            new Vector2(0, 0),
+                            texDictionary[mapList[i].Symbol].SpriteEffect,
+                            1f);
+                    }
                     nrOfTilesShown++;
                 }
             }

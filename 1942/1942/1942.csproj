@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{F2E17356-1C40-43C3-BBC8-F19229BD7CA5}</ProjectGuid>
@@ -117,11 +117,39 @@
     <Compile Include="Boss2_Minitower.cs" />
     <Compile Include="Boss2_Wall.cs" />
     <Compile Include="Boss_Accessory.cs" />
+    <Compile Include="Enemy_Boat.cs" />
+    <Compile Include="Enemy_Boat_Tower.cs" />
+    <Compile Include="Enemy_Boat_Tower_Projectile.cs" />
+    <Compile Include="MusicManager.cs" />
+    <Compile Include="Objects\Bosses\Boss1\Boss1_Engine.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Projectile_Front.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Kamikaze.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Todjo.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Enemy_Zeke.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1c.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2c.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3a.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3b.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation3c.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Gun.cs" />
+    <Compile Include="Objects\Bosses\Boss3\Boss3_Projectile.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_BigShot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_SmallShot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Splittershot.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Bigtower.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Minitower.cs" />
+    <Compile Include="Objects\Bosses\Boss2\Boss2_Wall.cs" />
+    <Compile Include="Objects\Bosses\Boss_Accessory.cs" />
     <Compile Include="Objects\Bosses\Boss1\Boss1.cs" />
     <Compile Include="Objects\Bosses\Boss1\Boss1_Gun.cs" />
     <Compile Include="HighScore\HighScore.cs" />
     <Compile Include="HighScore\SortHighScore_Ascending.cs" />
     <Compile Include="Hud\Hud.cs" />
+    <Compile Include="KeyBoardInput.cs" />
     <Compile Include="Menu\AddVolumeButton.cs" />
     <Compile Include="Objects\Bosses\Boss1\Boss1_Projectile.cs" />
     <Compile Include="Objects\Bosses\Boss_Base.cs" />
@@ -157,8 +185,8 @@
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower.cs" />
     <Compile Include="Objects\Enemies\Aircraft\Enemy_Zero.cs" />
     <Compile Include="Objects\Enemies\Aircraft\FlyingObject.cs" />
-    <Compile Include="Objects\Enemies\Aircraft\Formation1.cs" />
-    <Compile Include="Objects\Enemies\Aircraft\Formation2.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation1a.cs" />
+    <Compile Include="Objects\Enemies\Aircraft\Formations\Formation2a.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Objects\Projectiles\Projectile_Enemy_Tower.cs" />
     <Compile Include="Menu\OptionButton.cs" />
@@ -166,6 +194,8 @@
     <Compile Include="Objects\Particles\Particle_Base.cs" />
     <Compile Include="Objects\Particles\Particle_Explosion.cs" />
     <Compile Include="HighScore\ScoreObj.cs" />
+    <Compile Include="Objects\Particles\Particle_FireStream.cs" />
+    <Compile Include="Objects\Particles\Particle_SmokeStream.cs" />
     <Compile Include="Statics\FontLibrary.cs" />
     <Compile Include="Statics\Objects.cs" />
     <Compile Include="Objects\Player\Player1.cs" />
@@ -184,11 +214,19 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="HighScore\HighScoreLevel2.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\level3.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Levels\level2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HighScore\HighScoreList.xml">
+    <Content Include="HighScore\HighScoreLevel1.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -234,9 +272,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\Bosses\Boss2\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
