@@ -32,8 +32,8 @@ namespace _1942
 
 
         //OptionScreen
-        int screenWidth = Settings.window.ClientBounds.Width /2;
-        int screenHeight = Settings.window.ClientBounds.Height/3;
+        float screenWidth = (float)Settings.window.ClientBounds.Width/1.4f;
+        float screenHeight = (float)Settings.window.ClientBounds.Height/4.5f;
 
         // Bool to get back to the Menu Screen
         bool back = false;
@@ -57,7 +57,7 @@ namespace _1942
             mAudioOptionButton.Position = new Rectangle(Settings.window.ClientBounds.Width / 20, Settings.window.ClientBounds.Height / 20, buttonWidth, buttonHeight);
             mVideoOptionButton.Position = new Rectangle(mAudioOptionButton.Position.Right + mButtonDistance, mAudioOptionButton.Position.Y, buttonWidth, buttonHeight);
             mControlsOptionButton.Position = new Rectangle(mVideoOptionButton.Position.Right + mButtonDistance, mVideoOptionButton.Position.Y, buttonWidth, buttonHeight);
-            mOptionScreen.Position = new Rectangle(mAudioOptionButton.Position.Right - (mButtonDistance/2), mAudioOptionButton.Position.Bottom + mButtonDistance, screenWidth, screenHeight);
+            mOptionScreen.Position = new Rectangle(Settings.window.ClientBounds.Width /6, Settings.window.ClientBounds.Height/3, (int)screenWidth, (int)screenHeight);
             mBackButton.Position = new Rectangle(Settings.window.ClientBounds.Width - buttonWidth, Settings.window.ClientBounds.Height - buttonHeight, buttonWidth, buttonHeight);
             mMinusVolumeButton.Position = new Rectangle(mOptionScreen.Position.Center.X, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);
             mAddVolumeButton.Position = new Rectangle(mMinusVolumeButton.Position.Right + mButtonDistance, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);

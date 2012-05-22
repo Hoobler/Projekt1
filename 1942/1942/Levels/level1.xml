@@ -587,13 +587,43 @@
     <spawn>
       <positionX>2</positionX>
       <positionY>144</positionY>
-      <formation>boss1</formation>
+      <formation>boss2</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>2</positionX>
       <positionY>20</positionY>
       <formation>PowerUp_Damage</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>25</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>30</positionY>
+      <formation>PowerUp_Armor</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>35</positionY>
+      <formation>PowerUp_Shield</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>40</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>45</positionY>
+      <formation>PowerUp_Health</formation>
       <mirrored>false</mirrored>
     </spawn>
   </spawnlist>

@@ -47,6 +47,10 @@ Content\Menu\Level5.xnb
 Content\dockbottom.xnb
 Content\dockbottomcorner.xnb
 Content\boss1.xnb
+Content\debugFont.xnb
+Content\Hud_Font.xnb
+Content\Sounds\MenuSong.xnb
+Content\Ride_of_the_Valkyries.xnb
 Content\AABaseDead.xnb
 Content\AANew1.xnb
 Content\BeachAni.xnb
@@ -59,10 +63,6 @@ Content\SandTile3.xnb
 Content\SandTile4.xnb
 Content\Enemies\Todjo.xnb
 Content\Enemies\Zeke.xnb
-Content\debugFont.xnb
-Content\Hud_Font.xnb
-Content\Sounds\MenuSong.xnb
-Content\Ride_of_the_Valkyries.xnb
 Content\Sounds\MenuSong.wma
 Content\Ride_of_the_Valkyries.wma
 Levels\level2.xml
