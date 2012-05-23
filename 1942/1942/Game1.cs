@@ -61,29 +61,32 @@ namespace _1942
             Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
             Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
 
+            Texture2DLibrary.escort = Content.Load<Texture2D>(@"Enemies/spaceship");
+            Texture2DLibrary.escort_lifebar = Content.Load<Texture2D>(@"Extra/square1");
+
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
-            Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_zero = Content.Load<Texture2D>(@"Enemies/Zero");
-            Texture2DLibrary.projectile_enemy_zero = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_zero = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_zeke = Content.Load<Texture2D>(@"Enemies/Zeke");
-            Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_todjo = Content.Load<Texture2D>(@"Enemies/Todjo");
-            Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Boat");
             Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/AATower");
-            Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.enemy_heavy = Content.Load<Texture2D>(@"Enemies/spaceship");
             Texture2DLibrary.projectile_enemy_heavy = Content.Load<Texture2D>(@"Enemies/Spaceship");
 
             Texture2DLibrary.enemy_tower = Content.Load<Texture2D>(@"Enemies/AATower");
-            Texture2DLibrary.projectile_enemy_tower = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_tower = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"Enemies/AABase");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
             Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1");
             Texture2DLibrary.boss1_gun = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1_Gun");
-            Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.boss2 = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2");
             Texture2DLibrary.boss2_bigshot = Content.Load<Texture2D>(@"Bosses/Boss2/BigBomb");
@@ -138,8 +141,8 @@ namespace _1942
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
             SoundLibrary.Twilight = Content.Load<Song>(@"Music/Twilight");
             SoundLibrary.Boss1 = Content.Load<Song>(@"Music/Boss1");
-            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
-            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
+            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1b");
+            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2b");
             SoundLibrary.Level3 = Content.Load<Song>(@"Music/Level3");
 
             //Sounds

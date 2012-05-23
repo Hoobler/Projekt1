@@ -27,7 +27,7 @@ namespace _1942
             color = Color.White;
             maxHealth = 50;
             health = maxHealth;
-            
+            killable = true;
         }
 
         public override void Update(GameTime gameTime, Vector2 speed)

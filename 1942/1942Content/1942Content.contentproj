@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0565CD97-7C09-4D65-9BD4-47CBFFD4D91D}</ProjectGuid>
@@ -190,7 +190,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enemies\square1.bmp">
+    <Compile Include="Extra\square1.bmp">
       <Name>square1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -529,7 +529,7 @@
       <Name>WaterAni</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-	</Compile>
+    </Compile>
     <Compile Include="Music\Boss1.mp3">
       <Name>Boss1</Name>
       <Importer>Mp3Importer</Importer>
@@ -587,6 +587,20 @@
       <Name>Laser_gun</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Level1b.mp3">
+      <Name>Level1b</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Level2b.mp3">
+      <Name>Level2b</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

@@ -49,6 +49,9 @@ namespace _1942
 
         public static Texture2D boss3;
 
+        public static Texture2D escort;
+        public static Texture2D escort_lifebar;
+
         //menu
         public static Texture2D texture_MainMenu;
         public static Texture2D texture_ExitGameButton;

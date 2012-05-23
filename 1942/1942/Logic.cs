@@ -45,7 +45,7 @@ namespace _1942
 
         public void NewGame()
         {
-            
+
             mPowerUpManager = new PowerUpManager();
 
             hud = new Hud();
@@ -62,14 +62,12 @@ namespace _1942
                     Objects.formationList.Add(new Formation2a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "formation3a")
                     Objects.formationList.Add(new Formation3a(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
-
                 else if (levelLoader.MapSpawnList[i].Formation == "formation1b")
                     Objects.formationList.Add(new Formation1b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "formation2b")
                     Objects.formationList.Add(new Formation2b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "formation3b")
                     Objects.formationList.Add(new Formation3b(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
-
                 else if (levelLoader.MapSpawnList[i].Formation == "formation1c")
                     Objects.formationList.Add(new Formation1c(levelLoader.MapSpawnList[i].Position, levelLoader.MapSpawnList[i].IsMirrored()));
                 else if (levelLoader.MapSpawnList[i].Formation == "formation2c")
@@ -91,6 +89,8 @@ namespace _1942
                     Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 6f));
                     Objects.bossList.Add(new Boss3(levelLoader.MapSpawnList[i].Position, 9f));
                 }
+                else if (levelLoader.MapSpawnList[i].Formation == "escort")
+                    Objects.escortList.Add(new Escort(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "tower")
                     Objects.enemyList.Add(new Enemy_Tower(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Health")
@@ -98,7 +98,7 @@ namespace _1942
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Armor")
                     Objects.powerUpList.Add(new PowerUpShield(levelLoader.MapSpawnList[i].Position));
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Damage")
-                    Objects.powerUpList.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position)); 
+                    Objects.powerUpList.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position));
             }
 
             if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
@@ -109,7 +109,7 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
-          
+
         }
 
 
@@ -122,8 +122,8 @@ namespace _1942
 
             if (Settings.currentLevel == Settings.CurrentLevel.Level1)
             {
-                for(int i = 0; i < Objects.bossList.Count; i++)
-                    if(!Objects.bossList[i].IsActivated())
+                for (int i = 0; i < Objects.bossList.Count; i++)
+                    if (!Objects.bossList[i].IsActivated())
                         MusicManager.SetMusic(SoundLibrary.Level1);
             }
 
@@ -139,7 +139,7 @@ namespace _1942
 
             if (Objects.bossList.Count == 0)
                 MusicManager.SetMusic(SoundLibrary.Level3);
-            
+
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
             Objects.Update(keyState, gameTime);
@@ -197,7 +197,7 @@ namespace _1942
                         {
                             if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
                             {
-                                levelLoader.EndLevel = true; 
+                                levelLoader.EndLevel = true;
                             }
                         }
                     }
@@ -224,14 +224,14 @@ namespace _1942
         public void CollisionRemoval()
         {
             //if a player's projectile hits an enemy, they die
-            
-                
-                for (int i = 0; i < Objects.enemyList.Count; i++)
+
+
+            for (int i = 0; i < Objects.enemyList.Count; i++)
+            {
+                bool check = false;
+                for (int j = 0; j < Objects.playerProjectileList.Count; j++)
                 {
-                    bool check = false;
-                    for (int j = 0; j < Objects.playerProjectileList.Count; j++)
-                    {
-                    
+
                     if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.enemyList[i].Rectangle))
                     {
                         Objects.enemyList[i].Health -= Objects.playerProjectileList[j].Damage;
@@ -321,65 +321,88 @@ namespace _1942
                 }
             }
 
-                //if an enemy's projectile hits a player, the player dies
-                for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
+            //if an enemy's projectile hits a player, the player dies
+            for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
+            {
+                for (int j = 0; j < Objects.playerList.Count; j++)
                 {
-                    for (int j = 0; j < Objects.playerList.Count; j++)
+                    if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
                     {
-                        if (Objects.enemyProjectileList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle))
+                        if (Objects.playerList[j].PowerUpShield == true)
+                        { }
+                        else
                         {
-                            if (Objects.playerList[j].PowerUpShield == true)
-                            { }
-                            else
-                            {
-                                Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
-                            }
-                            Objects.enemyProjectileList[i].SetDead();
+                            Objects.playerList[j].Health -= Objects.enemyProjectileList[i].Damage;
                         }
-                    }
-                }
-
-                //bosses
-                for (int j = 0; j < Objects.playerProjectileList.Count; j++)
-                {
-                    for (int i = 0; i < Objects.bossList.Count; i++)
-                    {
-                        if (Objects.bossList[i].IsKillable())
-                        {
-                            for (int k = 0; k < Objects.bossList[i].TargetRectangles.Count; k++)
-                            {
-                                if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].TargetRectangles[k]))
-                                {
-                                    Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
-                                    Objects.playerProjectileList[j].SetDead();
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int j = 0; j < Objects.bossList.Count; j++)
-                {
-                    for (int k = 0; k < Objects.bossList[j].accessoryList.Count; k++)
-                    {
-                        
-                            for (int i = 0; i < Objects.playerProjectileList.Count; i++)
-                            {
-
-                                if (Objects.bossList[j].accessoryList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
-                                {
-                                    if (Objects.bossList[j].accessoryList[k].ReallyActivated)
-                                    
-                                    Objects.bossList[j].accessoryList[k].Health -= Objects.playerProjectileList[i].Damage;
-                                    Objects.playerProjectileList[i].SetDead();
-                                }
-
-                            }
-                        
+                        Objects.enemyProjectileList[i].SetDead();
                     }
                 }
             }
 
+            //bosses
+            for (int j = 0; j < Objects.playerProjectileList.Count; j++)
+            {
+                for (int i = 0; i < Objects.bossList.Count; i++)
+                {
+                    if (Objects.bossList[i].IsKillable())
+                    {
+                        for (int k = 0; k < Objects.bossList[i].TargetRectangles.Count; k++)
+                        {
+                            if (Objects.playerProjectileList[j].Rectangle.Intersects(Objects.bossList[i].TargetRectangles[k]))
+                            {
+                                Objects.bossList[i].Health -= Objects.playerProjectileList[j].Damage;
+                                Objects.playerProjectileList[j].SetDead();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < Objects.bossList.Count; j++)
+            {
+                for (int k = 0; k < Objects.bossList[j].accessoryList.Count; k++)
+                {
+
+                    for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+                    {
+
+                        if (Objects.bossList[j].accessoryList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        {
+                            if (Objects.bossList[j].accessoryList[k].ReallyActivated && Objects.bossList[j].accessoryList[k].IsKillable)
+
+                                Objects.bossList[j].accessoryList[k].Health -= Objects.playerProjectileList[i].Damage;
+                            Objects.playerProjectileList[i].SetDead();
+                        }
+
+                    }
+
+                }
+            }
+            for (int i = 0; i < Objects.escortList.Count; i++)
+            {
+                for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
+                {
+                    if (Objects.escortList[i].Rectangle.Intersects(Objects.enemyProjectileList[j].Rectangle))
+                    {
+                        Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
+                        Objects.enemyProjectileList[j].SetDead();
+                        break;
+                    }
+                }
+                for (int j = 0; j < Objects.formationList.Count; j++)
+                {
+                    for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
+                
+                    if (Objects.escortList[i].Rectangle.Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
+                    {
+                        Objects.escortList[i].Health -= Settings.damage_collision;
+                        Objects.formationList[j].enemyInFormationList[k].SetDead();
+                        break;
+                    }
+                }
+            }
         }
+
     }
+}
 

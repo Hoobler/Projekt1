@@ -16,8 +16,9 @@ namespace _1942
             size = new Point(50, 59);
             texture = Texture2DLibrary.boss1_projectile;
             color = Color.Transparent;
-            maxHealth = 800;
+            maxHealth = Settings.boss1_engine_health;
             health = maxHealth;
+            killable = true;
         }
 
         public override void Update(GameTime gameTime, Vector2 speed)

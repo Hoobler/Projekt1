@@ -26,7 +26,7 @@ namespace _1942
             speed = new Vector2(-2, 0);
             texture = Texture2DLibrary.boss1;
             layerDepth = 0.5f;
-            maxHealth = 1000;
+            maxHealth = 1;
             health = maxHealth;
             //size = new Point(400, 200);
             size = new Point((texture.Bounds.Width-1)/3 -3 , texture.Bounds.Height -2);

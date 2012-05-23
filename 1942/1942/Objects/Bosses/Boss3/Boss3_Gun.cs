@@ -25,16 +25,14 @@ namespace _1942
             health = maxHealth;
             this.rotationPoint = rotationPoint;
             this.position = position;
+            killable = true;
         }
         public override void Update(GameTime gameTime, Vector2 speed)
         {
             base.Update(gameTime, speed);
             
 
-            if (activated)
-            {
-                
-            }
+            
 
             if (reallyActivated)
             {

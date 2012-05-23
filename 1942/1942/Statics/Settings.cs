@@ -15,9 +15,7 @@ namespace _1942
         static public int damage_collision = 10;
 
         static public float tower_projectile_speed = 3f;
-
         static public float tower_projectile_frequency = 1f;
-
         static public Point tower_projectile_size = new Point(2, 6);
         static public Point size_tower = new Point(41, 41);
         static public int tower_projectile_damage = 2;
@@ -56,6 +54,10 @@ namespace _1942
         static public int player_projectile_damage = 10;
         static public Point size_player = new Point(32 , 30);
 
+        static public int boss1_engine_health = 800;
+        static public int boss1_projectile_speed = 7;
+        static public int boss1_projectile_damage = 10;
+        static public float boss1_projectile_frequency = 1f;
 
         static public int textInputLength = 5;
 
@@ -66,9 +68,13 @@ namespace _1942
         static public float boat_tower_projectile_speed = 3f;
         static public float boat_tower_projectile_frequency = 1f;
         static public Point boat_tower_projectile_size = new Point(2, 4);
+
+        static public Vector2 escort_speed = new Vector2(2, 0);
+        static public Point escort_size = new Point(200,90);
+        static public int escort_health = 1000;
         
 
-        public enum CurrentLevel { Level1, Level2, Level3, Level4, Level5 };
+        public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5 };
         static public CurrentLevel currentLevel = CurrentLevel.Level1;
     }
 }
