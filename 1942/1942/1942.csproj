@@ -212,10 +212,13 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
     <Content Include="HighScore\HighScoreLevel5.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+=======
+>>>>>>> 5233feda553eba8c5ed02dae3676223ac16d4a4a
     <Content Include="HighScore\HighScoreLevel3.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
