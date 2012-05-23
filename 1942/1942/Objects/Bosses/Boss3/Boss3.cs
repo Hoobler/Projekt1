@@ -12,12 +12,12 @@ namespace _1942
         float angleGun;
         float angleSpeed;
         float timer;
-        int phase;
         float radius;
         Vector2 rotationPoint;
 
         float timeUntilNextShot;
         float timeBetweenShots = 0.1f;
+        bool animationDelay;
 
         public Boss3(Vector2 position, float timer)
         {
@@ -29,7 +29,7 @@ namespace _1942
             this.position.X = Settings.window.ClientBounds.Width/2 + radius;
             angle = (float)Math.PI;
             angleSpeed = (float)Math.PI / 360f;
-            texture = Texture2DLibrary.spaceship;
+            texture = Texture2DLibrary.boss3;
             color = Color.White;
             this.timer = timer+1f;
             maxHealth = 1000;
@@ -91,23 +91,26 @@ namespace _1942
 
             if (phase >= 2)
             {
-                timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                
-                if (timeUntilNextShot >= timeBetweenShots)
+                if (!killed)
                 {
-                    timeUntilNextShot -= timeBetweenShots;
-                    Vector2 shotOrigin = new Vector2(0, 0);
-                    shotOrigin.X = (float)Math.Cos(angle - (float)Math.PI / 2f) * size.Y / 2 + Center.X;
-                    shotOrigin.Y = (float)Math.Sin(angle - (float)Math.PI/2f) * size.Y / 2 + Center.Y;
-                    Vector2 shot1Origin = new Vector2(0, 0);
-                    Vector2 shot2Origin = new Vector2(0, 0);
-                    float angleChange = (float)Math.PI / 8;
-                    shot1Origin.X = (shotOrigin.X - Center.X) * (float)Math.Cos(angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Sin(angleChange) + Center.X;
-                    shot1Origin.Y = -(shotOrigin.X - Center.X) * (float)Math.Sin(angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Cos(angleChange) + Center.Y;
-                    shot2Origin.X = (shotOrigin.X - Center.X) * (float)Math.Cos(-angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Sin(-angleChange) + Center.X;
-                    shot2Origin.Y = -(shotOrigin.X - Center.X) * (float)Math.Sin(-angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Cos(-angleChange) + Center.Y;
-                    Objects.enemyProjectileList.Add(new Boss3_Projectile_Front(shot1Origin, angle - (float)Math.PI / 2f));
-                    Objects.enemyProjectileList.Add(new Boss3_Projectile_Front(shot2Origin, angle - (float)Math.PI / 2f));
+                    timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    if (timeUntilNextShot >= timeBetweenShots)
+                    {
+                        timeUntilNextShot -= timeBetweenShots;
+                        Vector2 shotOrigin = new Vector2(0, 0);
+                        shotOrigin.X = (float)Math.Cos(angle - (float)Math.PI / 2f) * size.Y / 2 + Center.X;
+                        shotOrigin.Y = (float)Math.Sin(angle - (float)Math.PI / 2f) * size.Y / 2 + Center.Y;
+                        Vector2 shot1Origin = new Vector2(0, 0);
+                        Vector2 shot2Origin = new Vector2(0, 0);
+                        float angleChange = (float)Math.PI / 8;
+                        shot1Origin.X = (shotOrigin.X - Center.X) * (float)Math.Cos(angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Sin(angleChange) + Center.X;
+                        shot1Origin.Y = -(shotOrigin.X - Center.X) * (float)Math.Sin(angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Cos(angleChange) + Center.Y;
+                        shot2Origin.X = (shotOrigin.X - Center.X) * (float)Math.Cos(-angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Sin(-angleChange) + Center.X;
+                        shot2Origin.Y = -(shotOrigin.X - Center.X) * (float)Math.Sin(-angleChange) + (shotOrigin.Y - Center.Y) * (float)Math.Cos(-angleChange) + Center.Y;
+                        Objects.enemyProjectileList.Add(new Boss3_Projectile_Front(shot1Origin, angle - (float)Math.PI / 2f));
+                        Objects.enemyProjectileList.Add(new Boss3_Projectile_Front(shot2Origin, angle - (float)Math.PI / 2f));
+                    }
                 }
 
                 if (phase == 2)
@@ -126,6 +129,17 @@ namespace _1942
                         accessoryList[i].AngleUpdate(angleGun + (float)Math.PI / 2f);
                 }
             }
+            if (animationDelay)
+            {
+                animationDelay = false;
+                animationFrame.X++;
+            }
+            else
+                animationDelay = true;
+
+
+            if (animationFrame.X > 3)
+                animationFrame.X = 0;
 
         }
 
@@ -133,24 +147,23 @@ namespace _1942
         {
             if (activated)
             {
+                
                 spriteBatch.Draw(texture,
-                        new Rectangle((int)Position.X + (Size.X / 2), (int)Position.Y + (Size.Y / 2), Size.X, Size.Y),
-                        new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
-                        color,
-                        angle,
-                        new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
-                        spriteEffect, layerDepth);
-                for (int i = 0; i < accessoryList.Count; i++)
-                {
-                    accessoryList[i].Draw(spriteBatch);
-                }
+                    new Rectangle((int)Center.X, (int)Center.Y, Size.X, Size.Y),
+                    new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 4) + 1,
+                        (animationFrame.Y * (texture.Bounds.Height - 1) / 1) + 1,
+                        ((texture.Bounds.Width - 1) / 4) - 1,
+                        ((texture.Bounds.Height - 1) / 1) - 1),
+                    color,
+                    angle,
+                    new Vector2(50.5f, texture.Bounds.Height / 2),
+                    spriteEffect,
+                    layerDepth);
+                
 
-                if (phase == 1)
-                    spriteBatch.DrawString(FontLibrary.Hud_Font, "DODGE EVERYTHING HOLY FISHSTICKS\nAlso shoot the cannons", new Vector2(200, 200), Color.Red);
+                
             }
-
-            
-
+            base.Draw(spriteBatch);
         }
 
         
@@ -158,9 +171,9 @@ namespace _1942
         public override void Accessorize()
         {
             base.Accessorize();
-            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y-size.Y/2), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y-10), angleSpeed, rotationPoint));
-            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, Center.Y+size.Y/2-20), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X-10, position.Y+11), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X - 10, position.Y + 52), angleSpeed, rotationPoint));
+            accessoryList.Add(new Boss3_Gun(new Vector2(Center.X - 10, position.Y + 70), angleSpeed, rotationPoint));
         }
     }
 }

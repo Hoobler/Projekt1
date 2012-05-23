@@ -237,7 +237,7 @@
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>3</positionX>
+      <positionX>7</positionX>
       <positionY>66</positionY>
       <formation>formation1a</formation>
       <mirrored>true</mirrored>
@@ -333,7 +333,7 @@
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>4</positionX>
+      <positionX>6</positionX>
       <positionY>132</positionY>
       <formation>formation1a</formation>
       <mirrored>true</mirrored>
@@ -354,36 +354,6 @@
       <positionX>0</positionX>
       <positionY>152</positionY>
       <formation>boss1</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>2</positionX>
-      <positionY>25</positionY>
-      <formation>PowerUp_Health</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>2</positionX>
-      <positionY>30</positionY>
-      <formation>PowerUp_Armor</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>2</positionX>
-      <positionY>35</positionY>
-      <formation>PowerUp_Shield</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>2</positionX>
-      <positionY>40</positionY>
-      <formation>PowerUp_Health</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>2</positionX>
-      <positionY>45</positionY>
-      <formation>PowerUp_Health</formation>
       <mirrored>false</mirrored>
     </spawn>
   </spawnlist>

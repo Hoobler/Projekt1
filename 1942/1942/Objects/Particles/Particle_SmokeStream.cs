@@ -12,9 +12,9 @@ namespace _1942
         public Particle_SmokeStream(Vector2 position)
         {
             this.position = position;
-            size = new Point(2, 2);
+            size = new Point(10, 10);
             color = Color.White;
-            texture = Texture2DLibrary.boss1_projectile;
+            texture = Texture2DLibrary.particle_smoke;
         }
         public override void Update(GameTime gameTime)
         {
@@ -25,7 +25,11 @@ namespace _1942
                 color.B-=2;
             if (color.G > 0) 
                 color.G-=2;
+            if (color.A > 0)
+                color.A -= 2;
             position.Y += 5f;
+            size.X++;
+            size.Y++;
         }
     }
 }

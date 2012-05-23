@@ -18,7 +18,6 @@ namespace _1942
 
             if (mirrored)
             {
-                startingPos.X = Settings.window.ClientBounds.Width - startingPos.X;
                 speed.X = -speed.X;
             }
                 enemyInFormationList.Add(new Enemy_Zero(startingPos));

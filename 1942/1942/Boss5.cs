@@ -9,7 +9,6 @@ namespace _1942
     class Boss5 : Boss_Base
     {
         private int timer;
-        private int phase;
         List<Boss5_MiniAirplane> minilist = new List<Boss5_MiniAirplane>();
 
         public Boss5(Vector2 position)

@@ -8,7 +8,7 @@ namespace _1942
 {
     class Boss2 : Boss_Base
     {
-        int phase;
+        
         float timer;
 
         public Boss2(Vector2 position)
@@ -32,7 +32,7 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
+            
             if (accessoryList.Count <= 0 && activated)
                 killed = true;
             if(!dead && activated)
@@ -85,9 +85,14 @@ namespace _1942
         }
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(texture,
+                new Rectangle((int)Position.X + size.X / 2, (int)Position.Y + size.Y / 2, size.X, size.Y),
+                new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
+                color,
+                angle,
+                new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2),
+                spriteEffect, layerDepth);
             base.Draw(spriteBatch);
-            if (phase == 1)
-                spriteBatch.DrawString(FontLibrary.Hud_Font, "SHOOT EVERYTHING\nAND DODGE THE BARRAGE", new Vector2(200, 200), Color.Red);
         }
 
         public override void Accessorize()

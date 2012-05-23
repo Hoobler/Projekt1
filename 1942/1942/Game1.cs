@@ -73,7 +73,7 @@ namespace _1942
             Texture2DLibrary.enemy_todjo = Content.Load<Texture2D>(@"Enemies/Todjo");
             Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Boat");
-            Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/AATower");
+            Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/Boat_Tower");
             Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.enemy_heavy = Content.Load<Texture2D>(@"Enemies/spaceship");
@@ -95,8 +95,8 @@ namespace _1942
             Texture2DLibrary.boss2_smallgun = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_SmallGun");
             Texture2DLibrary.boss2_wall = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_Wall");
 
-            Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Enemies/Spaceship");
-
+            Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3");
+            Texture2DLibrary.boss3_gun = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3_Gun");
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
             Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");
@@ -141,8 +141,8 @@ namespace _1942
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
             SoundLibrary.Twilight = Content.Load<Song>(@"Music/Twilight");
             SoundLibrary.Boss1 = Content.Load<Song>(@"Music/Boss1");
-            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1b");
-            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2b");
+            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
+            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
             SoundLibrary.Level3 = Content.Load<Song>(@"Music/Level3");
 
             //Sounds
@@ -152,9 +152,9 @@ namespace _1942
             SoundLibrary.Player_Shot = Content.Load<SoundEffect>(@"Sounds/Player_Shot");
             //SoundLibrary.Tower_Shot = Content.Load<SoundEffect>(@"Sounds/Tower_Shot");
 
-            Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
-            
-
+            Texture2DLibrary.particle_explosion = Content.Load<Texture2D>(@"Particles/explosion");
+            Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Particles/smoke");
+            Texture2DLibrary.shielded = Content.Load<Texture2D>(@"shielded");
             Settings.window = Window;
             
 

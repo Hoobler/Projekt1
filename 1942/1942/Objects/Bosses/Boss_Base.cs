@@ -9,6 +9,7 @@ namespace _1942
 {
     class Boss_Base : BaseObject
     {
+        protected int phase;
         protected int maxHealth;
         protected int health;
         protected bool activated;
@@ -30,6 +31,16 @@ namespace _1942
                 accessoryList[i].Update(gameTime, speed);
             }
 
+            if (activated && accessorised)
+            {
+                int killables = 0;
+                for (int i = 0; i < accessoryList.Count; i++)
+                    if (accessoryList[i].IsKillable && !accessoryList[i].Killed)
+                        killables++;
+                if (killables == 0)
+                    killed = true;
+            }
+
             if (!activated)
             {
                 position.Y += Settings.level_speed;
@@ -38,9 +49,11 @@ namespace _1942
             if (!activated && position.Y >= -1000)
             {
                 position.Y = -size.Y;
-                if(!accessorised)
-                Accessorize();
-                activated = true;
+                if (!accessorised)
+                {
+                    Accessorize();
+                    activated = true;
+                }
                 for (int i = 0; i < accessoryList.Count; i++)
                 {
                     if (!accessoryList[i].Activated)
@@ -99,12 +112,15 @@ namespace _1942
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-            for (int i = 0; i < accessoryList.Count; i++)
+            if (activated)
             {
-                accessoryList[i].Draw(spriteBatch);
+                for (int i = 0; i < accessoryList.Count; i++)
+                {
+                    accessoryList[i].Draw(spriteBatch);
+                }
+                if (phase == 1)
+                    spriteBatch.DrawString(FontLibrary.Hud_Font, "BOSS APPROACHING", new Vector2(200, 200), Color.Red);
             }
-            
         }
 
         public virtual void Accessorize()

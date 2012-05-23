@@ -17,9 +17,9 @@ namespace _1942
         {
             
             angle = (float)Math.PI / 2f;
-            size = new Point(20, 20);
-            texture = Texture2DLibrary.spaceship;
-            color = Color.Black;
+            size = new Point(15, 30);
+            texture = Texture2DLibrary.boss3_gun;
+            color = Color.White;
             this.angleSpeed = angleSpeed;
             maxHealth = 200;
             health = maxHealth;
@@ -51,6 +51,9 @@ namespace _1942
                     Objects.enemyProjectileList.Add(new Boss3_Projectile(position, angle));
                     timeUntilNextShot -= timeBetweenShots;
                 }
+
+                if(dead)
+                    Objects.particleList.Add(new Particle_Explosion(Center, new Point (30, 30)));
             }
         }
 

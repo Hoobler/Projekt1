@@ -365,17 +365,17 @@ namespace _1942
 
                     for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                     {
-
-                        if (Objects.bossList[j].accessoryList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                        if (Objects.bossList[j].accessoryList[k].IsKillable)
                         {
-                            if (Objects.bossList[j].accessoryList[k].ReallyActivated && Objects.bossList[j].accessoryList[k].IsKillable)
+                            if (Objects.bossList[j].accessoryList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
+                            {
+                                if (Objects.bossList[j].accessoryList[k].ReallyActivated && Objects.bossList[j].accessoryList[k].IsKillable)
 
-                                Objects.bossList[j].accessoryList[k].Health -= Objects.playerProjectileList[i].Damage;
-                            Objects.playerProjectileList[i].SetDead();
+                                    Objects.bossList[j].accessoryList[k].Health -= Objects.playerProjectileList[i].Damage;
+                                Objects.playerProjectileList[i].SetDead();
+                            }
                         }
-
                     }
-
                 }
             }
             for (int i = 0; i < Objects.escortList.Count; i++)
