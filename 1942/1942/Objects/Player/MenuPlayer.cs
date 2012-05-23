@@ -124,15 +124,15 @@ namespace _1942
                 }
                 //if (!isFormActive)
                 //{
-                //    while (this.Center.X < Settings.window.ClientBounds.Center.X)
+                //    if (this.Center.X < Settings.window.ClientBounds.Center.X)
                 //    {
                 //        GoRight();
                 //    }
-                //    while (this.Center.X > Settings.window.ClientBounds.Center.X)
+                //    if (this.Center.X > Settings.window.ClientBounds.Center.X)
                 //    {
                 //        GoLeft();
                 //    }
-                //    while (this.Center.X <= Settings.window.ClientBounds.Center.X || this.Center.X >= Settings.window.ClientBounds.Center.X)
+                //    if (this.Center.X <= Settings.window.ClientBounds.Center.X || this.Center.X >= Settings.window.ClientBounds.Center.X)
                 //    {
                 //        GoDown();
                 //    }
