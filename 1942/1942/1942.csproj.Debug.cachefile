@@ -23,7 +23,6 @@ Content\Menu\VideoOptions_Shadow.xnb
 Content\Enemies\Player.xnb
 Content\Enemies\Zero.xnb
 Content\Enemies\Projectile_Generic.xnb
-Content\Enemies\square1.xnb
 Content\Enemies\AATower.xnb
 Content\Enemies\AABaseDead.xnb
 Content\Enemies\AABase.xnb
@@ -90,6 +89,7 @@ Content\Sounds\Explosion_Big.xnb
 Content\Sounds\gunshot.xnb
 Content\Sounds\Player_Shot.xnb
 Content\Sounds\Laser_gun.xnb
+Content\Enemies\square1.xnb
 Content\Music\MenuSong.wma
 Content\Music\Ride_of_the_Valkyries.wma
 Content\Music\Twilight.wma
@@ -100,7 +100,6 @@ Content\Music\Level2.wma
 Content\1942font2.png
 HighScore\HighScoreLevel2.xml
 HighScore\HighScoreLevel1.xml
-HighScore\HighScoreList.xml
 Levels\level3.xml
 Levels\level2.xml
 Levels\level1.xml
