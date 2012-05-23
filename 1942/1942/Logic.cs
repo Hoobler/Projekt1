@@ -198,6 +198,8 @@ namespace _1942
                             if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
                             {
                                 levelLoader.EndLevel = true;
+                                playerOneAdd = false;
+                                playerTwoAdd = false;
                             }
                         }
                     }
