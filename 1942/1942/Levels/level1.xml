@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <level>
   <name>Level 1</name>
   <nextlevel>level2</nextlevel>
@@ -357,9 +357,33 @@
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>0</positionX>
-      <positionY>152</positionY>
-      <formation>escort</formation>
+      <positionX>2</positionX>
+      <positionY>25</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>30</positionY>
+      <formation>PowerUp_Armor</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>35</positionY>
+      <formation>PowerUp_Shield</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>40</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>45</positionY>
+      <formation>PowerUp_Health</formation>
       <mirrored>false</mirrored>
     </spawn>
   </spawnlist>
