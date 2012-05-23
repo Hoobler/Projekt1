@@ -18,8 +18,8 @@ namespace _1942
 
         private List<BaseProjectile> projectileList = new List<BaseProjectile>();*/
 
-        bool playerOneAdd = false;
-        bool playerTwoAdd = false;
+        bool playerOneAdd;
+        bool playerTwoAdd;
         string playerName = String.Empty;
         KeyboardState oldKeyState;
         KeyboardState myKeyState;
@@ -52,7 +52,10 @@ namespace _1942
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
 
+            //Highscore stuff, DUH!
             highscore = new HighScore(Settings.currentLevel.ToString());
+            playerOneAdd = false;
+            playerTwoAdd = false;
 
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
@@ -198,8 +201,6 @@ namespace _1942
                             if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
                             {
                                 levelLoader.EndLevel = true;
-                                playerOneAdd = false;
-                                playerTwoAdd = false;
                             }
                         }
                     }
