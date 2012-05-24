@@ -10,16 +10,24 @@ namespace _1942
 {
     class MenuPlayer : BasePlayer
     {
+        //The "distance" to the player
         private int fDistToPlayer = 2000;
-        private int eDistToPlayer = 0;
-        private int pDistToPlayer = 0;
+        private int eDistToPlayer = 2000;
+        private int pDistToPlayer = 2000;
+        private int bDistToPlayer = 2000;
         private int nearestObject = 0;
         private int formationList = 0;
+        //The x position for the enemy that needs to be killed
         private int formationPosX = 0;
         private int enemyPosX = 0;
         private int powerUpPosX = 0;
+        private int bossPosX = 0;
+        private int MoveX = 0;
+        //Bools for checking if the enemy is on screen at all
         private bool isFormActive = false;
+        private bool isEnemyActive = false;
         private bool goForPowerUp = false;
+        private bool goForBoss = false;
 
         public MenuPlayer(): base()
         {
@@ -40,7 +48,7 @@ namespace _1942
                     if (Objects.formationList[i].enemyInFormationList[j].Activated)
                     {
                         var tempFDistance = (int)Vector2.Distance(Objects.formationList[i].enemyInFormationList[j].Center, this.Center);
-                        if (tempFDistance > 0 || tempFDistance < fDistToPlayer) // fDistToPlayer = formationDistansToPlayer
+                        if (tempFDistance > 0 && tempFDistance < fDistToPlayer) // fDistToPlayer = formationDistansToPlayer
                         {
                             formationPosX = (int)Objects.formationList[i].enemyInFormationList[j].Center.X;
                             fDistToPlayer = tempFDistance;
@@ -56,17 +64,18 @@ namespace _1942
                 if (Objects.enemyList[i].Activated)
                 {
                     var tempEDistance = (int)Vector2.Distance(Objects.enemyList[i].Center, this.Center);
-                    if (tempEDistance > 0 || tempEDistance < eDistToPlayer)
+                    if (tempEDistance > 0 && tempEDistance < eDistToPlayer)
                     {
                         enemyPosX = (int)Objects.enemyList[i].Center.X;
                         eDistToPlayer = tempEDistance;
+                        isEnemyActive = Objects.enemyList[i].Activated;
                     }
                 }
             }
             for (int i = 0; i < Objects.powerUpList.Count; i++)
             {
                 var tempPDistance = (int)Vector2.Distance(Objects.powerUpList[i].Position, this.Center);
-                if (tempPDistance > 0 || tempPDistance < pDistToPlayer)
+                if (tempPDistance > 0 && tempPDistance < pDistToPlayer)
                 {
                     powerUpPosX = (int)Objects.powerUpList[i].Position.X;
                     pDistToPlayer = tempPDistance;
@@ -80,63 +89,91 @@ namespace _1942
                     }
                 }
             }
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
+                    if (Objects.bossList[i].accessoryList[j].ReallyActivated)
+                    {
+                        var tempBDistance = (int)Vector2.Distance(Objects.bossList[i].accessoryList[j].Position, this.Center);
+                        if (tempBDistance > 0 && tempBDistance < bDistToPlayer)
+                        {
+                            bossPosX = (int)Objects.bossList[i].accessoryList[j].Position.X;
+                            bDistToPlayer = tempBDistance;
+                            goForBoss = Objects.bossList[i].accessoryList[j].Activated;
+                        }
+                    }
+            }
+            {
+            }
+            if (fDistToPlayer < eDistToPlayer)
+            {
+                MoveX = formationPosX;
+            }
+            else if (eDistToPlayer < fDistToPlayer)
+            {
+                MoveX = enemyPosX;
+            }
         }
 
 
         public void MoveTheShip()
         {
-            if (goForPowerUp)
+            if (isFormActive || isEnemyActive || goForPowerUp)
             {
-                if (this.Center.X <= powerUpPosX || this.Center.X >= powerUpPosX)
+                if (!goForPowerUp)
                 {
-                    goForPowerUp = false;
-                }
-                if (powerUpPosX > this.Center.X)
-                {
-                    GoRight();
-                    goForPowerUp = false;
-                }
-                if (powerUpPosX < this.Center.X)
-                {
-                    GoLeft();
-                    goForPowerUp = false;
-                }
-            }
-            else if (!goForPowerUp)
-            {
-                if (isFormActive)
-                {
-                    if (formationPosX > this.Center.X)
+                    if (this.Center.X <= MoveX || this.Center.X >= MoveX)
+                    {
+                        Fire();
+                        fDistToPlayer = 1000;
+                        eDistToPlayer = 1000;
+                        isFormActive = false;
+                    }
+                    if (MoveX > this.Center.X)
                     {
                         GoRight();
                         isFormActive = false;
                     }
-                    if (formationPosX < this.Center.X)
+                    if (MoveX < this.Center.X)
                     {
                         GoLeft();
                         isFormActive = false;
                     }
-                    if (this.Center.X <= formationPosX || this.Center.X >= formationPosX)
+                }
+                if (goForPowerUp)
+                {
+                    if (this.Center.X <= powerUpPosX || this.Center.X >= powerUpPosX)
                     {
-                        Fire();
-                        isFormActive = false;
+                        pDistToPlayer = 1000;
+                        goForPowerUp = false;
+                    }
+                    if (powerUpPosX > this.Center.X)
+                    {
+                        GoRight();
+                        goForPowerUp = false;
+                    }
+                    if (powerUpPosX < this.Center.X)
+                    {
+                        GoLeft();
+                        goForPowerUp = false;
                     }
                 }
-                //if (!isFormActive)
-                //{
-                //    if (this.Center.X < Settings.window.ClientBounds.Center.X)
-                //    {
-                //        GoRight();
-                //    }
-                //    if (this.Center.X > Settings.window.ClientBounds.Center.X)
-                //    {
-                //        GoLeft();
-                //    }
-                //    if (this.Center.X <= Settings.window.ClientBounds.Center.X || this.Center.X >= Settings.window.ClientBounds.Center.X)
-                //    {
-                //        GoDown();
-                //    }
-                //}
+                if (goForBoss)
+                {
+                    if (this.Center.X <= MoveX || this.Center.X >= MoveX)
+                    {
+                        Fire();
+                        bDistToPlayer = 1000;
+                    }
+                    if (MoveX > this.Center.X)
+                    {
+                        GoRight();
+                    }
+                    if (MoveX < this.Center.X)
+                    {
+                        GoLeft();
+                    }
+                }
             }
         }
 
@@ -152,7 +189,8 @@ namespace _1942
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(FontLibrary.debug, "" + fDistToPlayer.ToString(), new Vector2(100f, 300), Color.Red);
+            spriteBatch.DrawString(FontLibrary.debug, "FormationDist: " + fDistToPlayer.ToString(), new Vector2(100f, 300), Color.Red);
+            spriteBatch.DrawString(FontLibrary.debug, "EnemyDist: " + eDistToPlayer.ToString(), new Vector2(100f, 320), Color.Red);
             spriteBatch.DrawString(FontLibrary.debug, "" + nearestObject.ToString(), new Vector2(200f, 200), Color.Red);
             spriteBatch.Draw(texture,
                 Rectangle,
