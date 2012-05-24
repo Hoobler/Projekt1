@@ -11,11 +11,16 @@ namespace _1942
     {
 
         int playerID;
-        public Projectile_Player(Vector2 startingPos, int playerID, int damage, Color myColor)
+        public Projectile_Player(Vector2 startingPos, int playerID, int damage, Color myColor, bool boosted)
             : base()
         {
             position = new Vector2(startingPos.X, startingPos.Y);
             size = Settings.player_projectile_size;
+            if (boosted)
+            {
+                this.size.X+=2;
+                this.size.Y++;
+            }
             layerDepth = 1.0f;
             angle = 0;
             speed = Settings.player_projectile_speed;
@@ -23,6 +28,7 @@ namespace _1942
             texture = Texture2DLibrary.projectile_player;
             this.damage = damage;
             this.playerID = playerID;
+            position.X -= size.X / 2f;
         }
 
         public override void Update(GameTime gameTime)

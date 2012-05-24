@@ -60,7 +60,7 @@ namespace _1942
             {
                 mActiveDamageTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 damage = 20;
-                projectileColor = Color.Orange;
+                projectileColor = Color.Red;
             }
             else
             {
@@ -107,6 +107,8 @@ namespace _1942
                 new Vector2 (0,0),
                 spriteEffect,
                 0.0f);
+            if (powerupShield)
+                spriteBatch.Draw(Texture2DLibrary.shielded, new Rectangle((int)Center.X - 30, (int)Center.Y - 30, 60, 60), Color.White);
         }
 
         public int Health
@@ -154,13 +156,13 @@ namespace _1942
             {
                 if (animationFrame.Y == 1)
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor, powerupDamage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 6, position.Y + size.Y / 3), playerID, damage, projectileColor, powerupDamage));
                 }
                 else
                 {
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor));
-                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 - size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor, powerupDamage));
+                    Objects.playerProjectileList.Add(new Projectile_Player(new Vector2(position.X + size.X / 2 + size.X / 4, position.Y + size.Y / 3), playerID, damage, projectileColor, powerupDamage));
                 }
                 timeUntilNextShot = Settings.player_projectile_frequency;
                 //SoundLibrary.Player_Shot.Play();

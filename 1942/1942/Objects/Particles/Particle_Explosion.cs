@@ -15,7 +15,7 @@ namespace _1942
             position = startingPos;
             this.size = size;
             layerDepth = 0.0f;
-            texture = Texture2DLibrary.particle_zero_explosion;
+            texture = Texture2DLibrary.particle_explosion;
             
         }
 

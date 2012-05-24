@@ -10,7 +10,7 @@ namespace _1942
     class Boss1_Gun : Boss_Accessory
     {
         float timeUntilNextShot;
-        float timeBetweenShots = 0.3f;
+        float timeBetweenShots = Settings.boss1_projectile_frequency;
         
         
 
