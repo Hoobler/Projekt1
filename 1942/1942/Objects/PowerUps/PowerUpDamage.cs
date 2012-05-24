@@ -16,18 +16,13 @@ namespace _1942
 
         public PowerUpDamage(Vector2 mySpawnPosition)
         {
+            texture = Texture2DLibrary.texture_PowerUp_Damage;
             Position = mySpawnPosition;
         }
 
         public void Update()
         {
             
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-            spriteBatch.Draw(Texture2DLibrary.texture_PowerUp_Damage, new Rectangle((int)Position.X, (int)Position.Y, size, size), Color.White);
         }
     }
 }

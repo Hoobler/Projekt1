@@ -35,7 +35,7 @@ namespace _1942
                 {
                     if (Objects.powerUpList[i] != null)
                     {
-                        if (Objects.powerUpList[i].GetRectangle.Intersects(Objects.playerList[j].Rectangle) && Objects.powerUpList[i].IsAlive == true)
+                        if (Objects.powerUpList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle) && Objects.powerUpList[i].IsAlive == true)
                         {
                             if (Objects.powerUpList[i] is PowerUpDamage)
                             {

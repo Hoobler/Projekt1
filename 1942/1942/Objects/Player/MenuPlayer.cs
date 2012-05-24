@@ -10,6 +10,7 @@ namespace _1942
 {
     class MenuPlayer : BasePlayer
     {
+        #region Variables
         //The "distance" to the player
         private int fDistToPlayer = 2000;
         private int eDistToPlayer = 2000;
@@ -19,6 +20,7 @@ namespace _1942
         private int formationList = 0;
         //The x position for the enemy that needs to be killed
         private int formationPosX = 0;
+        private int formationPosY = 0;
         private int enemyPosX = 0;
         private int powerUpPosX = 0;
         private int bossPosX = 0;
@@ -28,6 +30,9 @@ namespace _1942
         private bool isEnemyActive = false;
         private bool goForPowerUp = false;
         private bool goForBoss = false;
+        private bool nothingOnScreen = false;
+        private bool onScreen = false;
+        #endregion
 
         public MenuPlayer(): base()
         {
@@ -39,7 +44,7 @@ namespace _1942
 
         #region Methods
 
-        public void ClosestObject()
+        private void ClosestObject()
         {
             for (int i = 0; i < Objects.formationList.Count; i++)
             {
@@ -51,6 +56,7 @@ namespace _1942
                         if (tempFDistance > 0 && tempFDistance < fDistToPlayer) // fDistToPlayer = formationDistansToPlayer
                         {
                             formationPosX = (int)Objects.formationList[i].enemyInFormationList[j].Center.X;
+                            formationPosY = (int)Objects.formationList[i].enemyInFormationList[j].Center.Y;
                             fDistToPlayer = tempFDistance;
                             nearestObject = j;
                             formationList = i;
@@ -77,13 +83,13 @@ namespace _1942
                 var tempPDistance = (int)Vector2.Distance(Objects.powerUpList[i].Position, this.Center);
                 if (tempPDistance > 0 && tempPDistance < pDistToPlayer)
                 {
-                    powerUpPosX = (int)Objects.powerUpList[i].Position.X;
+                    powerUpPosX = (int)Objects.powerUpList[i].Center.X;
                     pDistToPlayer = tempPDistance;
-                    if (tempPDistance <= 400)
+                    if (tempPDistance <= 600 && fDistToPlayer > 100 && eDistToPlayer > 100)
                     {
                         goForPowerUp = true;
                     }
-                    else if (tempPDistance >= 401)
+                    else if (tempPDistance >= 601 && fDistToPlayer < 100 && eDistToPlayer < 100)
                     {
                         goForPowerUp = false;
                     }
@@ -92,18 +98,32 @@ namespace _1942
             for (int i = 0; i < Objects.bossList.Count; i++)
             {
                 for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
-                    if (Objects.bossList[i].accessoryList[j].ReallyActivated)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable && !Objects.bossList[i].accessoryList[j].Killed)
                     {
                         var tempBDistance = (int)Vector2.Distance(Objects.bossList[i].accessoryList[j].Position, this.Center);
                         if (tempBDistance > 0 && tempBDistance < bDistToPlayer)
                         {
                             bossPosX = (int)Objects.bossList[i].accessoryList[j].Position.X;
                             bDistToPlayer = tempBDistance;
-                            goForBoss = Objects.bossList[i].accessoryList[j].Activated;
+                            goForBoss = Objects.bossList[i].accessoryList[j].IsKillable;
                         }
                     }
             }
+            if (!isFormActive && !isEnemyActive && !goForPowerUp)
             {
+                nothingOnScreen = true;
+            }
+            else
+            {
+                nothingOnScreen = false;
+            }
+            if (isFormActive || isEnemyActive)
+            {
+                onScreen = true;
+            }
+            else
+            {
+                onScreen = false;
             }
             if (fDistToPlayer < eDistToPlayer)
             {
@@ -115,10 +135,11 @@ namespace _1942
             }
         }
 
-
-        public void MoveTheShip()
+        private void MoveTheShip()
         {
-            if (isFormActive || isEnemyActive || goForPowerUp)
+            var windowY = Settings.window.ClientBounds.Height -50;
+
+            if (isFormActive || isEnemyActive || goForPowerUp || goForBoss)
             {
                 if (!goForPowerUp)
                 {
@@ -128,16 +149,19 @@ namespace _1942
                         fDistToPlayer = 1000;
                         eDistToPlayer = 1000;
                         isFormActive = false;
+                        isEnemyActive = false;
                     }
                     if (MoveX > this.Center.X)
                     {
                         GoRight();
                         isFormActive = false;
+                        isEnemyActive = false;
                     }
                     if (MoveX < this.Center.X)
                     {
                         GoLeft();
                         isFormActive = false;
+                        isEnemyActive = false;
                     }
                 }
                 if (goForPowerUp)
@@ -146,6 +170,10 @@ namespace _1942
                     {
                         pDistToPlayer = 1000;
                         goForPowerUp = false;
+                        if (onScreen)
+                        {
+                            Fire();
+                        }
                     }
                     if (powerUpPosX > this.Center.X)
                     {
@@ -160,19 +188,36 @@ namespace _1942
                 }
                 if (goForBoss)
                 {
-                    if (this.Center.X <= MoveX || this.Center.X >= MoveX)
+                    if (this.Center.X <= bossPosX || this.Center.X >= bossPosX)
                     {
                         Fire();
+                        goForBoss = false;
                         bDistToPlayer = 1000;
                     }
-                    if (MoveX > this.Center.X)
+                    if (bossPosX > this.Center.X)
                     {
+                        goForBoss = false;
                         GoRight();
                     }
-                    if (MoveX < this.Center.X)
+                    if (bossPosX < this.Center.X)
                     {
+                        goForBoss = false;
                         GoLeft();
                     }
+                }
+            }
+            if (nothingOnScreen)
+            {
+                var windowCenter = (int)Settings.window.ClientBounds.Width / 2f;
+                if (this.Center.X < windowCenter || this.Center.X > this.Center.X)
+                { }
+                if (windowCenter > this.Center.X)
+                {
+                    GoRight();
+                }
+                if (windowCenter < this.Center.X)
+                {
+                    GoLeft();
                 }
             }
         }
