@@ -98,14 +98,14 @@ namespace _1942
             for (int i = 0; i < Objects.bossList.Count; i++)
             {
                 for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
-                    if (Objects.bossList[i].accessoryList[j].IsKillable && !Objects.bossList[i].accessoryList[j].Killed)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable() && !Objects.bossList[i].accessoryList[j].Killed)
                     {
                         var tempBDistance = (int)Vector2.Distance(Objects.bossList[i].accessoryList[j].Position, this.Center);
                         if (tempBDistance > 0 && tempBDistance < bDistToPlayer)
                         {
                             bossPosX = (int)Objects.bossList[i].accessoryList[j].Position.X;
                             bDistToPlayer = tempBDistance;
-                            goForBoss = Objects.bossList[i].accessoryList[j].IsKillable;
+                            goForBoss = Objects.bossList[i].accessoryList[j].IsKillable();
                         }
                     }
             }
