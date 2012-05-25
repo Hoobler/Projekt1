@@ -164,7 +164,7 @@ namespace _1942
                         isEnemyActive = false;
                     }
                 }
-                if (goForPowerUp)
+                if (goForPowerUp && !goForBoss)
                 {
                     if (this.Center.X <= powerUpPosX || this.Center.X >= powerUpPosX)
                     {

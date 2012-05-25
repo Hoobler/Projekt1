@@ -223,7 +223,7 @@ namespace _1942
                         {
                             if (mLevel1_Button.IsUnlocked)
                             {
-                                Settings.currentLevel = Settings.CurrentLevel.Level1;
+                                Settings.SetNextLevel("Level1");
                                 startGame = true;
                             }
                         }
@@ -231,7 +231,7 @@ namespace _1942
                         {
                             if (mLevel2_Button.IsUnlocked)
                             {
-                                Settings.currentLevel = Settings.CurrentLevel.Level2;
+                                Settings.SetNextLevel("Level2");
                                 startGame = true;
                             }
                         }
@@ -239,7 +239,7 @@ namespace _1942
                         {
                             if (mLevel3_Button.IsUnlocked)
                             {
-                                Settings.currentLevel = Settings.CurrentLevel.Level3;
+                                Settings.SetNextLevel("Level3");
                                 startGame = true;
                             }
                         }
@@ -247,7 +247,7 @@ namespace _1942
                         {
                             if (mLevel4_Button.IsUnlocked)
                             {
-                                Settings.currentLevel = Settings.CurrentLevel.Level4;
+                                Settings.SetNextLevel("Level4");
                                 startGame = true;
                             }
                         }
@@ -255,7 +255,7 @@ namespace _1942
                         {
                             if (mLevel5_Button.IsUnlocked)
                             {
-                                Settings.currentLevel = Settings.CurrentLevel.Level5;
+                                Settings.SetNextLevel("Level5");
                                 startGame = true;
                             }
                         }
