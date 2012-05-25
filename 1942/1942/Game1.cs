@@ -201,6 +201,7 @@ namespace _1942
             {
                 case GameStates.MainMenu:
                     {
+                        logic.Update(keyState, gameTime);
                         menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
                         MusicManager.SetMusic(SoundLibrary.Menu_Song);
                         break;
@@ -243,6 +244,7 @@ namespace _1942
             {
                 case GameStates.MainMenu:
                     {
+                        logic.Draw(spriteBatch);
                         menu.Draw(spriteBatch);
                         break;
                     }
@@ -266,7 +268,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
                         spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
-                        if (Settings.nr_of_players >= 2)
+                        if (Objects.playerList.Count >= 2)
                         {
                             spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
                         }
@@ -274,6 +276,7 @@ namespace _1942
                         spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
                         spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y/logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                       
                         break;
                     }
             }

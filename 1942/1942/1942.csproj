@@ -167,6 +167,7 @@
     <Compile Include="Objects\Enemies\Stationary\Enemy_Tower_Dead.cs" />
     <Compile Include="Levelmanager\LevelLoader.cs" />
     <Compile Include="Levelmanager\TileTexture.cs" />
+    <Compile Include="Objects\Player\MenuPlayer.cs" />
     <Compile Include="Objects\PowerUps\BasePowerUp.cs" />
     <Compile Include="Objects\PowerUps\PowerUpDamage.cs" />
     <Compile Include="Objects\PowerUps\PowerUpHealth.cs" />
@@ -223,6 +224,10 @@
     <Content Include="HighScore\HighScoreLevel2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\level0.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\level5.xml">
       <SubType>Designer</SubType>

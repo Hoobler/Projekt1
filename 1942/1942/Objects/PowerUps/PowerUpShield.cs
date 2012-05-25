@@ -16,18 +16,13 @@ namespace _1942
     {
         public PowerUpShield(Vector2 mySpawnPosition)
         {
+            texture = Texture2DLibrary.texture_PowerUp_Armor;
             Position = mySpawnPosition;
         }
 
         public void Update()
         {
             
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-            spriteBatch.Draw(Texture2DLibrary.texture_PowerUp_Armor, new Rectangle((int)Position.X, (int)Position.Y, size.X, size.Y), Color.White);
         }
     }
 }

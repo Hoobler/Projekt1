@@ -76,6 +76,13 @@ namespace _1942
         
 
         public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5 };
-        static public CurrentLevel currentLevel = CurrentLevel.Level1;
+        static public CurrentLevel currentLevel = CurrentLevel.Level0;
+        static public bool LevelHasChanged = false;
+
+        static public void SetNextLevel(string NextLevel)
+        {
+            currentLevel = (CurrentLevel)Enum.Parse(typeof(CurrentLevel), NextLevel);
+            LevelHasChanged = true;
+        }
     }
 }
