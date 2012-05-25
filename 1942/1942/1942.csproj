@@ -110,9 +110,9 @@
     <Compile Include="Boss5.cs" />
     <Compile Include="Boss5_Cannon.cs" />
     <Compile Include="Boss5_MiniAirplane.cs" />
-    <Compile Include="Enemy_Boat.cs" />
-    <Compile Include="Enemy_Boat_Tower.cs" />
-    <Compile Include="Enemy_Boat_Tower_Projectile.cs" />
+    <Compile Include="Objects\Enemies\Stationary\Enemy_Boat.cs" />
+    <Compile Include="Objects\Enemies\Stationary\Enemy_Boat_Tower.cs" />
+    <Compile Include="Objects\Projectiles\Enemy_Boat_Tower_Projectile.cs" />
     <Compile Include="Escort.cs" />
     <Compile Include="MusicManager.cs" />
     <Compile Include="Objects\Bosses\Boss1\Boss1_Engine.cs" />
@@ -286,7 +286,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

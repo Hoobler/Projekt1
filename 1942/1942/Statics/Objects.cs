@@ -25,10 +25,21 @@ namespace _1942
 
         static public List<Particle_Base> particleList = new List<Particle_Base>();
 
+        internal static BaseObject BaseObject
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
-
+            DeadRemoval();
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Update(keyState, gameTime);
 
@@ -66,19 +77,14 @@ namespace _1942
 
             for (int i = 0; i < Objects.deadList.Count; i++)
                 Objects.deadList[i].Draw(spriteBatch);
-
+            for (int i = 0; i < Objects.bossList.Count; i++)
+                Objects.bossList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.enemyList.Count; i++)
                 Objects.enemyList[i].Draw(spriteBatch);
-
-            
 
             for (int i = 0; i < Objects.formationList.Count; i++)
                 Objects.formationList[i].Draw(spriteBatch);
 
-            
-
-            for (int i = 0; i < Objects.bossList.Count; i++)
-                Objects.bossList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
                 Objects.enemyProjectileList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.playerProjectileList.Count; i++)

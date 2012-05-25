@@ -10,7 +10,6 @@ namespace _1942
     {
         protected bool reallyActivated;
         protected bool killed;
-        protected bool killable;
 
         public virtual void Update(GameTime gameTime, Vector2 speed)
         {
@@ -50,10 +49,6 @@ namespace _1942
         public bool Killed
         {
             get { return killed; }
-        }
-        public bool IsKillable
-        {
-            get { return killable; }
         }
     }
 

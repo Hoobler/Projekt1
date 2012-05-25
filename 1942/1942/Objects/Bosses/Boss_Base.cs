@@ -35,7 +35,7 @@ namespace _1942
             {
                 int killables = 0;
                 for (int i = 0; i < accessoryList.Count; i++)
-                    if (accessoryList[i].IsKillable && !accessoryList[i].Killed)
+                    if (accessoryList[i].IsKillable() && !accessoryList[i].Killed)
                         killables++;
                 if (killables == 0)
                     killed = true;
@@ -101,8 +101,9 @@ namespace _1942
                 }
             }
 
-            if (dead)
+            if (killed)
             {
+                Objects.enemyList.Clear();
                 Objects.enemyProjectileList.Clear();
                 Objects.powerUpList.Clear();
             }

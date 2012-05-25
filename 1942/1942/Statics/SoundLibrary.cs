@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
-    class SoundLibrary
+    static class SoundLibrary
     {
         static public Song Menu_Song;
         static public Song Twilight;
