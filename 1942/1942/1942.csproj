@@ -107,9 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enemy_Boat.cs" />
-    <Compile Include="Enemy_Boat_Tower.cs" />
-    <Compile Include="Enemy_Boat_Tower_Projectile.cs" />
     <Compile Include="Menu\1Player_Button.cs" />
     <Compile Include="Menu\2Player_Button.cs" />
     <Compile Include="Boss5.cs" />

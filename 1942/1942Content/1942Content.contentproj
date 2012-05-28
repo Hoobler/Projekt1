@@ -518,11 +518,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WaterAni.png">
-      <Name>WaterAni</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Music\Boss1.mp3">
       <Name>Boss1</Name>
       <Importer>Mp3Importer</Importer>
@@ -590,7 +585,7 @@
     </Compile>
     <Compile Include="Menu\2 Player.png">
       <Name>2 Player</Name>
-	  <Importer>TextureImporter</Importer>
+      <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
     <Compile Include="Music\Level1b.mp3">
