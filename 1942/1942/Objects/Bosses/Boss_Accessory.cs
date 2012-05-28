@@ -10,6 +10,7 @@ namespace _1942
     {
         protected bool reallyActivated;
         protected bool killed;
+        
 
         public virtual void Update(GameTime gameTime, Vector2 speed)
         {

@@ -10,7 +10,7 @@ namespace _1942
     class Boss1_Gun : Boss_Accessory
     {
         float timeUntilNextShot;
-        float timeBetweenShots = 0.3f;
+        float timeBetweenShots = Settings.boss1_projectile_frequency;
         
         
 
@@ -27,6 +27,7 @@ namespace _1942
             health = maxHealth;
             this.position.X -= size.X / 2;
             this.position.Y -= size.Y / 2;
+            killable = false;
             
         }
 

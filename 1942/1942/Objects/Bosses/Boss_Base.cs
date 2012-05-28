@@ -9,6 +9,7 @@ namespace _1942
 {
     class Boss_Base : BaseObject
     {
+        protected int phase;
         protected int maxHealth;
         protected int health;
         protected bool activated;
@@ -20,14 +21,34 @@ namespace _1942
         
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
         protected int score;
+        Point lifebarSizeFull;
+        Point lifebarSize;
 
+        public Boss_Base()
+        {
+            lifebarSizeFull = new Point(Settings.window.ClientBounds.Width - 200, 30);
+            lifebarSize = lifebarSizeFull;
+        }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            LifeBarCalc();
+
             for (int i = 0; i < accessoryList.Count; i++)
             {
                 accessoryList[i].Update(gameTime, speed);
+            }
+
+            if (activated && accessorised)
+            {
+                int killables = 0;
+                for (int i = 0; i < accessoryList.Count; i++)
+                    if (accessoryList[i].IsKillable && !accessoryList[i].Killed)
+                        killables++;
+                if (killables == 0)
+                    killed = true;
             }
 
             if (!activated)
@@ -38,9 +59,11 @@ namespace _1942
             if (!activated && position.Y >= -1000)
             {
                 position.Y = -size.Y;
-                if(!accessorised)
-                Accessorize();
-                activated = true;
+                if (!accessorised)
+                {
+                    Accessorize();
+                    activated = true;
+                }
                 for (int i = 0; i < accessoryList.Count; i++)
                 {
                     if (!accessoryList[i].Activated)
@@ -88,8 +111,9 @@ namespace _1942
                 }
             }
 
-            if (dead)
+            if (killed)
             {
+                Objects.enemyList.Clear();
                 Objects.enemyProjectileList.Clear();
                 Objects.powerUpList.Clear();
             }
@@ -99,12 +123,24 @@ namespace _1942
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-            for (int i = 0; i < accessoryList.Count; i++)
+            if (activated)
             {
-                accessoryList[i].Draw(spriteBatch);
+                for (int i = 0; i < accessoryList.Count; i++)
+                {
+                    accessoryList[i].Draw(spriteBatch);
+                }
+                if (phase == 1)
+                    spriteBatch.DrawString(FontLibrary.Hud_Font, "BOSS APPROACHING", new Vector2(200, 200), Color.Red);
+                if (!killed)
+                {
+                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                    new Rectangle(100, 20, lifebarSizeFull.X + 10, lifebarSizeFull.Y + 10),
+                    Color.Gray);
+                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, lifebarSize.X, lifebarSize.Y),
+                        Color.Red);
+                }
             }
-            
         }
 
         public virtual void Accessorize()
@@ -148,6 +184,28 @@ namespace _1942
                     accessoryList.RemoveAt(j);
             }
 
+        }
+        public void LifeBarCalc()
+        {
+            int maxTotalHealth = 0;
+            if (killable)
+                maxTotalHealth += maxHealth;
+            for (int i = 0; i < accessoryList.Count; i++)
+            {
+                if (accessoryList[i].IsKillable)
+                    maxTotalHealth += accessoryList[i].HealthMax;
+            }
+
+            int totalHealth = 0;
+            if (killable)
+                totalHealth += health;
+            for (int i = 0; i < accessoryList.Count; i++)
+            {
+
+                if (accessoryList[i].IsKillable)
+                    totalHealth += accessoryList[i].Health;
+            }
+            lifebarSize.X = (int)((float)totalHealth / (float)maxTotalHealth * (float)lifebarSizeFull.X);
         }
     }
 }

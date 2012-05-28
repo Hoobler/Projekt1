@@ -1,13 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <texturelist>
+  <!-- Water Texture -->
   <tiletexture>
     <symbol>W</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
     <animated>true</animated>
-    <frames>13</frames>
+    <frames>7</frames>
     <texture>
-      <name>WaterAni</name>
+      <name>LevelTextures/WaterAni</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass Textures -->
+  <tiletexture>
+    <symbol>G</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>0</frames>
+    <texture>
+      <name>LevelTextures/Grass</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach textures, on the right side -->
+  <tiletexture>
+    <symbol>B</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachR</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach textures, on the left side -->
+  <tiletexture>
+    <symbol>b</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachL</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture top -->
+  <tiletexture>
+    <symbol>S</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachU</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture bottom -->
+  <tiletexture>
+    <symbol>s</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachD</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture top left corner -->
+  <tiletexture>
+    <symbol>L</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachSideL</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture bottom left corner -->
+  <tiletexture>
+    <symbol>l</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachSideLD</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture top right corner -->
+  <tiletexture>
+    <symbol>O</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachSideR</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture bottom right corner -->
+  <tiletexture>
+    <symbol>o</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachSideRD</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture top left inverted corner -->
+  <tiletexture>
+    <symbol>P</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachInnL</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture bottom left inverted corner -->
+  <tiletexture>
+    <symbol>p</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>true</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachInnL</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture top right inverted corner -->
+  <tiletexture>
+    <symbol>I</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>false</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachInnR</name>
+    </texture>
+  </tiletexture>
+  <!-- Grass/Beach texture bottom right inverted corner -->
+  <tiletexture>
+    <symbol>i</symbol>
+    <hFlip>false</hFlip>
+    <vFlip>true</vFlip>
+    <animated>false</animated>
+    <frames>7</frames>
+    <texture>
+      <name>LevelTextures/BeachInnR</name>
     </texture>
   </tiletexture>
   <tiletexture>
@@ -71,16 +215,6 @@
     </texture>
   </tiletexture>
   <tiletexture>
-    <symbol>G</symbol>
-    <hFlip>false</hFlip>
-    <vFlip>false</vFlip>
-    <animated>false</animated>
-    <frames>0</frames>
-    <texture>
-      <name>grass</name>
-    </texture>
-  </tiletexture>
-  <tiletexture>
     <symbol>D</symbol>
     <hFlip>false</hFlip>
     <vFlip>false</vFlip>
@@ -138,26 +272,6 @@
     <frames>0</frames>
     <texture>
       <name>dockbottom</name>
-    </texture>
-  </tiletexture>
-  <tiletexture>
-    <symbol>B</symbol>
-    <hFlip>false</hFlip>
-    <vFlip>false</vFlip>
-    <animated>false</animated>
-    <frames>0</frames>
-    <texture>
-      <name>black</name>
-    </texture>
-  </tiletexture>
-  <tiletexture>
-    <symbol>S</symbol>
-    <hFlip>false</hFlip>
-    <vFlip>false</vFlip>
-    <animated>false</animated>
-    <frames>0</frames>
-    <texture>
-      <name>SandTile1</name>
     </texture>
   </tiletexture>
 </texturelist>

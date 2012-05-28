@@ -40,11 +40,11 @@ namespace _1942
                     }
                     if (Objects.playerList[0].PowerUpShield == true)
                     {
-                        spritebatch.DrawString(FontLibrary.Hud_Font, Math.Round(Objects.playerList[0].TimeLeftOnArmorPowerUp).ToString(), new Vector2(Settings.window.ClientBounds.Width - FontLibrary.Hud_Font.MeasureString(Math.Round(Objects.playerList[1].TimeLeftOnArmorPowerUp).ToString()).X, Settings.window.ClientBounds.Height - FontLibrary.Hud_Font.LineSpacing * 4), Objects.playerList[0].Color);
+                        spritebatch.DrawString(FontLibrary.Hud_Font, Math.Round(Objects.playerList[0].TimeLeftOnArmorPowerUp).ToString(), new Vector2(Settings.window.ClientBounds.Width - FontLibrary.Hud_Font.MeasureString(Math.Round(Objects.playerList[0].TimeLeftOnArmorPowerUp).ToString()).X, Settings.window.ClientBounds.Height - FontLibrary.Hud_Font.LineSpacing * 4), Objects.playerList[0].Color);
                         spritebatch.DrawString(FontLibrary.Hud_Font, "Armor", new Vector2(Settings.window.ClientBounds.Width - FontLibrary.Hud_Font.MeasureString("Armor").X, Settings.window.ClientBounds.Height - FontLibrary.Hud_Font.LineSpacing * 5), Objects.playerList[0].Color);
                     }
                 }
-                if (Settings.nr_of_players >= 2)
+                if (Objects.playerList.Count >= 2)
                 {
                     spritebatch.DrawString(FontLibrary.Hud_Font, Objects.playerList[1].Health.ToString() + "%", new Vector2(1f, Settings.window.ClientBounds.Height - FontLibrary.Hud_Font.LineSpacing), Objects.playerList[1].Color);
                     spritebatch.DrawString(FontLibrary.Hud_Font, Objects.playerList[1].MyScore.ToString(), new Vector2(1f, 0), Objects.playerList[1].Color);

@@ -14,6 +14,7 @@ namespace _1942
         protected bool flying;
         protected bool activated;
         protected int score;
+        protected bool killable = true;
 
         public BaseEnemy() : base()
         { }
@@ -35,7 +36,7 @@ namespace _1942
 
             if (position.Y > -size.Y)
                 activated = true;
-            if (dead)
+            if (dead && !Settings.window.ClientBounds.Contains(Rectangle))
                 SoundLibrary.Explosion.Play();
         }
 
@@ -54,6 +55,11 @@ namespace _1942
         public int HealthMax
         {
             get { return maxHealth; }
+        }
+
+        public bool IsKillable
+        {
+            get { return killable; }
         }
 
         public bool IsFlying

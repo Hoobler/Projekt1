@@ -17,6 +17,7 @@ namespace _1942
                 StopMusic();
                 activeSong = m_activeSong;
                 PlayMusic();
+                
             }
         }
 
@@ -25,6 +26,7 @@ namespace _1942
             if (MediaPlayer.State != MediaState.Playing)
             {
                 MediaPlayer.Play(activeSong);
+                MediaPlayer.IsRepeating = true;
             }
         }
 

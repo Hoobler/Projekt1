@@ -23,8 +23,11 @@ namespace _1942
         GameStates gameState = GameStates.MainMenu;
 
         KeyboardState keyState;
+        KeyboardState prevState;
         Logic logic;
         MenuManager menu;
+        bool debugText;
+        bool paused;
 
         public Game1()
         {
@@ -61,29 +64,32 @@ namespace _1942
             Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
             Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
 
+            Texture2DLibrary.escort = Content.Load<Texture2D>(@"Enemies/spaceship");
+            Texture2DLibrary.escort_lifebar = Content.Load<Texture2D>(@"Extra/square1");
+
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
-            Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_player = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_zero = Content.Load<Texture2D>(@"Enemies/Zero");
-            Texture2DLibrary.projectile_enemy_zero = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_zero = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_zeke = Content.Load<Texture2D>(@"Enemies/Zeke");
-            Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_todjo = Content.Load<Texture2D>(@"Enemies/Todjo");
-            Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Boat");
-            Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/AATower");
-            Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/Boat_Tower");
+            Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.enemy_heavy = Content.Load<Texture2D>(@"Enemies/spaceship");
             Texture2DLibrary.projectile_enemy_heavy = Content.Load<Texture2D>(@"Enemies/Spaceship");
 
             Texture2DLibrary.enemy_tower = Content.Load<Texture2D>(@"Enemies/AATower");
-            Texture2DLibrary.projectile_enemy_tower = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.projectile_enemy_tower = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_tower_base = Content.Load<Texture2D>(@"Enemies/AABase");
             Texture2DLibrary.enemy_tower_dead = Content.Load<Texture2D>(@"Enemies/AABaseDead");
 
             Texture2DLibrary.boss1 = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1");
             Texture2DLibrary.boss1_gun = Content.Load<Texture2D>(@"Bosses/Boss1/Boss1_Gun");
-            Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Enemies/square1");
+            Texture2DLibrary.boss1_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.boss2 = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2");
             Texture2DLibrary.boss2_bigshot = Content.Load<Texture2D>(@"Bosses/Boss2/BigBomb");
@@ -92,8 +98,10 @@ namespace _1942
             Texture2DLibrary.boss2_smallgun = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_SmallGun");
             Texture2DLibrary.boss2_wall = Content.Load<Texture2D>(@"Bosses/Boss2/Boss2_Wall");
 
-            Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Enemies/Spaceship");
+            Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3");
+            Texture2DLibrary.boss3_gun = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3_Gun");
 
+            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Enemies/spaceship");
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
             Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");
@@ -152,9 +160,9 @@ namespace _1942
             SoundLibrary.Player_Shot = Content.Load<SoundEffect>(@"Sounds/Player_Shot");
             //SoundLibrary.Tower_Shot = Content.Load<SoundEffect>(@"Sounds/Tower_Shot");
 
-            Texture2DLibrary.particle_zero_explosion = Content.Load<Texture2D>(@"Particles/explosion");
-            
-
+            Texture2DLibrary.particle_explosion = Content.Load<Texture2D>(@"Particles/explosion");
+            Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Particles/smoke");
+            Texture2DLibrary.shielded = Content.Load<Texture2D>(@"shielded");
             Settings.window = Window;
             
 
@@ -187,41 +195,54 @@ namespace _1942
                 this.Exit();
 
             keyState = Keyboard.GetState();
-            
+
+            if (keyState.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
+            {
+                if (paused)
+                    paused = false;
+                else
+                    paused = true;
+            }
+            if (keyState.IsKeyDown(Keys.M))
+                debugText = true;
 
             //Just to test Orvar take it easy!
             if (menu.GetStartGame())
             {
                 gameState = GameStates.Playing;
             }
-            
-            switch (gameState)
+            if (!paused)
             {
-                case GameStates.MainMenu:
-                    {
-                        menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
-                        MusicManager.SetMusic(SoundLibrary.Menu_Song);
-                        break;
-                    }
-                case GameStates.AudioScreen:
-                    {
-                        break;
-                    }
-                case GameStates.ControlScreen:
-                    {
-                        break;
-                    }
-                case GameStates.VideoScreen:
-                    {
-                        break;
-                    }
-                case GameStates.Playing:
-                    {
-                        logic.Update(keyState, gameTime);
-                        break;
-                    }
+                switch (gameState)
+                {
+                    case GameStates.MainMenu:
+                        {
+                            logic.Update(keyState, gameTime);
+                            menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                            MusicManager.SetMusic(SoundLibrary.Menu_Song);
+                            break;
+                        }
+                    case GameStates.AudioScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.ControlScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.VideoScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.Playing:
+                        {
+                            logic.Update(keyState, gameTime);
+                            break;
+                        }
+                }
             }
 
+            prevState = keyState;
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -241,6 +262,7 @@ namespace _1942
             {
                 case GameStates.MainMenu:
                     {
+                        logic.Draw(spriteBatch);
                         menu.Draw(spriteBatch);
                         break;
                     }
@@ -257,11 +279,24 @@ namespace _1942
                         break;
                     }
                 case GameStates.Playing:
-                    {
-                        
+                    {     
                         logic.Draw(spriteBatch);
-                     
-            
+
+                        if (debugText)
+                        {
+                            spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
+                            if (Objects.playerList.Count >= 2)
+                            {
+                                spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+                            }
+                            spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
+
+                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                        }
                         break;
                     }
             }
@@ -274,8 +309,5 @@ namespace _1942
 
             base.Draw(gameTime);
         }
-
-        
-
     }
 }

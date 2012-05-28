@@ -13,6 +13,8 @@ namespace _1942
 
         private static string textInput = String.Empty;
 
+        
+
         /// <summary>
         /// Call this method when you want basic text input.
         /// </summary>

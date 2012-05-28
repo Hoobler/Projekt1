@@ -408,7 +408,7 @@ namespace _1942
                     {
                         spritebatch.Draw(texDictionary[mapList[i].Symbol].Tex,
                             new Rectangle(left, top, TileSize(), TileSize()),
-                            new Rectangle(0, 0, texDictionary[mapList[i].Symbol].Tex.Bounds.Width, texDictionary[mapList[i].Symbol].Tex.Bounds.Height),
+                            new Rectangle(1, 1, texDictionary[mapList[i].Symbol].Tex.Bounds.Width -2, texDictionary[mapList[i].Symbol].Tex.Bounds.Height -2),
                             Color.White,
                             0,
                             new Vector2(0, 0),

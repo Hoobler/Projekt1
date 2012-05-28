@@ -17,8 +17,8 @@ namespace _1942
             layerDepth = 0.1f;
             color = Color.White;
             texture = Texture2DLibrary.boss1_projectile;
-            damage = 2;
-            speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 2;
+            damage = Settings.boss1_projectile_damage;
+            speed = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Settings.boss1_projectile_speed;
             
         }
 

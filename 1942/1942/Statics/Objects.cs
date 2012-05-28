@@ -15,6 +15,7 @@ namespace _1942
         static public List<BaseEnemy> enemyList = new List<BaseEnemy>();
         static public List<BaseFormation> formationList = new List<BaseFormation>();
         static public List<Boss_Base> bossList = new List<Boss_Base>();
+        static public List<Escort> escortList = new List<Escort>();
 
         static public List<BaseEnemy> deadList = new List<BaseEnemy>();
 
@@ -24,10 +25,33 @@ namespace _1942
 
         static public List<Particle_Base> particleList = new List<Particle_Base>();
 
+        internal static BaseObject BaseObject
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+        static public void ClearAll()
+        {
+            playerProjectileList.Clear();
+            deadList.Clear();
+            enemyList.Clear();
+            enemyProjectileList.Clear();
+            formationList.Clear();
+            particleList.Clear();
+            bossList.Clear();
+            baseList.Clear();
+            escortList.Clear();
+            powerUpList.Clear();
+        }
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
-
+            DeadRemoval();
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Update(keyState, gameTime);
 
@@ -54,6 +78,8 @@ namespace _1942
 
             for (int i = 0; i < Objects.baseList.Count; i++)
                 Objects.baseList[i].Update(gameTime);
+            for (int i = 0; i < Objects.escortList.Count; i++)
+                Objects.escortList[i].Update(gameTime);
 
         }
         static public void Draw(SpriteBatch spriteBatch)
@@ -63,25 +89,22 @@ namespace _1942
 
             for (int i = 0; i < Objects.deadList.Count; i++)
                 Objects.deadList[i].Draw(spriteBatch);
-
+            for (int i = 0; i < Objects.bossList.Count; i++)
+                Objects.bossList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.enemyList.Count; i++)
                 Objects.enemyList[i].Draw(spriteBatch);
-
-            
 
             for (int i = 0; i < Objects.formationList.Count; i++)
                 Objects.formationList[i].Draw(spriteBatch);
 
-            
-
-            for (int i = 0; i < Objects.bossList.Count; i++)
-                Objects.bossList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
                 Objects.enemyProjectileList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                 Objects.playerProjectileList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.particleList.Count; i++)
                 Objects.particleList[i].Draw(spriteBatch);
+            for (int i = 0; i < Objects.escortList.Count; i++)
+                Objects.escortList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Draw(spriteBatch);
         }
@@ -119,6 +142,10 @@ namespace _1942
             for (int i = Objects.formationList.Count - 1; i >= 0; i--)
                 if (Objects.formationList[i].IsDead())
                     Objects.formationList.RemoveAt(i);
+            for (int i = Objects.escortList.Count - 1; i >= 0; i--)
+                if (Objects.escortList[i].IsDead())
+                    Objects.escortList.RemoveAt(i);
+            
 
             
         }

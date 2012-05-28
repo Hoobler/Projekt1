@@ -12,37 +12,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace _1942
 {
-    class BasePowerUp
+    class BasePowerUp : BaseObject
     {
-        protected Vector2 position;
         protected bool isalive;
-        protected int size = 25;
 
         public BasePowerUp()
         {
- 
+            size = new Point(25, 25);
         }
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
-        public float PosX
-        {
-            get { return position.X; }
-            set { position.X = value; }
-        }
-        public float PosY
-        {
-            get { return position.Y; }
-            set { position.Y = value; }
-        }
-
-        public Rectangle GetRectangle
-        {
-            get { return new Rectangle((int)position.X, (int)position.Y, size, size); }
-        }
-
         public bool IsAlive
         {
             get { return isalive; }
@@ -52,9 +29,10 @@ namespace _1942
             }
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture2DLibrary.texture_PowerUp_Health, new Rectangle((int)Position.X, (int)Position.Y, size, size), Color.White);
+            spriteBatch.Draw(texture, Rectangle, Color.White);
+
         }
     }
 }

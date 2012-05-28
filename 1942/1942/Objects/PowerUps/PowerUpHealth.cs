@@ -16,18 +16,13 @@ namespace _1942
 
         public PowerUpHealth(Vector2 mySpawnPosition)
         {
+            texture = Texture2DLibrary.texture_PowerUp_Health;
             Position = mySpawnPosition;
         }
 
         public void Update()
         {
             
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-            spriteBatch.Draw(Texture2DLibrary.texture_PowerUp_Health, new Rectangle((int)Position.X, (int)Position.Y, size, size), Color.White);
         }
     }
 }

@@ -39,8 +39,8 @@ namespace _1942
                 timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timeUntilNextShot >= Settings.zero_projectile_frequency)
                 {
-                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y + size.Y)));
-                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X + size.X, position.Y + size.Y)));
+                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X, position.Y + size.Y), speed));
+                    Objects.enemyProjectileList.Add(new Projectile_Enemy_Zero(new Vector2(position.X + size.X, position.Y + size.Y), speed));
                     timeUntilNextShot -= Settings.zero_projectile_frequency;
                 }
 

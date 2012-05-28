@@ -20,14 +20,10 @@ namespace _1942
 
         public virtual void Update(GameTime gameTime)
         {
-
-            for (int i = 0; i < enemyInFormationList.Count; i++)
-            {
-                if (enemyInFormationList[i].Activated)
-                {
-                    activated = true;
-                }
-            }
+            if(!activated)
+                for (int i = 0; i < enemyInFormationList.Count; i++)
+                    if (enemyInFormationList[i].Activated)
+                        activated = true;
 
             if(activated)
                 timer++;
