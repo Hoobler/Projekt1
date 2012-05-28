@@ -116,6 +116,9 @@ namespace _1942
             Texture2DLibrary.texture_OptionScreen_Default = Content.Load<Texture2D>(@"Menu/OptionScreenDefault");
             Texture2DLibrary.texture_AddVolume = Content.Load<Texture2D>(@"Menu/AddVolume");
             Texture2DLibrary.texture_MinusVolume = Content.Load<Texture2D>(@"Menu/MinusVolume");
+            Texture2DLibrary.texture_1Player = Content.Load<Texture2D>(@"Menu/1 Player");
+            Texture2DLibrary.texture_2Player = Content.Load<Texture2D>(@"Menu/2 Player");
+
 
             //PowerUps
             Texture2DLibrary.texture_PowerUp_Damage = Content.Load<Texture2D>(@"PowerUps/2xDamage");
@@ -257,18 +260,8 @@ namespace _1942
                     {
                         
                         logic.Draw(spriteBatch);
-                        spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
-                        if (Settings.nr_of_players >= 2)
-                        {
-                            spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
-                        }
-                        spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
-
-                        spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y/logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                     
+            
                         break;
                     }
             }

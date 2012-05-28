@@ -9,7 +9,7 @@ namespace _1942
     static class Settings
     {
         static public float level_speed = 2f;
-        static public int nr_of_players = 2;
+        static public int nr_of_players;
         static public GameWindow window;
 
         static public int damage_collision = 10;
@@ -70,5 +70,11 @@ namespace _1942
 
         public enum CurrentLevel { Level1, Level2, Level3, Level4, Level5 };
         static public CurrentLevel currentLevel = CurrentLevel.Level1;
+
+        static public int Nr_Of_Players
+        {
+            get { return nr_of_players;}
+            set { nr_of_players = value;}
+        }
     }
 }

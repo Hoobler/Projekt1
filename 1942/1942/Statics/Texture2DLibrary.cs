@@ -71,6 +71,8 @@ namespace _1942
         public static Texture2D texture_OptionScreen_Default;
         public static Texture2D texture_AddVolume;
         public static Texture2D texture_MinusVolume;
+        public static Texture2D texture_1Player;
+        public static Texture2D texture_2Player;
 
         // Level Select
         public static Texture2D texture_Level1;
