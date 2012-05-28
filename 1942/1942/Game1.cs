@@ -196,7 +196,7 @@ namespace _1942
 
             keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
+            if (keyState.IsKeyDown(Keys.Pause) && prevState.IsKeyUp(Keys.Pause))
             {
                 if (paused)
                     paused = false;
