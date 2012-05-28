@@ -47,6 +47,7 @@ namespace _1942
             baseList.Clear();
             escortList.Clear();
             powerUpList.Clear();
+            playerList.Clear();
         }
 
         static public void Update(KeyboardState keyState, GameTime gameTime)

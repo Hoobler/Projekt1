@@ -22,8 +22,6 @@ namespace _1942
         enum GameStates { MainMenu, AudioScreen, VideoScreen, ControlScreen, Playing, GameOver };
         GameStates gameState = GameStates.MainMenu;
 
-        KeyboardState keyState;
-        KeyboardState prevState;
         Logic logic;
         MenuManager menu;
         bool debugText;
@@ -149,6 +147,8 @@ namespace _1942
             SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
             SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
             SoundLibrary.Level3 = Content.Load<Song>(@"Music/Level3");
+            SoundLibrary.Level4 = Content.Load<Song>(@"Music/Level4");
+            SoundLibrary.Level5 = Content.Load<Song>(@"Music/Level5");
 
             //Sounds
             SoundLibrary.Explosion = Content.Load<SoundEffect>(@"Sounds/Explosion");
@@ -186,21 +186,21 @@ namespace _1942
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            if (keyState.IsKeyDown(Keys.Escape))
+            if (KeyBoardInput.KeyState.IsKeyDown(Keys.Escape))
                 this.Exit();
             if (menu.GetExitProgram())
                 this.Exit();
 
-            keyState = Keyboard.GetState();
+            KeyBoardInput.KeyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
+            if (KeyBoardInput.KeyState.IsKeyDown(Keys.Pause) && KeyBoardInput.OldKeyState.IsKeyUp(Keys.Pause))
             {
                 if (paused)
                     paused = false;
                 else
                     paused = true;
             }
-            if (keyState.IsKeyDown(Keys.M))
+            if (KeyBoardInput.KeyState.IsKeyDown(Keys.M))
                 debugText = true;
 
             //Just to test Orvar take it easy!
@@ -214,7 +214,7 @@ namespace _1942
                 {
                     case GameStates.MainMenu:
                         {
-                            logic.Update(keyState, gameTime);
+                            logic.Update(KeyBoardInput.KeyState, gameTime);
                             menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
                             MusicManager.SetMusic(SoundLibrary.Menu_Song);
                             break;
@@ -233,13 +233,13 @@ namespace _1942
                         }
                     case GameStates.Playing:
                         {
-                            logic.Update(keyState, gameTime);
+                            logic.Update(KeyBoardInput.KeyState, gameTime);
                             break;
                         }
                 }
             }
 
-            prevState = keyState;
+            KeyBoardInput.OldKeyState = KeyBoardInput.KeyState;
             // TODO: Add your update logic here
 
             base.Update(gameTime);

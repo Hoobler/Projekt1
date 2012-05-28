@@ -108,6 +108,8 @@ Content\LevelTextures\BeachR.xnb
 Content\LevelTextures\BeachSideLD.xnb
 Content\LevelTextures\BeachSideRD.xnb
 Content\LevelTextures\BeachU.xnb
+Content\Music\Level4.xnb
+Content\Music\Level5.xnb
 Content\Music\MenuSong.wma
 Content\Music\Ride_of_the_Valkyries.wma
 Content\Music\Twilight.wma
@@ -117,6 +119,8 @@ Content\Music\Level3.wma
 Content\Music\Level2.wma
 Content\Music\Level1b.wma
 Content\Music\Level2b.wma
+Content\Music\Level4.wma
+Content\Music\Level5.wma
 Content\1942font2.png
 HighScore\HighScoreLevel4.xml
 HighScore\HighScoreLevel5.xml

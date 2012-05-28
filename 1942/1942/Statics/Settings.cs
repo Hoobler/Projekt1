@@ -13,6 +13,9 @@ namespace _1942
         static public GameWindow window;
         static public bool gameOver = false;
 
+        static public int score_player1;
+        static public int score_player2;
+
         static public int damage_collision = 10;
 
         static public float tower_projectile_speed = 3f;

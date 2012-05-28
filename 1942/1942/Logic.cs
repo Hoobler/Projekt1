@@ -16,7 +16,6 @@ namespace _1942
 
         bool playerOneAdd = false;
         bool playerTwoAdd = false;
-
         
 
         string playerName = String.Empty;
@@ -50,6 +49,7 @@ namespace _1942
             LevelNameActive = true;
             mPowerUpManager = new PowerUpManager();
 
+            
             hud = new Hud();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
@@ -115,7 +115,6 @@ namespace _1942
             }
             if(Settings.currentLevel != Settings.CurrentLevel.Level0)
             {
-                Objects.playerList.Clear();
                 if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
                     Objects.playerList.Add(new Player1());
 
@@ -124,7 +123,6 @@ namespace _1942
             }
             else
             {
-                Objects.playerList.Clear();
                 Objects.playerList.Add(new MenuPlayer());
             }
 
@@ -146,7 +144,6 @@ namespace _1942
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
             this.gameTime = gameTime;
-            oldKeyState = myKeyState;
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
 
@@ -206,7 +203,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 1";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
                                     playerOneAdd = true;
@@ -220,7 +217,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 2";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
                                     playerTwoAdd = true;
@@ -235,7 +232,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Press space to continue the next level";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
                                 {
                                     levelLoader.EndLevel = true;
                                 }
@@ -245,6 +242,8 @@ namespace _1942
                 }
             }
             #endregion
+
+            oldKeyState = myKeyState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -292,7 +291,10 @@ namespace _1942
                             if (Objects.enemyList[j].Health <= 0 && !check)
                             {
                                 check = true;
-                                Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.enemyList[j].MyScore;
+                                if(Objects.playerProjectileList[i].PlayerID == 0)
+                                    Settings.score_player1 += Objects.enemyList[j].MyScore;
+                                else if(Objects.playerProjectileList[i].PlayerID == 1)
+                                    Settings.score_player2 += Objects.enemyList[j].MyScore;
                             }
                             Objects.playerProjectileList[i].SetDead();
                         }
@@ -313,7 +315,10 @@ namespace _1942
                                     if (Objects.formationList[j].enemyInFormationList[k].Health <= 0 && !check)
                                     {
                                         check = true;
-                                        Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                        if (Objects.playerProjectileList[i].PlayerID == 0)
+                                            Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                        else if (Objects.playerProjectileList[i].PlayerID == 1)
+                                            Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
                                     }
                                     Objects.playerProjectileList[i].SetDead();
                                 }
@@ -359,6 +364,10 @@ namespace _1942
                             if (!Objects.playerList[i].PowerUpShield)
                                 Objects.playerList[i].Health -= Settings.damage_collision;
                             Objects.enemyList[j].SetDead();
+                            if (i == 0)
+                                Settings.score_player1 += Objects.enemyList[j].MyScore;
+                            else if (i == 1)
+                                Settings.score_player2 += Objects.enemyList[j].MyScore;
                             Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                         }
                 //Player vs Enemies in Formations
@@ -371,7 +380,10 @@ namespace _1942
                                     Objects.playerList[i].Health -= Settings.damage_collision;
 
                                 Objects.formationList[j].enemyInFormationList[k].SetDead();
-                                Objects.playerList[i].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                if (i == 0)
+                                    Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                else if (i == 1)
+                                    Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
                             }
                 //Player vs Enemy bullets
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
