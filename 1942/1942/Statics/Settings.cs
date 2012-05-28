@@ -9,8 +9,9 @@ namespace _1942
     static class Settings
     {
         static public float level_speed = 2f;
-        static public int nr_of_players = 1;
+        static public int nr_of_players = 2;
         static public GameWindow window;
+        static public bool gameOver = false;
 
         static public int damage_collision = 10;
 

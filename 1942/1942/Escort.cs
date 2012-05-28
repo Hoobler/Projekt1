@@ -51,6 +51,8 @@ namespace _1942
             }
 
             lifebarSize.X = (int)((float)health / (float)maxHealth * (float)lifebarSizeFull.X);
+            if (dead)
+                Settings.gameOver = true;
 
 
         }

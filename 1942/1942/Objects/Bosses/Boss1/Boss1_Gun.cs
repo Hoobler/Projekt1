@@ -27,6 +27,7 @@ namespace _1942
             health = maxHealth;
             this.position.X -= size.X / 2;
             this.position.Y -= size.Y / 2;
+            killable = false;
             
         }
 

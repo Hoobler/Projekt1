@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <level>
-  <name>LEVEL</name>
+  <name></name>
   <nextlevel>level2</nextlevel>
   <description>Pearl Harbor 1942</description>
   <tileset>texturelist</tileset>

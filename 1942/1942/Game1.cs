@@ -23,8 +23,11 @@ namespace _1942
         GameStates gameState = GameStates.MainMenu;
 
         KeyboardState keyState;
+        KeyboardState prevState;
         Logic logic;
         MenuManager menu;
+        bool debugText;
+        bool paused;
 
         public Game1()
         {
@@ -189,42 +192,54 @@ namespace _1942
                 this.Exit();
 
             keyState = Keyboard.GetState();
-            
+
+            if (keyState.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
+            {
+                if (paused)
+                    paused = false;
+                else
+                    paused = true;
+            }
+            if (keyState.IsKeyDown(Keys.M))
+                debugText = true;
 
             //Just to test Orvar take it easy!
             if (menu.GetStartGame())
             {
                 gameState = GameStates.Playing;
             }
-            
-            switch (gameState)
+            if (!paused)
             {
-                case GameStates.MainMenu:
-                    {
-                        logic.Update(keyState, gameTime);
-                        menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
-                        MusicManager.SetMusic(SoundLibrary.Menu_Song);
-                        break;
-                    }
-                case GameStates.AudioScreen:
-                    {
-                        break;
-                    }
-                case GameStates.ControlScreen:
-                    {
-                        break;
-                    }
-                case GameStates.VideoScreen:
-                    {
-                        break;
-                    }
-                case GameStates.Playing:
-                    {
-                        logic.Update(keyState, gameTime);
-                        break;
-                    }
+                switch (gameState)
+                {
+                    case GameStates.MainMenu:
+                        {
+                            logic.Update(keyState, gameTime);
+                            menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                            MusicManager.SetMusic(SoundLibrary.Menu_Song);
+                            break;
+                        }
+                    case GameStates.AudioScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.ControlScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.VideoScreen:
+                        {
+                            break;
+                        }
+                    case GameStates.Playing:
+                        {
+                            logic.Update(keyState, gameTime);
+                            break;
+                        }
+                }
             }
 
+            prevState = keyState;
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -264,19 +279,22 @@ namespace _1942
                     {
                         
                         logic.Draw(spriteBatch);
-                        spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
-                        if (Objects.playerList.Count >= 2)
+                        if (debugText)
                         {
-                            spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
-                        }
-                        spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
-                        spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
-                        spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y/logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
-                       
+                            spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
+                            if (Objects.playerList.Count >= 2)
+                            {
+                                spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+                            }
+                            spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
+
+                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                        }
                         break;
                     }
             }

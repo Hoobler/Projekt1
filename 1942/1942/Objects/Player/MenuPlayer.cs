@@ -98,14 +98,14 @@ namespace _1942
             for (int i = 0; i < Objects.bossList.Count; i++)
             {
                 for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
-                    if (Objects.bossList[i].accessoryList[j].IsKillable() && !Objects.bossList[i].accessoryList[j].Killed)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable && !Objects.bossList[i].accessoryList[j].Killed)
                     {
                         var tempBDistance = (int)Vector2.Distance(Objects.bossList[i].accessoryList[j].Position, this.Center);
                         if (tempBDistance > 0 && tempBDistance < bDistToPlayer)
                         {
                             bossPosX = (int)Objects.bossList[i].accessoryList[j].Position.X;
                             bDistToPlayer = tempBDistance;
-                            goForBoss = Objects.bossList[i].accessoryList[j].IsKillable();
+                            goForBoss = Objects.bossList[i].accessoryList[j].IsKillable;
                         }
                     }
             }
@@ -234,9 +234,9 @@ namespace _1942
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(FontLibrary.debug, "FormationDist: " + fDistToPlayer.ToString(), new Vector2(100f, 300), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "EnemyDist: " + eDistToPlayer.ToString(), new Vector2(100f, 320), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "" + nearestObject.ToString(), new Vector2(200f, 200), Color.Red);
+            //spriteBatch.DrawString(FontLibrary.debug, "FormationDist: " + fDistToPlayer.ToString(), new Vector2(100f, 300), Color.Red);
+            //spriteBatch.DrawString(FontLibrary.debug, "EnemyDist: " + eDistToPlayer.ToString(), new Vector2(100f, 320), Color.Red);
+            //spriteBatch.DrawString(FontLibrary.debug, "" + nearestObject.ToString(), new Vector2(200f, 200), Color.Red);
             spriteBatch.Draw(texture,
                 Rectangle,
                 new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,

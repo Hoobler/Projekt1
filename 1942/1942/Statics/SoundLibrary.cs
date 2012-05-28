@@ -19,6 +19,8 @@ namespace _1942
         static public Song Level1;
         static public Song Level2;
         static public Song Level3;
+        static public Song Level4;
+        static public Song Level5;
 
         static public SoundEffect Explosion;
         static public SoundEffect Explosion_Big;

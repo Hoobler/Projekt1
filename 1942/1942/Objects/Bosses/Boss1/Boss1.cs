@@ -20,7 +20,7 @@ namespace _1942
         public Boss1(Vector2 startingPos)
         {
             position = startingPos;
-            position.X = Settings.window.ClientBounds.Width + size.X;
+            position.X = Settings.window.ClientBounds.Width + size.X+30;
             color = Color.White;
             
             speed = new Vector2(-2, 0);

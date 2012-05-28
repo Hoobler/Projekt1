@@ -30,7 +30,7 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachGrassSideR</name>
+      <name>LevelTextures/BeachR</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach textures, on the left side -->
@@ -41,7 +41,7 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachGrassSideL</name>
+      <name>LevelTextures/BeachL</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture top -->
@@ -52,7 +52,7 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachGrassSideU</name>
+      <name>LevelTextures/BeachU</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture bottom -->
@@ -63,7 +63,7 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachGrassSideD</name>
+      <name>LevelTextures/BeachD</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture top left corner -->
@@ -74,18 +74,18 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachAniSideL</name>
+      <name>LevelTextures/BeachSideL</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture bottom left corner -->
   <tiletexture>
     <symbol>l</symbol>
     <hFlip>false</hFlip>
-    <vFlip>true</vFlip>
+    <vFlip>false</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachAniSideL</name>
+      <name>LevelTextures/BeachSideLD</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture top right corner -->
@@ -96,62 +96,62 @@
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachAniSideR</name>
+      <name>LevelTextures/BeachSideR</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture bottom right corner -->
   <tiletexture>
     <symbol>o</symbol>
     <hFlip>false</hFlip>
-    <vFlip>true</vFlip>
+    <vFlip>false</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachAniSideR</name>
+      <name>LevelTextures/BeachSideRD</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture top left inverted corner -->
   <tiletexture>
     <symbol>P</symbol>
     <hFlip>false</hFlip>
-    <vFlip>true</vFlip>
+    <vFlip>false</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachSideL</name>
+      <name>LevelTextures/BeachInnL</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture bottom left inverted corner -->
   <tiletexture>
     <symbol>p</symbol>
     <hFlip>false</hFlip>
-    <vFlip>false</vFlip>
+    <vFlip>true</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachSideL</name>
+      <name>LevelTextures/BeachInnL</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture top right inverted corner -->
   <tiletexture>
     <symbol>I</symbol>
     <hFlip>false</hFlip>
-    <vFlip>true</vFlip>
+    <vFlip>false</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachSideR</name>
+      <name>LevelTextures/BeachInnR</name>
     </texture>
   </tiletexture>
   <!-- Grass/Beach texture bottom right inverted corner -->
   <tiletexture>
     <symbol>i</symbol>
     <hFlip>false</hFlip>
-    <vFlip>false</vFlip>
+    <vFlip>true</vFlip>
     <animated>false</animated>
     <frames>7</frames>
     <texture>
-      <name>LevelTextures/BeachSideR</name>
+      <name>LevelTextures/BeachInnR</name>
     </texture>
   </tiletexture>
   <tiletexture>

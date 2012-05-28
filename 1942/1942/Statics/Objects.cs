@@ -35,7 +35,19 @@ namespace _1942
             {
             }
         }
-
+        static public void ClearAll()
+        {
+            playerProjectileList.Clear();
+            deadList.Clear();
+            enemyList.Clear();
+            enemyProjectileList.Clear();
+            formationList.Clear();
+            particleList.Clear();
+            bossList.Clear();
+            baseList.Clear();
+            escortList.Clear();
+            powerUpList.Clear();
+        }
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
@@ -133,6 +145,7 @@ namespace _1942
             for (int i = Objects.escortList.Count - 1; i >= 0; i--)
                 if (Objects.escortList[i].IsDead())
                     Objects.escortList.RemoveAt(i);
+            
 
             
         }

@@ -51,8 +51,10 @@ namespace _1942
                 timeUntilNextShot -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (health < 0)
+            {
                 health = 0;
-
+                dead = true;
+            }
             if (health > 100)
                 health = 100;
 

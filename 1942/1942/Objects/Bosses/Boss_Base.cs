@@ -21,11 +21,21 @@ namespace _1942
         
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
         protected int score;
+        Point lifebarSizeFull;
+        Point lifebarSize;
 
+        public Boss_Base()
+        {
+            lifebarSizeFull = new Point(Settings.window.ClientBounds.Width - 200, 30);
+            lifebarSize = lifebarSizeFull;
+        }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            LifeBarCalc();
+
             for (int i = 0; i < accessoryList.Count; i++)
             {
                 accessoryList[i].Update(gameTime, speed);
@@ -35,7 +45,7 @@ namespace _1942
             {
                 int killables = 0;
                 for (int i = 0; i < accessoryList.Count; i++)
-                    if (accessoryList[i].IsKillable() && !accessoryList[i].Killed)
+                    if (accessoryList[i].IsKillable && !accessoryList[i].Killed)
                         killables++;
                 if (killables == 0)
                     killed = true;
@@ -121,6 +131,15 @@ namespace _1942
                 }
                 if (phase == 1)
                     spriteBatch.DrawString(FontLibrary.Hud_Font, "BOSS APPROACHING", new Vector2(200, 200), Color.Red);
+                if (!killed)
+                {
+                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                    new Rectangle(100, 20, lifebarSizeFull.X + 10, lifebarSizeFull.Y + 10),
+                    Color.Gray);
+                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, lifebarSize.X, lifebarSize.Y),
+                        Color.Red);
+                }
             }
         }
 
@@ -165,6 +184,28 @@ namespace _1942
                     accessoryList.RemoveAt(j);
             }
 
+        }
+        public void LifeBarCalc()
+        {
+            int maxTotalHealth = 0;
+            if (killable)
+                maxTotalHealth += maxHealth;
+            for (int i = 0; i < accessoryList.Count; i++)
+            {
+                if (accessoryList[i].IsKillable)
+                    maxTotalHealth += accessoryList[i].HealthMax;
+            }
+
+            int totalHealth = 0;
+            if (killable)
+                totalHealth += health;
+            for (int i = 0; i < accessoryList.Count; i++)
+            {
+
+                if (accessoryList[i].IsKillable)
+                    totalHealth += accessoryList[i].Health;
+            }
+            lifebarSize.X = (int)((float)totalHealth / (float)maxTotalHealth * (float)lifebarSizeFull.X);
         }
     }
 }

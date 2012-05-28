@@ -634,23 +634,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LevelTextures\SandTile1New.png">
-      <Name>SandTile1New</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="LevelTextures\SandTile2New.png">
-      <Name>SandTile2New</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="LevelTextures\SandTile3New.png">
-      <Name>SandTile3New</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu\MainMenu.png">
       <Name>MainMenu</Name>
       <Importer>TextureImporter</Importer>
@@ -658,40 +641,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LevelTextures\Grass.png">
-      <Name>Grass</Name>
+    <Compile Include="LevelTextures\BeachD.png">
+      <Name>BeachD</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="LevelTextures\BeachAniSideL.png">
-      <Name>BeachAniSideL</Name>
+    <Compile Include="LevelTextures\BeachInnL.png">
+      <Name>BeachInnL</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="LevelTextures\BeachAniSideR.png">
-      <Name>BeachAniSideR</Name>
+    <Compile Include="LevelTextures\BeachInnR.png">
+      <Name>BeachInnR</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="LevelTextures\BeachGrassSideD.png">
-      <Name>BeachGrassSideD</Name>
+    <Compile Include="LevelTextures\BeachL.png">
+      <Name>BeachL</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="LevelTextures\BeachGrassSideL.png">
-      <Name>BeachGrassSideL</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="LevelTextures\BeachGrassSideR.png">
-      <Name>BeachGrassSideR</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="LevelTextures\BeachGrassSideU.png">
-      <Name>BeachGrassSideU</Name>
+    <Compile Include="LevelTextures\BeachR.png">
+      <Name>BeachR</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -700,8 +671,28 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="LevelTextures\BeachSideLD.png">
+      <Name>BeachSideLD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="LevelTextures\BeachSideR.png">
       <Name>BeachSideR</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="LevelTextures\BeachSideRD.png">
+      <Name>BeachSideRD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="LevelTextures\BeachU.png">
+      <Name>BeachU</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="LevelTextures\Grass.png">
+      <Name>Grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

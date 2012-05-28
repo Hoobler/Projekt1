@@ -17,6 +17,8 @@ namespace _1942
         bool playerOneAdd = false;
         bool playerTwoAdd = false;
 
+        
+
         string playerName = String.Empty;
         KeyboardState oldKeyState;
         KeyboardState myKeyState;
@@ -43,6 +45,8 @@ namespace _1942
 
         public void NewGame()
         {
+            Objects.ClearAll();
+            Settings.gameOver = false;
             LevelNameActive = true;
             mPowerUpManager = new PowerUpManager();
 
@@ -126,6 +130,17 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
+
+            if (Settings.currentLevel == Settings.CurrentLevel.Level1)
+                MusicManager.SetMusic(SoundLibrary.Level1);
+            if (Settings.currentLevel == Settings.CurrentLevel.Level2)
+                MusicManager.SetMusic(SoundLibrary.Level2);
+            if (Settings.currentLevel == Settings.CurrentLevel.Level3)
+                MusicManager.SetMusic(SoundLibrary.Level3);
+            if (Settings.currentLevel == Settings.CurrentLevel.Level4)
+                MusicManager.SetMusic(SoundLibrary.Level4);
+            if (Settings.currentLevel == Settings.CurrentLevel.Level5)
+                MusicManager.SetMusic(SoundLibrary.Level5);
         }
 
         public void Update(KeyboardState keyState, GameTime gameTime)
@@ -135,23 +150,13 @@ namespace _1942
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
 
-            //if (Settings.currentLevel == Settings.CurrentLevel.Level1)
-            //{
-            //    for (int i = 0; i < Objects.bossList.Count; i++)
-            //        if (!Objects.bossList[i].IsActivated())
-            //            MusicManager.SetMusic(SoundLibrary.Level1);
-            //}
+            
 
             if (levelLoader.LevelHasEnded())
             {
                 Settings.currentLevel++;
                 NewGame(); 
-                if (Settings.currentLevel == Settings.CurrentLevel.Level1)
-                    MusicManager.SetMusic(SoundLibrary.Level1);
-                if (Settings.currentLevel == Settings.CurrentLevel.Level2)
-                    MusicManager.SetMusic(SoundLibrary.Level2);
-                if (Settings.currentLevel == Settings.CurrentLevel.Level3)
-                    MusicManager.SetMusic(SoundLibrary.Level3);
+                
             }
 
             if (Settings.LevelHasChanged)
@@ -244,13 +249,12 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: ", new Vector2(50f, 50f), Color.Red);
-            spriteBatch.DrawString(FontLibrary.Hud_Font, "Derp hepr", new Vector2(1f, 200f), Color.White);
-            if (LevelNameActive)
-            {
-                spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
-            }
+            
             levelLoader.Draw(spriteBatch);
+            //if (LevelNameActive)
+            //{
+            //    spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
+            //}
             if (!levelLoader.ScoreLoop)
             {
                 Objects.Draw(spriteBatch);
@@ -266,6 +270,11 @@ namespace _1942
             }
         }
 
+        public void GameOver()
+        {
+
+        }
+
         public void CollisionRemoval()
         {
             #region PlayerProjectile_Collision
@@ -274,7 +283,7 @@ namespace _1942
             {
                 //player projectiles vs enemyList
                 for (int j = 0; j < Objects.enemyList.Count; j++)
-                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsKillable())
+                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsKillable)
                     {
                         bool check = false;
                         if (Objects.playerProjectileList[i].Rectangle.Intersects(Objects.enemyList[j].Rectangle))
@@ -326,7 +335,7 @@ namespace _1942
                         else //accessories
                         {
                             for (int k = 0; k < Objects.bossList[j].accessoryList.Count; k++)
-                                if (Objects.bossList[j].accessoryList[k].ReallyActivated && Objects.bossList[j].accessoryList[k].IsKillable())
+                                if (Objects.bossList[j].accessoryList[k].ReallyActivated && Objects.bossList[j].accessoryList[k].IsKillable)
                                     if (Objects.bossList[j].accessoryList[k].Rectangle.Intersects(Objects.playerProjectileList[i].Rectangle))
                                     {
                                         Objects.bossList[j].accessoryList[k].Health -= Objects.playerProjectileList[i].Damage;
@@ -344,7 +353,7 @@ namespace _1942
             {
                 //Player vs Flying enemy
                 for (int j = 0; j < Objects.enemyList.Count; j++)
-                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable())
+                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable)
                         if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                         {
                             if (!Objects.playerList[i].PowerUpShield)

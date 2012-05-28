@@ -57,9 +57,9 @@ namespace _1942
             get { return maxHealth; }
         }
 
-        public bool IsKillable()
+        public bool IsKillable
         {
-            return killable;
+            get { return killable; }
         }
 
         public bool IsFlying
