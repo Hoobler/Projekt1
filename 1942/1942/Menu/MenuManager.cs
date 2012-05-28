@@ -25,6 +25,10 @@ namespace _1942
         Level4_Button mLevel4_Button;
         Level5_Button mLevel5_Button;
 
+        //Select Nr of Players
+        _1Player_Button m1Player_Button;
+        _2Player_Button m2Player_Button;
+
         OptionManager mOptionsManager;
 
         int distance;
@@ -78,6 +82,12 @@ namespace _1942
             mLevel3_Button.Position = new Rectangle(mLevel2_Button.Position.X, mLevel2_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel4_Button.Position = new Rectangle(mLevel3_Button.Position.X, mLevel3_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel5_Button.Position = new Rectangle(mLevel4_Button.Position.X, mLevel4_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
+            m1Player_Button = new _1Player_Button();
+            m2Player_Button = new _2Player_Button();
+            m1Player_Button.Position = new Rectangle(Settings.window.ClientBounds.Width / 4 - 20, Settings.window.ClientBounds.Height / 3+ 20, 30, 30);
+            m2Player_Button.Position = new Rectangle(Settings.window.ClientBounds.Width / 4 - 20, Settings.window.ClientBounds.Height / 3 + 50, 30, 30);
+            m1Player_Button.IsVisible = false;
+            m2Player_Button.IsVisible = false;
         }
 
         public void Update(Point mouseLocation, Vector2 button_position)
@@ -133,6 +143,8 @@ namespace _1942
                             mLevel3_Button.IsVisible = true;
                             mLevel4_Button.IsVisible = true;
                             mLevel5_Button.IsVisible = true;
+                            m1Player_Button.IsVisible = true;
+                            m2Player_Button.IsVisible = true;
                         }
                         if (mOptionButton.GetRectangle().Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
                         {
@@ -263,6 +275,18 @@ namespace _1942
                                 startGame = true;
                             }
                         }
+                        if (m1Player_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            Settings.Nr_Of_Players = 1;
+                            m1Player_Button.mColor = Color.Red;
+                            m2Player_Button.mColor = Color.White;
+                        }
+                        else if (m2Player_Button.Position.Contains(mouseLocation) && mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+                        {
+                            Settings.Nr_Of_Players = 2;
+                            m2Player_Button.mColor = Color.Red;
+                            m1Player_Button.mColor = Color.White;
+                        }
 
                         mStartGameButton.Update(new Vector2(button_position.X - (button_Size_Width / 2), button_position.Y), button_Size_Height, button_Size_Width);
                         mOptionButton.Update(new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Y + distance), button_Size_Height, button_Size_Width);
@@ -293,6 +317,9 @@ namespace _1942
                              mLevel3_Button.Draw(spriteBatch);
                              mLevel4_Button.Draw(spriteBatch);
                              mLevel5_Button.Draw(spriteBatch);
+                             m1Player_Button.Draw(spriteBatch);
+                             m2Player_Button.Draw(spriteBatch);
+                             spriteBatch.DrawString(FontLibrary.Hud_Font, "Players", new Vector2(Settings.window.ClientBounds.Width / 5, Settings.window.ClientBounds.Height / 3 - 20), Color.Azure);
                          }
                          else
                          {

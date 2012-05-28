@@ -122,6 +122,9 @@ namespace _1942
             Texture2DLibrary.texture_OptionScreen_Default = Content.Load<Texture2D>(@"Menu/OptionScreenDefault");
             Texture2DLibrary.texture_AddVolume = Content.Load<Texture2D>(@"Menu/AddVolume");
             Texture2DLibrary.texture_MinusVolume = Content.Load<Texture2D>(@"Menu/MinusVolume");
+            Texture2DLibrary.texture_1Player = Content.Load<Texture2D>(@"Menu/1 Player");
+            Texture2DLibrary.texture_2Player = Content.Load<Texture2D>(@"Menu/2 Player");
+
 
             //PowerUps
             Texture2DLibrary.texture_PowerUp_Damage = Content.Load<Texture2D>(@"PowerUps/2xDamage");
@@ -276,12 +279,11 @@ namespace _1942
                         break;
                     }
                 case GameStates.Playing:
-                    {
-                        
+                    {     
                         logic.Draw(spriteBatch);
+
                         if (debugText)
                         {
-
                             spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
                             spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
                             spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
@@ -307,19 +309,5 @@ namespace _1942
 
             base.Draw(gameTime);
         }
-
-        internal Logic Logic
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        
-
     }
 }

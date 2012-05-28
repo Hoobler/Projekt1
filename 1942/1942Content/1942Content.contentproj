@@ -578,6 +578,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\1 Player.png">
+      <Name>1 Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Menu\2 Player.png">
+      <Name>2 Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Music\Level1b.mp3">
       <Name>Level1b</Name>
       <Importer>Mp3Importer</Importer>
