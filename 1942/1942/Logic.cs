@@ -400,7 +400,9 @@ namespace _1942
             for (int i = 0; i < Objects.escortList.Count; i++)
             {
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    if (Objects.escortList[i].Rectangle.Intersects(Objects.enemyProjectileList[j].Rectangle))
+                    for(int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+
+                    if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
                     {
                         Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
                         Objects.enemyProjectileList[j].SetDead();
@@ -408,7 +410,8 @@ namespace _1942
                     }
                 for (int j = 0; j < Objects.formationList.Count; j++)
                     for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
-                        if (Objects.escortList[i].Rectangle.Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
+                        for (int l = 0; l < Objects.escortList[i].TargetRectangles.Count; l++)
+                        if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
                         {
                             Objects.escortList[i].Health -= Settings.damage_collision;
                             Objects.formationList[j].enemyInFormationList[k].SetDead();

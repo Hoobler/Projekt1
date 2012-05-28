@@ -88,6 +88,8 @@ namespace _1942
             m2Player_Button.Position = new Rectangle(Settings.window.ClientBounds.Width / 4 - 20, Settings.window.ClientBounds.Height / 3 + 50, 30, 30);
             m1Player_Button.IsVisible = false;
             m2Player_Button.IsVisible = false;
+            Settings.Nr_Of_Players = 1;
+            m1Player_Button.mColor = Color.Red;
         }
 
         public void Update(Point mouseLocation, Vector2 button_position)

@@ -353,7 +353,7 @@
     <spawn>
       <positionX>0</positionX>
       <positionY>152</positionY>
-      <formation>boss1</formation>
+      <formation>boss5</formation>
       <mirrored>false</mirrored>
     </spawn>
   </spawnlist>

@@ -50,7 +50,7 @@ namespace _1942
                     if (timer == 600)
                         Objects.powerUpList.Add(new PowerUpDamage(new Vector2(400, -50)));
                     if (timer == 900)
-                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(400, -50)));
+                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(400, -50)));
                     if (timer >= 1200)
                         timer = 0;
                 }

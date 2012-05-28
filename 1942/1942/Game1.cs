@@ -62,7 +62,7 @@ namespace _1942
             Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
             Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
 
-            Texture2DLibrary.escort = Content.Load<Texture2D>(@"Enemies/spaceship");
+            Texture2DLibrary.escort = Content.Load<Texture2D>(@"Bosses/Escort/Escort");
             Texture2DLibrary.escort_lifebar = Content.Load<Texture2D>(@"Extra/square1");
 
             Texture2DLibrary.player = Content.Load<Texture2D>(@"Enemies/Player");
@@ -99,7 +99,7 @@ namespace _1942
             Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3");
             Texture2DLibrary.boss3_gun = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3_Gun");
 
-            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Enemies/spaceship");
+            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Bosses/Escort/Escort");
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
             Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");
