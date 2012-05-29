@@ -37,8 +37,6 @@ namespace _1942
         Random random = new Random();
 
         
-        Point bossLifebarSizeFull;
-        Point bossLifebarSize;
 
         public Logic(ContentManager Content)
         {
@@ -53,7 +51,6 @@ namespace _1942
             LevelNameActive = true;
             mPowerUpManager = new PowerUpManager();
 
-            
             hud = new Hud();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
@@ -67,8 +64,8 @@ namespace _1942
                 highscore = new HighScore(Settings.currentLevel.ToString());
                 playerOneAdd = false;
                 playerTwoAdd = false;
-            }   
-
+            }
+            #region levelLoaderReader
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
                 if (levelLoader.MapSpawnList[i].Formation == "formation1a")
@@ -117,7 +114,8 @@ namespace _1942
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Damage")
                     Objects.powerUpList.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position));
             }
-            if(Settings.currentLevel != Settings.CurrentLevel.Level0)
+            #endregion
+            if (Settings.currentLevel != Settings.CurrentLevel.Level0)
             {
                 if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
                     Objects.playerList.Add(new Player1());
@@ -132,7 +130,7 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
-
+            #region Music
             if (Settings.currentLevel == Settings.CurrentLevel.Level1)
                 MusicManager.SetMusic(SoundLibrary.Level1);
             if (Settings.currentLevel == Settings.CurrentLevel.Level2)
@@ -143,6 +141,7 @@ namespace _1942
                 MusicManager.SetMusic(SoundLibrary.Level4);
             if (Settings.currentLevel == Settings.CurrentLevel.Level5)
                 MusicManager.SetMusic(SoundLibrary.Level5);
+            #endregion
         }
 
         public void Update(KeyboardState keyState, GameTime gameTime)
