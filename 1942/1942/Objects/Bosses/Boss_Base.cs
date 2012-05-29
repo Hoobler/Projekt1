@@ -21,13 +21,9 @@ namespace _1942
         
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
         protected int score;
-        Point lifebarSizeFull;
-        Point lifebarSize;
 
         public Boss_Base()
         {
-            lifebarSizeFull = new Point(Settings.window.ClientBounds.Width - 200, 30);
-            lifebarSize = lifebarSizeFull;
         }
 
         public override void Update(GameTime gameTime)
@@ -111,7 +107,7 @@ namespace _1942
                 }
             }
 
-            if (killed)
+            if (dead)
             {
                 Objects.enemyList.Clear();
                 Objects.enemyProjectileList.Clear();
@@ -131,15 +127,7 @@ namespace _1942
                 }
                 if (phase == 1)
                     spriteBatch.DrawString(FontLibrary.Hud_Font, "BOSS APPROACHING", new Vector2(200, 200), Color.Red);
-                if (!killed)
-                {
-                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                    new Rectangle(100, 20, lifebarSizeFull.X + 10, lifebarSizeFull.Y + 10),
-                    Color.Gray);
-                    spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                        new Rectangle(105, 25, lifebarSize.X, lifebarSize.Y),
-                        Color.Red);
-                }
+                
             }
         }
 
@@ -148,12 +136,23 @@ namespace _1942
             accessorised = true;
         }
 
+        public int HealthMax
+        {
+            get { return maxHealth; }
+        }
         public int Health
         { 
             get { return health; }
             set { health = value; }
         }
-
+        public int Phase
+        {
+            get { return phase; }
+        }
+        public bool Killed
+        {
+            get { return killed; }
+        }
         public bool IsActivated()
         {
             return activated;
@@ -205,7 +204,6 @@ namespace _1942
                 if (accessoryList[i].IsKillable)
                     totalHealth += accessoryList[i].Health;
             }
-            lifebarSize.X = (int)((float)totalHealth / (float)maxTotalHealth * (float)lifebarSizeFull.X);
         }
     }
 }

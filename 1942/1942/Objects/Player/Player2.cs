@@ -22,6 +22,7 @@ namespace _1942
         public override void Update(KeyboardState keyState, GameTime gameTime)
         {
             base.Update(keyState, gameTime);
+            myScore = Settings.score_player2;
             if (keyState.IsKeyDown(Keys.A) && position.X > 0)
                 GoLeft();
             else if (keyState.IsKeyDown(Keys.D) && position.X < Settings.window.ClientBounds.Width - size.X)

@@ -24,6 +24,7 @@ namespace _1942
             
 
             base.Update(keyState, gameTime);
+            myScore = Settings.score_player1;
 
             if (keyState.IsKeyDown(Keys.Left) && position.X > 0)
                 GoLeft();

@@ -16,7 +16,6 @@ namespace _1942
 
         bool playerOneAdd = false;
         bool playerTwoAdd = false;
-
         
 
         string playerName = String.Empty;
@@ -37,6 +36,10 @@ namespace _1942
 
         Random random = new Random();
 
+        
+        Point bossLifebarSizeFull;
+        Point bossLifebarSize;
+
         public Logic(ContentManager Content)
         {
             this.Content = Content;
@@ -50,6 +53,7 @@ namespace _1942
             LevelNameActive = true;
             mPowerUpManager = new PowerUpManager();
 
+            
             hud = new Hud();
 
             levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
@@ -115,7 +119,6 @@ namespace _1942
             }
             if(Settings.currentLevel != Settings.CurrentLevel.Level0)
             {
-                Objects.playerList.Clear();
                 if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
                     Objects.playerList.Add(new Player1());
 
@@ -124,7 +127,6 @@ namespace _1942
             }
             else
             {
-                Objects.playerList.Clear();
                 Objects.playerList.Add(new MenuPlayer());
             }
 
@@ -146,7 +148,6 @@ namespace _1942
         public void Update(KeyboardState keyState, GameTime gameTime)
         {
             this.gameTime = gameTime;
-            oldKeyState = myKeyState;
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
 
@@ -212,7 +213,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 1";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
                                     playerOneAdd = true;
@@ -226,7 +227,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 2";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
                                     playerTwoAdd = true;
@@ -241,7 +242,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Press space to continue the next level";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
                                 {
                                     levelLoader.EndLevel = true;
                                 }
@@ -354,6 +355,8 @@ namespace _1942
 
             }
             #endregion
+
+            oldKeyState = myKeyState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -377,6 +380,21 @@ namespace _1942
             {
                 highscore.Draw(spriteBatch);
             }
+
+            if(Objects.bossList.Count >= 1)
+                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
+                {
+                    if(Objects.bossList[0].Phase >= 1)
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(100, 20, Settings.window.ClientBounds.Width - 190, 40),
+                        Color.Gray);
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.window.ClientBounds.Width - 200))), 30),
+                        Color.Red);
+                    }
+
+                }
         }
 
         public void GameOver()
@@ -401,7 +419,10 @@ namespace _1942
                             if (Objects.enemyList[j].Health <= 0 && !check)
                             {
                                 check = true;
-                                Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.enemyList[j].MyScore;
+                                if(Objects.playerProjectileList[i].PlayerID == 0)
+                                    Settings.score_player1 += Objects.enemyList[j].MyScore;
+                                else if(Objects.playerProjectileList[i].PlayerID == 1)
+                                    Settings.score_player2 += Objects.enemyList[j].MyScore;
                             }
                             Objects.playerProjectileList[i].SetDead();
                         }
@@ -422,7 +443,10 @@ namespace _1942
                                     if (Objects.formationList[j].enemyInFormationList[k].Health <= 0 && !check)
                                     {
                                         check = true;
-                                        Objects.playerList[Objects.playerProjectileList[i].PlayerID].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                        if (Objects.playerProjectileList[i].PlayerID == 0)
+                                            Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                        else if (Objects.playerProjectileList[i].PlayerID == 1)
+                                            Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
                                     }
                                     Objects.playerProjectileList[i].SetDead();
                                 }
@@ -468,6 +492,10 @@ namespace _1942
                             if (!Objects.playerList[i].PowerUpShield)
                                 Objects.playerList[i].Health -= Settings.damage_collision;
                             Objects.enemyList[j].SetDead();
+                            if (i == 0)
+                                Settings.score_player1 += Objects.enemyList[j].MyScore;
+                            else if (i == 1)
+                                Settings.score_player2 += Objects.enemyList[j].MyScore;
                             Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                         }
                 //Player vs Enemies in Formations
@@ -480,7 +508,10 @@ namespace _1942
                                     Objects.playerList[i].Health -= Settings.damage_collision;
 
                                 Objects.formationList[j].enemyInFormationList[k].SetDead();
-                                Objects.playerList[i].MyScore += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                if (i == 0)
+                                    Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                else if (i == 1)
+                                    Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
                             }
                 //Player vs Enemy bullets
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
@@ -497,7 +528,9 @@ namespace _1942
             for (int i = 0; i < Objects.escortList.Count; i++)
             {
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    if (Objects.escortList[i].Rectangle.Intersects(Objects.enemyProjectileList[j].Rectangle))
+                    for(int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+
+                    if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
                     {
                         Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
                         Objects.enemyProjectileList[j].SetDead();
@@ -505,7 +538,8 @@ namespace _1942
                     }
                 for (int j = 0; j < Objects.formationList.Count; j++)
                     for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
-                        if (Objects.escortList[i].Rectangle.Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
+                        for (int l = 0; l < Objects.escortList[i].TargetRectangles.Count; l++)
+                        if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
                         {
                             Objects.escortList[i].Health -= Settings.damage_collision;
                             Objects.formationList[j].enemyInFormationList[k].SetDead();
@@ -515,6 +549,36 @@ namespace _1942
 
             #endregion
         }
+
+        public int bossTotalLifeBarCalc()
+        {
+            int totalMaxHealth = 0;
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                if (Objects.bossList[i].IsKillable())
+                    totalMaxHealth += Objects.bossList[i].HealthMax;
+                for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable)
+                        totalMaxHealth += Objects.bossList[i].accessoryList[j].HealthMax;
+            }
+            return totalMaxHealth;
+        }
+        public int bossCurrentLifeBarCalc()
+        {
+            int totalHealth = 0;
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                if (Objects.bossList[i].IsKillable())
+                    totalHealth += Objects.bossList[i].Health;
+                for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable)
+                        totalHealth += Objects.bossList[i].accessoryList[j].Health;
+            }
+            return totalHealth;
+        }
+            
+        
+        
     }
 }
 

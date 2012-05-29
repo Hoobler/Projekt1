@@ -25,8 +25,6 @@ namespace _1942
         {
             int textLengt = LengtOfText;
             int inputLenght = 0; 
-            oldKeyState = keyState;
-            keyState = Keyboard.GetState();
 
             if (fullKeyBoardInput)
             {
@@ -74,17 +72,16 @@ namespace _1942
             set { textInput = value; }
         }
 
-        public static KeyboardState KeyState()
+        public static KeyboardState KeyState
         {
-            keyState = Keyboard.GetState();
-            return keyState;
+            get { return keyState; }
+            set { keyState = value; }
         }
 
-        public static KeyboardState OldKeyState()
+        public static KeyboardState OldKeyState
         {
-            oldKeyState = keyState;
-            keyState = Keyboard.GetState();
-            return oldKeyState;
+            get { return oldKeyState; }
+            set { oldKeyState = value; }
         }
     }
 }

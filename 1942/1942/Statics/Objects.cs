@@ -47,11 +47,12 @@ namespace _1942
             baseList.Clear();
             escortList.Clear();
             powerUpList.Clear();
+            playerList.Clear();
         }
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
-            DeadRemoval();
+            
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Update(keyState, gameTime);
 
@@ -80,31 +81,30 @@ namespace _1942
                 Objects.baseList[i].Update(gameTime);
             for (int i = 0; i < Objects.escortList.Count; i++)
                 Objects.escortList[i].Update(gameTime);
+            DeadRemoval();
 
         }
         static public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Objects.baseList.Count; i++)
                 Objects.baseList[i].Draw(spriteBatch);
-
             for (int i = 0; i < Objects.deadList.Count; i++)
                 Objects.deadList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.bossList.Count; i++)
                 Objects.bossList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.enemyList.Count; i++)
                 Objects.enemyList[i].Draw(spriteBatch);
-
+            for (int i = 0; i < Objects.escortList.Count; i++)
+                Objects.escortList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.formationList.Count; i++)
                 Objects.formationList[i].Draw(spriteBatch);
-
             for (int i = 0; i < Objects.enemyProjectileList.Count; i++)
                 Objects.enemyProjectileList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.playerProjectileList.Count; i++)
                 Objects.playerProjectileList[i].Draw(spriteBatch);
             for (int i = 0; i < Objects.particleList.Count; i++)
                 Objects.particleList[i].Draw(spriteBatch);
-            for (int i = 0; i < Objects.escortList.Count; i++)
-                Objects.escortList[i].Draw(spriteBatch);
+            
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Draw(spriteBatch);
         }
