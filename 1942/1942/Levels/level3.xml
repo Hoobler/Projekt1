@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <level>
-  <name>Level 3</name>
+  <name>LEVEL3</name>
   <nextlevel>level4</nextlevel>
   <description>Water</description>
   <tileset>texturelist</tileset>

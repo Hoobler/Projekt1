@@ -149,6 +149,7 @@ namespace _1942
             this.gameTime = gameTime;
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
+            hud.Update(gameTime);
 
             for(int i = 0; i < Objects.playerList.Count; i++)
             {
@@ -182,8 +183,6 @@ namespace _1942
 
             }
 
-            if (Objects.bossList.Count == 0 && Settings.currentLevel != Settings.CurrentLevel.Level0)
-                MusicManager.SetMusic(SoundLibrary.Level3);
 
             CollisionRemoval();
             levelLoader.MoveCamera(Settings.level_speed);
@@ -202,6 +201,7 @@ namespace _1942
 
                 if (levelLoader.ScoreLoop)
                 {
+                    MusicManager.SetMusic(SoundLibrary.Twilight);
                     playerName = KeyBoardInput.TextInput(5, false);
                     highscore.SetPlayerName = playerName;
 
@@ -355,6 +355,15 @@ namespace _1942
             }
             #endregion
 
+
+            //escort
+            if(Settings.currentLevel == Settings.CurrentLevel.Level4)
+                if(Objects.escortList.Count >= 1)
+                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSize()))
+                    {
+                        Objects.escortList[0].PosY -= 5f;
+                    }
+
             oldKeyState = myKeyState;
         }
 
@@ -372,7 +381,7 @@ namespace _1942
                 mPowerUpManager.Draw(spriteBatch);
                 if (Settings.currentLevel == Settings.CurrentLevel.Level0)
                 { }
-                else { hud.Draw(spriteBatch, gameTime); }
+                else { hud.Draw(spriteBatch); }
                 
             }
             if (levelLoader.ScoreLoop)
@@ -527,23 +536,33 @@ namespace _1942
             for (int i = 0; i < Objects.escortList.Count; i++)
             {
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    for(int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+                    for (int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
 
-                    if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
-                    {
-                        Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
-                        Objects.enemyProjectileList[j].SetDead();
-                        break;
-                    }
+                        if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
+                        {
+                            Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
+                            Objects.enemyProjectileList[j].SetDead();
+                            break;
+                        }
                 for (int j = 0; j < Objects.formationList.Count; j++)
                     for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
                         for (int l = 0; l < Objects.escortList[i].TargetRectangles.Count; l++)
-                        if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
-                        {
-                            Objects.escortList[i].Health -= Settings.damage_collision;
-                            Objects.formationList[j].enemyInFormationList[k].SetDead();
-                            break;
-                        }
+                            if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
+                            {
+                                Objects.escortList[i].Health -= Settings.damage_collision;
+                                Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                break;
+                            }
+                for (int j = 0; j < Objects.enemyList.Count; j++)
+                    if (Objects.enemyList[j].IsFlying)
+                        for (int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+
+                            if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyList[j].Rectangle))
+                            {
+                                Objects.escortList[i].Health -= Settings.damage_collision;
+                                Objects.enemyList[j].SetDead();
+                                break;
+                            }
             }
 
             #endregion
@@ -576,8 +595,6 @@ namespace _1942
             return totalHealth;
         }
             
-        
-        
     }
 }
 

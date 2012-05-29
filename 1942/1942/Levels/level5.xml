@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <level>
-  <name>Level 1</name>
-  <nextlevel>level2</nextlevel>
+  <name>LEVEL5</name>
+  <nextlevel>gameover</nextlevel>
   <description>Pearl Harbor 1942</description>
   <tileset>texturelist</tileset>
   <layout>
