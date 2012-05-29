@@ -36,6 +36,10 @@ namespace _1942
 
         Random random = new Random();
 
+        
+        Point bossLifebarSizeFull;
+        Point bossLifebarSize;
+
         public Logic(ContentManager Content)
         {
             this.Content = Content;
@@ -267,6 +271,21 @@ namespace _1942
             {
                 highscore.Draw(spriteBatch);
             }
+
+            if(Objects.bossList.Count >= 1)
+                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
+                {
+                    if(Objects.bossList[0].Phase >= 1)
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(100, 20, Settings.window.ClientBounds.Width - 190, 40),
+                        Color.Gray);
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.window.ClientBounds.Width - 200))), 30),
+                        Color.Red);
+                    }
+
+                }
         }
 
         public void GameOver()
@@ -421,6 +440,36 @@ namespace _1942
 
             #endregion
         }
+
+        public int bossTotalLifeBarCalc()
+        {
+            int totalMaxHealth = 0;
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                if (Objects.bossList[i].IsKillable())
+                    totalMaxHealth += Objects.bossList[i].HealthMax;
+                for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable)
+                        totalMaxHealth += Objects.bossList[i].accessoryList[j].HealthMax;
+            }
+            return totalMaxHealth;
+        }
+        public int bossCurrentLifeBarCalc()
+        {
+            int totalHealth = 0;
+            for (int i = 0; i < Objects.bossList.Count; i++)
+            {
+                if (Objects.bossList[i].IsKillable())
+                    totalHealth += Objects.bossList[i].Health;
+                for (int j = 0; j < Objects.bossList[i].accessoryList.Count; j++)
+                    if (Objects.bossList[i].accessoryList[j].IsKillable)
+                        totalHealth += Objects.bossList[i].accessoryList[j].Health;
+            }
+            return totalHealth;
+        }
+            
+        
+        
     }
 }
 

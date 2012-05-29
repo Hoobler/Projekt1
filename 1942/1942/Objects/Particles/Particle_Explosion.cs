@@ -31,7 +31,7 @@ namespace _1942
             else
                 delay = true;
 
-            if (animationFrame.X >= 3)
+            if (animationFrame.X >= 4)
                 dead = true;
 
         }

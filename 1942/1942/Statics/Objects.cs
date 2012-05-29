@@ -52,7 +52,7 @@ namespace _1942
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
-            DeadRemoval();
+            
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Update(keyState, gameTime);
 
@@ -81,6 +81,7 @@ namespace _1942
                 Objects.baseList[i].Update(gameTime);
             for (int i = 0; i < Objects.escortList.Count; i++)
                 Objects.escortList[i].Update(gameTime);
+            DeadRemoval();
 
         }
         static public void Draw(SpriteBatch spriteBatch)
