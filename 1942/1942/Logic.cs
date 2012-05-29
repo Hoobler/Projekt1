@@ -146,9 +146,6 @@ namespace _1942
 
         private void HighScoreUpdate()
         {
-
-            
-
             if (Settings.currentLevel != Settings.CurrentLevel.Level0)
             {
                 if (levelLoader.HighScoreScreen())
@@ -346,7 +343,6 @@ namespace _1942
                     Timer = 0;
                     LevelNameActive = false;
                 }
-
             }
 
             CollisionRemoval();
@@ -356,7 +352,6 @@ namespace _1942
             mPowerUpManager.Update(gameTime);
 
             HighScoreUpdate();
-
 
             //escort
             if(Settings.currentLevel == Settings.CurrentLevel.Level4)
