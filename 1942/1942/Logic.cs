@@ -172,7 +172,7 @@ namespace _1942
                 Settings.LevelHasChanged = false;
             }
 
-            if (Timer < 240 && !LevelNameActive)
+            if (Timer < 240)
             {
                 Timer++;
                 if (Timer >= 120)
@@ -256,7 +256,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 1";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
                                     playerOneAdd = true;
@@ -270,7 +270,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Press space to continue the next level";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
                                 {
                                     levelLoader.EndLevel = true;
                                 }
@@ -287,7 +287,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 1";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
                                     playerOneAdd = true;
@@ -301,7 +301,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 2";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
                                     playerTwoAdd = true;
@@ -316,7 +316,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Press space to continue the next level";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
                                 {
                                     levelLoader.EndLevel = true;
                                 }
@@ -330,7 +330,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Player 1";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Enter))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
                                 {
                                     highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
                                     playerOneAdd = true;
@@ -344,7 +344,7 @@ namespace _1942
                             highscore.SetCurrentPlayer = "Press space to continue the next level";
                             if (oldKeyState.IsKeyUp(Keys.Enter))
                             {
-                                if (KeyBoardInput.KeyState().IsKeyDown(Keys.Space))
+                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
                                 {
                                     levelLoader.EndLevel = true;
                                 }
