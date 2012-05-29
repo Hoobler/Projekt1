@@ -113,6 +113,11 @@ namespace _1942
                 spriteBatch.Draw(Texture2DLibrary.shielded, new Rectangle((int)Center.X - 30, (int)Center.Y - 30, 60, 60), Color.White);
         }
 
+        public bool Dead
+        {
+            get { return dead; }
+        }
+
         public int Health
         {
             get { return health; }

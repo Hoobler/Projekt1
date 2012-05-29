@@ -84,7 +84,7 @@ namespace _1942
             set { nr_of_players = value;}
 		}
 
-        public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5 };
+        public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5, GameOver };
         static public CurrentLevel currentLevel = CurrentLevel.Level0;
         static public bool LevelHasChanged = false;
 
