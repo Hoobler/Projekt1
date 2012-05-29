@@ -165,7 +165,7 @@ namespace _1942
         {
             spriteBatch.DrawString(FontLibrary.debug, "" + currentPlayer, new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
             spriteBatch.DrawString(FontLibrary.debug, "" + playerName , new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
-            spriteBatch.DrawString(FontLibrary.highscore_font, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
+            //spriteBatch.DrawString(FontLibrary.highscore_font, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
             for (int i = 0; i < list.Count ; i++)
             {
                 spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(300f, (FontLibrary.debug.LineSpacing * 1 * i)), Color.White);
