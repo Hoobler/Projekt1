@@ -19,6 +19,7 @@ namespace _1942
         protected int myScore = 0;
         protected int damage;
         protected Color projectileColor = Color.Yellow;
+        protected bool killed;
 
         //PowerUp stuff
         protected bool powerupDamage = false;
@@ -46,76 +47,87 @@ namespace _1942
 
         public virtual void Update(KeyboardState keyState, GameTime gameTime)
         {
-            
-            if(timeUntilNextShot > 0)
-                timeUntilNextShot -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (!killed)
+            {
+                if (timeUntilNextShot > 0)
+                    timeUntilNextShot -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (health < 0)
-            {
-                health = 0;
-                dead = true;
-            }
-            if (health > 100)
-                health = 100;
+                if (health < 0)
+                {
+                    health = 0;
+                    killed = true;
+                }
+                if (health > 100)
+                    health = 100;
 
-            if (powerupDamage)
-            {
-                mActiveDamageTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                damage = 20;
-                projectileColor = Color.Red;
-            }
-            else
-            {
-                damage = 10;
-                projectileColor = Color.Yellow;
-            }
-            if (powerupHealth)
-            {
-                powerupHealth = false;
-            }
-            if (powerupShield)
-            {
-                mActiveArmorTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            if (mActiveDamageTime <= 0)
-            {
-                powerupDamage = false;
-                mActiveDamageTime = resetActiveDamageTime;
-            }
-            if (mActiveArmorTime <= 0)
-            {
-                powerupShield = false;
-                mActiveArmorTime = resetActiveArmorTime;
-            }
-            
-            animationFrame.Y = 0;
-            spriteEffect = SpriteEffects.None;
+                if (powerupDamage)
+                {
+                    mActiveDamageTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    damage = 20;
+                    projectileColor = Color.Red;
+                }
+                else
+                {
+                    damage = 10;
+                    projectileColor = Color.Yellow;
+                }
+                if (powerupHealth)
+                {
+                    powerupHealth = false;
+                }
+                if (powerupShield)
+                {
+                    mActiveArmorTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+                if (mActiveDamageTime <= 0)
+                {
+                    powerupDamage = false;
+                    mActiveDamageTime = resetActiveDamageTime;
+                }
+                if (mActiveArmorTime <= 0)
+                {
+                    powerupShield = false;
+                    mActiveArmorTime = resetActiveArmorTime;
+                }
 
-            animationFrame.X++;
-            if (animationFrame.X > 2)
-                animationFrame.X = 0;  
+                animationFrame.Y = 0;
+                spriteEffect = SpriteEffects.None;
+
+                animationFrame.X++;
+                if (animationFrame.X > 2)
+                    animationFrame.X = 0;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture,
-                Rectangle,
-                new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,
-                    (animationFrame.Y * (texture.Bounds.Height - 1) / 3) + 1,
-                    ((texture.Bounds.Width - 1) / 3) - 1,
-                    ((texture.Bounds.Height - 1) / 3) - 1),
-                color,
-                angle,
-                new Vector2 (0,0),
-                spriteEffect,
-                0.0f);
-            if (powerupShield)
-                spriteBatch.Draw(Texture2DLibrary.shielded, new Rectangle((int)Center.X - 30, (int)Center.Y - 30, 60, 60), Color.White);
+            if (!killed)
+            {
+                spriteBatch.Draw(texture,
+                    Rectangle,
+                    new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,
+                        (animationFrame.Y * (texture.Bounds.Height - 1) / 3) + 1,
+                        ((texture.Bounds.Width - 1) / 3) - 1,
+                        ((texture.Bounds.Height - 1) / 3) - 1),
+                    color,
+                    angle,
+                    new Vector2(0, 0),
+                    spriteEffect,
+                    0.0f);
+                if (powerupShield)
+                    spriteBatch.Draw(Texture2DLibrary.shielded, new Rectangle((int)Center.X - 30, (int)Center.Y - 30, 60, 60), Color.White);
+            }
         }
 
         public bool Dead
         {
             get { return dead; }
+        }
+
+        public bool Killed
+        {
+            get { return killed; }
+            set { killed = value; }
         }
 
         public int Health

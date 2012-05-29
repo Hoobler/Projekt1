@@ -97,5 +97,8 @@ namespace _1942
         public static Texture2D particle_smoke;
         public static Texture2D shielded;
 
+        // GameOver
+        public static Texture2D GameOverScreen;
+
     }
 }

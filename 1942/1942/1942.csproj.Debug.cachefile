@@ -45,6 +45,8 @@ Content\Menu\Level4.xnb
 Content\Menu\Level5.xnb
 Content\dockbottom.xnb
 Content\dockbottomcorner.xnb
+Content\debugFont.xnb
+Content\Hud_Font.xnb
 Content\AABaseDead.xnb
 Content\AANew1.xnb
 Content\BeachAni.xnb
@@ -88,6 +90,8 @@ Content\Sounds\Explosion_Big.xnb
 Content\Sounds\gunshot.xnb
 Content\Sounds\Player_Shot.xnb
 Content\Sounds\Laser_gun.xnb
+Content\Menu\1 Player.xnb
+Content\Menu\2 Player.xnb
 Content\Extra\square1.xnb
 Content\Particles\smoke.xnb
 Content\shielded.xnb
@@ -96,6 +100,7 @@ Content\Bosses\Boss3\Boss3_Gun.xnb
 Content\Enemies\Boat_Tower.xnb
 Content\Music\Level1b.xnb
 Content\Music\Level2b.xnb
+Content\LevelTextures\WaterAni.xnb
 Content\LevelTextures\WaterAni.xnb
 Content\LevelTextures\Grass.xnb
 Content\LevelTextures\BeachSideL.xnb
@@ -107,10 +112,17 @@ Content\LevelTextures\BeachInnL.xnb
 Content\LevelTextures\BeachInnR.xnb
 Content\LevelTextures\BeachL.xnb
 Content\LevelTextures\BeachR.xnb
+Content\LevelTextures\BeachSideL.xnb
 Content\LevelTextures\BeachSideLD.xnb
+Content\LevelTextures\BeachSideR.xnb
 Content\LevelTextures\BeachSideRD.xnb
 Content\LevelTextures\BeachU.xnb
 Content\Bosses\Escort\Escort.xnb
+Content\LevelTextures\Grass.xnb
+Content\Music\Level1b.xnb
+Content\Music\Level2b.xnb
+Content\Bosses\Escort\Escort.xnb
+Content\GameOver.xnb
 Content\Music\Level4.xnb
 Content\Music\Level5.xnb
 Content\Music\MenuSong.wma

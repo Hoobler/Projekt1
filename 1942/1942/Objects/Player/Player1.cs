@@ -21,30 +21,27 @@ namespace _1942
 
         public override void Update(KeyboardState keyState, GameTime gameTime)
         {
-            
+            if (!killed)
+            {
+                base.Update(keyState, gameTime);
+                myScore = Settings.score_player1;
 
-            base.Update(keyState, gameTime);
-            myScore = Settings.score_player1;
+                if (keyState.IsKeyDown(Keys.Left) && position.X > 0)
+                    GoLeft();
 
-            if (keyState.IsKeyDown(Keys.Left) && position.X > 0)
-                GoLeft();
-            
-            else if (keyState.IsKeyDown(Keys.Right) && position.X < Settings.window.ClientBounds.Width - size.X)
-                GoRight();
-            
-            if (keyState.IsKeyDown(Keys.Up) && position.Y > 0)
-                GoUp();
-            else if (keyState.IsKeyDown(Keys.Down) && position.Y < Settings.window.ClientBounds.Height - size.Y)
-                GoDown();
-            //if (timeUntilNextShot > Settings.player_projectile_frequency)
-            //{
-             //   timeUntilNextShot -= Settings.player_projectile_frequency;
+                else if (keyState.IsKeyDown(Keys.Right) && position.X < Settings.window.ClientBounds.Width - size.X)
+                    GoRight();
+
+                if (keyState.IsKeyDown(Keys.Up) && position.Y > 0)
+                    GoUp();
+                else if (keyState.IsKeyDown(Keys.Down) && position.Y < Settings.window.ClientBounds.Height - size.Y)
+                    GoDown();
+                
                 if (keyState.IsKeyDown(Keys.RightControl))
                 {
                     Fire();
                 }
-            //}
-            
+            }
         }
     }
 }

@@ -49,11 +49,11 @@ namespace _1942
             Objects.ClearAll();
             Settings.gameOver = false;
             LevelNameActive = true;
-            mPowerUpManager = new PowerUpManager();
-
-            hud = new Hud();
-
-            levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
+            
+                mPowerUpManager = new PowerUpManager();
+                hud = new Hud();
+                levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
+ 
 
             //Highscore stuff, DUH!
             if (Settings.currentLevel.ToString() == "Level0")
@@ -146,90 +146,169 @@ namespace _1942
 
         private void HighScoreUpdate()
         {
-            if (Settings.currentLevel != Settings.CurrentLevel.Level0)
-            {
-                if (levelLoader.HighScoreScreen())
+                if (Settings.currentLevel != Settings.CurrentLevel.Level0)
                 {
-                    levelLoader.ScoreLoop = true;
-                }
-
+                    if (levelLoader.HighScoreScreen())
+                    {
+                        levelLoader.ScoreLoop = true;
+                    }
+					}
                 if (levelLoader.ScoreLoop || Settings.currentLevel == Settings.CurrentLevel.GameOver)
                 {
                     MusicManager.SetMusic(SoundLibrary.Twilight);
                     playerName = KeyBoardInput.TextInput(5, false);
                     highscore.SetPlayerName = playerName;
 
-                    if (Objects.playerList.Count == 2)
+                    if (levelLoader.ScoreLoop)
                     {
-                        if (!playerOneAdd)
+                        playerName = KeyBoardInput.TextInput(5, false);
+                        highscore.SetPlayerName = playerName;
+
+                        if (Objects.playerList.Count == 2)
                         {
-                            highscore.SetCurrentPlayer = "Player 1";
-                            if (oldKeyState.IsKeyUp(Keys.Enter))
+                            if (!playerOneAdd)
                             {
-                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                highscore.SetCurrentPlayer = "Player 1";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
                                 {
-                                    highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
-                                    playerOneAdd = true;
-                                    KeyBoardInput.EmptyWord = "";
-                                    highscore.RetreiveHighScore();
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                        playerOneAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
+                                }
+                            }
+                            else if (!playerTwoAdd)
+                            {
+                                highscore.SetCurrentPlayer = "Player 2";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
+                                {
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
+                                        playerTwoAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
+                                }
+                            }
+                            else if (playerOneAdd && playerTwoAdd)
+                            {
+                                //Temp stuff
+                                highscore.SetCurrentPlayer = "Press space to continue the next level";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
+                                {
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                    {
+                                        levelLoader.EndLevel = true;
+                                    }
                                 }
                             }
                         }
-                        else if (!playerTwoAdd)
+                        if (Objects.playerList.Count == 1)
                         {
-                            highscore.SetCurrentPlayer = "Player 2";
-                            if (oldKeyState.IsKeyUp(Keys.Enter))
+                            if (!playerOneAdd)
                             {
-                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                highscore.SetCurrentPlayer = "Player 1";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
                                 {
-                                    highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
-                                    playerTwoAdd = true;
-                                    KeyBoardInput.EmptyWord = "";
-                                    highscore.RetreiveHighScore();
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                        playerOneAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
                                 }
                             }
-                        }
-                        else if (playerOneAdd && playerTwoAdd)
-                        {
-                            //Temp stuff
-                            highscore.SetCurrentPlayer = "Press space to continue the next level";
-                            if (oldKeyState.IsKeyUp(Keys.Enter))
+                            else if (playerOneAdd)
                             {
-                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                highscore.SetCurrentPlayer = "Press space to continue the next level";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
                                 {
-                                    levelLoader.EndLevel = true;
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                    {
+                                        levelLoader.EndLevel = true;
+                                    }
                                 }
                             }
                         }
                     }
-                    if (Objects.playerList.Count == 1)
+                    if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
                     {
-                        if (!playerOneAdd)
+                        if (Objects.playerList.Count == 2)
                         {
-                            highscore.SetCurrentPlayer = "Player 1";
-                            if (oldKeyState.IsKeyUp(Keys.Enter))
+                            if (!playerOneAdd)
                             {
-                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                highscore.SetCurrentPlayer = "Player 1";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
                                 {
-                                    highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
-                                    playerOneAdd = true;
-                                    KeyBoardInput.EmptyWord = "";
-                                    highscore.RetreiveHighScore();
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                        playerOneAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
+                                }
+                            }
+                            else if (!playerTwoAdd)
+                            {
+                                highscore.SetCurrentPlayer = "Player 2";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
+                                {
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
+                                        playerTwoAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
+                                }
+                            }
+                            else if (playerOneAdd && playerTwoAdd)
+                            {
+                                //Temp stuff
+                                highscore.SetCurrentPlayer = "Press space to continue the next level";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
+                                {
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                    {
+                                        levelLoader.EndLevel = true;
+                                    }
                                 }
                             }
                         }
-                        else if (playerOneAdd)
+                        if (Objects.playerList.Count == 1)
                         {
-                            highscore.SetCurrentPlayer = "Press space to continue the next level";
-                            if (oldKeyState.IsKeyUp(Keys.Enter))
+                            if (!playerOneAdd)
                             {
-                                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                highscore.SetCurrentPlayer = "Player 1";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
                                 {
-                                    levelLoader.EndLevel = true;
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                                    {
+                                        highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                                        playerOneAdd = true;
+                                        KeyBoardInput.EmptyWord = "";
+                                        highscore.RetreiveHighScore();
+                                    }
+                                }
+                            }
+                            else if (playerOneAdd)
+                            {
+                                highscore.SetCurrentPlayer = "Press space to continue the next level";
+                                if (oldKeyState.IsKeyUp(Keys.Enter))
+                                {
+                                    if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                                    {
+                                        levelLoader.EndLevel = true;
+                                    }
                                 }
                             }
                         }
-                    }
                 }
                 //if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
                 //{
@@ -314,12 +393,18 @@ namespace _1942
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
 
+            int temp = 0;
             for(int i = 0; i < Objects.playerList.Count; i++)
             {
-                if (Objects.playerList[i].Dead)
+
+                if (Objects.playerList[i].Killed)
                 {
-                    Settings.currentLevel = Settings.CurrentLevel.GameOver;
-                }
+                    temp++;
+                    if (temp == Objects.playerList.Count)
+                    {
+                        Settings.currentLevel = Settings.CurrentLevel.GameOver;
+                    }
+                } 
             }
 
             if (levelLoader.LevelHasEnded())
@@ -346,11 +431,15 @@ namespace _1942
             }
 
             CollisionRemoval();
-            levelLoader.MoveCamera(Settings.level_speed);
-            Objects.Update(keyState, gameTime);
 
-            mPowerUpManager.Update(gameTime);
-
+            if (temp != Objects.playerList.Count)
+            {
+                levelLoader.MoveCamera(Settings.level_speed);
+                Objects.Update(keyState, gameTime);
+                levelLoader.Update(gameTime);
+                mPowerUpManager.Update(gameTime);
+            }
+            
             HighScoreUpdate();
 
             //escort
@@ -361,6 +450,9 @@ namespace _1942
                         Objects.escortList[0].PosY -= 5f;
                     }
 
+                
+                
+            
             oldKeyState = myKeyState;
         }
 
@@ -377,6 +469,10 @@ namespace _1942
             Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 240);
             
             levelLoader.Draw(spriteBatch);
+            if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
+            {
+                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
+            }
             if (LevelNameActive)
             {
                 spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
@@ -499,43 +595,46 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
             {
-                //Player vs Flying enemy
-                for (int j = 0; j < Objects.enemyList.Count; j++)
-                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable)
-                        if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
-                        {
-                            if (!Objects.playerList[i].PowerUpShield)
-                                Objects.playerList[i].Health -= Settings.damage_collision;
-                            Objects.enemyList[j].SetDead();
-                            if (i == 0)
-                                Settings.score_player1 += Objects.enemyList[j].MyScore;
-                            else if (i == 1)
-                                Settings.score_player2 += Objects.enemyList[j].MyScore;
-                            Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
-                        }
-                //Player vs Enemies in Formations
-                for (int j = 0; j < Objects.formationList.Count; j++)
-                    if (Objects.formationList[j].IsActivated())
-                        for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
-                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
+                if (Objects.playerList[i].Killed == false)
+                {
+                    //Player vs Flying enemy
+                    for (int j = 0; j < Objects.enemyList.Count; j++)
+                        if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable)
+                            if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
                                 if (!Objects.playerList[i].PowerUpShield)
                                     Objects.playerList[i].Health -= Settings.damage_collision;
-
-                                Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                Objects.enemyList[j].SetDead();
                                 if (i == 0)
-                                    Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    Settings.score_player1 += Objects.enemyList[j].MyScore;
                                 else if (i == 1)
-                                    Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    Settings.score_player2 += Objects.enemyList[j].MyScore;
+                                Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                             }
-                //Player vs Enemy bullets
-                for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    if (Objects.enemyProjectileList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
-                    {
-                        if (!Objects.playerList[i].PowerUpShield)
-                            Objects.playerList[i].Health -= Objects.enemyProjectileList[j].Damage;
-                        Objects.enemyProjectileList[j].SetDead();
-                    }
+                    //Player vs Enemies in Formations
+                    for (int j = 0; j < Objects.formationList.Count; j++)
+                        if (Objects.formationList[j].IsActivated())
+                            for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
+                                if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
+                                {
+                                    if (!Objects.playerList[i].PowerUpShield)
+                                        Objects.playerList[i].Health -= Settings.damage_collision;
+
+                                    Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                    if (i == 0)
+                                        Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    else if (i == 1)
+                                        Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                }
+                    //Player vs Enemy bullets
+                    for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
+                        if (Objects.enemyProjectileList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                        {
+                            if (!Objects.playerList[i].PowerUpShield)
+                                Objects.playerList[i].Health -= Objects.enemyProjectileList[j].Damage;
+                            Objects.enemyProjectileList[j].SetDead();
+                        }
+                }
             }
             #endregion
 
@@ -601,7 +700,6 @@ namespace _1942
             }
             return totalHealth;
         }
-            
     }
 }
 
