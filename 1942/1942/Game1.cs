@@ -138,6 +138,9 @@ namespace _1942
             Texture2DLibrary.texture_Level4 = Content.Load<Texture2D>(@"Menu/Level4");
             Texture2DLibrary.texture_Level5 = Content.Load<Texture2D>(@"Menu/Level5");
 
+            //GameOver
+            Texture2DLibrary.GameOverScreen = Content.Load<Texture2D>(@"GameOver");
+
             //fonts
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
             FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
