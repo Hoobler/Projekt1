@@ -33,7 +33,7 @@ namespace _1942
         static public float zero_projectile_frequency = 0.8f;
         static public Point size_zero = new Point(32, 30);
         static public int zero_projectile_damage = 1;
-        static public int zero_health = 50;
+        static public int zero_health = 30;
         static public Vector2 zero_speed = new Vector2(1f, 1f);
         static public float zero_speed_change = 1f;
 
@@ -42,7 +42,7 @@ namespace _1942
         static public float zeke_projectile_frequency = 1f;
         static public Point size_zeke = new Point(32, 30);
         static public int zeke_projectile_damage = 2;
-        static public int zeke_health = 80;
+        static public int zeke_health = 60;
         static public Vector2 zeke_speed = new Vector2(0, 1f);
 
         static public Vector2 todjo_projectile_speed = new Vector2(0, 3);
@@ -50,7 +50,7 @@ namespace _1942
         static public float todjo_projectile_frequency = 2f;
         static public Point size_todjo = new Point(32, 30);
         static public int todjo_projectile_damage = 5;
-        static public int todjo_health = 100;
+        static public int todjo_health = 80;
         static public Vector2 todjo_speed = new Vector2(0, 1f);
 
         static public Vector2 player_projectile_speed = new Vector2 (0,-7);
@@ -76,7 +76,7 @@ namespace _1942
 
         static public Vector2 escort_speed = new Vector2(2, 0);
         static public Point escort_size = new Point(200,90);
-        static public int escort_health = 1000;
+        static public int escort_health = 500;
 
         static public int Nr_Of_Players
         {

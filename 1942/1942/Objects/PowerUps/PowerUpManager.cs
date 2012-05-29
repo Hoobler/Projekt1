@@ -30,51 +30,54 @@ namespace _1942
             {
                 Objects.powerUpList[i].PosY += mPowerUpSpeed;
                 Objects.powerUpList[i].IsAlive = true;
-                
+
                 for (int j = 0; j < Objects.playerList.Count; j++)
                 {
-                    if (Objects.powerUpList[i] != null)
+                    if (Objects.playerList[j].Killed == false)
                     {
-                        if (Objects.powerUpList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle) && Objects.powerUpList[i].IsAlive == true)
+                        if (Objects.powerUpList[i] != null)
                         {
-                            if (Objects.powerUpList[i] is PowerUpDamage)
+                            if (Objects.powerUpList[i].Rectangle.Intersects(Objects.playerList[j].Rectangle) && Objects.powerUpList[i].IsAlive == true)
                             {
-                                Objects.playerList[j].PowerUpDamage = true;
-                                if (Objects.playerList[j].TimeLeftOnDamagePowerUp < 10)
+                                if (Objects.powerUpList[i] is PowerUpDamage)
                                 {
-                                    Objects.playerList[j].TimeLeftOnDamagePowerUp = 10;
-                                   
+                                    Objects.playerList[j].PowerUpDamage = true;
+                                    if (Objects.playerList[j].TimeLeftOnDamagePowerUp < 10)
+                                    {
+                                        Objects.playerList[j].TimeLeftOnDamagePowerUp = 10;
+
+                                    }
                                 }
-                            }
-                            if (Objects.powerUpList[i] is PowerUpHealth)
-                            {
-                                Objects.playerList[j].PowerUpHealth = true;
-                                Objects.playerList[j].Health += 20;
-                                
-                            }
-                            if (Objects.powerUpList[i] is PowerUpShield)
-                            {
-                                Objects.playerList[j].PowerUpShield = true;
-                                if (Objects.playerList[j].TimeLeftOnArmorPowerUp < 10)
+                                if (Objects.powerUpList[i] is PowerUpHealth)
                                 {
-                                    Objects.playerList[j].TimeLeftOnArmorPowerUp = 10;
-                                    
+                                    Objects.playerList[j].PowerUpHealth = true;
+                                    Objects.playerList[j].Health += 20;
+
                                 }
+                                if (Objects.powerUpList[i] is PowerUpShield)
+                                {
+                                    Objects.playerList[j].PowerUpShield = true;
+                                    if (Objects.playerList[j].TimeLeftOnArmorPowerUp < 10)
+                                    {
+                                        Objects.playerList[j].TimeLeftOnArmorPowerUp = 10;
+
+                                    }
+                                }
+                                Objects.powerUpList.RemoveAt(i);
+                                break;
                             }
-                            Objects.powerUpList.RemoveAt(i);
-                            break;
+
                         }
-                        
-                    }
-                    if (Objects.playerList[j].PowerUpDamage == true)
-                    {
-                        Objects.playerList[j].Damage = 20;
-                        Objects.playerList[j].ProjectileColor = Color.Orange;
-                    }
-                    else if (Objects.playerList[j].PowerUpDamage == false)
-                    {
-                        Objects.playerList[j].Damage = 10;
-                        Objects.playerList[j].ProjectileColor = Color.Yellow;
+                        if (Objects.playerList[j].PowerUpDamage == true)
+                        {
+                            Objects.playerList[j].Damage = 20;
+                            Objects.playerList[j].ProjectileColor = Color.Orange;
+                        }
+                        else if (Objects.playerList[j].PowerUpDamage == false)
+                        {
+                            Objects.playerList[j].Damage = 10;
+                            Objects.playerList[j].ProjectileColor = Color.Yellow;
+                        }
                     }
                 }
             }

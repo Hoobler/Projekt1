@@ -77,7 +77,7 @@ namespace _1942
             mLevel3_Button.IsUnlocked = true;
             mLevel4_Button.IsUnlocked = true;
             mLevel5_Button.IsUnlocked = true;
-            mLevel1_Button.Position = new Rectangle(Settings.window.ClientBounds.Width/2 - lvl_button_Size_Width /2, Settings.window.ClientBounds.Height / 3, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel1_Button.Position = new Rectangle(Settings.window.ClientBounds.Width - lvl_button_Size_Width*2, Settings.window.ClientBounds.Height / 3, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel2_Button.Position = new Rectangle(mLevel1_Button.Position.X, mLevel1_Button.Position.Y+ miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel3_Button.Position = new Rectangle(mLevel2_Button.Position.X, mLevel2_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel4_Button.Position = new Rectangle(mLevel3_Button.Position.X, mLevel3_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);

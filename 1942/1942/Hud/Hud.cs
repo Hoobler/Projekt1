@@ -13,20 +13,24 @@ namespace _1942
 {
     class Hud
     {
-      
+        float gameTimeMins;
+        float gameTimeSecs;
         public Hud()
         {
  
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            
+            gameTimeMins += (float)gameTime.ElapsedGameTime.TotalMinutes;
+            gameTimeSecs += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (gameTimeSecs >= 60)
+                gameTimeSecs = 0;
         }
 
-        public void Draw(SpriteBatch spritebatch, GameTime gametime)
+        public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.DrawString(FontLibrary.Hud_Font, gametime.TotalGameTime.Minutes.ToString() + ":" + gametime.TotalGameTime.Seconds.ToString(), new Vector2(Settings.window.ClientBounds.Width / 2 - (FontLibrary.Hud_Font.MeasureString(gametime.TotalGameTime.Minutes.ToString() + ":" + gametime.ElapsedGameTime.TotalSeconds.ToString()).X / 2), 0), Color.BlanchedAlmond);
+            spritebatch.DrawString(FontLibrary.Hud_Font, ((int)gameTimeMins).ToString() + ":" + ((int)gameTimeSecs).ToString(), new Vector2(Settings.window.ClientBounds.Width / 2 - (FontLibrary.Hud_Font.MeasureString(((int)gameTimeMins).ToString() + ":" + ((int)gameTimeSecs).ToString()).X / 2), 0), Color.BlanchedAlmond);
             for (int i = 0; i < Objects.playerList.Count; i++)
             {
                 spritebatch.DrawString(FontLibrary.Hud_Font, Objects.playerList[0].Health.ToString() + "%", new Vector2(Settings.window.ClientBounds.Width - FontLibrary.Hud_Font.MeasureString(Objects.playerList[0].Health.ToString() + "%").X, Settings.window.ClientBounds.Height - FontLibrary.Hud_Font.LineSpacing), Objects.playerList[0].Color);

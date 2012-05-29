@@ -27,30 +27,30 @@ namespace _1942
 
             if (activated)
             {
-                if (Objects.escortList.Count > 0)
-                {
-                    int nearestEscort = 0;
-                    for (int i = 1; i < Objects.escortList.Count; i++)
-                    {
-                        float distanceCurrent = (float)Math.Sqrt(
-                            (Center.X - Objects.escortList[i].Center.X) * (Center.X - Objects.escortList[i].Center.X) +
-                            (Center.Y - Objects.escortList[i].Center.Y) * (Center.Y - Objects.escortList[i].Center.Y)
-                            );
+                //if (Objects.escortList.Count > 0)
+                //{
+                //    int nearestEscort = 0;
+                //    for (int i = 1; i < Objects.escortList.Count; i++)
+                //    {
+                //        float distanceCurrent = (float)Math.Sqrt(
+                //            (Center.X - Objects.escortList[i].Center.X) * (Center.X - Objects.escortList[i].Center.X) +
+                //            (Center.Y - Objects.escortList[i].Center.Y) * (Center.Y - Objects.escortList[i].Center.Y)
+                //            );
 
-                        float distancePrevious = (float)Math.Sqrt(
-                            (Position.X - Objects.escortList[i - 1].Center.X) * (Center.X - Objects.escortList[i - 1].Center.X) +
-                            (Position.Y - Objects.escortList[i - 1].Center.Y) * (Center.Y - Objects.escortList[i - 1].Center.Y)
-                            );
+                //        float distancePrevious = (float)Math.Sqrt(
+                //            (Position.X - Objects.escortList[i - 1].Center.X) * (Center.X - Objects.escortList[i - 1].Center.X) +
+                //            (Position.Y - Objects.escortList[i - 1].Center.Y) * (Center.Y - Objects.escortList[i - 1].Center.Y)
+                //            );
 
-                        if (distanceCurrent < distancePrevious)
-                            nearestEscort = i;
-                    }
+                //        if (distanceCurrent < distancePrevious)
+                //            nearestEscort = i;
+                //    }
 
-                    if (Center.X <= Objects.escortList[nearestEscort].Center.X)
-                        position.X += 1;
-                    if (Center.X >= Objects.escortList[nearestEscort].Center.X)
-                        position.X -= 1;
-                }
+                //    if (Center.X <= Objects.escortList[nearestEscort].Center.X)
+                //        position.X += 1;
+                //    if (Center.X >= Objects.escortList[nearestEscort].Center.X)
+                //        position.X -= 1;
+                //}
 
                 timeUntilSpeedChange += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timeUntilSpeedChange >= timeBetweenSpeedChanges)

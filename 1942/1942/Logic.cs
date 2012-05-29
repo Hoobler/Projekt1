@@ -37,8 +37,6 @@ namespace _1942
         Random random = new Random();
 
         
-        Point bossLifebarSizeFull;
-        Point bossLifebarSize;
 
         public Logic(ContentManager Content)
         {
@@ -51,12 +49,11 @@ namespace _1942
             Objects.ClearAll();
             Settings.gameOver = false;
             LevelNameActive = true;
-
             
                 mPowerUpManager = new PowerUpManager();
                 hud = new Hud();
                 levelLoader = new LevelLoader(Settings.currentLevel.ToString(), this.Content);
-            
+ 
 
             //Highscore stuff, DUH!
             if (Settings.currentLevel.ToString() == "Level0")
@@ -67,8 +64,8 @@ namespace _1942
                 highscore = new HighScore(Settings.currentLevel.ToString());
                 playerOneAdd = false;
                 playerTwoAdd = false;
-            }   
-
+            }
+            #region levelLoaderReader
             for (int i = 0; i < levelLoader.MapSpawnList.Count; i++)
             {
                 if (levelLoader.MapSpawnList[i].Formation == "formation1a")
@@ -117,7 +114,8 @@ namespace _1942
                 else if (levelLoader.MapSpawnList[i].Formation == "PowerUp_Damage")
                     Objects.powerUpList.Add(new PowerUpDamage(levelLoader.MapSpawnList[i].Position));
             }
-            if(Settings.currentLevel != Settings.CurrentLevel.Level0)
+            #endregion
+            if (Settings.currentLevel != Settings.CurrentLevel.Level0)
             {
                 if (Settings.nr_of_players >= 1 && Objects.playerList.Count <= 0)
                     Objects.playerList.Add(new Player1());
@@ -132,7 +130,7 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Health = 100;
-
+            #region Music
             if (Settings.currentLevel == Settings.CurrentLevel.Level1)
                 MusicManager.SetMusic(SoundLibrary.Level1);
             if (Settings.currentLevel == Settings.CurrentLevel.Level2)
@@ -143,77 +141,23 @@ namespace _1942
                 MusicManager.SetMusic(SoundLibrary.Level4);
             if (Settings.currentLevel == Settings.CurrentLevel.Level5)
                 MusicManager.SetMusic(SoundLibrary.Level5);
+            #endregion
         }
 
-        public void Update(KeyboardState keyState, GameTime gameTime)
+        private void HighScoreUpdate()
         {
-            this.gameTime = gameTime;
-            myKeyState = Keyboard.GetState();
-            
-            int temp = 0;
-            for(int i = 0; i < Objects.playerList.Count; i++)
-            {
-
-                if (Objects.playerList[i].Killed)
-                {
-                    Settings.currentLevel = Settings.CurrentLevel.GameOver;
-                    temp++;
-                    if (temp == 2)
-                    {
-                        Settings.currentLevel = Settings.CurrentLevel.GameOver;
-                    }
-                } 
-            }
-
-            if (levelLoader.LevelHasEnded())
-            {
-                Settings.currentLevel++;
-                NewGame(); 
-                
-            }
-
-            if (Settings.LevelHasChanged)
-            {
-                NewGame();
-                Settings.LevelHasChanged = false;
-            }
-
-            if (Timer < 240)
-            {
-                Timer++;
-                if (Timer >= 120)
-                {
-                    Timer = 0;
-                    LevelNameActive = false;
-                }
-
-            }
-
-            if (Objects.bossList.Count == 0 && Settings.currentLevel != Settings.CurrentLevel.Level0)
-                MusicManager.SetMusic(SoundLibrary.Level3);
-
-            CollisionRemoval();
-            if (Settings.currentLevel != Settings.CurrentLevel.GameOver)
-            {
-
-                levelLoader.MoveCamera(Settings.level_speed);
-                Objects.Update(keyState, gameTime);
-                levelLoader.Update(gameTime);
-                mPowerUpManager.Update(gameTime);
-            }
-            else
-            {
-                test();
-            }
-            
-                #region HighScoreUpdate
-
                 if (Settings.currentLevel != Settings.CurrentLevel.Level0)
                 {
                     if (levelLoader.HighScoreScreen())
                     {
                         levelLoader.ScoreLoop = true;
                     }
+					}
+                if (levelLoader.ScoreLoop || Settings.currentLevel == Settings.CurrentLevel.GameOver)
+                {
+                    MusicManager.SetMusic(SoundLibrary.Twilight);
+                    playerName = KeyBoardInput.TextInput(5, false);
+                    highscore.SetPlayerName = playerName;
 
                     if (levelLoader.ScoreLoop)
                     {
@@ -365,16 +309,166 @@ namespace _1942
                                 }
                             }
                         }
+                }
+                //if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
+                //{
+                //    if (Objects.playerList.Count == 2)
+                //    {
+                //        if (!playerOneAdd)
+                //        {
+                //            highscore.SetCurrentPlayer = "Player 1";
+                //            if (oldKeyState.IsKeyUp(Keys.Enter))
+                //            {
+                //                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                //                {
+                //                    highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                //                    playerOneAdd = true;
+                //                    KeyBoardInput.EmptyWord = "";
+                //                    highscore.RetreiveHighScore();
+                //                }
+                //            }
+                //        }
+                //        else if (!playerTwoAdd)
+                //        {
+                //            highscore.SetCurrentPlayer = "Player 2";
+                //            if (oldKeyState.IsKeyUp(Keys.Enter))
+                //            {
+                //                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                //                {
+                //                    highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
+                //                    playerTwoAdd = true;
+                //                    KeyBoardInput.EmptyWord = "";
+                //                    highscore.RetreiveHighScore();
+                //                }
+                //            }
+                //        }
+                //        else if (playerOneAdd && playerTwoAdd)
+                //        {
+                //            //Temp stuff
+                //            highscore.SetCurrentPlayer = "Press space to continue the next level";
+                //            if (oldKeyState.IsKeyUp(Keys.Enter))
+                //            {
+                //                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                //                {
+                //                    levelLoader.EndLevel = true;
+                //                }
+                //            }
+                //        }
+                //    }
+                //    if (Objects.playerList.Count == 1)
+                //    {
+                //        if (!playerOneAdd)
+                //        {
+                //            highscore.SetCurrentPlayer = "Player 1";
+                //            if (oldKeyState.IsKeyUp(Keys.Enter))
+                //            {
+                //                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
+                //                {
+                //                    highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
+                //                    playerOneAdd = true;
+                //                    KeyBoardInput.EmptyWord = "";
+                //                    highscore.RetreiveHighScore();
+                //                }
+                //            }
+                //        }
+                //        else if (playerOneAdd)
+                //        {
+                //            highscore.SetCurrentPlayer = "Press space to continue the next level";
+                //            if (oldKeyState.IsKeyUp(Keys.Enter))
+                //            {
+                //                if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+                //                {
+                //                    levelLoader.EndLevel = true;
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
+            }
+        }
+
+        public void Update(KeyboardState keyState, GameTime gameTime)
+        {
+            this.gameTime = gameTime;
+            myKeyState = Keyboard.GetState();
+            levelLoader.Update(gameTime);
+
+            int temp = 0;
+            for(int i = 0; i < Objects.playerList.Count; i++)
+            {
+
+                if (Objects.playerList[i].Killed)
+                {
+                    temp++;
+                    if (temp == Objects.playerList.Count)
+                    {
+                        Settings.currentLevel = Settings.CurrentLevel.GameOver;
+                    }
+                } 
+            }
+
+            if (levelLoader.LevelHasEnded())
+            {
+                Settings.currentLevel++;
+                NewGame(); 
+                
+            }
+
+            if (Settings.LevelHasChanged)
+            {
+                NewGame();
+                Settings.LevelHasChanged = false;
+            }
+
+            if (Timer < 540)
+            {
+                Timer++;
+                if (Timer >= 300)
+                {
+                    Timer = 0;
+                    LevelNameActive = false;
+                }
+
+            }
+
+            CollisionRemoval();
+
+            if (temp != Objects.playerList.Count)
+            {
+                levelLoader.MoveCamera(Settings.level_speed);
+                Objects.Update(keyState, gameTime);
+                levelLoader.Update(gameTime);
+                mPowerUpManager.Update(gameTime);
+            }
+            
+            HighScoreUpdate();
+
+
+            //escort
+            if(Settings.currentLevel == Settings.CurrentLevel.Level4)
+                if(Objects.escortList.Count >= 1)
+                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSize()))
+                    {
+                        Objects.escortList[0].PosY -= 5f;
                     }
 
-                }
-                #endregion
+                
+                
             
             oldKeyState = myKeyState;
         }
 
+        private Vector2 TextLenght(string String)
+        {
+            Vector2 tempVector;
+            tempVector = FontLibrary.Hud_Font.MeasureString(String);
+
+            return tempVector;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
+            Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 240);
             
             levelLoader.Draw(spriteBatch);
             if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
@@ -383,7 +477,8 @@ namespace _1942
             }
             if (LevelNameActive)
             {
-                spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
+                spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
+                //spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
             }
             if (!levelLoader.ScoreLoop)
             {
@@ -391,7 +486,7 @@ namespace _1942
                 mPowerUpManager.Draw(spriteBatch);
                 if (Settings.currentLevel == Settings.CurrentLevel.Level0)
                 { }
-                else { hud.Draw(spriteBatch, gameTime); }
+                else { hud.Draw(spriteBatch); }
                 
             }
             if (levelLoader.ScoreLoop)
@@ -502,43 +597,46 @@ namespace _1942
 
             for (int i = 0; i < Objects.playerList.Count; i++)
             {
-                //Player vs Flying enemy
-                for (int j = 0; j < Objects.enemyList.Count; j++)
-                    if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable)
-                        if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
-                        {
-                            if (!Objects.playerList[i].PowerUpShield)
-                                Objects.playerList[i].Health -= Settings.damage_collision;
-                            Objects.enemyList[j].SetDead();
-                            if (i == 0)
-                                Settings.score_player1 += Objects.enemyList[j].MyScore;
-                            else if (i == 1)
-                                Settings.score_player2 += Objects.enemyList[j].MyScore;
-                            Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
-                        }
-                //Player vs Enemies in Formations
-                for (int j = 0; j < Objects.formationList.Count; j++)
-                    if (Objects.formationList[j].IsActivated())
-                        for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
-                            if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
+                if (Objects.playerList[i].Killed == false)
+                {
+                    //Player vs Flying enemy
+                    for (int j = 0; j < Objects.enemyList.Count; j++)
+                        if (Objects.enemyList[j].IsActivated && Objects.enemyList[j].IsFlying && Objects.enemyList[j].IsKillable)
+                            if (Objects.enemyList[j].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
                             {
                                 if (!Objects.playerList[i].PowerUpShield)
                                     Objects.playerList[i].Health -= Settings.damage_collision;
-
-                                Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                Objects.enemyList[j].SetDead();
                                 if (i == 0)
-                                    Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    Settings.score_player1 += Objects.enemyList[j].MyScore;
                                 else if (i == 1)
-                                    Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    Settings.score_player2 += Objects.enemyList[j].MyScore;
+                                Objects.playerList[i].MyScore += Objects.enemyList[j].MyScore;
                             }
-                //Player vs Enemy bullets
-                for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    if (Objects.enemyProjectileList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
-                    {
-                        if (!Objects.playerList[i].PowerUpShield)
-                            Objects.playerList[i].Health -= Objects.enemyProjectileList[j].Damage;
-                        Objects.enemyProjectileList[j].SetDead();
-                    }
+                    //Player vs Enemies in Formations
+                    for (int j = 0; j < Objects.formationList.Count; j++)
+                        if (Objects.formationList[j].IsActivated())
+                            for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
+                                if (Objects.formationList[j].enemyInFormationList[k].TargetingRectangle.Intersects(Objects.playerList[i].Rectangle))
+                                {
+                                    if (!Objects.playerList[i].PowerUpShield)
+                                        Objects.playerList[i].Health -= Settings.damage_collision;
+
+                                    Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                    if (i == 0)
+                                        Settings.score_player1 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                    else if (i == 1)
+                                        Settings.score_player2 += Objects.formationList[j].enemyInFormationList[k].MyScore;
+                                }
+                    //Player vs Enemy bullets
+                    for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
+                        if (Objects.enemyProjectileList[j].Rectangle.Intersects(Objects.playerList[i].Rectangle))
+                        {
+                            if (!Objects.playerList[i].PowerUpShield)
+                                Objects.playerList[i].Health -= Objects.enemyProjectileList[j].Damage;
+                            Objects.enemyProjectileList[j].SetDead();
+                        }
+                }
             }
             #endregion
 
@@ -546,23 +644,33 @@ namespace _1942
             for (int i = 0; i < Objects.escortList.Count; i++)
             {
                 for (int j = 0; j < Objects.enemyProjectileList.Count; j++)
-                    for(int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+                    for (int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
 
-                    if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
-                    {
-                        Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
-                        Objects.enemyProjectileList[j].SetDead();
-                        break;
-                    }
+                        if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyProjectileList[j].Rectangle))
+                        {
+                            Objects.escortList[i].Health -= Objects.enemyProjectileList[j].Damage;
+                            Objects.enemyProjectileList[j].SetDead();
+                            break;
+                        }
                 for (int j = 0; j < Objects.formationList.Count; j++)
                     for (int k = 0; k < Objects.formationList[j].enemyInFormationList.Count; k++)
                         for (int l = 0; l < Objects.escortList[i].TargetRectangles.Count; l++)
-                        if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
-                        {
-                            Objects.escortList[i].Health -= Settings.damage_collision;
-                            Objects.formationList[j].enemyInFormationList[k].SetDead();
-                            break;
-                        }
+                            if (Objects.escortList[i].TargetRectangles[l].Intersects(Objects.formationList[j].enemyInFormationList[k].Rectangle))
+                            {
+                                Objects.escortList[i].Health -= Settings.damage_collision;
+                                Objects.formationList[j].enemyInFormationList[k].SetDead();
+                                break;
+                            }
+                for (int j = 0; j < Objects.enemyList.Count; j++)
+                    if (Objects.enemyList[j].IsFlying)
+                        for (int k = 0; k < Objects.escortList[i].TargetRectangles.Count; k++)
+
+                            if (Objects.escortList[i].TargetRectangles[k].Intersects(Objects.enemyList[j].Rectangle))
+                            {
+                                Objects.escortList[i].Health -= Settings.damage_collision;
+                                Objects.enemyList[j].SetDead();
+                                break;
+                            }
             }
 
             #endregion
@@ -593,82 +701,6 @@ namespace _1942
                         totalHealth += Objects.bossList[i].accessoryList[j].Health;
             }
             return totalHealth;
-        }
-
-
-        public void test()
-        {
-            if (Objects.playerList.Count == 2)
-            {
-                if (!playerOneAdd)
-                {
-                    highscore.SetCurrentPlayer = "Player 1";
-                    if (oldKeyState.IsKeyUp(Keys.Enter))
-                    {
-                        if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
-                        {
-                            highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
-                            playerOneAdd = true;
-                            KeyBoardInput.EmptyWord = "";
-                            highscore.RetreiveHighScore();
-                        }
-                    }
-                }
-                else if (!playerTwoAdd)
-                {
-                    highscore.SetCurrentPlayer = "Player 2";
-                    if (oldKeyState.IsKeyUp(Keys.Enter))
-                    {
-                        if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
-                        {
-                            highscore.AddHighScore(playerName, Objects.playerList[1].MyScore);
-                            playerTwoAdd = true;
-                            KeyBoardInput.EmptyWord = "";
-                            highscore.RetreiveHighScore();
-                        }
-                    }
-                }
-                else if (playerOneAdd && playerTwoAdd)
-                {
-                    //Temp stuff
-                    highscore.SetCurrentPlayer = "Press space to continue the next level";
-                    if (oldKeyState.IsKeyUp(Keys.Enter))
-                    {
-                        if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
-                        {
-                            levelLoader.EndLevel = true;
-                        }
-                    }
-                }
-            }
-            if (Objects.playerList.Count == 1)
-            {
-                if (!playerOneAdd)
-                {
-                    highscore.SetCurrentPlayer = "Player 1";
-                    if (oldKeyState.IsKeyUp(Keys.Enter))
-                    {
-                        if (KeyBoardInput.KeyState.IsKeyDown(Keys.Enter))
-                        {
-                            highscore.AddHighScore(playerName, Objects.playerList[0].MyScore);
-                            playerOneAdd = true;
-                            KeyBoardInput.EmptyWord = "";
-                            highscore.RetreiveHighScore();
-                        }
-                    }
-                }
-                else if (playerOneAdd)
-                {
-                    highscore.SetCurrentPlayer = "Press space to continue the next level";
-                    if (oldKeyState.IsKeyUp(Keys.Enter))
-                    {
-                        if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
-                        {
-                            levelLoader.EndLevel = true;
-                        }
-                    }
-                }
-            }
         }
     }
 }
