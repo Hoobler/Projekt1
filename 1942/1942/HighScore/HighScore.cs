@@ -14,8 +14,12 @@ namespace _1942
 
         #region Variables
 
+        private bool textDraw = false;
+        private bool levelPromt = false;
+
         private string playerName;
         private string currentPlayer;
+        private string nextLevelText;
 
         private KeyboardState keyState;
         private KeyboardState oldKeyState;
@@ -142,6 +146,21 @@ namespace _1942
             set { currentPlayer = value; }
         }
 
+        public string NextLevelText
+        {
+            set { nextLevelText = value; }
+        }
+
+        public bool NextLevelPrompt
+        {
+            set { levelPromt = value; }
+        }
+
+        public bool DrawText
+        {
+            set { textDraw = value; }
+        }
+
         #endregion
 
         public void Update(GameTime gameTime)
@@ -163,8 +182,15 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(FontLibrary.debug, "" + currentPlayer, new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
-            spriteBatch.DrawString(FontLibrary.debug, "" + playerName , new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+            if (textDraw)
+            {
+                spriteBatch.DrawString(FontLibrary.debug, "" + currentPlayer, new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.debug, "" + playerName, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+            }
+            if (levelPromt)
+            {
+                spriteBatch.DrawString(FontLibrary.debug, "" + nextLevelText, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+            }
             //spriteBatch.DrawString(FontLibrary.highscore_font, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
             for (int i = 0; i < list.Count ; i++)
             {
