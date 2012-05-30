@@ -52,7 +52,7 @@ namespace _1942
                 if (timeUntilNextShot > 0)
                     timeUntilNextShot -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (health < 0)
+                if (health <= 0)
                 {
                     health = 0;
                     killed = true;

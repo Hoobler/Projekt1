@@ -6,9 +6,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1942Content", "1942\1942Content\1942Content.contentproj", "{0565CD97-7C09-4D65-9BD4-47CBFFD4D91D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF21DE8E-69DE-4BD8-AE23-742B4D4EEC5B}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

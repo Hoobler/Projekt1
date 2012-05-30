@@ -272,6 +272,7 @@ namespace _1942
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(SpriteSortMode.Immediate,BlendState.AlphaBlend, SamplerState.PointWrap,DepthStencilState.None,RasterizerState.CullNone);
+            Vector2 textcenter = new Vector2(Settings.windowBounds.X / 2, 20);
            
             
             switch (gameState)
@@ -285,7 +286,7 @@ namespace _1942
                         }
                         if (!startGame)
                         {
-                            spriteBatch.DrawString(FontLibrary.Hud_Font, "Press Space to start", new Vector2(150, 230), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.highscore_font, "PRESS SPACE TO START", textcenter - ((logic.TextLenght("PRESS SPACE TO START") / 2) * 0.50f), Color.White, 0, new Vector2(0, 0), 0.50f, SpriteEffects.None, 0);
                         }
                         break;
                     }

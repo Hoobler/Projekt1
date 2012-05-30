@@ -195,18 +195,19 @@ namespace _1942
             if (textDraw)
             {
                 spriteBatch.DrawString(FontLibrary.highscore_font, "HIGH SCORE", textcenter - ((TextLenght("HIGH SCORE") / 2) * 0.75f), Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0);
-                spriteBatch.DrawString(FontLibrary.highscore_font, "" + currentPlayer.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
-                spriteBatch.DrawString(FontLibrary.highscore_font, "" + playerName.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + currentPlayer.ToUpper(), new Vector2(0, 200), Color.White, 0, new Vector2(0, 0), 0.30f, SpriteEffects.None, 0);
+                //spriteBatch.DrawString(FontLibrary.highscore_font, "" + currentPlayer.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + playerName.ToUpper(), new Vector2(0, 250), Color.White, 0, new Vector2(0, 0), 0.30f, SpriteEffects.None, 0);
+                //spriteBatch.DrawString(FontLibrary.highscore_font, "" + playerName.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
             }
             if (levelPromt)
             {
-                spriteBatch.DrawString(FontLibrary.debug, "" + nextLevelText, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + nextLevelText.ToUpper(), textcenter - ((TextLenght(nextLevelText.ToUpper()) / 2) * 0.30f), Color.White, 0, new Vector2(0, 0), 0.30f, SpriteEffects.None, 0);
+                //spriteBatch.DrawString(FontLibrary.debug, "" + nextLevelText, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
             }
-            //spriteBatch.DrawString(FontLibrary.testfont, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
             for (int i = 0; i < list.Count ; i++)
             {
-                //spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(300f, (FontLibrary.debug.LineSpacing * 1 * i)), Color.White);
-                spriteBatch.DrawString(FontLibrary.highscore_font, "" + list[i].PlayerPlacement.ToString().ToUpper() + " " + list[i].PlayerName.ToUpper() + " " + list[i].PlayerScore.ToString().ToUpper(), new Vector2(150f, (FontLibrary.testfont.LineSpacing * 1 * i)) * 0.30f, Color.White, 0f, new Vector2(0,0), 0.30f, SpriteEffects.None, 0);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + list[i].PlayerPlacement.ToString().ToUpper() + " " + list[i].PlayerName.ToUpper() + " " + list[i].PlayerScore.ToString().ToUpper(), new Vector2(1000, 300 + (FontLibrary.testfont.LineSpacing * 1 * i)) * 0.30f, Color.White, 0f, new Vector2(0,0), 0.30f, SpriteEffects.None, 0);
             }
         }  
     }
