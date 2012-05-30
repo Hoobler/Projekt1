@@ -393,7 +393,7 @@ namespace _1942
             {
                 Objects.Draw(spriteBatch);
                 mPowerUpManager.Draw(spriteBatch);
-                if (Settings.currentLevel == Settings.CurrentLevel.Level0)
+                if (Settings.currentLevel == Settings.CurrentLevel.Level0 || gameOver)
                 { }
                 else { hud.Draw(spriteBatch); }
                 
