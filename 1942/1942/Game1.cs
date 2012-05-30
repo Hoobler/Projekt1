@@ -26,6 +26,7 @@ namespace _1942
         MenuManager menu;
         bool debugText;
         bool paused;
+        bool startGame = false;
 
         public Game1()
         {
@@ -211,6 +212,10 @@ namespace _1942
             }
             if (KeyBoardInput.KeyState.IsKeyDown(Keys.M))
                 debugText = true;
+            if (KeyBoardInput.KeyState.IsKeyDown(Keys.Space))
+            {
+                startGame = true;
+            }
 
             //Just to test Orvar take it easy!
             if (menu.GetStartGame())
@@ -224,7 +229,10 @@ namespace _1942
                     case GameStates.MainMenu:
                         {
                             logic.Update(KeyBoardInput.KeyState, gameTime);
-                            menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                            if (startGame)
+                            {
+                                menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                            }
                             MusicManager.SetMusic(SoundLibrary.Menu_Song);
                             break;
                         }
@@ -269,7 +277,14 @@ namespace _1942
                 case GameStates.MainMenu:
                     {
                         logic.Draw(spriteBatch);
-                        menu.Draw(spriteBatch);
+                        if (startGame)
+                        {
+                            menu.Draw(spriteBatch);
+                        }
+                        if (!startGame)
+                        {
+                            spriteBatch.DrawString(FontLibrary.debug, "Press Space to start", new Vector2(400, 240), Color.Red);
+                        }
                         break;
                     }
                 case GameStates.AudioScreen:
