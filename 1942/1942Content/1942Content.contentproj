@@ -493,28 +493,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1942font2.png">
-      <Name>1942font2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <ProcessorParameters_TextureFormat>NoChange</ProcessorParameters_TextureFormat>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Texture.png">
       <Name>Texture</Name>
       <Importer>TextureImporter</Importer>
       <Processor>FontTextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1942font3.png">
-      <Name>1942font3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +715,21 @@
       <Name>GameOver</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1942font4.png">
+      <Name>1942font4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1942font1.png">
+      <Name>1942font1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

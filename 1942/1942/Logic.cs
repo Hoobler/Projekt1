@@ -337,7 +337,7 @@ namespace _1942
             //escort
             if(Settings.currentLevel == Settings.CurrentLevel.Level4)
                 if(Objects.escortList.Count >= 1)
-                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSize()))
+                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSize))
                     {
                         Objects.escortList[0].PosY -= 5f;
                     }

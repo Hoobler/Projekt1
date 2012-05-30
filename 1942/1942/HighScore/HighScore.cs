@@ -75,6 +75,14 @@ namespace _1942
             }
         }
 
+        private Vector2 TextLenght(string String)
+        {
+            Vector2 tempVector;
+            tempVector = FontLibrary.highscore_font.MeasureString(String);
+
+            return tempVector;
+        }
+
         /// <summary>
         /// Takes the inputed highscore and name of the player and add it's to the high scorelist
         /// </summary>
@@ -182,20 +190,23 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 50);
+
             if (textDraw)
             {
-                spriteBatch.DrawString(FontLibrary.debug, "" + currentPlayer, new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
-                spriteBatch.DrawString(FontLibrary.debug, "" + playerName, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "HIGH SCORE", textcenter - ((TextLenght("HIGH SCORE") / 2) * 0.75f), Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + currentPlayer.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 10)), Color.Red);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + playerName.ToUpper(), new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
             }
             if (levelPromt)
             {
                 spriteBatch.DrawString(FontLibrary.debug, "" + nextLevelText, new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.Red);
             }
-            //spriteBatch.DrawString(FontLibrary.highscore_font, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
+            //spriteBatch.DrawString(FontLibrary.testfont, "0123456789", new Vector2(1f, (FontLibrary.debug.LineSpacing * 11)), Color.White);
             for (int i = 0; i < list.Count ; i++)
             {
-                spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(300f, (FontLibrary.debug.LineSpacing * 1 * i)), Color.White);
-                //spriteBatch.DrawString(FontLibrary.highscore_font, "" + string.Format("{0: 10}" , list[i].PlayerPlacement) + "" + list[i].PlayerName + "" + list[i].PlayerScore, new Vector2(300f, (FontLibrary.highscore_font.LineSpacing * 1 * i)), Color.White, 0f, new Vector2(0,0), 0.5f, SpriteEffects.None, 0);
+                //spriteBatch.DrawString(FontLibrary.debug, " " + list[i].PlayerPlacement + " " + list[i].PlayerName + " " + list[i].PlayerScore, new Vector2(300f, (FontLibrary.debug.LineSpacing * 1 * i)), Color.White);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + list[i].PlayerPlacement.ToString().ToUpper() + " " + list[i].PlayerName.ToUpper() + " " + list[i].PlayerScore.ToString().ToUpper(), new Vector2(150f, (FontLibrary.testfont.LineSpacing * 1 * i)) * 0.30f, Color.White, 0f, new Vector2(0,0), 0.30f, SpriteEffects.None, 0);
             }
         }  
     }

@@ -10,6 +10,7 @@ namespace _1942
     {
         public static SpriteFont debug;
         public static SpriteFont Hud_Font;
+        public static SpriteFont testfont;
         public static SpriteFont highscore_font;
     }
 }

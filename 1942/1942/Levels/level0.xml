@@ -165,6 +165,12 @@
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
+      <positionX>5</positionX>
+      <positionY>13</positionY>
+      <formation>formation2a</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
       <positionX>2</positionX>
       <positionY>20</positionY>
       <formation>formation2a</formation>

@@ -145,7 +145,8 @@ namespace _1942
             //fonts
             FontLibrary.debug = Content.Load<SpriteFont>(@"debugFont");
             FontLibrary.Hud_Font = Content.Load<SpriteFont>(@"Hud_Font");
-            FontLibrary.highscore_font = Content.Load<SpriteFont>(@"1942font3");
+            FontLibrary.highscore_font = Content.Load<SpriteFont>(@"1942font1");
+            FontLibrary.testfont = Content.Load<SpriteFont>(@"1942font4");
 
             //Music
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
@@ -280,7 +281,7 @@ namespace _1942
                         }
                         if (!startGame)
                         {
-                            spriteBatch.DrawString(FontLibrary.debug, "Press Space to start", new Vector2(400, 240), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.Hud_Font, "Press Space to start", new Vector2(150, 230), Color.Red);
                         }
                         break;
                     }
@@ -313,7 +314,7 @@ namespace _1942
                             spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
                             spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
-                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize()) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
                         }
                         break;
                     }

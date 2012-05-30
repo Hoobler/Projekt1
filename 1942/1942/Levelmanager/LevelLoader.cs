@@ -18,7 +18,7 @@ namespace _1942
         private int nrOfTilesShown = 0;
         private int nrOfRows = 0;
         private const int topMargin = 0;
-        private static int tilesize = 80;
+        private static int tilesize = 0;
         private string levelName = string.Empty;
         private string nextLevel = string.Empty;
         private string description = string.Empty;
@@ -39,6 +39,8 @@ namespace _1942
         public LevelLoader(string TheLevelFile, ContentManager content)
         {
             LoadLevelFile(TheLevelFile, content);
+            var tempSize = Settings.window.ClientBounds.Width;
+            tilesize = tempSize / 10;
         }
 
         #region LoadingMethods
@@ -249,12 +251,12 @@ namespace _1942
                     else if (aCurrentElement == "positionX")
                     {
                         aSpawnPosX = reader.ReadContentAsFloat();
-                        aSpawnPosX *= TileSize();
+                        aSpawnPosX *= tilesize;
                     }
                     else if (aCurrentElement == "positionY")
                     {
                         aSpawnPosY = reader.ReadContentAsFloat();
-                        aSpawnPosY *= TileSize();
+                        aSpawnPosY *= tilesize;
                         aSpawnPosY = -aSpawnPosY;
                     }
                     else if (aCurrentElement == "formation")
@@ -277,16 +279,16 @@ namespace _1942
 
         #region HelperMethods
 
-        public int TileSize()
-        {
-            var tempSize = Settings.window.ClientBounds.Width;
-            return tilesize = tempSize / 10; 
-        }
+        //public int TileSize()
+        //{
+        //    var tempSize = Settings.window.ClientBounds.Width;
+        //    return tilesize = tempSize / 10; 
+        //}
 
         private int StartingCameraPos()
         {
-            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
-            var tempInt = nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
+            cameraPosition.Y = (float)nrOfRows * tilesize - Settings.window.ClientBounds.Height;
+            var tempInt = nrOfRows * tilesize - Settings.window.ClientBounds.Height;
             return tempInt;
         }
 
@@ -302,19 +304,19 @@ namespace _1942
                 {
                     if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = cameraPosition.Y + 20 * TileSize();
+                        cameraPosition.Y = cameraPosition.Y + 20 * tilesize;
                     }
                 }
             }
-            if (cameraPosition.Y < 2 * TileSize() && scoreLoop && !endLevel)
+            if (cameraPosition.Y < 2 * tilesize && scoreLoop && !endLevel)
             {
-                cameraPosition.Y = cameraPosition.Y + 7 * TileSize();
+                cameraPosition.Y = cameraPosition.Y + 7 * tilesize;
             }
         }
 
         public bool HighScoreScreen()
         {
-            if (cameraPosition.Y < 1 * TileSize())
+            if (cameraPosition.Y < 1 * tilesize)
                 return true;
             else
                 return false;
@@ -369,6 +371,11 @@ namespace _1942
             set { endLevel = value; }
         }
 
+        public int TileSize
+        {
+            get { return tilesize; }
+        }
+
         #endregion
 
         public void Update(GameTime gameTime)
@@ -384,16 +391,16 @@ namespace _1942
             nrOfTilesShown = 0;
             for (int i = 0; i < mapList.Count; i++)
             {
-                int left = (int)mapList[i].Position.X * TileSize();
-                int top = (int)mapList[i].Position.Y * TileSize() - (int)cameraPosition.Y;
+                int left = (int)mapList[i].Position.X * tilesize;
+                int top = (int)mapList[i].Position.Y * tilesize - (int)cameraPosition.Y;
 
-                if (top >= -TileSize() && top < TileSize()*7)
+                if (top >= -tilesize && top < tilesize * 7)
                 {
                     if (texDictionary[mapList[i].Symbol].Animated)
                     {
                         spritebatch.Draw(
                         texDictionary[mapList[i].Symbol].Tex, //Texture
-                        new Rectangle(left, top, TileSize(), TileSize()), //Size of the tile rectangle
+                        new Rectangle(left, top, tilesize, tilesize), //Size of the tile rectangle
                         new Rectangle((texDictionary[mapList[i].Symbol].CFrame * (texDictionary[mapList[i].Symbol].Tex.Bounds.Width -1 ) / texDictionary[mapList[i].Symbol].TFrame) +1,
                             (0 *(texDictionary[mapList[i].Symbol].Tex.Bounds.Width -1)) + 1 ,
                             ((texDictionary[mapList[i].Symbol].Tex.Bounds.Width - 1) / texDictionary[mapList[i].Symbol].TFrame) - 1,
@@ -407,7 +414,7 @@ namespace _1942
                     else
                     {
                         spritebatch.Draw(texDictionary[mapList[i].Symbol].Tex,
-                            new Rectangle(left, top, TileSize(), TileSize()),
+                            new Rectangle(left, top, tilesize, tilesize),
                             new Rectangle(1, 1, texDictionary[mapList[i].Symbol].Tex.Bounds.Width -2, texDictionary[mapList[i].Symbol].Tex.Bounds.Height -2),
                             Color.White,
                             0,
