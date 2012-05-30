@@ -64,6 +64,11 @@ namespace _1942
         static public int boss1_projectile_damage = 10;
         static public float boss1_projectile_frequency = 1f;
 
+        static public int boss5_projectile_speed = 2;
+        static public int boss5_projectile_damage = 10;
+        static public int boss5_megaProjectile_damage = 100;
+        static public float boss5_projectile_frequency = 10f;
+
         static public int textInputLength = 5;
 
         static public Vector2 boat_speed = new Vector2(1,-1);

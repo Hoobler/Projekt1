@@ -50,10 +50,15 @@ namespace _1942
         public static Texture2D boss3;
         public static Texture2D boss3_gun;
 
+        
+
         public static Texture2D escort;
         public static Texture2D escort_lifebar;
 
         public static Texture2D boss5;
+        public static Texture2D boss5_projectile;
+        public static Texture2D boss5_megaProjectile;
+        public static Texture2D boss5_cannon;
 
         //menu
         public static Texture2D texture_MainMenu;

@@ -302,7 +302,7 @@ namespace _1942
                 {
                     if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = cameraPosition.Y + 20 * TileSize();
+                        cameraPosition.Y = cameraPosition.Y + 8 * TileSize();
                     }
                 }
             }

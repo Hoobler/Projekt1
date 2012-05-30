@@ -15,6 +15,7 @@ namespace _1942
         Point lifebarSizeFull;
         Point lifebarSize;
         bool animationDelay;
+        bool killed;
         protected List<Rectangle> targetableRectangles = new List<Rectangle>();
 
         public Escort(Vector2 startingPos)
@@ -41,6 +42,11 @@ namespace _1942
             targetableRectangles.Add(new Rectangle((int)Position.X+528, (int)Position.Y+150, 54, 76));
             targetableRectangles.Add(new Rectangle((int)Position.X+607, (int)Position.Y+151, 54, 76));
 
+            if (health <= 0)
+            {
+                health = 0;
+                killed = true;
+            }
             if (animationDelay)
             {
                 animationDelay = false;
@@ -118,6 +124,10 @@ namespace _1942
         {
             get { return health; }
             set { health = value; }
+        }
+        public bool Killed
+        {
+            get { return killed; }
         }
         public List<Rectangle> TargetRectangles
         {

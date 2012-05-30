@@ -7,36 +7,30 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace _1942
 {
-    class Boss1_Gun : Boss_Accessory
+    class Boss5_Cannon : Boss_Accessory
     {
         float timeUntilNextShot;
-        float timeBetweenShots = Settings.boss1_projectile_frequency;
-        
-        
-
-        public Boss1_Gun(Vector2 position, float timeUntilNextShot)
+        float timeBetweenShots;
+        public Boss5_Cannon(Vector2 position)
         {
-            texture = Texture2DLibrary.boss1_gun;
-            angle = (float)Math.PI*0.5f;
-            color = Color.White;
-            layerDepth = 0.0f;
-            this.position = position;
-            this.timeUntilNextShot = timeUntilNextShot;
-            size = new Point(texture.Bounds.Width, texture.Bounds.Height);
-            maxHealth = 400;
-            health = maxHealth;
-            this.position.X -= size.X / 2;
-            this.position.Y -= size.Y / 2;
-            killable = false;
             
+            
+            timeBetweenShots = Settings.boss5_projectile_frequency;
+            texture = Texture2DLibrary.boss5_cannon;
+            size = new Point(texture.Width, texture.Height);
+            maxHealth = 5;
+            health = maxHealth;
+            killable = true;
+            this.position = position - new Vector2(size.X / 2f, size.Y / 2f);
         }
 
         public override void Update(GameTime gameTime, Vector2 speed)
         {
             base.Update(gameTime, speed);
+            timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if(reallyActivated)
-                {
+            if (reallyActivated)
+            {
                 int nearestPlayer = 0;
                 for (int i = 1; i < Objects.playerList.Count; i++)
                 {
@@ -73,20 +67,12 @@ namespace _1942
                 shotOrigin.X = (float)Math.Cos(angle) * size.Y / 2 + Center.X;
                 shotOrigin.Y = (float)Math.Sin(angle) * size.Y / 2 + Center.Y;
 
-                
-                    timeUntilNextShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                    if (timeUntilNextShot >= timeBetweenShots)
-                    {
-                        timeUntilNextShot -= timeBetweenShots;
-                        Objects.enemyProjectileList.Add(new Boss1_Projectile(
-                            shotOrigin, angle)
-                            );
-                    }
+                if (timeUntilNextShot >= timeBetweenShots)
+                {
+                    timeUntilNextShot -= timeBetweenShots;
+                    Objects.enemyProjectileList.Add(new Boss5_Projectile(shotOrigin, angle, Objects.playerList[nearestPlayer].Center));
                 }
-                if (dead)
-                    Objects.particleList.Add(new Particle_Explosion(Center, size));
-            
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -95,14 +81,8 @@ namespace _1942
                     new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
                     color,
                     angle + (float)Math.PI / 2,
-                    new Vector2(texture.Bounds.Width / 2, 29),
+                    new Vector2(texture.Bounds.Width / 2, 52),
                     spriteEffect, layerDepth);
-            
-        }
-
-        public override Rectangle Rectangle
-        {
-            get { return new Rectangle(-30, -30, 0, 0); }
         }
     }
 }

@@ -392,7 +392,6 @@ namespace _1942
             this.gameTime = gameTime;
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
-
             int temp = 0;
             for(int i = 0; i < Objects.playerList.Count; i++)
             {
@@ -406,6 +405,12 @@ namespace _1942
                     }
                 } 
             }
+            if(Objects.escortList.Count >= 1)
+                if (Objects.escortList[0].Killed)
+                {
+                    Settings.currentLevel = Settings.CurrentLevel.GameOver;
+                    temp = Objects.playerList.Count;
+                }
 
             if (levelLoader.LevelHasEnded())
             {
@@ -435,6 +440,7 @@ namespace _1942
 
             if (temp != Objects.playerList.Count)
             {
+                hud.Update(gameTime);
                 levelLoader.MoveCamera(Settings.level_speed);
                 Objects.Update(keyState, gameTime);
                 levelLoader.Update(gameTime);
@@ -471,10 +477,7 @@ namespace _1942
             Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 240);
             
             levelLoader.Draw(spriteBatch);
-            if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
-            {
-                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
-            }
+            
             if (LevelNameActive)
             {
                 spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
@@ -508,6 +511,10 @@ namespace _1942
                     }
 
                 }
+            if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
+            {
+                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
+            }
         }
 
         public void GameOver()

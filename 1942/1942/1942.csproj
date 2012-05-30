@@ -107,15 +107,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Bosses\Boss5\Boss5_ExplosiveMegaProjectile.cs" />
+    <Compile Include="Objects\Bosses\Boss5\Boss5_Projectile.cs" />
     <Compile Include="Menu\1Player_Button.cs" />
     <Compile Include="Menu\2Player_Button.cs" />
-    <Compile Include="Boss5.cs" />
-    <Compile Include="Boss5_Cannon.cs" />
-    <Compile Include="Boss5_MiniAirplane.cs" />
+    <Compile Include="Objects\Bosses\Boss5\Boss5.cs" />
+    <Compile Include="Objects\Bosses\Boss5\Boss5_Cannon.cs" />
+    <Compile Include="Objects\Bosses\Boss5\Boss5_MiniAirplane.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Boat.cs" />
     <Compile Include="Objects\Enemies\Stationary\Enemy_Boat_Tower.cs" />
     <Compile Include="Objects\Projectiles\Enemy_Boat_Tower_Projectile.cs" />
-    <Compile Include="Escort.cs" />
+    <Compile Include="Objects\Bosses\Escort\Escort.cs" />
     <Compile Include="MusicManager.cs" />
     <Compile Include="Objects\Bosses\Boss1\Boss1_Engine.cs" />
     <Compile Include="Objects\Bosses\Boss3\Boss3_Projectile_Front.cs" />

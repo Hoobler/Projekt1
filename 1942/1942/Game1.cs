@@ -99,7 +99,10 @@ namespace _1942
             Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3");
             Texture2DLibrary.boss3_gun = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3_Gun");
 
-            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Bosses/Escort/Escort");
+            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Bosses/Boss5/Boss5");
+            Texture2DLibrary.boss5_cannon = Content.Load<Texture2D>(@"Bosses/Boss5/Boss5_Cannon");
+            Texture2DLibrary.boss5_projectile = Content.Load<Texture2D>(@"Extra/square1");
+            Texture2DLibrary.boss5_megaProjectile = Content.Load<Texture2D>(@"Enemies/Spaceship");
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
             Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");

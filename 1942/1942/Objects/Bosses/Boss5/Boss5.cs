@@ -17,31 +17,37 @@ namespace _1942
         float timeTotalPhase3;
         float timeUntilEndPhase5;
         float timeTotalPhase5;
+        bool animationDelay;
+        Vector2 rotationPoint;
 
         public Boss5(Vector2 position)
         {
-            
-            size = new Point(400, 300);
             texture = Texture2DLibrary.boss5;
+            size = new Point((texture.Bounds.Width - 1) / 3 - 3, texture.Bounds.Height - 2);
             timeBetweenShips = 0.6f;
             shipBarrageLength = timeBetweenShips * 10;
             timeTotalPhase3 = 6f;
             timeTotalPhase5 = 6f;
             color = Color.White;
-            maxHealth = 1000;
+            maxHealth = 10000;
             health = maxHealth;
             this.position = position;
             this.position.X = Settings.window.ClientBounds.Width / 2f - size.X / 2f;
+            killable = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
+            rotationPoint = new Vector2(Center.X, position.X + 102);
             targetableRectangles.Clear();
-            targetableRectangles.Add(new Rectangle((int)Center.X - 25, (int)Center.Y - 50, 50, 100));
+            targetableRectangles.Add(new Rectangle((int)position.X+313, (int)position.Y+2, 49, 133));
             if (!accessorised && activated)
+            {
+                accessorised = true;
                 Accessorize();
+            }
             if (activated && phase == 0)
                 phase = 1;
 
@@ -53,6 +59,7 @@ namespace _1942
                 {
                     MusicManager.SetMusic(SoundLibrary.Boss1);
                     speed = new Vector2(0, 1);
+
 
                     if (Position.Y >= Settings.window.ClientBounds.Height * (1f / 8f))
                     {
@@ -72,7 +79,7 @@ namespace _1942
                     if (timeUntilNextShip >= timeBetweenShips)
                     {
                         timeUntilNextShip -= timeBetweenShips;
-                        Objects.enemyList.Add(new Boss5_MiniAirplane(Center, false));
+                        Objects.enemyList.Add(new Boss5_MiniAirplane(rotationPoint, false));
                     }
                     if (timeUntilShipBarrageEnds >= shipBarrageLength)
                     {
@@ -100,7 +107,7 @@ namespace _1942
                     if (timeUntilNextShip >= timeBetweenShips)
                     {
                         timeUntilNextShip -= timeBetweenShips;
-                        Objects.enemyList.Add(new Boss5_MiniAirplane(Center, true));
+                        Objects.enemyList.Add(new Boss5_MiniAirplane(rotationPoint, true));
                     }
                     if (timeUntilShipBarrageEnds >= shipBarrageLength)
                     {
@@ -119,13 +126,34 @@ namespace _1942
                         phase = 2;
                     }
                 }
+                if (animationDelay)
+                {
+                    animationDelay = false;
+                    animationFrame.X++;
+                }
+                else
+                    animationDelay = true;
+
+
+                if (animationFrame.X > 2)
+                    animationFrame.X = 0;
             }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             
             if (activated)
-                spriteBatch.Draw(texture, Rectangle, color);
+                spriteBatch.Draw(texture,
+                    new Rectangle((int)Position.X, (int)Position.Y, Size.X, Size.Y),
+                    new Rectangle((animationFrame.X * (texture.Bounds.Width - 1) / 3) + 1,
+                        (animationFrame.Y * (texture.Bounds.Height - 1) / 1) + 1,
+                        ((texture.Bounds.Width - 1) / 3) - 1,
+                        ((texture.Bounds.Height - 1) / 1) - 1),
+                    color,
+                    0,
+                    new Vector2(0, 0),
+                    spriteEffect,
+                    0.0f);
             for(int i = 0; i < targetableRectangles.Count; i++)
                 spriteBatch.Draw(texture, targetableRectangles[i], Color.Red);
             base.Draw(spriteBatch);
@@ -133,7 +161,7 @@ namespace _1942
 
         public override void Accessorize()
         {
-            //accessoryList.Add(new Boss5_Cannon(Center));
+            accessoryList.Add(new Boss5_Cannon(new Vector2(position.X+338, position.Y+234)));
         }
     }
 }
