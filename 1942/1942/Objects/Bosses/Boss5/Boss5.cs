@@ -58,7 +58,7 @@ namespace _1942
             {
                 if (phase == 1)
                 {
-                    MusicManager.SetMusic(SoundLibrary.Boss1);
+                    MusicManager.SetMusic(SoundLibrary.Level5);
                     speed = new Vector2(0, 1);
 
 

@@ -23,6 +23,7 @@ Content\Menu\VideoOptions_Shadow.xnb
 Content\Enemies\Player.xnb
 Content\Enemies\Zero.xnb
 Content\Enemies\Projectile_Generic.xnb
+Content\Extra\square1.xnb
 Content\Enemies\AATower.xnb
 Content\Enemies\AABaseDead.xnb
 Content\Enemies\AABase.xnb
@@ -57,9 +58,6 @@ Content\SandTile3.xnb
 Content\SandTile4.xnb
 Content\Enemies\Todjo.xnb
 Content\Enemies\Zeke.xnb
-Content\debugFont.xnb
-Content\Hud_Font.xnb
-Content\Texture.xnb
 Content\Bosses\Boss1\Boss1.xnb
 Content\Bosses\Boss2\BigBomb.xnb
 Content\Bosses\Boss2\SplitterBombs.xnb
@@ -73,33 +71,32 @@ Content\Bosses\Boss2\Boss2_SmallGun.xnb
 Content\Bosses\Boss2\Boss2_BigGun.xnb
 Content\Bosses\Boss2\Boss2.xnb
 Content\Bosses\Boss2\Boss2_Wall.xnb
-Content\Music\MenuSong.xnb
+Content\Texture.xnb
+Content\Particles\smoke.xnb
+Content\shielded.xnb
+Content\Bosses\Boss3\Boss3.xnb
+Content\Bosses\Boss3\Boss3_Gun.xnb
+Content\Enemies\Boat_Tower.xnb
+Content\debugFont.xnb
+Content\Hud_Font.xnb
 Content\Music\Ride_of_the_Valkyries.xnb
 Content\Music\Twilight.xnb
 Content\Music\Boss1.xnb
 Content\Music\Level1.xnb
 Content\Music\Level3.xnb
 Content\Music\Level2.xnb
+Content\Music\Level1b.xnb
+Content\Music\Level2b.xnb
 Content\Sounds\Explosion.xnb
 Content\Sounds\Kamikaze.xnb
 Content\Sounds\Explosion_Big.xnb
 Content\Sounds\gunshot.xnb
 Content\Sounds\Player_Shot.xnb
 Content\Sounds\Laser_gun.xnb
-Content\Extra\square1.xnb
-Content\Particles\smoke.xnb
-Content\shielded.xnb
-Content\Bosses\Boss3\Boss3.xnb
-Content\Bosses\Boss3\Boss3_Gun.xnb
-Content\Enemies\Boat_Tower.xnb
-Content\Music\Level1b.xnb
-Content\Music\Level2b.xnb
 Content\LevelTextures\WaterAni.xnb
 Content\LevelTextures\Grass.xnb
 Content\LevelTextures\BeachSideL.xnb
 Content\LevelTextures\BeachSideR.xnb
-Content\Menu\1 Player.xnb
-Content\Menu\2 Player.xnb
 Content\LevelTextures\BeachD.xnb
 Content\LevelTextures\BeachInnL.xnb
 Content\LevelTextures\BeachInnR.xnb
@@ -108,16 +105,18 @@ Content\LevelTextures\BeachR.xnb
 Content\LevelTextures\BeachSideLD.xnb
 Content\LevelTextures\BeachSideRD.xnb
 Content\LevelTextures\BeachU.xnb
-Content\Bosses\Escort\Escort.xnb
 Content\Music\Level4.xnb
 Content\Music\Level5.xnb
+Content\Menu\1 Player.xnb
+Content\Menu\2 Player.xnb
+Content\Bosses\Escort\Escort.xnb
 Content\GameOver.xnb
-Content\1942font4.xnb
-Content\1942font1.xnb
 Content\Bosses\Boss5\Boss5.xnb
 Content\Bosses\Boss5\Boss5_Cannon.xnb
 Content\Bosses\Boss5\Boss5_ProjectileBig.xnb
-Content\Music\MenuSong.wma
+Content\1942font4.xnb
+Content\1942font1.xnb
+Content\Music\Boss5.xnb
 Content\Music\Ride_of_the_Valkyries.wma
 Content\Music\Twilight.wma
 Content\Music\Boss1.wma
@@ -128,6 +127,7 @@ Content\Music\Level1b.wma
 Content\Music\Level2b.wma
 Content\Music\Level4.wma
 Content\Music\Level5.wma
+Content\Music\Boss5.wma
 HighScore\HighScoreLevel4.xml
 HighScore\HighScoreLevel5.xml
 HighScore\HighScoreLevel3.xml

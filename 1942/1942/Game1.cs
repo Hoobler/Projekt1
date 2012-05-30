@@ -154,7 +154,7 @@ namespace _1942
 
             //Music
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
-            SoundLibrary.Twilight = Content.Load<Song>(@"Music/Twilight");
+            SoundLibrary.Twilight = Content.Load<Song>(@"Music/Level1b");
             SoundLibrary.Boss1 = Content.Load<Song>(@"Music/Boss1");
             SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
             SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
