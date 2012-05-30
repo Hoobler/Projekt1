@@ -81,7 +81,7 @@ namespace _1942
                     new Rectangle(0, 0, texture.Bounds.Width, texture.Bounds.Height),
                     color,
                     angle + (float)Math.PI / 2,
-                    new Vector2(texture.Bounds.Width / 2, 52),
+                    new Vector2(texture.Bounds.Width / 2, 32),
                     spriteEffect, layerDepth);
         }
     }

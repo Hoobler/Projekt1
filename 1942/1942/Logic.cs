@@ -294,7 +294,6 @@ namespace _1942
             if(Objects.escortList.Count >= 1)
                 if (Objects.escortList[0].Killed)
                 {
-                    Settings.currentLevel = Settings.CurrentLevel.GameOver;
                     temp = Objects.playerList.Count;
                 }
 
@@ -339,6 +338,11 @@ namespace _1942
             }
             
             HighScoreUpdate();
+
+            //post-boss
+            if (Settings.currentLevel != Settings.CurrentLevel.Level4 &&  Settings.currentLevel != Settings.CurrentLevel.Level0)
+                if(Objects.bossList.Count <= 0 && !levelLoader.ScoreLoop)
+                    levelLoader.cameraPosition.Y = ((145 - 144)* levelLoader.TileSize());
 
             //escort
             if(Settings.currentLevel == Settings.CurrentLevel.Level4)
@@ -398,7 +402,7 @@ namespace _1942
                     }
 
                 }
-            if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
+            if (gameOver)
             {
                 spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
             }

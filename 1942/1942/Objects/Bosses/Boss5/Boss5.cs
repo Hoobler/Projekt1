@@ -19,6 +19,7 @@ namespace _1942
         float timeTotalPhase5;
         bool animationDelay;
         Vector2 rotationPoint;
+        int timer;
 
         public Boss5(Vector2 position)
         {
@@ -53,7 +54,7 @@ namespace _1942
 
             if(phase >= 2 && !killable)
                 killable = true;
-            if (!killed)
+            if (activated && !killed)
             {
                 if (phase == 1)
                 {
@@ -137,6 +138,21 @@ namespace _1942
 
                 if (animationFrame.X > 2)
                     animationFrame.X = 0;
+
+                if (phase >= 2 && !killed)
+                {
+                    timer++;
+                    if (timer == 1)
+                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.window.ClientBounds.Width/2f, -50)));
+                    if (timer == 300)
+                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                    if (timer == 600)
+                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                    if (timer == 900)
+                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                    if (timer >= 1200)
+                        timer = 0;
+                }
             }
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -161,6 +177,7 @@ namespace _1942
 
         public override void Accessorize()
         {
+            base.Accessorize();
             accessoryList.Add(new Boss5_Cannon(new Vector2(position.X+338, position.Y+234)));
         }
     }
