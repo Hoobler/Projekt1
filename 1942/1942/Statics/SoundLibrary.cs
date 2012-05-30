@@ -16,6 +16,8 @@ namespace _1942
         static public Song Menu_Song;
         static public Song Twilight;
         static public Song Boss1;
+        static public Song Boss2;
+        static public Song Boss3;
         static public Song Level1;
         static public Song Level2;
         static public Song Level3;

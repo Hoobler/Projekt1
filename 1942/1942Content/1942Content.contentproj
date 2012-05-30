@@ -56,23 +56,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="black.png">
-      <Name>black</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="red.png">
-      <Name>red</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="water.png">
-      <Name>water</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu\ExitGame.png">
       <Name>ExitGame</Name>
       <Importer>TextureImporter</Importer>
@@ -242,11 +225,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="grass.png">
-      <Name>grass</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\MinusVolume.png">
@@ -290,20 +268,10 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="dockLeft.png">
-      <Name>dockLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\Level3.png">
       <Name>Level3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="SandTile1.png">
-      <Name>SandTile1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -321,16 +289,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="dockbottom.png">
-      <Name>dockbottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="dockbottomcorner.png">
-      <Name>dockbottomcorner</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Music\Ride_of_the_Valkyries.mp3">
@@ -340,53 +298,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AABaseDead.png">
-      <Name>AABaseDead</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="AANew1.png">
-      <Name>AANew1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="BeachAni.png">
-      <Name>BeachAni</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="BeachAni2.png">
-      <Name>BeachAni2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="BeachAni3.png">
-      <Name>BeachAni3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Boat.png">
+    <Compile Include="Enemies\Boat.png">
       <Name>Boat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Player.png">
-      <Name>Player</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="SandTile2.png">
-      <Name>SandTile2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="SandTile3.png">
-      <Name>SandTile3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="SandTile4.png">
-      <Name>SandTile4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -443,7 +356,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="kamikaze.png">
+    <Compile Include="Extra\kamikaze.png">
       <Name>kamikaze</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -486,13 +399,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Texture.png">
-      <Name>Texture</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Music\Boss1.mp3">
       <Name>Boss1</Name>
       <Importer>Mp3Importer</Importer>
@@ -500,22 +406,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Music\Level1.mp3">
-      <Name>Level1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Music\Level3.mp3">
       <Name>Level3</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Music\Level2.mp3">
-      <Name>Level2</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
     </Compile>
@@ -563,18 +455,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Music\Level1b.mp3">
-      <Name>Level1b</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Music\Level2b.mp3">
-      <Name>Level2b</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Particles\smoke.png">
@@ -584,7 +464,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="shielded.png">
+    <Compile Include="Particles\shielded.png">
       <Name>shielded</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -716,7 +596,6 @@
       <Name>1942font1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>FontTextureProcessor</Processor>
-      <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
     </Compile>
     <Compile Include="Bosses\Boss5\Boss5.png">
       <Name>Boss5</Name>
@@ -744,8 +623,36 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Music\Boss5.mp3">
-      <Name>Boss5</Name>
+    <Compile Include="Music\Boss3.mp3">
+      <Name>Boss3</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Level1c.mp3">
+      <Name>Level1c</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Highscore.mp3">
+      <Name>Highscore</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Level2c.mp3">
+      <Name>Level2c</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\Boss2.mp3">
+      <Name>Boss2</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
     </Compile>

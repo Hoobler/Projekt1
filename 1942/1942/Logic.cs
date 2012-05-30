@@ -295,6 +295,7 @@ namespace _1942
                 if (Objects.escortList[0].Killed)
                 {
                     temp = Objects.playerList.Count;
+                    gameOver = true;
                 }
 
             if (levelLoader.LevelHasEnded())
@@ -350,15 +351,16 @@ namespace _1942
                     if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSizeInt))
                     {
                         Objects.escortList[0].PosY -= 5f;
+                        MusicManager.SetMusic(SoundLibrary.Twilight);
                     }
   
             oldKeyState = myKeyState;
         }
 
-        private Vector2 TextLenght(string String)
+        public Vector2 TextLenght(string String)
         {
             Vector2 tempVector;
-            tempVector = FontLibrary.Hud_Font.MeasureString(String);
+            tempVector = FontLibrary.highscore_font.MeasureString(String);
 
             return tempVector;
         }
@@ -371,8 +373,7 @@ namespace _1942
             
             if (LevelNameActive)
             {
-                spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
-                //spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
+                spriteBatch.DrawString(FontLibrary.highscore_font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
             }
             if (Objects.bossList.Count >= 1)
                 if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
@@ -404,7 +405,7 @@ namespace _1942
 
             if (gameOver)
             {
-                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.White);
+                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 330, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.White);
             }
         }
 

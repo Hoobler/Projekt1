@@ -62,7 +62,7 @@ namespace _1942
 
             Texture2DLibrary.spaceship = Content.Load<Texture2D>(@"Enemies/spaceship");
             Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
-            Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
+            Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Extra/Kamikaze");
 
             Texture2DLibrary.escort = Content.Load<Texture2D>(@"Bosses/Escort/Escort");
             Texture2DLibrary.escort_lifebar = Content.Load<Texture2D>(@"Extra/square1");
@@ -75,7 +75,7 @@ namespace _1942
             Texture2DLibrary.projectile_enemy_zeke = Content.Load<Texture2D>(@"Extra/square1");
             Texture2DLibrary.enemy_todjo = Content.Load<Texture2D>(@"Enemies/Todjo");
             Texture2DLibrary.projectile_enemy_todjo = Content.Load<Texture2D>(@"Extra/square1");
-            Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Boat");
+            Texture2DLibrary.enemy_boat = Content.Load<Texture2D>(@"Enemies/Boat");
             Texture2DLibrary.enemy_boat_tower = Content.Load<Texture2D>(@"Enemies/Boat_Tower");
             Texture2DLibrary.enemy_boat_tower_projectile = Content.Load<Texture2D>(@"Extra/square1");
 
@@ -154,13 +154,16 @@ namespace _1942
 
             //Music
             SoundLibrary.Menu_Song = Content.Load<Song>(@"Music/Ride_of_the_Valkyries");
-            SoundLibrary.Twilight = Content.Load<Song>(@"Music/Level1b");
+            SoundLibrary.Twilight = Content.Load<Song>(@"Music/Highscore");
             SoundLibrary.Boss1 = Content.Load<Song>(@"Music/Boss1");
-            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1");
-            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2");
+            SoundLibrary.Boss2 = Content.Load<Song>(@"Music/Boss2");
+            SoundLibrary.Boss3 = Content.Load<Song>(@"Music/Boss3");
+            SoundLibrary.Level1 = Content.Load<Song>(@"Music/Level1c");
+            SoundLibrary.Level2 = Content.Load<Song>(@"Music/Level2c");
             SoundLibrary.Level3 = Content.Load<Song>(@"Music/Level3");
-            SoundLibrary.Level4 = Content.Load<Song>(@"Music/Level4");
+            SoundLibrary.Level4 = Content.Load<Song>(@"Music/Level1c");
             SoundLibrary.Level5 = Content.Load<Song>(@"Music/Level5");
+            
 
             //Sounds
             SoundLibrary.Explosion = Content.Load<SoundEffect>(@"Sounds/Explosion");
@@ -171,7 +174,7 @@ namespace _1942
 
             Texture2DLibrary.particle_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Particles/smoke");
-            Texture2DLibrary.shielded = Content.Load<Texture2D>(@"shielded");
+            Texture2DLibrary.shielded = Content.Load<Texture2D>(@"Particles/shielded");
             
             
 
@@ -272,6 +275,7 @@ namespace _1942
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(SpriteSortMode.Immediate,BlendState.AlphaBlend, SamplerState.PointWrap,DepthStencilState.None,RasterizerState.CullNone);
+            Vector2 textcenter = new Vector2(Settings.windowBounds.X / 2, 20);
            
             
             switch (gameState)
@@ -285,7 +289,7 @@ namespace _1942
                         }
                         if (!startGame)
                         {
-                            spriteBatch.DrawString(FontLibrary.Hud_Font, "Press Space to start", new Vector2(150, 230), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.highscore_font, "PRESS SPACE TO START", textcenter - ((logic.TextLenght("PRESS SPACE TO START") / 2) * 0.50f), Color.White, 0, new Vector2(0, 0), 0.50f, SpriteEffects.None, 0);
                         }
                         break;
                     }

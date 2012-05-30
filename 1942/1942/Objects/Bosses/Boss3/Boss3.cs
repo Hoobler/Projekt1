@@ -79,7 +79,7 @@ namespace _1942
 
             if (phase == 0 && timer <= 0)
             {
-                MusicManager.SetMusic(SoundLibrary.Boss1);
+                MusicManager.SetMusic(SoundLibrary.Boss3);
                 phase = 1;
                 speed = new Vector2(0, 1);
             }
