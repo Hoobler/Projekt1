@@ -723,7 +723,8 @@
       <Name>1942font1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>FontTextureProcessor</Processor>
-	  <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
+      <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
+    </Compile>
     <Compile Include="Bosses\Boss5\Boss5.png">
       <Name>Boss5</Name>
       <Importer>TextureImporter</Importer>

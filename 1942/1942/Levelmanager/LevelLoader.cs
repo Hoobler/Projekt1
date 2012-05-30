@@ -278,22 +278,17 @@ namespace _1942
 
         #region HelperMethods
 
-        private int StartingCameraPos()
-        {
-            cameraPosition.Y = (float)nrOfRows * tilesize - Settings.window.ClientBounds.Height;
-            var tempInt = nrOfRows * tilesize - Settings.window.ClientBounds.Height;
-            return tempInt;
-
         public int TileSize()
         {
             var tempSize = Settings.windowBounds.X;
-            return tilesize = (int)tempSize / 10; 
+            tilesize = (int)tempSize / 10;
+            return tilesize;
         }
 
         private int StartingCameraPos()
         {
-            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.windowBounds.Y;
-            var tempInt = nrOfRows * TileSize() - Settings.windowBounds.Y;
+            cameraPosition.Y = (float)nrOfRows * tilesize - Settings.windowBounds.Y;
+            var tempInt = nrOfRows * tilesize - Settings.windowBounds.Y;
             return (int)tempInt;
         }
 
@@ -309,7 +304,7 @@ namespace _1942
                 {
                     if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = cameraPosition.Y + 8 * TileSize();
+                        cameraPosition.Y = cameraPosition.Y + 8 * tilesize;
                     }
                 }
             }

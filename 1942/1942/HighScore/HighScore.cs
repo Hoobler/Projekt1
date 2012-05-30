@@ -190,7 +190,7 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 50);
+            Vector2 textcenter = new Vector2(Settings.windowBounds.X / 2, 50);
 
             if (textDraw)
             {

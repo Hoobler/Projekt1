@@ -58,6 +58,8 @@ namespace _1942
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Settings.windowBounds = new Vector2(Window.ClientBounds.Width, Window.ClientBounds.Height);
+
             Texture2DLibrary.spaceship = Content.Load<Texture2D>(@"Enemies/spaceship");
             Texture2DLibrary.arrow = Content.Load<Texture2D>(@"Extra/arrow");
             Texture2DLibrary.kamikaze = Content.Load<Texture2D>(@"Kamikaze");
@@ -170,7 +172,7 @@ namespace _1942
             Texture2DLibrary.particle_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Particles/smoke");
             Texture2DLibrary.shielded = Content.Load<Texture2D>(@"shielded");
-            Settings.windowBounds = new Vector2(Window.ClientBounds.Width, Window.ClientBounds.Height);
+            
             
 
             logic = new Logic(this.Content);
@@ -316,7 +318,7 @@ namespace _1942
                             spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 7), Color.Red);
                             spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
-                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
+                            spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSizeInt) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
                         }
                         break;
                     }

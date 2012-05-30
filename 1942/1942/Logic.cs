@@ -342,12 +342,12 @@ namespace _1942
             //post-boss
             if (Settings.currentLevel != Settings.CurrentLevel.Level4 &&  Settings.currentLevel != Settings.CurrentLevel.Level0)
                 if(Objects.bossList.Count <= 0 && !levelLoader.ScoreLoop)
-                    levelLoader.cameraPosition.Y = ((145 - 144)* levelLoader.TileSize());
+                    levelLoader.cameraPosition.Y = ((145 - 144)* levelLoader.TileSizeInt);
 
             //escort
             if(Settings.currentLevel == Settings.CurrentLevel.Level4)
                 if(Objects.escortList.Count >= 1)
-                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSize))
+                    if (levelLoader.cameraPosition.Y <= ((145 - 135)* levelLoader.TileSizeInt))
                     {
                         Objects.escortList[0].PosY -= 5f;
                     }
