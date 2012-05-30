@@ -278,7 +278,6 @@ namespace _1942
             this.gameTime = gameTime;
             myKeyState = Keyboard.GetState();
             levelLoader.Update(gameTime);
-
             int temp = 0;
             for(int i = 0; i < Objects.playerList.Count; i++)
             {
@@ -292,6 +291,11 @@ namespace _1942
                     }
                 } 
             }
+            if(Objects.escortList.Count >= 1)
+                if (Objects.escortList[0].Killed)
+                {
+                    temp = Objects.playerList.Count;
+                }
 
             if (levelLoader.LevelHasEnded())
             {
@@ -326,6 +330,7 @@ namespace _1942
 
             if (temp != Objects.playerList.Count)
             {
+                hud.Update(gameTime);
                 levelLoader.MoveCamera(Settings.level_speed);
                 Objects.Update(keyState, gameTime);
                 levelLoader.Update(gameTime);
@@ -333,6 +338,11 @@ namespace _1942
             }
             
             HighScoreUpdate();
+
+            //post-boss
+            if (Settings.currentLevel != Settings.CurrentLevel.Level4 &&  Settings.currentLevel != Settings.CurrentLevel.Level0)
+                if(Objects.bossList.Count <= 0 && !levelLoader.ScoreLoop)
+                    levelLoader.cameraPosition.Y = ((145 - 144)* levelLoader.TileSize());
 
             //escort
             if(Settings.currentLevel == Settings.CurrentLevel.Level4)
@@ -355,18 +365,29 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 240);
+            Vector2 textcenter = new Vector2(Settings.windowBounds.X / 2, 240);
             
             levelLoader.Draw(spriteBatch);
-            if (Settings.currentLevel == Settings.CurrentLevel.GameOver)
-            {
-                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
-            }
+            
             if (LevelNameActive)
             {
                 spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
                 //spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
             }
+            if (Objects.bossList.Count >= 1)
+                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
+                {
+                    if (Objects.bossList[0].Phase >= 1)
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(100, 20, (int)Settings.windowBounds.X - 190, 40),
+                        Color.Gray);
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.windowBounds.X - 200))), 30),
+                        Color.Red);
+                    }
+
+                }
             if (!levelLoader.ScoreLoop)
             {
                 Objects.Draw(spriteBatch);
@@ -381,20 +402,10 @@ namespace _1942
                 highscore.Draw(spriteBatch);
             }
 
-            if(Objects.bossList.Count >= 1)
-                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
-                {
-                    if(Objects.bossList[0].Phase >= 1)
-                    {
-                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                        new Rectangle(100, 20, Settings.window.ClientBounds.Width - 190, 40),
-                        Color.Gray);
-                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.window.ClientBounds.Width - 200))), 30),
-                        Color.Red);
-                    }
-
-                }
+            if (gameOver)
+            {
+                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.White);
+            }
         }
 
         public void CollisionRemoval()

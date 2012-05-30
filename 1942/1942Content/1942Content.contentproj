@@ -605,13 +605,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bosses\Boss3\Boss3_Gun.png">
-      <Name>Boss3_Gun</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Enemies\Boat_Tower.png">
       <Name>Boat_Tower</Name>
       <Importer>TextureImporter</Importer>
@@ -730,6 +723,30 @@
       <Name>1942font1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>FontTextureProcessor</Processor>
+	  <ProcessorParameters_FirstCharacter>0</ProcessorParameters_FirstCharacter>
+    <Compile Include="Bosses\Boss5\Boss5.png">
+      <Name>Boss5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Bosses\Boss5\Boss5_Cannon.png">
+      <Name>Boss5_Cannon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bosses\Boss3\Boss3_Gun.png">
+      <Name>Boss3_Gun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bosses\Boss5\Boss5_ProjectileBig.png">
+      <Name>Boss5_ProjectileBig</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

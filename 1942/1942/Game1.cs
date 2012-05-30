@@ -45,7 +45,6 @@ namespace _1942
             // TODO: Add your initialization logic here
 
             IsMouseVisible = true;
-            Window.AllowUserResizing = true;
             base.Initialize();
         }
 
@@ -100,7 +99,10 @@ namespace _1942
             Texture2DLibrary.boss3 = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3");
             Texture2DLibrary.boss3_gun = Content.Load<Texture2D>(@"Bosses/Boss3/Boss3_Gun");
 
-            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Bosses/Escort/Escort");
+            Texture2DLibrary.boss5 = Content.Load<Texture2D>(@"Bosses/Boss5/Boss5");
+            Texture2DLibrary.boss5_cannon = Content.Load<Texture2D>(@"Bosses/Boss5/Boss5_Cannon");
+            Texture2DLibrary.boss5_projectile = Content.Load<Texture2D>(@"Extra/square1");
+            Texture2DLibrary.boss5_megaProjectile = Content.Load<Texture2D>(@"Bosses/Boss5/Boss5_ProjectileBig");
             //menu
             Texture2DLibrary.texture_MainMenu = Content.Load<Texture2D>(@"Menu/MainMenu");
             Texture2DLibrary.texture_OptionsButton = Content.Load<Texture2D>(@"Menu/Options");
@@ -168,7 +170,7 @@ namespace _1942
             Texture2DLibrary.particle_explosion = Content.Load<Texture2D>(@"Particles/explosion");
             Texture2DLibrary.particle_smoke = Content.Load<Texture2D>(@"Particles/smoke");
             Texture2DLibrary.shielded = Content.Load<Texture2D>(@"shielded");
-            Settings.window = Window;
+            Settings.windowBounds = new Vector2(Window.ClientBounds.Width, Window.ClientBounds.Height);
             
 
             logic = new Logic(this.Content);
@@ -229,7 +231,7 @@ namespace _1942
                             logic.Update(KeyBoardInput.KeyState, gameTime);
                             if (startGame)
                             {
-                                menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2));
+                                menu.Update(new Point(Mouse.GetState().X, Mouse.GetState().Y), Settings.windowBounds/2);
                             }
                             MusicManager.SetMusic(SoundLibrary.Menu_Song);
                             break;
@@ -303,16 +305,16 @@ namespace _1942
 
                         if (debugText)
                         {
-                            spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Window.ClientBounds.Width + "x" + Window.ClientBounds.Height, new Vector2(1f, Window.ClientBounds.Height - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
-                            spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 3), Color.Red);
-                            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 4), Color.Red);
-                            spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 5), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Screen resolution: " + Settings.windowBounds.X + "x" + Settings.windowBounds.Y, new Vector2(1f, Settings.windowBounds.Y - (FontLibrary.debug.LineSpacing * 2)), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of projectiles on screen: " + (Objects.playerProjectileList.Count + Objects.enemyProjectileList.Count), new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 3), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Number of dead objects on screen: " + (Objects.deadList.Count), new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 4), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Player 1 health: " + Objects.playerList[0].Health + "%", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 5), Color.Red);
                             if (Objects.playerList.Count >= 2)
                             {
-                                spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 6), Color.Red);
+                                spriteBatch.DrawString(FontLibrary.debug, "Player 2 health: " + Objects.playerList[1].Health + "%", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 6), Color.Red);
                             }
-                            spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 7), Color.Red);
-                            spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 8), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Active particles on screen: " + Objects.particleList.Count + "", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 7), Color.Red);
+                            spriteBatch.DrawString(FontLibrary.debug, "Active enemies on screen: " + Objects.ActiveObjects() + "", new Vector2(1f, Settings.windowBounds.Y - FontLibrary.debug.LineSpacing * 8), Color.Red);
 
                             spriteBatch.DrawString(FontLibrary.debug, "Current cameraposition: " + (145 - (int)logic.levelLoader.cameraPosition.Y / logic.levelLoader.TileSize) + "", new Vector2(1f, Window.ClientBounds.Height - FontLibrary.debug.LineSpacing * 9), Color.White);
                         }

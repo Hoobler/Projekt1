@@ -10,7 +10,7 @@ namespace _1942
     {
         static public float level_speed = 2f;
         static public int nr_of_players;
-        static public GameWindow window;
+        static public Vector2 windowBounds;
         static public bool gameOver = false;
 
         static public int score_player1;
@@ -64,6 +64,11 @@ namespace _1942
         static public int boss1_projectile_damage = 10;
         static public float boss1_projectile_frequency = 1f;
 
+        static public int boss5_projectile_speed = 2;
+        static public int boss5_projectile_damage = 30;
+        static public int boss5_megaProjectile_damage = 100;
+        static public float boss5_projectile_frequency = 6f;
+
         static public int textInputLength = 5;
 
         static public Vector2 boat_speed = new Vector2(1,-1);
@@ -84,7 +89,7 @@ namespace _1942
             set { nr_of_players = value;}
 		}
 
-        public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5, GameOver };
+        public enum CurrentLevel { Level0, Level1, Level2, Level3, Level4, Level5 };
         static public CurrentLevel currentLevel = CurrentLevel.Level0;
         static public bool LevelHasChanged = false;
 

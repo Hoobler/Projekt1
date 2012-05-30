@@ -42,13 +42,12 @@ namespace _1942
 
                 position += speed;
 
-                if (position.Y > Settings.window.ClientBounds.Height)
+                if (position.Y > windowbounds.Y)
                     dead = true;
 
-                if (dead)
+
+                if (dead && position.Y < windowbounds.Y - size.Y)
                     Objects.particleList.Add(new Particle_Explosion(Center, size));
-
-
 
             }
 

@@ -39,8 +39,7 @@ namespace _1942
         public LevelLoader(string TheLevelFile, ContentManager content)
         {
             LoadLevelFile(TheLevelFile, content);
-            var tempSize = Settings.window.ClientBounds.Width;
-            tilesize = tempSize / 10;
+            TileSize();
         }
 
         #region LoadingMethods
@@ -279,17 +278,23 @@ namespace _1942
 
         #region HelperMethods
 
-        //public int TileSize()
-        //{
-        //    var tempSize = Settings.window.ClientBounds.Width;
-        //    return tilesize = tempSize / 10; 
-        //}
-
         private int StartingCameraPos()
         {
             cameraPosition.Y = (float)nrOfRows * tilesize - Settings.window.ClientBounds.Height;
             var tempInt = nrOfRows * tilesize - Settings.window.ClientBounds.Height;
             return tempInt;
+
+        public int TileSize()
+        {
+            var tempSize = Settings.windowBounds.X;
+            return tilesize = (int)tempSize / 10; 
+        }
+
+        private int StartingCameraPos()
+        {
+            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.windowBounds.Y;
+            var tempInt = nrOfRows * TileSize() - Settings.windowBounds.Y;
+            return (int)tempInt;
         }
 
         public void MoveCamera(float moved)
@@ -304,7 +309,7 @@ namespace _1942
                 {
                     if (bossCameraPosition.Y > cameraPosition.Y)
                     {
-                        cameraPosition.Y = cameraPosition.Y + 20 * tilesize;
+                        cameraPosition.Y = cameraPosition.Y + 8 * TileSize();
                     }
                 }
             }
@@ -371,7 +376,7 @@ namespace _1942
             set { endLevel = value; }
         }
 
-        public int TileSize
+        public int TileSizeInt
         {
             get { return tilesize; }
         }

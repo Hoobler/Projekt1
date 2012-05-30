@@ -19,7 +19,7 @@ namespace _1942
             angle = (float)Math.PI / 2f;
             size = new Point(15, 30);
             texture = Texture2DLibrary.boss3_gun;
-            color = Color.White;
+            color = Color.Transparent;
             this.angleSpeed = angleSpeed;
             maxHealth = 200;
             health = maxHealth;
@@ -30,7 +30,7 @@ namespace _1942
         public override void Update(GameTime gameTime, Vector2 speed)
         {
             base.Update(gameTime, speed);
-            
+            color = Color.Transparent;
 
             
 

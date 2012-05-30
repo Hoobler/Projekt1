@@ -93,7 +93,7 @@ namespace _1942
                 if (mirrored)
                 {
                     position.X += 2;
-                    if (position.X >= Settings.window.ClientBounds.Width + size.X)
+                    if (position.X >= windowbounds.X + size.X)
                         dead = true;
                 }
                 else
@@ -104,7 +104,7 @@ namespace _1942
                 }
             }
         }
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             
             spriteBatch.Draw(texture,

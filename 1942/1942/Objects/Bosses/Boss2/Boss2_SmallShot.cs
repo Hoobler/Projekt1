@@ -22,14 +22,14 @@ namespace _1942
             texture = Texture2DLibrary.projectile_enemy_zero;
             
             spriteEffect = SpriteEffects.FlipVertically;
-            damage = 1;
+            damage = 5;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             
-            if (position.Y > Settings.window.ClientBounds.Height+size.Y)
+            if (position.Y > Settings.windowBounds.Y+size.Y)
                 dead = true;
         }
     }

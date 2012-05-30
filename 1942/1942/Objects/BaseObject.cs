@@ -19,6 +19,7 @@ namespace _1942
         protected Texture2D texture;
         public SpriteEffects spriteEffect;
         public Point animationFrame;
+        protected Vector2 windowbounds;
 
         public BaseObject()
         {
@@ -30,6 +31,7 @@ namespace _1942
             angle = 0f;
             dead = false;
             animationFrame = new Point(0, 0);
+            windowbounds = new Vector2(Settings.windowBounds.X, Settings.windowBounds.Y);
         }
 
         public virtual Rectangle Rectangle

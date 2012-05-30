@@ -53,10 +53,10 @@ namespace _1942
 
         public MenuManager()
         {
-            mOptionsManager = new OptionManager(Settings.window);
-            button_position = new Vector2(Settings.window.ClientBounds.Width / 2, Settings.window.ClientBounds.Height / 2);
-            distance = Settings.window.ClientBounds.Height / 5;
-            miniDistance = Settings.window.ClientBounds.Height / 10;
+            mOptionsManager = new OptionManager();
+            button_position = new Vector2((int)Settings.windowBounds.X / 2, Settings.windowBounds.Y / 2);
+            distance = (int)Settings.windowBounds.Y / 5;
+            miniDistance = (int)Settings.windowBounds.Y / 10;
             mStartGameButton = new StartGameButton(Texture2DLibrary.texture_StartGameButton, new Vector2(button_position.X - (button_Size_Width / 2), button_position.Y), this.button_Size_Height, this.button_Size_Width);
             mOptionButton = new OptionButton(Texture2DLibrary.texture_OptionsButton, new Vector2(mStartGameButton.GetRectangle().X, mStartGameButton.GetRectangle().Bottom + distance), this.button_Size_Height, this.button_Size_Width);
             mExitButton = new ExitButton(Texture2DLibrary.texture_ExitGameButton, new Vector2(mOptionButton.GetRectangle().X, mOptionButton.GetRectangle().Bottom + distance), this.button_Size_Height, this.button_Size_Width);
@@ -77,15 +77,15 @@ namespace _1942
             mLevel3_Button.IsUnlocked = true;
             mLevel4_Button.IsUnlocked = true;
             mLevel5_Button.IsUnlocked = true;
-            mLevel1_Button.Position = new Rectangle(Settings.window.ClientBounds.Width - lvl_button_Size_Width*2, Settings.window.ClientBounds.Height / 3, lvl_button_Size_Width, lvl_button_Size_Height);
+            mLevel1_Button.Position = new Rectangle((int)Settings.windowBounds.X - lvl_button_Size_Width * 2, (int)Settings.windowBounds.Y / 3, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel2_Button.Position = new Rectangle(mLevel1_Button.Position.X, mLevel1_Button.Position.Y+ miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel3_Button.Position = new Rectangle(mLevel2_Button.Position.X, mLevel2_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel4_Button.Position = new Rectangle(mLevel3_Button.Position.X, mLevel3_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             mLevel5_Button.Position = new Rectangle(mLevel4_Button.Position.X, mLevel4_Button.Position.Y + miniDistance, lvl_button_Size_Width, lvl_button_Size_Height);
             m1Player_Button = new _1Player_Button();
             m2Player_Button = new _2Player_Button();
-            m1Player_Button.Position = new Rectangle(Settings.window.ClientBounds.Width / 4 - 20, Settings.window.ClientBounds.Height / 3+ 20, 30, 30);
-            m2Player_Button.Position = new Rectangle(Settings.window.ClientBounds.Width / 4 - 20, Settings.window.ClientBounds.Height / 3 + 50, 30, 30);
+            m1Player_Button.Position = new Rectangle((int)Settings.windowBounds.X / 4 - 20, (int)Settings.windowBounds.Y / 3 + 20, 30, 30);
+            m2Player_Button.Position = new Rectangle((int)Settings.windowBounds.X / 4 - 20, (int)Settings.windowBounds.Y / 3 + 50, 30, 30);
             m1Player_Button.IsVisible = false;
             m2Player_Button.IsVisible = false;
             Settings.Nr_Of_Players = 1;
@@ -310,7 +310,7 @@ namespace _1942
             {
                 case false:
                     {
-                        spriteBatch.Draw(Texture2DLibrary.texture_MainMenu, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
+                        spriteBatch.Draw(Texture2DLibrary.texture_MainMenu, new Rectangle(0, 0, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.White);
                          mExitButton.Draw(spriteBatch);
                          if (mLevel1_Button.IsVisible == true)
                          {
@@ -321,7 +321,7 @@ namespace _1942
                              mLevel5_Button.Draw(spriteBatch);
                              m1Player_Button.Draw(spriteBatch);
                              m2Player_Button.Draw(spriteBatch);
-                             spriteBatch.DrawString(FontLibrary.Hud_Font, "Players", new Vector2(Settings.window.ClientBounds.Width / 5, Settings.window.ClientBounds.Height / 3 - 20), Color.Azure);
+                             spriteBatch.DrawString(FontLibrary.Hud_Font, "Players", new Vector2(Settings.windowBounds.X / 5, Settings.windowBounds.Y / 3 - 20), Color.Azure);
                          }
                          else
                          {
@@ -332,7 +332,7 @@ namespace _1942
                     }
                 case true:
                     {
-                        spriteBatch.Draw(Texture2DLibrary.texture_OptionScreen_Default, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.Black);
+                        spriteBatch.Draw(Texture2DLibrary.texture_OptionScreen_Default, new Rectangle(0, 0, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.Black);
                         mOptionsManager.Draw(spriteBatch);
                         break;
                     }

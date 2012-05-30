@@ -5,134 +5,6 @@
   <description>Pearl Harbor 1942</description>
   <tileset>texturelist</tileset>
   <layout>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGGGGW</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>WWGGGGGWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGGGGW</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>WWGGGGGWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GGWWWWWGGG</row>
-    <row>GGWWWWWGGG</row>
-    <row>WWWWWWWGGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GWWWWWWWWW</row>
-    <row>GGWWWWWWWW</row>
-    <row>GGWWWWWWWW</row>
-    <row>GWWWWWWWGG</row>
-    <row>WWWWWWWGGG</row>
-    <row>WWWWWWGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -148,207 +20,449 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGTtGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGEeGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGissss</row>
+    <row>GGGGGBWWWW</row>
+    <row>GGGGGBWLSS</row>
+    <row>GGGGGBWbGG</row>
+    <row>GGGGGISPGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGW</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGispGGGG</row>
+    <row>GGGBWbGGGG</row>
+    <row>GGGISPGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGispGGGG</row>
+    <row>GGGBWbGGGG</row>
+    <row>GGGISPGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>spGGGGGGGG</row>
+    <row>WbGGGGGGGG</row>
+    <row>WbGGGGGGGG</row>
+    <row>SPGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
   </layout>
   <spawnlist>
     <spawn>
       <positionX>5</positionX>
-      <positionY>9</positionY>
-      <formation>formation2a</formation>
+      <positionY>7</positionY>
+      <formation>formation1c</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>12</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>13</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>14</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>18</positionY>
+      <formation>formation3c</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>19</positionY>
+      <formation>formation3c</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>20</positionY>
+      <formation>formation3c</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>2</positionX>
-      <positionY>20</positionY>
-      <formation>formation2a</formation>
+      <positionY>25</positionY>
+      <formation>formation3c</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>8</positionX>
-      <positionY>28</positionY>
+      <positionX>2</positionX>
+      <positionY>26</positionY>
+      <formation>formation3c</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>27</positionY>
+      <formation>formation3c</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>30</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>3</positionX>
+      <positionY>31</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>31</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>32</positionY>
+      <formation>formation1b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>35</positionY>
+      <formation>formation1b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>35</positionY>
+      <formation>formation1c</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>2</positionX>
+      <positionY>38</positionY>
+      <formation>PowerUp_Armor</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>42</positionY>
+      <formation>kamikaze</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>43</positionY>
+      <formation>kamikaze</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>44</positionY>
+      <formation>kamikaze</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>45</positionY>
+      <formation>formation3b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>9</positionX>
+      <positionY>47</positionY>
+      <formation>formation3b</formation>
+      <mirrored>true</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>0.5</positionX>
+      <positionY>48</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>3</positionX>
+      <positionY>51</positionY>
+      <formation>formation1b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>54</positionY>
       <formation>PowerUp_Damage</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
-      <positionY>34</positionY>
-      <formation>formation2a</formation>
+      <positionY>56</positionY>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>6</positionX>
-      <positionY>35</positionY>
-      <formation>formation2a</formation>
+      <positionX>3</positionX>
+      <positionY>57</positionY>
+      <formation>formation3c</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>8</positionX>
-      <positionY>40</positionY>
-      <formation>formation2a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
-      <positionY>45</positionY>
-      <formation>PowerUp_Health</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
-      <positionY>50</positionY>
-      <formation>PowerUp_Armor</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
-      <positionY>54</positionY>
-      <formation>formation2a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
-      <positionY>55</positionY>
-      <formation>formation2a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
-      <positionY>56</positionY>
-      <formation>formation2a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
       <positionY>57</positionY>
-      <formation>formation2a</formation>
+      <formation>formation3c</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>3</positionX>
-      <positionY>66.3</positionY>
-      <formation>formation1a</formation>
+      <positionX>5</positionX>
+      <positionY>63</positionY>
+      <formation>formation2b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>3</positionX>
-      <positionY>66</positionY>
-      <formation>formation1a</formation>
-      <mirrored>true</mirrored>
+      <positionX>5</positionX>
+      <positionY>64</positionY>
+      <formation>formation2b</formation>
+      <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>3</positionX>
+      <positionX>7</positionX>
+      <positionY>70</positionY>
+      <formation>formation3b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>6</positionX>
       <positionY>72</positionY>
-      <formation>formation2a</formation>
+      <formation>tower</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>2</positionX>
+      <positionX>7</positionX>
+      <positionY>72</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>6</positionX>
       <positionY>73</positionY>
-      <formation>formation2a</formation>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>7</positionX>
+      <positionY>73</positionY>
+      <formation>tower</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>5</positionX>
+      <positionY>73</positionY>
+      <formation>formation2b</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
+      <positionY>77</positionY>
+      <formation>formation2c</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
       <positionY>80</positionY>
-      <formation>formation3a</formation>
+      <formation>formation2b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>7</positionX>
+      <positionX>5</positionX>
+      <positionY>82</positionY>
+      <formation>PowerUp_Health</formation>
+      <mirrored>false</mirrored>
+    </spawn>
+    <spawn>
+      <positionX>4</positionX>
       <positionY>83</positionY>
-      <formation>formation3a</formation>
+      <formation>formation2b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>7</positionX>
       <positionY>88</positionY>
-      <formation>PowerUp_Health</formation>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>6</positionX>
+      <positionX>4</positionX>
       <positionY>94</positionY>
-      <formation>formation2a</formation>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
-      <positionY>97</positionY>
-      <formation>formation3a</formation>
+      <positionY>99</positionY>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>5</positionX>
-      <positionY>106</positionY>
-      <formation>kamikaze</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>6</positionX>
-      <positionY>108</positionY>
-      <formation>kamikaze</formation>
+      <positionX>2</positionX>
+      <positionY>105</positionY>
+      <formation>formation1b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
       <positionY>110</positionY>
-      <formation>kamikaze</formation>
+      <formation>formation1b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>4</positionX>
-      <positionY>112</positionY>
-      <formation>kamikaze</formation>
-      <mirrored>false</mirrored>
+      <positionX>8</positionX>
+      <positionY>115</positionY>
+      <formation>formation3b</formation>
+      <mirrored>true</mirrored>
     </spawn>
     <spawn>
       <positionX>5</positionX>
-      <positionY>116</positionY>
+      <positionY>122</positionY>
       <formation>PowerUp_Health</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>2</positionX>
-      <positionY>120</positionY>
-      <formation>formation3a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>5</positionX>
       <positionY>126</positionY>
-      <formation>formation3a</formation>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>4</positionX>
-      <positionY>132</positionY>
-      <formation>formation1a</formation>
-      <mirrored>false</mirrored>
-    </spawn>
-    <spawn>
-      <positionX>4</positionX>
-      <positionY>132</positionY>
-      <formation>formation1a</formation>
+      <positionX>7</positionX>
+      <positionY>127</positionY>
+      <formation>formation3b</formation>
       <mirrored>true</mirrored>
     </spawn>
     <spawn>
-      <positionX>5</positionX>
-      <positionY>134</positionY>
-      <formation>PowerUp_Health</formation>
+      <positionX>3</positionX>
+      <positionY>128</positionY>
+      <formation>formation3b</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>4</positionX>
-      <positionY>135</positionY>
-      <formation>PowerUp_Health</formation>
-      <mirrored>false</mirrored>
+      <positionX>6</positionX>
+      <positionY>130</positionY>
+      <formation>formation3b</formation>
+      <mirrored>true</mirrored>
     </spawn>
     <spawn>
       <positionX>0</positionX>

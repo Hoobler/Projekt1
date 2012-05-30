@@ -16,7 +16,7 @@ namespace _1942
             this.size = size;
             layerDepth = 0.0f;
             texture = Texture2DLibrary.particle_explosion;
-            
+            SoundLibrary.Explosion.Play();
         }
 
         public override void Update(GameTime gameTime)

@@ -30,7 +30,6 @@ namespace _1942
         {
             base.Update(gameTime);
 
-            LifeBarCalc();
 
             for (int i = 0; i < accessoryList.Count; i++)
             {
@@ -70,13 +69,16 @@ namespace _1942
             if (activated)
             {
                 position += speed;
-                if (health <= 0)
+                if (killable && accessorised)
                 {
-                    health = 0;
-                    killed = true;
+                    if (health <= 0)
+                    {
+                        health = 0;
+                        killed = true;
+                    }
+                    color.B = (byte)((float)255 * ((float)health / (float)maxHealth));
+                    color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
                 }
-                color.B = (byte)((float)255 * ((float)health / (float)maxHealth));
-                color.G = (byte)((float)255 * ((float)health / (float)maxHealth));
             }
 
             if (killed)
@@ -184,26 +186,6 @@ namespace _1942
             }
 
         }
-        public void LifeBarCalc()
-        {
-            int maxTotalHealth = 0;
-            if (killable)
-                maxTotalHealth += maxHealth;
-            for (int i = 0; i < accessoryList.Count; i++)
-            {
-                if (accessoryList[i].IsKillable)
-                    maxTotalHealth += accessoryList[i].HealthMax;
-            }
-
-            int totalHealth = 0;
-            if (killable)
-                totalHealth += health;
-            for (int i = 0; i < accessoryList.Count; i++)
-            {
-
-                if (accessoryList[i].IsKillable)
-                    totalHealth += accessoryList[i].Health;
-            }
-        }
+        
     }
 }

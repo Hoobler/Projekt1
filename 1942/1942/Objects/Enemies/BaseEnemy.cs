@@ -36,8 +36,7 @@ namespace _1942
 
             if (position.Y > -size.Y)
                 activated = true;
-            if (dead && !Settings.window.ClientBounds.Contains(Rectangle))
-                SoundLibrary.Explosion.Play();
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)

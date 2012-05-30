@@ -5,134 +5,6 @@
   <description>Pearl Harbor 1942</description>
   <tileset>texturelist</tileset>
   <layout>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGGGGW</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>WWGGGGGWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGGGGW</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGWWGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>WWGGGGGWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GGWWWWWGGG</row>
-    <row>GGWWWWWGGG</row>
-    <row>WWWWWWWGGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWGGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWGG</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWGGGGWWW</row>
-    <row>WWWWGGWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>WWWWWWWWWW</row>
-    <row>GWWWWWWWWW</row>
-    <row>GGWWWWWWWW</row>
-    <row>GGWWWWWWWW</row>
-    <row>GWWWWWWWGG</row>
-    <row>WWWWWWWGGG</row>
-    <row>WWWWWWGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -148,14 +20,142 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGTtGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGEeGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>sssspissss</row>
+    <row>WWWWloWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWLSOW</row>
+    <row>WWWWWLPioW</row>
+    <row>WLSSSPGBWW</row>
+    <row>WbGisssoWW</row>
+    <row>WlsoWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWLOW</row>
+    <row>WWWWWWWloW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWLSOWWW</row>
+    <row>WWWLPGIOWW</row>
+    <row>WWWlpGioWW</row>
+    <row>WWWWlsoWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWLS</row>
+    <row>WWWWWWWWbG</row>
+    <row>WWWWWWWWls</row>
+    <row>WWWLSSOWWW</row>
+    <row>WWWbGGBWWW</row>
+    <row>WWWlssoWWW</row>
+    <row>SOWWWWWWWW</row>
+    <row>GBWWWWWWWW</row>
+    <row>soWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWLSOW</row>
+    <row>WWWWWLPioW</row>
+    <row>WLSSSPGBWW</row>
+    <row>WbGisssoWW</row>
+    <row>WlsoWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
+    <row>WWWWWWWWWW</row>
   </layout>
   <spawnlist>
     <spawn>
@@ -303,7 +303,7 @@
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
-      <positionX>1</positionX>
+      <positionX>0.5</positionX>
       <positionY>52</positionY>
       <formation>tower</formation>
       <mirrored>false</mirrored>
@@ -370,13 +370,13 @@
     </spawn>
     <spawn>
       <positionX>5</positionX>
-      <positionY>76</positionY>
+      <positionY>76.2</positionY>
       <formation>tower</formation>
       <mirrored>false</mirrored>
     </spawn>
     <spawn>
       <positionX>6</positionX>
-      <positionY>76</positionY>
+      <positionY>76.2</positionY>
       <formation>tower</formation>
       <mirrored>false</mirrored>
     </spawn>
@@ -436,7 +436,7 @@
     </spawn>
     <spawn>
       <positionX>3</positionX>
-      <positionY>95</positionY>
+      <positionY>95.5</positionY>
       <formation>boat</formation>
       <mirrored>false</mirrored>
     </spawn>
@@ -484,7 +484,7 @@
     </spawn>
     <spawn>
       <positionX>7</positionX>
-      <positionY>110</positionY>
+      <positionY>112</positionY>
       <formation>boat</formation>
       <mirrored>true</mirrored>
     </spawn>

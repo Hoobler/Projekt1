@@ -14,7 +14,7 @@ namespace _1942
         public Player2(): base()
         {
             color = Color.Pink;
-            position = new Vector2(Settings.window.ClientBounds.Width / 2 + size.X * 0.8f, Settings.window.ClientBounds.Height - size.Y);
+            position = new Vector2(Settings.windowBounds.X / 2 + size.X * 0.8f, Settings.windowBounds.Y - size.Y);
             playerID = 1;
             damage = 10;
         }
@@ -27,12 +27,12 @@ namespace _1942
                 myScore = Settings.score_player2;
                 if (keyState.IsKeyDown(Keys.A) && position.X > 0)
                     GoLeft();
-                else if (keyState.IsKeyDown(Keys.D) && position.X < Settings.window.ClientBounds.Width - size.X)
+                else if (keyState.IsKeyDown(Keys.D) && position.X < Settings.windowBounds.X - size.X)
                     GoRight();
 
                 if (keyState.IsKeyDown(Keys.W) && position.Y > 0)
                     GoUp();
-                else if (keyState.IsKeyDown(Keys.S) && position.Y < Settings.window.ClientBounds.Height - size.Y)
+                else if (keyState.IsKeyDown(Keys.S) && position.Y < Settings.windowBounds.Y - size.Y)
                     GoDown();
 
                 if (keyState.IsKeyDown(Keys.LeftControl))

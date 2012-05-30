@@ -24,25 +24,25 @@ namespace _1942
 
         MouseState previousmouse = Mouse.GetState();
         //buttons
-        int buttonWidth = Settings.window.ClientBounds.Width / 4;
-        int buttonHeight = Settings.window.ClientBounds.Height / 8;
+        int buttonWidth = (int)Settings.windowBounds.X / 4;
+        int buttonHeight = (int)Settings.windowBounds.Y / 8;
 
         // Button Distance Between eachother
-        int mButtonDistance = Settings.window.ClientBounds.Width/20;
+        int mButtonDistance = (int)Settings.windowBounds.X / 20;
 
 
         //OptionScreen
-        float screenWidth = (float)Settings.window.ClientBounds.Width/1.4f;
-        float screenHeight = (float)Settings.window.ClientBounds.Height/4.5f;
+        float screenWidth = (float)Settings.windowBounds.X/1.4f;
+        float screenHeight = (float)Settings.windowBounds.Y/4.5f;
 
         // Bool to get back to the Menu Screen
         bool back = false;
 
         // Volume button sizes
-        int volumeButtonHeight = Settings.window.ClientBounds.Height / 10;
-        int volumebuttonWidth = Settings.window.ClientBounds.Width / 10;
+        int volumeButtonHeight = (int)Settings.windowBounds.Y / 10;
+        int volumebuttonWidth = (int)Settings.windowBounds.X / 10;
 
-        public OptionManager(GameWindow window)
+        public OptionManager()
         {
             mAudioOptionButton = new AudioOptionButton();
             mVideoOptionButton = new VideoOptionButton();
@@ -54,11 +54,11 @@ namespace _1942
             mAddVolumeButton.IsVisible = false;
             mMinusVolumeButton.IsVisible = false;
             //Positions
-            mAudioOptionButton.Position = new Rectangle(Settings.window.ClientBounds.Width / 20, Settings.window.ClientBounds.Height / 20, buttonWidth, buttonHeight);
+            mAudioOptionButton.Position = new Rectangle((int)Settings.windowBounds.X / 20, (int)Settings.windowBounds.Y / 20, buttonWidth, buttonHeight);
             mVideoOptionButton.Position = new Rectangle(mAudioOptionButton.Position.Right + mButtonDistance, mAudioOptionButton.Position.Y, buttonWidth, buttonHeight);
             mControlsOptionButton.Position = new Rectangle(mVideoOptionButton.Position.Right + mButtonDistance, mVideoOptionButton.Position.Y, buttonWidth, buttonHeight);
-            mOptionScreen.Position = new Rectangle(Settings.window.ClientBounds.Width /6, Settings.window.ClientBounds.Height/3, (int)screenWidth, (int)screenHeight);
-            mBackButton.Position = new Rectangle(Settings.window.ClientBounds.Width - buttonWidth, Settings.window.ClientBounds.Height - buttonHeight, buttonWidth, buttonHeight);
+            mOptionScreen.Position = new Rectangle((int)Settings.windowBounds.X / 6, (int)Settings.windowBounds.Y / 3, (int)screenWidth, (int)screenHeight);
+            mBackButton.Position = new Rectangle((int)Settings.windowBounds.X - buttonWidth, (int)Settings.windowBounds.Y - buttonHeight, buttonWidth, buttonHeight);
             mMinusVolumeButton.Position = new Rectangle(mOptionScreen.Position.Center.X, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);
             mAddVolumeButton.Position = new Rectangle(mMinusVolumeButton.Position.Right + mButtonDistance, mOptionScreen.Position.Bottom, volumebuttonWidth, volumeButtonHeight);
             //Textures
