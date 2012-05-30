@@ -52,12 +52,15 @@ namespace _1942
 
         static public void Update(KeyboardState keyState, GameTime gameTime)
         {
-            
+
             for (int i = 0; i < Objects.playerList.Count; i++)
                 Objects.playerList[i].Update(keyState, gameTime);
 
+
             for (int i = 0; i < Objects.playerProjectileList.Count; i++)
+            {
                 Objects.playerProjectileList[i].Update(gameTime);
+            }
 
             for (int i = 0; i < Objects.deadList.Count; i++)
                 Objects.deadList[i].Update(gameTime);

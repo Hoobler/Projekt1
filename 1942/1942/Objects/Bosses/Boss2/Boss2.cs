@@ -18,7 +18,7 @@ namespace _1942
             size = new Point(Texture2DLibrary.boss2.Bounds.Width, Texture2DLibrary.boss2.Bounds.Height);
             this.position.Y = position.Y;
             
-            this.position.X = Settings.window.ClientBounds.Width / 2f - size.X / 2f;
+            this.position.X = Settings.windowBounds.X / 2f - size.X / 2f;
             
             
             color = Color.White;
@@ -38,7 +38,7 @@ namespace _1942
             if(!dead && activated)
                 for (int i = 0; i < Objects.playerList.Count; i++)
                 {
-                    if (Objects.playerList[i].PosY <= Settings.window.ClientBounds.Height / 2)
+                    if (Objects.playerList[i].PosY <= Settings.windowBounds.Y / 2)
                         Objects.playerList[i].PosY += 5f;
                 }
 

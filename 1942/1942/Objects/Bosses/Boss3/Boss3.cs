@@ -23,18 +23,20 @@ namespace _1942
         {
             size = new Point(100, 100);
             speed = new Vector2(0, 0);
-            radius = Settings.window.ClientBounds.Height/2 - size.X/2;
-            rotationPoint = new Vector2(Settings.window.ClientBounds.Width / 2, Settings.window.ClientBounds.Height / 2);
+            radius = Settings.windowBounds.Y/2 - size.X/2;
+            rotationPoint = new Vector2(Settings.windowBounds.X / 2, Settings.windowBounds.Y / 2);
             this.position = position;
-            this.position.X = Settings.window.ClientBounds.Width/2 + radius;
+            this.position.X = Settings.windowBounds.X/2 + radius;
             angle = (float)Math.PI;
             angleSpeed = (float)Math.PI / 360f;
             texture = Texture2DLibrary.boss3;
             color = Color.White;
             this.timer = timer+1f;
-            maxHealth = 1000;
-            health = maxHealth;
-            score = 500;
+            this.maxHealth = 1000;
+            this.health = maxHealth;
+            score = 700;
+            killable = true;
+            killed = false;
             
 
             
@@ -44,9 +46,9 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            targetableRectangles.Clear();
+            targetableRectangles.Add(new Rectangle((int)Center.X - 40, (int)Center.Y - 40, 80, 80));
 
-            if (activated && accessoryList.Count <= 0)
-                killed = true;
             if(activated)
                 timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             
@@ -82,9 +84,9 @@ namespace _1942
                 speed = new Vector2(0, 1);
             }
 
-            if (phase == 1 && position.Y >= Settings.window.ClientBounds.Height / 2 - size.Y / 2)
+            if (phase == 1 && position.Y >= Settings.windowBounds.Y / 2 - size.Y / 2)
             {
-                position.Y = Settings.window.ClientBounds.Height / 2 - size.Y / 2;
+                position.Y = Settings.windowBounds.Y / 2 - size.Y / 2;
                 phase = 2;
                 speed = new Vector2(0, 0);
             }
@@ -159,7 +161,6 @@ namespace _1942
                     new Vector2(50.5f, texture.Bounds.Height / 2),
                     spriteEffect,
                     layerDepth);
-                
 
                 
             }

@@ -10,7 +10,7 @@ namespace _1942
     {
         static public float level_speed = 2f;
         static public int nr_of_players;
-        static public GameWindow window;
+        static public Vector2 windowBounds;
         static public bool gameOver = false;
 
         static public int score_player1;

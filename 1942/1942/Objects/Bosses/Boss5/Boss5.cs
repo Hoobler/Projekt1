@@ -33,7 +33,7 @@ namespace _1942
             maxHealth = 10000;
             health = maxHealth;
             this.position = position;
-            this.position.X = Settings.window.ClientBounds.Width / 2f - size.X / 2f;
+            this.position.X = Settings.windowBounds.X / 2f - size.X / 2f;
             killable = true;
         }
 
@@ -62,9 +62,9 @@ namespace _1942
                     speed = new Vector2(0, 1);
 
 
-                    if (Position.Y >= Settings.window.ClientBounds.Height * (1f / 8f))
+                    if (Position.Y >= Settings.windowBounds.Y * (1f / 8f))
                     {
-                        position.Y = Settings.window.ClientBounds.Height * (1f / 8f);
+                        position.Y = Settings.windowBounds.Y * (1f / 8f);
                         speed = new Vector2(0, 0);
                         phase = 2;
                         for (int i = 0; i < accessoryList.Count; i++)
@@ -143,13 +143,13 @@ namespace _1942
                 {
                     timer++;
                     if (timer == 1)
-                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.window.ClientBounds.Width/2f, -50)));
+                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.windowBounds.X/2f, -50)));
                     if (timer == 300)
-                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.windowBounds.X / 2f, -50)));
                     if (timer == 600)
-                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                        Objects.powerUpList.Add(new PowerUpHealth(new Vector2(Settings.windowBounds.X / 2f, -50)));
                     if (timer == 900)
-                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.window.ClientBounds.Width / 2f, -50)));
+                        Objects.powerUpList.Add(new PowerUpDamage(new Vector2(Settings.windowBounds.X / 2f, -50)));
                     if (timer >= 1200)
                         timer = 0;
                 }

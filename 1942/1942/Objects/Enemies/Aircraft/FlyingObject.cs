@@ -58,6 +58,7 @@ namespace _1942
                     timeUntilSpeedChange -= timeBetweenSpeedChanges;
                     speed.X = -speed.X;
                 }
+
             }
         }
 

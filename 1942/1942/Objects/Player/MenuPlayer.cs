@@ -37,7 +37,7 @@ namespace _1942
         public MenuPlayer(): base()
         {
             color = Color.White;
-            position = new Vector2(Settings.window.ClientBounds.Width / 2 - size.X *1.5f, Settings.window.ClientBounds.Height - size.Y);
+            position = new Vector2(Settings.windowBounds.X / 2 - size.X *1.5f, Settings.windowBounds.Y - size.Y);
             playerID = 0;
             damage = 10;
         }
@@ -137,7 +137,7 @@ namespace _1942
 
         private void MoveTheShip()
         {
-            var windowY = Settings.window.ClientBounds.Height -50;
+            var windowY = Settings.windowBounds.Y -50;
 
             if (isFormActive || isEnemyActive || goForPowerUp || goForBoss)
             {
@@ -208,7 +208,7 @@ namespace _1942
             }
             if (nothingOnScreen)
             {
-                var windowCenter = (int)Settings.window.ClientBounds.Width / 2f;
+                var windowCenter = (int)Settings.windowBounds.X / 2f;
                 if (this.Center.X < windowCenter || this.Center.X > this.Center.X)
                 { }
                 if (windowCenter > this.Center.X)

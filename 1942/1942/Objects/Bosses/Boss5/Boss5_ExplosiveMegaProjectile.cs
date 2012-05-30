@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace _1942
 {
@@ -31,6 +32,10 @@ namespace _1942
 
             if (timer >= 2f)
                 dead = true;
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, new Rectangle((int)position.X - 10, (int)position.Y - 10, size.X + 20, size.Y + 20), color);
         }
     }
 }

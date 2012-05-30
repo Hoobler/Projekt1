@@ -12,7 +12,7 @@ namespace _1942
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (position.Y >= Settings.window.ClientBounds.Height+500)
+            if (position.Y >= windowbounds.Y+ 500)
                 dead = true;
         }
 

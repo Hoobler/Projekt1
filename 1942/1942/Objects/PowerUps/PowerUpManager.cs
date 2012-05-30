@@ -83,7 +83,7 @@ namespace _1942
             }
             for (int i = 0; i < Objects.powerUpList.Count; i++)
             {
-                if (Objects.powerUpList[i].PosY > Settings.window.ClientBounds.Height)
+                if (Objects.powerUpList[i].PosY > Settings.windowBounds.Y)
                 {
                     Objects.powerUpList.RemoveAt(i);
                     break;

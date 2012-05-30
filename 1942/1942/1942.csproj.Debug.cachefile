@@ -96,15 +96,6 @@ Content\Sounds\Explosion_Big.xnb
 Content\Sounds\gunshot.xnb
 Content\Sounds\Player_Shot.xnb
 Content\Sounds\Laser_gun.xnb
-Content\Extra\square1.xnb
-Content\Particles\smoke.xnb
-Content\shielded.xnb
-Content\Bosses\Boss3\Boss3.xnb
-Content\Bosses\Boss3\Boss3_Gun.xnb
-Content\Enemies\Boat_Tower.xnb
-Content\LevelTextures\WaterAni.xnb
-Content\Music\Level1b.xnb
-Content\Music\Level2b.xnb
 Content\LevelTextures\WaterAni.xnb
 Content\LevelTextures\Grass.xnb
 Content\LevelTextures\BeachSideL.xnb
@@ -125,6 +116,7 @@ Content\Bosses\Escort\Escort.xnb
 Content\GameOver.xnb
 Content\Bosses\Boss5\Boss5.xnb
 Content\Bosses\Boss5\Boss5_Cannon.xnb
+Content\Bosses\Boss5\Boss5_ProjectileBig.xnb
 Content\Music\MenuSong.wma
 Content\Music\Ride_of_the_Valkyries.wma
 Content\Music\Twilight.wma

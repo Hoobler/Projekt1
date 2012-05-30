@@ -279,15 +279,15 @@ namespace _1942
 
         public int TileSize()
         {
-            var tempSize = Settings.window.ClientBounds.Width;
-            return tilesize = tempSize / 10; 
+            var tempSize = Settings.windowBounds.X;
+            return tilesize = (int)tempSize / 10; 
         }
 
         private int StartingCameraPos()
         {
-            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
-            var tempInt = nrOfRows * TileSize() - Settings.window.ClientBounds.Height;
-            return tempInt;
+            cameraPosition.Y = (float)nrOfRows * TileSize() - Settings.windowBounds.Y;
+            var tempInt = nrOfRows * TileSize() - Settings.windowBounds.Y;
+            return (int)tempInt;
         }
 
         public void MoveCamera(float moved)

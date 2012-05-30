@@ -20,7 +20,7 @@ namespace _1942
         public Boss1(Vector2 startingPos)
         {
             position = startingPos;
-            position.X = Settings.window.ClientBounds.Width + size.X+30;
+            position.X = Settings.windowBounds.X + size.X+30;
             color = Color.White;
             
             speed = new Vector2(-2, 0);
@@ -81,7 +81,7 @@ namespace _1942
                 else if (phase == 1)
                 {
                     MusicManager.SetMusic(SoundLibrary.Boss1);
-                    if (position.X <= Settings.window.ClientBounds.Width / 2 - size.X / 2)
+                    if (position.X <= Settings.windowBounds.X / 2 - size.X / 2)
                     {
                         phase = 2;
                         for (int i = 0; i < accessoryList.Count; i++)
@@ -104,7 +104,7 @@ namespace _1942
                 }
                 else if (phase == 3)
                 {
-                    if (Center.X > Settings.window.ClientBounds.Width - 200)
+                    if (Center.X > Settings.windowBounds.X - 200)
                     {
                         speed = new Vector2(-2, 0);
                         phase = 2;

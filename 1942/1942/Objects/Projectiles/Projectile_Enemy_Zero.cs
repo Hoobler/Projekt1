@@ -30,7 +30,7 @@ namespace _1942
         {
             base.Update(gameTime);
             
-            if (position.Y > Settings.window.ClientBounds.Height+size.Y)
+            if (position.Y > Settings.windowBounds.Y+size.Y)
                 dead = true;
         }
 

@@ -44,10 +44,11 @@ namespace _1942
                     timeUntilNextShot -= Settings.zero_projectile_frequency;
                 }
 
-                if (position.Y > Settings.window.ClientBounds.Height)
+                if (position.Y > Settings.windowBounds.Y)
                     dead = true;
 
-                if (dead)
+
+                if (dead && position.Y < Settings.windowBounds.Y - size.Y)
                     Objects.particleList.Add(new Particle_Explosion(Center, size));
 
 

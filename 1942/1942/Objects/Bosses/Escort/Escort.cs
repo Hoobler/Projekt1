@@ -27,11 +27,11 @@ namespace _1942
 
             texture = Texture2DLibrary.escort;
             size = new Point((texture.Bounds.Width - 1) / 3 - 3, texture.Bounds.Height - 2);
-            lifebarSizeFull = new Point(Settings.window.ClientBounds.Width - 80, 40);
+            lifebarSizeFull = new Point((int)Settings.windowBounds.X - 80, 40);
             lifebarSize = lifebarSizeFull;
             color = Color.White;
             position.X = 0;
-            position.Y = Settings.window.ClientBounds.Height;
+            position.Y = Settings.windowBounds.Y;
             
         }
         public override void Update(GameTime gameTime)
@@ -60,9 +60,9 @@ namespace _1942
             if (phase == 0)
             {
                 position.Y -= 1f;
-                if (position.Y <= Settings.window.ClientBounds.Height / 2f)
+                if (position.Y <= Settings.windowBounds.Y / 2f)
                 {
-                    position.Y = Settings.window.ClientBounds.Height / 2f;
+                    position.Y = Settings.windowBounds.Y / 2f;
                     phase = 1;
                 }
 
@@ -79,9 +79,9 @@ namespace _1942
             else if (phase == 2)
             {
                 position += speed;
-                if (Center.X >= Settings.window.ClientBounds.Width-225)
+                if (Center.X >= Settings.windowBounds.X-225)
                 {
-                    position.X = Settings.window.ClientBounds.Width - size.X/2f-225;
+                    position.X = Settings.windowBounds.X - size.X/2f-225;
                     phase = 1;
                 }
             }
@@ -98,10 +98,10 @@ namespace _1942
             if (phase >= 1)
             {
                 spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                            new Rectangle(100, 20, Settings.window.ClientBounds.Width - 190, 40),
+                            new Rectangle(100, 20, (int)Settings.windowBounds.X - 190, 40),
                             Color.Gray);
                 spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                new Rectangle(105, 25, ((int)((float)lifebarSize.X / (float)lifebarSizeFull.X * (float)(Settings.window.ClientBounds.Width - 200))), 30),
+                new Rectangle(105, 25, ((int)((float)lifebarSize.X / (float)lifebarSizeFull.X * (float)(Settings.windowBounds.X - 200))), 30),
                 Color.Red);
             }
             spriteBatch.Draw(texture,
@@ -116,7 +116,7 @@ namespace _1942
                     spriteEffect,
                     0.0f);
             if (phase == 0)
-                spriteBatch.DrawString(FontLibrary.Hud_Font, "ESCORT THE BOMBER", new Vector2(Settings.window.ClientBounds.Width / 2f, Settings.window.ClientBounds.Height / 2f), Color.Red);
+                spriteBatch.DrawString(FontLibrary.Hud_Font, "ESCORT THE BOMBER", new Vector2(Settings.windowBounds.X / 2f, Settings.windowBounds.Y / 2f), Color.Red);
             
         }
 

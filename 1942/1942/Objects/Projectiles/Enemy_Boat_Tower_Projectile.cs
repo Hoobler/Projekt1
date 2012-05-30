@@ -27,7 +27,7 @@ namespace _1942
             base.Update(gameTime);
 
             
-            if (position.X < 0 || position.X > Settings.window.ClientBounds.Width || position.Y < 0 || position.Y > Settings.window.ClientBounds.Height)
+            if (position.X < 0 || position.X > Settings.windowBounds.X || position.Y < 0 || position.Y > Settings.windowBounds.Y)
                 dead = true;
         }
     }

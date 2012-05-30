@@ -29,8 +29,6 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGWGGGGGGG</row>
-    <row>GGWGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -43,8 +41,29 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGWGGGGGGW</row>
     <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGGGGGG</row>
+    <row>GGGGGissss</row>
+    <row>GGGGGBWWWW</row>
+    <row>GGGGGBWLSS</row>
+    <row>GGGGGBWbGG</row>
+    <row>GGGGGISPGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGW</row>
@@ -53,7 +72,6 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGWGGGGGGW</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -61,14 +79,14 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGW</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGW</row>
-    <row>GGWGGGGGGG</row>
     <row>GGGGGGGGGG</row>
+    <row>GGGispGGGG</row>
+    <row>GGGBWbGGGG</row>
+    <row>GGGISPGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -83,7 +101,6 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGWGGGGGGW</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -118,11 +135,18 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
+    <row>GGGispGGGG</row>
+    <row>GGGBWbGGGG</row>
+    <row>GGGISPGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
+    <row>spGGGGGGGG</row>
+    <row>WbGGGGGGGG</row>
+    <row>WbGGGGGGGG</row>
+    <row>SPGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
@@ -132,30 +156,6 @@
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
     <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGGGGGGG</row>
-    <row>GGGGTtGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGRrGGGG</row>
-    <row>GGGGEeGGGG</row>
   </layout>
   <spawnlist>
     <spawn>

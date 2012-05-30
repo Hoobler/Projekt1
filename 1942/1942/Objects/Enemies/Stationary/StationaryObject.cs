@@ -14,7 +14,7 @@ namespace _1942
         {
             base.Update(gameTime);
             position.Y += Settings.level_speed;
-            if (position.Y > Settings.window.ClientBounds.Height + size.Y)
+            if (position.Y > windowbounds.Y + size.Y)
                 dead = true;
         }
 

@@ -365,7 +365,7 @@ namespace _1942
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 textcenter = new Vector2(Settings.window.ClientBounds.Width / 2, 240);
+            Vector2 textcenter = new Vector2(Settings.windowBounds.X / 2, 240);
             
             levelLoader.Draw(spriteBatch);
             
@@ -374,6 +374,20 @@ namespace _1942
                 spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, textcenter - (TextLenght(levelLoader.LevelName) / 2), Color.White);
                 //spriteBatch.DrawString(FontLibrary.Hud_Font, "" + levelLoader.LevelName, new Vector2(1f, 200f), Color.White);
             }
+            if (Objects.bossList.Count >= 1)
+                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
+                {
+                    if (Objects.bossList[0].Phase >= 1)
+                    {
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(100, 20, (int)Settings.windowBounds.X - 190, 40),
+                        Color.Gray);
+                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
+                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.windowBounds.X - 200))), 30),
+                        Color.Red);
+                    }
+
+                }
             if (!levelLoader.ScoreLoop)
             {
                 Objects.Draw(spriteBatch);
@@ -388,23 +402,9 @@ namespace _1942
                 highscore.Draw(spriteBatch);
             }
 
-            if(Objects.bossList.Count >= 1)
-                if (Objects.bossList[0].IsActivated() && !Objects.bossList[0].Killed)
-                {
-                    if(Objects.bossList[0].Phase >= 1)
-                    {
-                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                        new Rectangle(100, 20, Settings.window.ClientBounds.Width - 190, 40),
-                        Color.Gray);
-                        spriteBatch.Draw(Texture2DLibrary.escort_lifebar,
-                        new Rectangle(105, 25, ((int)((float)bossCurrentLifeBarCalc() / (float)bossTotalLifeBarCalc() * (float)(Settings.window.ClientBounds.Width - 200))), 30),
-                        Color.Red);
-                    }
-
-                }
             if (gameOver)
             {
-                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, Settings.window.ClientBounds.Width, Settings.window.ClientBounds.Height), Color.White);
+                spriteBatch.Draw(Texture2DLibrary.GameOverScreen, new Rectangle(0, 0, (int)Settings.windowBounds.X, (int)Settings.windowBounds.Y), Color.White);
             }
         }
 
